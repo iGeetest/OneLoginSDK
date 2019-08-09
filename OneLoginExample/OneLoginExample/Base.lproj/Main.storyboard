@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XWX-11-Qe1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="EKF-NW-nAR">
+            <objects>
+                <navigationController id="XWX-11-Qe1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ceP-yw-IOv">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="chV-wE-aeF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wJs-3A-hM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-22" y="-265"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="beo-9r-1Mr"/>
+                        <viewControllerLayoutGuide type="bottom" id="48v-nN-vdO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VI-f6-ANQ">
+                                <rect key="frame" x="87.5" y="313.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="M8M-uy-cZj"/>
+                                    <constraint firstAttribute="width" constant="200" id="ck6-5d-LtU"/>
+                                </constraints>
+                                <state key="normal" title="一键登录">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="1zu-Rh-LB1" kind="show" id="sLF-gf-Sq1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3VI-f6-ANQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="d1b-04-oCQ"/>
+                            <constraint firstItem="3VI-f6-ANQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tUd-Jo-kYd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="igj-Et-EMG"/>
+                    <connections>
+                        <outlet property="loginButton" destination="3VI-f6-ANQ" id="xbO-De-zz4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="865" y="-259"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="78s-cg-Fcq">
+            <objects>
+                <viewController id="1zu-Rh-LB1" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xLP-g6-9ME"/>
+                        <viewControllerLayoutGuide type="bottom" id="fwY-Zi-luH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rux-ok-ART">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jg9-ql-W83">
+                                <rect key="frame" x="87.5" y="343.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Rk0-H6-hJ7"/>
+                                    <constraint firstAttribute="height" constant="40" id="p7J-k1-JNP"/>
+                                </constraints>
+                                <state key="normal" title="一键登录(弹窗模式)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="popupLoginAction:" destination="1zu-Rh-LB1" eventType="touchUpInside" id="Wct-su-iK9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jtp-er-Zx8">
+                                <rect key="frame" x="87.5" y="283.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OQr-Zr-Z9s"/>
+                                    <constraint firstAttribute="width" constant="200" id="zoK-YM-jQ8"/>
+                                </constraints>
+                                <state key="normal" title="一键登录(正常模式)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="normalLoginAction:" destination="1zu-Rh-LB1" eventType="touchUpInside" id="dz9-uH-D6b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Jg9-ql-W83" firstAttribute="centerY" secondItem="rux-ok-ART" secondAttribute="centerY" constant="30" id="8C5-9Q-ohV"/>
+                            <constraint firstItem="Jtp-er-Zx8" firstAttribute="centerX" secondItem="rux-ok-ART" secondAttribute="centerX" id="Af6-Ff-HZx"/>
+                            <constraint firstItem="Jtp-er-Zx8" firstAttribute="centerY" secondItem="rux-ok-ART" secondAttribute="centerY" constant="-30" id="TCA-w4-Co2"/>
+                            <constraint firstItem="Jg9-ql-W83" firstAttribute="centerX" secondItem="rux-ok-ART" secondAttribute="centerX" id="Wji-wK-DK5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="normalLoginButton" destination="Jtp-er-Zx8" id="gif-8F-koC"/>
+                        <outlet property="popupLoginButton" destination="Jg9-ql-W83" id="01W-OR-qqG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1X5-6b-yih" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1743" y="-260"/>
+        </scene>
+    </scenes>
+</document>

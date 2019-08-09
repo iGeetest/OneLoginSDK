@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A3F71C62241D9A2007EA470 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71C52241D9A2007EA470 /* AppDelegate.m */; };
+		7A3F71C92241D9A2007EA470 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71C82241D9A2007EA470 /* ViewController.m */; };
+		7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CA2241D9A2007EA470 /* Main.storyboard */; };
+		7A3F71CE2241D9A4007EA470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CD2241D9A4007EA470 /* Assets.xcassets */; };
+		7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */; };
+		7A3F71D42241D9A4007EA470 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71D32241D9A4007EA470 /* main.m */; };
+		7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */; };
+		7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595F2242290600230BE0 /* libc++.1.tbd */; };
+		E93A027F22FC10C800804D0E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A027E22FC10C800804D0E /* LoginViewController.m */; };
+		E93A028722FD195D00804D0E /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E93A028122FD195D00804D0E /* TYRZResource.bundle */; };
+		E93A028822FD195D00804D0E /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93A028222FD195D00804D0E /* TYRZSDK.framework */; };
+		E93A028922FD195D00804D0E /* OneLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93A028322FD195D00804D0E /* OneLoginSDK.framework */; };
+		E93A028A22FD195D00804D0E /* account_login_sdk_noui_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93A028422FD195D00804D0E /* account_login_sdk_noui_core.framework */; };
+		E93A028B22FD195D00804D0E /* EAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93A028522FD195D00804D0E /* EAccountApiSDK.framework */; };
+		E93A028C22FD195D00804D0E /* OneLoginResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E93A028622FD195D00804D0E /* OneLoginResource.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7A3F71C12241D9A2007EA470 /* OneLoginExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneLoginExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A3F71C42241D9A2007EA470 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7A3F71C52241D9A2007EA470 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7A3F71C72241D9A2007EA470 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7A3F71C82241D9A2007EA470 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7A3F71CB2241D9A2007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A3F71CD2241D9A4007EA470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A3F71D02241D9A4007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A3F71D22241D9A4007EA470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A3F71D32241D9A4007EA470 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
+		7AF5595F2242290600230BE0 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		E93A027D22FC10C800804D0E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		E93A027E22FC10C800804D0E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		E93A028122FD195D00804D0E /* TYRZResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRZResource.bundle; sourceTree = "<group>"; };
+		E93A028222FD195D00804D0E /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
+		E93A028322FD195D00804D0E /* OneLoginSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneLoginSDK.framework; sourceTree = "<group>"; };
+		E93A028422FD195D00804D0E /* account_login_sdk_noui_core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = account_login_sdk_noui_core.framework; sourceTree = "<group>"; };
+		E93A028522FD195D00804D0E /* EAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EAccountApiSDK.framework; sourceTree = "<group>"; };
+		E93A028622FD195D00804D0E /* OneLoginResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OneLoginResource.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A3F71BE2241D9A2007EA470 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */,
+				E93A028822FD195D00804D0E /* TYRZSDK.framework in Frameworks */,
+				E93A028B22FD195D00804D0E /* EAccountApiSDK.framework in Frameworks */,
+				E93A028A22FD195D00804D0E /* account_login_sdk_noui_core.framework in Frameworks */,
+				E93A028922FD195D00804D0E /* OneLoginSDK.framework in Frameworks */,
+				7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A3F71B82241D9A2007EA470 = {
+			isa = PBXGroup;
+			children = (
+				E93A028022FD195D00804D0E /* SDK */,
+				7A3F71C32241D9A2007EA470 /* OneLoginExample */,
+				7A3F71C22241D9A2007EA470 /* Products */,
+				7A3F71DA2241D9D3007EA470 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7A3F71C22241D9A2007EA470 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A3F71C12241D9A2007EA470 /* OneLoginExample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A3F71C32241D9A2007EA470 /* OneLoginExample */ = {
+			isa = PBXGroup;
+			children = (
+				7A3F71C42241D9A2007EA470 /* AppDelegate.h */,
+				7A3F71C52241D9A2007EA470 /* AppDelegate.m */,
+				7A3F71C72241D9A2007EA470 /* ViewController.h */,
+				7A3F71C82241D9A2007EA470 /* ViewController.m */,
+				E93A027D22FC10C800804D0E /* LoginViewController.h */,
+				E93A027E22FC10C800804D0E /* LoginViewController.m */,
+				7A3F71CA2241D9A2007EA470 /* Main.storyboard */,
+				7A3F71CD2241D9A4007EA470 /* Assets.xcassets */,
+				7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */,
+				7A3F71D22241D9A4007EA470 /* Info.plist */,
+				7A3F71D32241D9A4007EA470 /* main.m */,
+			);
+			path = OneLoginExample;
+			sourceTree = "<group>";
+		};
+		7A3F71DA2241D9D3007EA470 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AF5595F2242290600230BE0 /* libc++.1.tbd */,
+				7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E93A028022FD195D00804D0E /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				E93A028122FD195D00804D0E /* TYRZResource.bundle */,
+				E93A028222FD195D00804D0E /* TYRZSDK.framework */,
+				E93A028322FD195D00804D0E /* OneLoginSDK.framework */,
+				E93A028422FD195D00804D0E /* account_login_sdk_noui_core.framework */,
+				E93A028522FD195D00804D0E /* EAccountApiSDK.framework */,
+				E93A028622FD195D00804D0E /* OneLoginResource.bundle */,
+			);
+			name = SDK;
+			path = ../SDK;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A3F71C02241D9A2007EA470 /* OneLoginExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A3F71D72241D9A4007EA470 /* Build configuration list for PBXNativeTarget "OneLoginExample" */;
+			buildPhases = (
+				7A3F71BD2241D9A2007EA470 /* Sources */,
+				7A3F71BE2241D9A2007EA470 /* Frameworks */,
+				7A3F71BF2241D9A2007EA470 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneLoginExample;
+			productName = OneLoginExample;
+			productReference = 7A3F71C12241D9A2007EA470 /* OneLoginExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A3F71B92241D9A2007EA470 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = geetest;
+				TargetAttributes = {
+					7A3F71C02241D9A2007EA470 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 7A3F71BC2241D9A2007EA470 /* Build configuration list for PBXProject "OneLoginExample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A3F71B82241D9A2007EA470;
+			productRefGroup = 7A3F71C22241D9A2007EA470 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A3F71C02241D9A2007EA470 /* OneLoginExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A3F71BF2241D9A2007EA470 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E93A028722FD195D00804D0E /* TYRZResource.bundle in Resources */,
+				E93A028C22FD195D00804D0E /* OneLoginResource.bundle in Resources */,
+				7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */,
+				7A3F71CE2241D9A4007EA470 /* Assets.xcassets in Resources */,
+				7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A3F71BD2241D9A2007EA470 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E93A027F22FC10C800804D0E /* LoginViewController.m in Sources */,
+				7A3F71C92241D9A2007EA470 /* ViewController.m in Sources */,
+				7A3F71D42241D9A4007EA470 /* main.m in Sources */,
+				7A3F71C62241D9A2007EA470 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7A3F71CA2241D9A2007EA470 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A3F71CB2241D9A2007EA470 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A3F71D02241D9A4007EA470 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A3F71D52241D9A4007EA470 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7A3F71D62241D9A4007EA470 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A3F71D82241D9A4007EA470 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2448B7W898;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../SDK",
+				);
+				INFOPLIST_FILE = OneLoginExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geetest.OneLoginExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A3F71D92241D9A4007EA470 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2448B7W898;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../SDK",
+				);
+				INFOPLIST_FILE = OneLoginExample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.geetest.OneLoginExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A3F71BC2241D9A2007EA470 /* Build configuration list for PBXProject "OneLoginExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A3F71D52241D9A4007EA470 /* Debug */,
+				7A3F71D62241D9A4007EA470 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A3F71D72241D9A4007EA470 /* Build configuration list for PBXNativeTarget "OneLoginExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A3F71D82241D9A4007EA470 /* Debug */,
+				7A3F71D92241D9A4007EA470 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A3F71B92241D9A2007EA470 /* Project object */;
+}
