@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.libraries = 'c++.1', 'z.1.2.8'
 
   s.vendored_frameworks = 'SDK/account_login_sdk_noui_core.framework', 'SDK/EAccountApiSDK.framework', 'SDK/TYRZSDK.framework', 'SDK/OneLoginSDK.framework'
-  s.resources = 'SDK/TYRZResource.bundle', 'SDK/OneLoginResource.bundle'
+  s.resources = 'SDK/TYRZResource.bundle', 'SDK/OneLoginResource.bundle', 'README.md'
 end
