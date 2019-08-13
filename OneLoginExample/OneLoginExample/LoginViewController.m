@@ -173,13 +173,18 @@
     // 额外自定义服务条款，注意index属性，默认的index为0，SDK会根据index对多条服务条款升序排列，假如想设置服务条款顺序为 自定义服务条款1 默认服务条款 自定义服务条款2，则，只需将自定义服务条款1的index设为-1，自定义服务条款2的index设为1即可
     OLPrivacyTermItem *item1 = [[OLPrivacyTermItem alloc] initWithTitle:@"自定义服务条款1"
                                                                 linkURL:[NSURL URLWithString:@"https://www.baidu.com"]
-                                                                  index:0];
+                                                                  index:0
+                                                                  block:^(OLPrivacyTermItem * _Nonnull termItem) {
+                                                                      NSLog(@"termItem.termLink: %@", termItem.termLink);
+                                                                      // 自定义操作，可进入自定义服务条款页面
+                                                                  }];
     OLPrivacyTermItem *item2 = [[OLPrivacyTermItem alloc] initWithTitle:@"自定义服务条款2"
-                                                                linkURL:[NSURL URLWithString:@"https://www.baidu.com"]
+                                                                linkURL:[NSURL URLWithString:@"https://docs.geetest.com/"]
                                                                   index:0];
     viewModel.additionalPrivacyTerms = @[item1, item2];
     OLRect termsRect = {0, 0, 0, 0, 0, 0, {0, 0}};  // 服务条款偏移、大小设置，偏移量和大小设置值需大于0，否则取默认值，默认可不设置
     viewModel.termsRect = termsRect;
+    viewModel.auxiliaryPrivacyWords = @[@"条款前文案", @"&", @"&", @"条款后的文案"];   // 条款之外的文案，默认可不设置
     
     // -------------- 服务条款H5页面导航栏设置 -------------------
     viewModel.webNaviTitle = [[NSAttributedString alloc] initWithString:@"服务条款"
@@ -190,7 +195,7 @@
     viewModel.webNaviHidden = NO;   // 服务条款导航栏是否隐藏
     
     // -------------- 授权页面支持的横竖屏设置 -------------------
-    viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown; // 默认为UIInterfaceOrientationMaskAllButUpsideDown，若只需要支持竖屏，设置为UIInterfaceOrientationMaskPortrait即可
+    viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown; // 默认为UIInterfaceOrientationMaskPortrait
     
     // -------------- 自定义UI设置，如，可以在授权页面添加三方登录入口 -------------------
     viewModel.customUIHandler = ^(UIView * _Nonnull customAreaView) {

@@ -172,6 +172,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)dismissAuthViewController:(void (^ __nullable)(void))completion;
 
+/**
+ 停止点击授权页面登录按钮之后的加载进度条
+ */
++ (void)stopLoading;
 
 /**
  获取SDK版本号
