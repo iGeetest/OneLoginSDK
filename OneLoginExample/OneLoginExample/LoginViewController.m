@@ -280,10 +280,12 @@ API_AVAILABLE(ios(9.0))
     
     // -------------- 授权页面点击登录按钮之后的loading设置 -------------------
     viewModel.loadingViewBlock = ^(UIView * _Nonnull containerView) {
-        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        [containerView addSubview:indicatorView];
-        indicatorView.center = CGPointMake(containerView.bounds.size.width/2, containerView.bounds.size.height/2);
-        [indicatorView startAnimating];
+        if ([OneLogin isProtocolCheckboxChecked]) {
+            UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+            [containerView addSubview:indicatorView];
+            indicatorView.center = CGPointMake(containerView.bounds.size.width/2, containerView.bounds.size.height/2);
+            [indicatorView startAnimating];
+        }
     };
     
     viewModel.stopLoadingViewBlock = ^(UIView * _Nonnull containerView) {
