@@ -103,6 +103,12 @@ typedef NS_ENUM(NSInteger, OLAuthPopupAnimationStyle) {
  */
 typedef void(^OLLoadingViewBlock)(UIView *containerView);
 
+/**
+ * 停止授权页自定义Loading，会在调用[OneLogin stopLoading]时触发
+ * containerView为loading的全屏蒙版view
+ */
+typedef void(^OLStopLoadingViewBlock)(UIView *containerView);
+
 @interface OLAuthViewModel : NSObject
 
 #pragma mark - Status Bar/状态栏
@@ -166,6 +172,11 @@ typedef void(^OLLoadingViewBlock)(UIView *containerView);
  */
 @property (nonatomic, assign) BOOL logoHidden;
 
+/**
+ logo圆角，默认为0。
+ */
+@property (nonatomic, assign) CGFloat logoCornerRadius;
+
 #pragma mark - Phone Number Preview/手机号预览
 
 /**
@@ -226,6 +237,11 @@ typedef void(^OLLoadingViewBlock)(UIView *containerView);
  授权按钮 位置及大小。
  */
 @property (nonatomic, assign) OLRect authButtonRect;
+
+/**
+ 授权按钮圆角，默认为0。
+ */
+@property (nonatomic, assign) CGFloat authButtonCornerRadius;
 
 #pragma mark - Slogan/口号标语
 
@@ -371,9 +387,14 @@ typedef void(^OLLoadingViewBlock)(UIView *containerView);
 #pragma mark - Loading
 
 /**
- * 授权页面，点击登录按钮之后的回调
+ * 授权页面，自定义加载进度条，点击登录按钮之后的回调
  */
 @property (nonatomic, copy, nullable) OLLoadingViewBlock loadingViewBlock;
+
+/**
+ * 授权页面，停止自定义加载进度条，调用[OneLogin stopLoading]之后的回调
+ */
+@property (nonatomic, copy, nullable) OLStopLoadingViewBlock stopLoadingViewBlock;
 
 #pragma mark - WebViewController Navigation/服务条款页面导航栏
 
@@ -391,6 +412,13 @@ typedef void(^OLLoadingViewBlock)(UIView *containerView);
  服务条款页面导航的背景颜色。默认白色。
  */
 @property (nullable, nonatomic, strong) UIColor *webNaviBgColor;
+
+#pragma mark - Hint
+
+/**
+ 未勾选服务条款复选框时，点击登录按钮的提示。默认为"请同意服务条款"。
+ */
+@property (nullable, nonatomic, copy) NSString *notCheckProtocolHint;
 
 @end
 

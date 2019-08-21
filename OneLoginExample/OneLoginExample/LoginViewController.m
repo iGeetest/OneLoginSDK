@@ -8,13 +8,18 @@
 
 #import "LoginViewController.h"
 #import <OneLoginSDK/OneLoginSDK.h>
+#import "AppDelegate.h"
+#import <CoreTelephony/CTCellularData.h>
 
-//#define NeedCustomAuthUI
+#define NeedCustomAuthUI
 
-@interface LoginViewController () <OneLoginDelegate>
+API_AVAILABLE(ios(9.0))
+@interface LoginViewController () <OneLoginDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *normalLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *popupLoginButton;
+
+@property (nonatomic, strong) CTCellularData *cellularData;
 
 @end
 
@@ -22,6 +27,37 @@
 
 - (void)dealloc {
     NSLog(@"------------- %@ %@ -------------", [self class], NSStringFromSelector(_cmd));
+}
+
+/**
+ * @abstract 调用requestTokenWithViewController方法之前判断是否需要进行预取号
+ *           此处判断，可以根据从接口获取的预取号token有效时长自行判断，也可直接使用SDK的isPreGettedTokenValidate方法进行判断
+ */
+- (BOOL)needPreGetToken {
+    if (kAppDelegate.expireTime > 0) {
+        NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
+        if (currentTimeInterval - kAppDelegate.preGetTokenSuccessedTime < kAppDelegate.expireTime) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
+/**
+ * @abstract 调用requestTokenWithViewController方法之前判断是否需要进行预取号
+ *           直接使用SDK的isPreGettedTokenValidate方法进行判断
+ */
+//- (BOOL)needPreGetToken {
+//    return ![OneLogin isPreGettedTokenValidate];
+//}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if (@available(iOS 9.0, *)){
+        _cellularData.cellularDataRestrictionDidUpdateNotifier = nil;
+        _cellularData = nil;
+    }
 }
 
 - (void)viewDidLoad {
@@ -33,47 +69,76 @@
     self.popupLoginButton.layer.masksToBounds = YES;
     self.popupLoginButton.layer.cornerRadius = 5;
     
+    // 获取网络权限，此处可结合SDK返回的当前网络状态和用户是否打开APP的网络权限来判断是否需要提示用户去打开APP的网络权限，预取号功能必需在打开了移动网络的情况下才能成功
+//    OLNetworkInfo *networkInfo = [OneLogin currentNetworkInfo];
+    if (@available(iOS 9.0, *)) {
+        _cellularData = [[CTCellularData alloc] init];
+        __weak typeof(self) wself = self;
+        _cellularData.cellularDataRestrictionDidUpdateNotifier = ^(CTCellularDataRestrictedState state) {
+            NSString *authority = @"Unknown";
+            if (state == kCTCellularDataRestricted) {
+                authority = @"Restricted";
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                                    message:@"您必须打开移动网络，否则无法成功预取号，去设置移动网络？"
+                                                                   delegate:wself
+                                                          cancelButtonTitle:@"取消"
+                                                          otherButtonTitles:@"确定", nil];
+                    [alert show];
+                });
+            } else if(state == kCTCellularDataNotRestricted) {
+                authority = @"NotRestricted";
+            }
+        };
+    }
+    
     [OneLogin registerWithAppID:@"53cd718a9fd11e4dea99a22f138dc509"];
     [OneLogin setDelegate:self];
-    [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull sender) {
-        NSLog(@"sender: %@", sender.description);
-        NSNumber *status = [sender objectForKey:@"status"];
-        if (status && [@(200) isEqualToNumber:status]) {
-            // 预取号成功
-            
-        } else {
+    
+    if ([self needPreGetToken]) {
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull sender) {
+            NSLog(@"sender: %@", sender.description);
+            NSNumber *status = [sender objectForKey:@"status"];
+            if (status && [@(200) isEqualToNumber:status]) {
+                // 预取号成功
+                if (sender[@"expire_time"] && [sender[@"expire_time"] integerValue] > 0) {
+                    kAppDelegate.expireTime = [sender[@"expire_time"] integerValue];
+                    kAppDelegate.preGetTokenSuccessedTime = [[NSDate date] timeIntervalSince1970];
+                }
+            } else {
 #warning 请处理预取号的错误, 更多错误码请参考错误码文档
-            NSString *errCode   = [sender objectForKey:@"errorCode"];
-            NSString *msg       = [sender objectForKey:@"msg"];
-            NSString *processID = [sender objectForKey:@"processID"];
-            NSString *appID     = [sender objectForKey:@"appID"];
-            NSString *operator  = [sender objectForKey:@"operatorType"];
-            
-            NSLog(@"[Operator: %@] - [Error Code: %@] - [Message: %@] - [ProccesID: %@] - [APPID: %@]", operator, errCode, msg, processID, appID);
-            
-            // 预取号失败
-            if ([@"-20101" isEqualToString:errCode]) {
-                // TO-DO
-                // 未配置 AppID，请通过 registerWithAppID: 配置 AppID
+                NSString *errCode   = [sender objectForKey:@"errorCode"];
+                NSString *msg       = [sender objectForKey:@"msg"];
+                NSString *processID = [sender objectForKey:@"processID"];
+                NSString *appID     = [sender objectForKey:@"appID"];
+                NSString *operator  = [sender objectForKey:@"operatorType"];
+                
+                NSLog(@"[Operator: %@] - [Error Code: %@] - [Message: %@] - [ProccesID: %@] - [APPID: %@]", operator, errCode, msg, processID, appID);
+                
+                // 预取号失败
+                if ([@"-20101" isEqualToString:errCode]) {
+                    // TO-DO
+                    // 未配置 AppID，请通过 registerWithAppID: 配置 AppID
+                }
+                else if ([@"-20102" isEqualToString:errCode]) {
+                    // TO-DO
+                    // 重复调用 preGetTokenWithCompletion:
+                }
+                else if ([@"-20202" isEqualToString:errCode]) {
+                    // TO-DO
+                    // 检测到未开启蜂窝网络
+                }
+                else if ([@"-20203" isEqualToString:errCode]) {
+                    // TO-DO
+                    // 不支持的运营商类型
+                }
+                else {
+                    // TO-DO
+                    // 其他错误类型
+                }
             }
-            else if ([@"-20102" isEqualToString:errCode]) {
-                // TO-DO
-                // 重复调用 preGetTokenWithCompletion:
-            }
-            else if ([@"-20202" isEqualToString:errCode]) {
-                // TO-DO
-                // 检测到未开启蜂窝网络
-            }
-            else if ([@"-20203" isEqualToString:errCode]) {
-                // TO-DO
-                // 不支持的运营商类型
-            }
-            else {
-                // TO-DO
-                // 其他错误类型
-            }
-        }
-    }];
+        }];
+    }
 }
 
 #pragma mark - Screen Size
@@ -94,6 +159,9 @@
     // -------------- 自定义UI设置 -----------------
     
 #ifdef NeedCustomAuthUI
+    // --------------状态栏设置 -------------------
+    viewModel.statusBarStyle = UIStatusBarStyleLightContent;
+    
     // -------------- 授权页面背景图片设置 -------------------
     viewModel.backgroundImage = [UIImage imageNamed:@"login_back"];
     viewModel.landscapeBackgroundImage = [UIImage imageNamed:@"login_back_landscape"];
@@ -119,6 +187,7 @@
     OLRect logoRect = {0, 0, 0, 20, 0, 0, {0, 0}}; // logo偏移、大小设置，偏移量和大小设置值需大于0，否则取默认值，默认可不设置，logo大小默认为图片大小
     viewModel.logoRect = logoRect;
     viewModel.logoHidden = NO; // 是否隐藏logo，默认不隐藏
+    viewModel.logoCornerRadius = 0; // logo圆角，默认为0
     
     // -------------- 手机号设置 -------------------
     viewModel.phoneNumColor = UIColor.redColor; // 颜色
@@ -146,6 +215,7 @@
                                                                              }];  // 导航栏标题
     OLRect authButtonRect = {0, 0, 0, 0, 0, 0, {300, 40}};  // 授权按钮偏移、大小设置，偏移量和大小设置值需大于0，否则取默认值，默认可不设置
     viewModel.authButtonRect = authButtonRect;
+    viewModel.authButtonCornerRadius = 0; // 授权按钮圆角，默认为0
     
     // -------------- slogan设置 -------------------
     viewModel.sloganTextColor = UIColor.cyanColor; // slogan颜色
@@ -172,7 +242,7 @@
                                          };
     // 额外自定义服务条款，注意index属性，默认的index为0，SDK会根据index对多条服务条款升序排列，假如想设置服务条款顺序为 自定义服务条款1 默认服务条款 自定义服务条款2，则，只需将自定义服务条款1的index设为-1，自定义服务条款2的index设为1即可
     OLPrivacyTermItem *item1 = [[OLPrivacyTermItem alloc] initWithTitle:@"自定义服务条款1"
-                                                                linkURL:[NSURL URLWithString:@"https://www.baidu.com"]
+                                                                linkURL:[NSURL URLWithString:@"https://docs.geetest.com/onelogin/overview/start"]
                                                                   index:0
                                                                   block:^(OLPrivacyTermItem * _Nonnull termItem) {
                                                                       NSLog(@"termItem.termLink: %@", termItem.termLink);
@@ -210,18 +280,63 @@
     
     // -------------- 授权页面点击登录按钮之后的loading设置 -------------------
     viewModel.loadingViewBlock = ^(UIView * _Nonnull containerView) {
-        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         [containerView addSubview:indicatorView];
         indicatorView.center = CGPointMake(containerView.bounds.size.width/2, containerView.bounds.size.height/2);
         [indicatorView startAnimating];
     };
+    
+    viewModel.stopLoadingViewBlock = ^(UIView * _Nonnull containerView) {
+        for (UIView *subview in containerView.subviews) {
+            if ([subview isKindOfClass:[UIActivityIndicatorView class]]) {
+                [(UIActivityIndicatorView *)subview stopAnimating];
+                [subview removeFromSuperview];
+                break;
+            }
+        }
+    };
+    
+    // -------------- 授权页面未勾选服务条款时点击登录按钮的提示 -------------------
+    viewModel.notCheckProtocolHint = @"请您先同意服务条款";  // 授权页面未勾选服务条款时点击登录按钮的提示，默认为"请同意服务条款"
 #endif
     
     __weak typeof(self) wself = self;
-    [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
-        NSLog(@"requestTokenWithViewController result: %@", result);
-        [wself finishRequestingToken:result];
-    }];
+    if ([self needPreGetToken]) {
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
+            NSLog(@"preGetTokenWithCompletion result: %@", preResult);
+            if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
+                if (preResult[@"expire_time"] && [preResult[@"expire_time"] integerValue] > 0) {
+                    kAppDelegate.expireTime = [preResult[@"expire_time"] integerValue];
+                    kAppDelegate.preGetTokenSuccessedTime = [[NSDate date] timeIntervalSince1970];
+                }
+                [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+                    NSLog(@"requestTokenWithViewController result: %@", result);
+                    // 由于preGetToken的结果只能使用一次，故requestToken之后，需要重置expireTime和preGetTokenSuccessedTime
+                    if (![result[@"errorCode"] isEqual:@"-20302"] &&
+                        ![result[@"errorCode"] isEqual:@"-20302"]) {
+                        kAppDelegate.expireTime = 0;
+                        kAppDelegate.preGetTokenSuccessedTime = 0;
+                    }
+                    // 自定义授权页面点击登录按钮之后的loading时，调用此方法会触发stopLoadingViewBlock回调，可以在此回调中停止自定义的loading
+                    [OneLogin stopLoading];
+                    [wself finishRequestingToken:result];
+                }];
+            } else {    // 预取号失败
+                
+            }
+        }];
+    } else {
+        [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+            NSLog(@"requestTokenWithViewController result: %@", result);
+            // 由于preGetToken的结果只能使用一次，故requestToken之后，需要重置expireTime和preGetTokenSuccessedTime
+            if (![result[@"errorCode"] isEqual:@"-20302"] &&
+                ![result[@"errorCode"] isEqual:@"-20302"]) {
+                kAppDelegate.expireTime = 0;
+                kAppDelegate.preGetTokenSuccessedTime = 0;
+            }
+            [wself finishRequestingToken:result];
+        }];
+    }
 }
 
 - (void)doneAction:(UIButton *)button {
@@ -256,10 +371,40 @@
 #endif
     
     __weak typeof(self) wself = self;
-    [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
-        NSLog(@"requestTokenWithViewController result: %@", result);
-        [wself finishRequestingToken:result];
-    }];
+    if ([self needPreGetToken]) {
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
+            NSLog(@"preGetTokenWithCompletion result: %@", preResult);
+            if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
+                if (preResult[@"expire_time"] && [preResult[@"expire_time"] integerValue] > 0) {
+                    kAppDelegate.expireTime = [preResult[@"expire_time"] integerValue];
+                    kAppDelegate.preGetTokenSuccessedTime = [[NSDate date] timeIntervalSince1970];
+                }
+                [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+                    NSLog(@"requestTokenWithViewController result: %@", result);
+                    // 由于preGetToken的结果只能使用一次，故requestToken之后，需要重置expireTime和preGetTokenSuccessedTime
+                    if (![result[@"errorCode"] isEqual:@"-20302"] &&
+                        ![result[@"errorCode"] isEqual:@"-20302"]) {
+                        kAppDelegate.expireTime = 0;
+                        kAppDelegate.preGetTokenSuccessedTime = 0;
+                    }
+                    [wself finishRequestingToken:result];
+                }];
+            } else {    // 预取号失败
+                
+            }
+        }];
+    } else {
+        [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+            NSLog(@"requestTokenWithViewController result: %@", result);
+            // 由于preGetToken的结果只能使用一次，故requestToken之后，需要重置expireTime和preGetTokenSuccessedTime
+            if (![result[@"errorCode"] isEqual:@"-20302"] &&
+                ![result[@"errorCode"] isEqual:@"-20302"]) {
+                kAppDelegate.expireTime = 0;
+                kAppDelegate.preGetTokenSuccessedTime = 0;
+            }
+            [wself finishRequestingToken:result];
+        }];
+    }
 }
 
 - (void)finishRequestingToken:(NSDictionary *)result {
@@ -345,6 +490,7 @@
 }
 
 - (void)dismissAuthVC {
+    NSLog(@"OneLogin isProtocolCheckboxChecked: %@", [OneLogin isProtocolCheckboxChecked] ? @"YES" : @"NO");
     [OneLogin dismissAuthViewController:nil];
 }
 
@@ -356,6 +502,34 @@
 
 - (void)userDidDismissAuthViewController {
     [OneLogin dismissAuthViewController:nil];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (1 == buttonIndex) {
+        [self openNetworkSettingPage];
+    }
+}
+
+#pragma mark - Set Network
+
+- (void)openNetworkSettingPage {
+    NSURL *url1 = [NSURL URLWithString:@"App-Prefs:root=Privacy&path=MOBILE_DATA_SETTINGS_ID"];
+    NSURL *url2 = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    if (@available(iOS 11.0, *)) {
+        if ([[UIApplication sharedApplication] canOpenURL:url2]) {
+            [[UIApplication sharedApplication] openURL:url2 options:@{} completionHandler:nil];
+        }
+    } else {
+        if ([[UIApplication sharedApplication] canOpenURL:url1]) {
+            if (@available(iOS 10.0, *)) {
+                [[UIApplication sharedApplication] openURL:url1 options:@{} completionHandler:nil];
+            } else {
+                [[UIApplication sharedApplication] openURL:url1];
+            }
+        }
+    }
 }
 
 @end

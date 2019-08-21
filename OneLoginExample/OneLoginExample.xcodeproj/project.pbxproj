@@ -16,6 +16,7 @@
 		7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */; };
 		7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595F2242290600230BE0 /* libc++.1.tbd */; };
 		E93A027F22FC10C800804D0E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A027E22FC10C800804D0E /* LoginViewController.m */; };
+		E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */; };
 		E9E7784E2302CAFE002D91D1 /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9E778482302CAFE002D91D1 /* TYRZResource.bundle */; };
 		E9E7784F2302CAFE002D91D1 /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E778492302CAFE002D91D1 /* TYRZSDK.framework */; };
 		E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */; };
@@ -39,6 +40,7 @@
 		7AF5595F2242290600230BE0 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		E93A027D22FC10C800804D0E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E93A027E22FC10C800804D0E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E9E778482302CAFE002D91D1 /* TYRZResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRZResource.bundle; sourceTree = "<group>"; };
 		E9E778492302CAFE002D91D1 /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
 		E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneLoginSDK.framework; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */,
 				7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */,
 				E9E7784F2302CAFE002D91D1 /* TYRZSDK.framework in Frameworks */,
 				E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		7A3F71DA2241D9D3007EA470 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */,
 				7AF5595F2242290600230BE0 /* libc++.1.tbd */,
 				7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */,
 			);

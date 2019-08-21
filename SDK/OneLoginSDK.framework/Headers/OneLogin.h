@@ -178,6 +178,19 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)stopLoading;
 
 /**
+ * @abstract 服务条款左边复选框是否勾选
+ */
++ (BOOL)isProtocolCheckboxChecked;
+
+/**
+ * @abstract 预取号拿到的token是否还在有效期
+ *
+ * @return YES - 还在有效期，可直接调用requestTokenWithViewController方法进行取号
+ *         NO  - 已失效，需重新调用preGetTokenWithCompletion进行预取号之后再调用requestTokenWithViewController方法进行取号
+ */
++ (BOOL)isPreGettedTokenValidate;
+
+/**
  获取SDK版本号
 
  @return SDK当前的版本号

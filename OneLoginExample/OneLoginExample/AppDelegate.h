@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#define kAppDelegate ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, assign) NSTimeInterval preGetTokenSuccessedTime;
+@property (nonatomic, assign) NSInteger expireTime;
 
 @end
 
