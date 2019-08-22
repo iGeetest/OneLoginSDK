@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import <CoreTelephony/CTCellularData.h>
 
-#define NeedCustomAuthUI
+//#define NeedCustomAuthUI
 
 API_AVAILABLE(ios(9.0))
 @interface LoginViewController () <OneLoginDelegate, UIAlertViewDelegate>
