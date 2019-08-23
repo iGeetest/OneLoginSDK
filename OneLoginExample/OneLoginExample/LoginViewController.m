@@ -349,6 +349,7 @@ API_AVAILABLE(ios(9.0))
     // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可，但是弹窗模式时，isPopup一定要设置为YES
     OLAuthViewModel *viewModel = [OLAuthViewModel new];
     viewModel.isPopup = YES;
+    viewModel.switchButtonHidden = YES;
     
 #ifdef NeedCustomAuthUI
     // 弹窗内的元素设置同- (IBAction)normalLoginAction:(id)sender 方法中的设置，这里紧示例弹窗自身的设置，如大小、偏移、动画
