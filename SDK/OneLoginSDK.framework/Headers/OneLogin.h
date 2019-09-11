@@ -10,6 +10,12 @@
 #import "OLAuthViewModel.h"
 #import "OLNetworkInfo.h"
 
+// 是否使用联通的SDK，注释该宏定义表示不使用联通的SDK
+#define OneLoginUseCUSDK
+
+// 是否使用电信的SDK，注释该宏定义表示不使用电信的SDK
+#define OneLoginUseCTSDK
+
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol OneLoginDelegate;
@@ -165,17 +171,31 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- 关闭当前的授权页面
+ @abstract 关闭当前的授权页面
+ 
+ @param animated 是否需要动画
+ @param completion 关闭页面后的回调
  
  @discussion
  请不要使用其他方式关闭授权页面, 否则可能导致 OneLogin 无法再次调起
  */
++ (void)dismissAuthViewController:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 + (void)dismissAuthViewController:(void (^ __nullable)(void))completion;
 
 /**
  停止点击授权页面登录按钮之后的加载进度条
  */
 + (void)stopLoading;
+
+/**
+ enable授权页面登录按钮
+ */
++ (void)enableAuthButton;
+
+/**
+ disable授权页面登录按钮
+ */
++ (void)disableAuthButton;
 
 /**
  * @abstract 服务条款左边复选框是否勾选
@@ -210,6 +230,29 @@ NS_ASSUME_NONNULL_BEGIN
  * @return YES，允许打印日志 NO，禁止打印日志
  */
 + (BOOL)isLogEnabled;
+
+/**
+ * @abstract 自定义接口，自定义之后，SDK内部HTTP请求就会使用该自定义的接口
+ *
+ * @param URL 接口URL
+ */
++ (void)customInterfaceURL:(const NSString * __nullable)URL;
+
+#ifdef OneLoginEnableSetTestEnvironment
+/**
+ * @abstract 当前接口是否为测试环境
+ *
+ * @return YES，当前接口为测试环境地址 NO，当前接口为生产环境
+ */
++ (BOOL)isTestEnvironment;
+
+/**
+ * @abstract 设置当前接口为测试环境
+ *
+ * @param isTest YES，测试环境 NO，生产环境
+ */
++ (void)setTestEnvironment:(BOOL)isTest;
+#endif
 
 @end
 

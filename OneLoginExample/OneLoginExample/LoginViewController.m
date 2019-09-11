@@ -92,7 +92,6 @@ API_AVAILABLE(ios(9.0))
         };
     }
     
-    [OneLogin registerWithAppID:@"53cd718a9fd11e4dea99a22f138dc509"];
     [OneLogin setDelegate:self];
     
     if ([self needPreGetToken]) {

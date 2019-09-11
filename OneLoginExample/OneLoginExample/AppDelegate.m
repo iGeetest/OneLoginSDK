@@ -19,7 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    // 建议APP启动时就进行预取号，若是用户首次安装APP，网络未开启，在此处肯定无法预取号成功，故，在需要进入授权页面的页面的viewDidLoad中也需要进行预取号
+    // 建议APP启动时就进行预取号，若是用户首次安装APP，网络未开启，在此处肯定无法预取号成功，故，建议在需要进入授权页面的页面的viewDidLoad中也进行预取号
+    // 若您修改了bundleId，此处请将appId修改为与bundleId相对应的值，appId一定要与bundleId一一对应
     [OneLogin registerWithAppID:@"53cd718a9fd11e4dea99a22f138dc509"];
     __weak typeof(self) wself = self;
     [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull sender) {
