@@ -158,6 +158,11 @@ API_AVAILABLE(ios(9.0))
     // -------------- 自定义UI设置 -----------------
     
 #ifdef NeedCustomAuthUI
+    // --------------授权页面生命周期回调 -------------------
+    viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
+        NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
+    };
+    
     // --------------状态栏设置 -------------------
     viewModel.statusBarStyle = UIStatusBarStyleLightContent;
     
@@ -215,6 +220,9 @@ API_AVAILABLE(ios(9.0))
     OLRect authButtonRect = {0, 0, 0, 0, 0, 0, {300, 40}};  // 授权按钮偏移、大小设置，偏移量和大小设置值需大于0，否则取默认值，默认可不设置
     viewModel.authButtonRect = authButtonRect;
     viewModel.authButtonCornerRadius = 0; // 授权按钮圆角，默认为0
+    viewModel.clickAuthButtonBlock = ^(void) {  // 点击授权页面登录按钮回调
+        NSLog(@"clickAuthButtonBlock");
+    };
     
     // -------------- slogan设置 -------------------
     viewModel.sloganTextColor = UIColor.cyanColor; // slogan颜色
@@ -254,6 +262,10 @@ API_AVAILABLE(ios(9.0))
     OLRect termsRect = {0, 0, 0, 0, 0, 0, {0, 0}};  // 服务条款偏移、大小设置，偏移量和大小设置值需大于0，否则取默认值，默认可不设置
     viewModel.termsRect = termsRect;
     viewModel.auxiliaryPrivacyWords = @[@"条款前文案", @"&", @"&", @"条款后的文案"];   // 条款之外的文案，默认可不设置
+    
+    viewModel.clickCheckboxBlock = ^(BOOL isChecked) {      // 点击隐私条款前勾选框回调
+        NSLog(@"clickCheckboxBlock isChecked: %@", isChecked ? @"YES" : @"NO");
+    };
     
     // -------------- 服务条款H5页面导航栏设置 -------------------
     viewModel.webNaviTitle = [[NSAttributedString alloc] initWithString:@"服务条款"

@@ -10,13 +10,23 @@
 		7A3F71C62241D9A2007EA470 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71C52241D9A2007EA470 /* AppDelegate.m */; };
 		7A3F71C92241D9A2007EA470 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71C82241D9A2007EA470 /* ViewController.m */; };
 		7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CA2241D9A2007EA470 /* Main.storyboard */; };
-		7A3F71CE2241D9A4007EA470 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CD2241D9A4007EA470 /* Assets.xcassets */; };
 		7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */; };
 		7A3F71D42241D9A4007EA470 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71D32241D9A4007EA470 /* main.m */; };
 		7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */; };
 		7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595F2242290600230BE0 /* libc++.1.tbd */; };
 		E93A027F22FC10C800804D0E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A027E22FC10C800804D0E /* LoginViewController.m */; };
 		E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */; };
+		E962EC2C233B04D100EEC3AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E962EC2B233B04D100EEC3AE /* Assets.xcassets */; };
+		E996EC2E233B1A7000F93FB3 /* 网关取号_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC24233B1A7000F93FB3 /* 网关取号_logo@3x.png */; };
+		E996EC2F233B1A7000F93FB3 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC25233B1A7000F93FB3 /* back@2x.png */; };
+		E996EC30233B1A7000F93FB3 /* 网关取号_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC26233B1A7000F93FB3 /* 网关取号_logo@2x.png */; };
+		E996EC31233B1A7000F93FB3 /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC27233B1A7000F93FB3 /* back@3x.png */; };
+		E996EC32233B1A7000F93FB3 /* login_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC28233B1A7000F93FB3 /* login_back@3x.png */; };
+		E996EC33233B1A7000F93FB3 /* login_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC29233B1A7000F93FB3 /* login_back@2x.png */; };
+		E996EC34233B1A7000F93FB3 /* login_back_landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2A233B1A7000F93FB3 /* login_back_landscape@2x.png */; };
+		E996EC35233B1A7000F93FB3 /* login_back_landscape@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2B233B1A7000F93FB3 /* login_back_landscape@3x.png */; };
+		E996EC36233B1A7000F93FB3 /* bg_logo_launch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */; };
+		E996EC37233B1A7000F93FB3 /* bg_logo_launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */; };
 		E9E7784E2302CAFE002D91D1 /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9E778482302CAFE002D91D1 /* TYRZResource.bundle */; };
 		E9E7784F2302CAFE002D91D1 /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E778492302CAFE002D91D1 /* TYRZSDK.framework */; };
 		E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */; };
@@ -32,7 +42,6 @@
 		7A3F71C72241D9A2007EA470 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		7A3F71C82241D9A2007EA470 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7A3F71CB2241D9A2007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7A3F71CD2241D9A4007EA470 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A3F71D02241D9A4007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A3F71D22241D9A4007EA470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A3F71D32241D9A4007EA470 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -41,6 +50,17 @@
 		E93A027D22FC10C800804D0E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E93A027E22FC10C800804D0E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E962EC2B233B04D100EEC3AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E996EC24233B1A7000F93FB3 /* 网关取号_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "网关取号_logo@3x.png"; sourceTree = "<group>"; };
+		E996EC25233B1A7000F93FB3 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		E996EC26233B1A7000F93FB3 /* 网关取号_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "网关取号_logo@2x.png"; sourceTree = "<group>"; };
+		E996EC27233B1A7000F93FB3 /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@3x.png"; sourceTree = "<group>"; };
+		E996EC28233B1A7000F93FB3 /* login_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_back@3x.png"; sourceTree = "<group>"; };
+		E996EC29233B1A7000F93FB3 /* login_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_back@2x.png"; sourceTree = "<group>"; };
+		E996EC2A233B1A7000F93FB3 /* login_back_landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_back_landscape@2x.png"; sourceTree = "<group>"; };
+		E996EC2B233B1A7000F93FB3 /* login_back_landscape@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_back_landscape@3x.png"; sourceTree = "<group>"; };
+		E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_logo_launch@3x.png"; sourceTree = "<group>"; };
+		E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_logo_launch@2x.png"; sourceTree = "<group>"; };
 		E9E778482302CAFE002D91D1 /* TYRZResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRZResource.bundle; sourceTree = "<group>"; };
 		E9E778492302CAFE002D91D1 /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
 		E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneLoginSDK.framework; sourceTree = "<group>"; };
@@ -88,14 +108,15 @@
 		7A3F71C32241D9A2007EA470 /* OneLoginExample */ = {
 			isa = PBXGroup;
 			children = (
+				E996EC23233B1A7000F93FB3 /* Resource */,
 				7A3F71C42241D9A2007EA470 /* AppDelegate.h */,
 				7A3F71C52241D9A2007EA470 /* AppDelegate.m */,
 				7A3F71C72241D9A2007EA470 /* ViewController.h */,
 				7A3F71C82241D9A2007EA470 /* ViewController.m */,
 				E93A027D22FC10C800804D0E /* LoginViewController.h */,
 				E93A027E22FC10C800804D0E /* LoginViewController.m */,
+				E962EC2B233B04D100EEC3AE /* Assets.xcassets */,
 				7A3F71CA2241D9A2007EA470 /* Main.storyboard */,
-				7A3F71CD2241D9A4007EA470 /* Assets.xcassets */,
 				7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */,
 				7A3F71D22241D9A4007EA470 /* Info.plist */,
 				7A3F71D32241D9A4007EA470 /* main.m */,
@@ -111,6 +132,23 @@
 				7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E996EC23233B1A7000F93FB3 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E996EC24233B1A7000F93FB3 /* 网关取号_logo@3x.png */,
+				E996EC25233B1A7000F93FB3 /* back@2x.png */,
+				E996EC26233B1A7000F93FB3 /* 网关取号_logo@2x.png */,
+				E996EC27233B1A7000F93FB3 /* back@3x.png */,
+				E996EC28233B1A7000F93FB3 /* login_back@3x.png */,
+				E996EC29233B1A7000F93FB3 /* login_back@2x.png */,
+				E996EC2A233B1A7000F93FB3 /* login_back_landscape@2x.png */,
+				E996EC2B233B1A7000F93FB3 /* login_back_landscape@3x.png */,
+				E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */,
+				E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		E9E778472302CAFE002D91D1 /* SDK */ = {
@@ -185,10 +223,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9E7784E2302CAFE002D91D1 /* TYRZResource.bundle in Resources */,
+				E996EC2E233B1A7000F93FB3 /* 网关取号_logo@3x.png in Resources */,
+				E996EC33233B1A7000F93FB3 /* login_back@2x.png in Resources */,
 				E9E778532302CAFE002D91D1 /* OneLoginResource.bundle in Resources */,
+				E996EC2F233B1A7000F93FB3 /* back@2x.png in Resources */,
 				7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */,
-				7A3F71CE2241D9A4007EA470 /* Assets.xcassets in Resources */,
+				E996EC36233B1A7000F93FB3 /* bg_logo_launch@3x.png in Resources */,
 				7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */,
+				E996EC30233B1A7000F93FB3 /* 网关取号_logo@2x.png in Resources */,
+				E996EC35233B1A7000F93FB3 /* login_back_landscape@3x.png in Resources */,
+				E996EC37233B1A7000F93FB3 /* bg_logo_launch@2x.png in Resources */,
+				E962EC2C233B04D100EEC3AE /* Assets.xcassets in Resources */,
+				E996EC32233B1A7000F93FB3 /* login_back@3x.png in Resources */,
+				E996EC31233B1A7000F93FB3 /* back@3x.png in Resources */,
+				E996EC34233B1A7000F93FB3 /* login_back_landscape@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +391,6 @@
 		7A3F71D82241D9A4007EA470 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2448B7W898;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -365,7 +412,6 @@
 		7A3F71D92241D9A4007EA470 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2448B7W898;
 				FRAMEWORK_SEARCH_PATHS = (

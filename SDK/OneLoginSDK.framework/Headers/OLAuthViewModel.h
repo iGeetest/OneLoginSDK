@@ -109,6 +109,23 @@ typedef void(^OLLoadingViewBlock)(UIView *containerView);
  */
 typedef void(^OLStopLoadingViewBlock)(UIView *containerView);
 
+/**
+ * 授权页面视图生命周期回调
+ * @param viewLifeCycle 值为viewDidLoad、viewWillAppear、viewWillDisappear、viewDidAppear、viewDidDisappear
+ * @param animated 是否有动画
+ */
+typedef void(^OLAuthViewLifeCycleBlock)(NSString *viewLifeCycle, BOOL animated);
+
+/**
+ * 点击授权页面授权按钮的回调
+ */
+typedef void(^OLClickAuthButtonBlock)(void);
+
+/**
+ * 点击授权页面隐私协议前勾选框的回调
+ */
+typedef void(^OLClickCheckboxBlock)(BOOL isChecked);
+
 @interface OLAuthViewModel : NSObject
 
 #pragma mark - Status Bar/状态栏
@@ -243,6 +260,11 @@ typedef void(^OLStopLoadingViewBlock)(UIView *containerView);
  */
 @property (nonatomic, assign) CGFloat authButtonCornerRadius;
 
+/**
+ * 点击授权页面授权按钮的回调
+ */
+@property (nullable, nonatomic, copy) OLClickAuthButtonBlock clickAuthButtonBlock;
+
 #pragma mark - Slogan/口号标语
 
 /**
@@ -308,6 +330,11 @@ typedef void(^OLStopLoadingViewBlock)(UIView *containerView);
  */
 @property (nullable, nonatomic, copy) NSArray<NSString *> *auxiliaryPrivacyWords;
 
+/**
+ * 点击授权页面隐私协议前勾选框的回调
+ */
+@property (nullable, nonatomic, copy) OLClickCheckboxBlock clickCheckboxBlock;
+
 #pragma mark - Custom Area/自定义区域
 
 /**
@@ -323,10 +350,14 @@ typedef void(^OLStopLoadingViewBlock)(UIView *containerView);
 #pragma mark - Background Image/授权页面背景图片
 
 /**
+ 授权页背景颜色。默认白色。
+ */
+@property (nullable, nonatomic, strong) UIColor *backgroundColor;
+
+/**
  授权页面背景图片
  */
 @property (nullable, nonatomic, strong) UIImage *backgroundImage;
-
 
 /**
  横屏模式授权页面背景图片
@@ -419,6 +450,20 @@ typedef void(^OLStopLoadingViewBlock)(UIView *containerView);
  未勾选服务条款复选框时，点击登录按钮的提示。默认为"请同意服务条款"。
  */
 @property (nullable, nonatomic, copy) NSString *notCheckProtocolHint;
+
+#pragma mark - OLAuthViewLifeCycleBlock
+
+/**
+ 授权页面视图生命周期回调。
+ */
+@property (nullable, nonatomic, copy) OLAuthViewLifeCycleBlock viewLifeCycleBlock;
+
+#pragma mark - UIModalPresentationStyle
+
+/**
+ present授权页面时的样式，默认为UIModalPresentationFullScreen
+ */
+@property (nonatomic, assign) UIModalPresentationStyle modalPresentationStyle;
 
 @end
 
