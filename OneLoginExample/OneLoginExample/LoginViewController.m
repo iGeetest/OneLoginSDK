@@ -58,6 +58,8 @@ API_AVAILABLE(ios(9.0))
         _cellularData.cellularDataRestrictionDidUpdateNotifier = nil;
         _cellularData = nil;
     }
+    self.normalLoginButton.enabled = YES;
+    self.popupLoginButton.enabled = YES;
 }
 
 - (void)viewDidLoad {
@@ -152,23 +154,30 @@ API_AVAILABLE(ios(9.0))
 
 #pragma mark - Action
 
-- (IBAction)normalLoginAction:(id)sender {
+- (IBAction)normalLoginAction:(UIButton *)sender {
+    // 防抖，避免重复点击
+    sender.enabled = NO;
+    
     // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可
     OLAuthViewModel *viewModel = [OLAuthViewModel new];
     // -------------- 自定义UI设置 -----------------
     
-#ifdef NeedCustomAuthUI
     // --------------授权页面生命周期回调 -------------------
     viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
         NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
+        if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
+            sender.enabled = YES;
+        }
     };
     
+#ifdef NeedCustomAuthUI
     // --------------状态栏设置 -------------------
     viewModel.statusBarStyle = UIStatusBarStyleLightContent;
     
     // -------------- 授权页面背景图片设置 -------------------
-    viewModel.backgroundImage = [UIImage imageNamed:@"login_back"];
-    viewModel.landscapeBackgroundImage = [UIImage imageNamed:@"login_back_landscape"];
+//    viewModel.backgroundImage = [UIImage imageNamed:@"login_back"];
+//    viewModel.landscapeBackgroundImage = [UIImage imageNamed:@"login_back_landscape"];
+    viewModel.backgroundColor = UIColor.lightGrayColor;
     
     // -------------- 导航栏设置 -------------------
     viewModel.naviTitle = [[NSAttributedString alloc] initWithString:@"一键登录"
@@ -258,7 +267,14 @@ API_AVAILABLE(ios(9.0))
     OLPrivacyTermItem *item2 = [[OLPrivacyTermItem alloc] initWithTitle:@"自定义服务条款2"
                                                                 linkURL:[NSURL URLWithString:@"https://docs.geetest.com/"]
                                                                   index:0];
-    viewModel.additionalPrivacyTerms = @[item1, item2];
+    // 加载本地的html
+    NSURL *URL = [[NSBundle mainBundle] URLForResource:@"index.html" withExtension:nil];
+    NSURLRequest *URLRequest = [NSURLRequest requestWithURL:URL];
+    OLPrivacyTermItem *item3 = [[OLPrivacyTermItem alloc] initWithTitle:@"自定义服务条款3"
+                                                             urlRequest:URLRequest
+                                                                  index:0
+                                                                  block:nil];
+    viewModel.additionalPrivacyTerms = @[item1, item2, item3];
     OLRect termsRect = {0, 0, 0, 0, 0, 0, {0, 0}};  // 服务条款偏移、大小设置，偏移量和大小设置值需大于0，否则取默认值，默认可不设置
     viewModel.termsRect = termsRect;
     viewModel.auxiliaryPrivacyWords = @[@"条款前文案", @"&", @"&", @"条款后的文案"];   // 条款之外的文案，默认可不设置
@@ -311,6 +327,14 @@ API_AVAILABLE(ios(9.0))
     
     // -------------- 授权页面未勾选服务条款时点击登录按钮的提示 -------------------
     viewModel.notCheckProtocolHint = @"请您先同意服务条款";  // 授权页面未勾选服务条款时点击登录按钮的提示，默认为"请同意服务条款"
+    
+    // -------------- 弹出授权页面转场动画设置 -------------------
+    CATransition *animation = [CATransition animation];
+    animation.duration = 0.5;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.type = kCATransitionPush;
+    animation.subtype = kCATransitionFromRight;
+    viewModel.modalPresentationAnimation = animation;
 #endif
     
     __weak typeof(self) wself = self;
@@ -337,6 +361,8 @@ API_AVAILABLE(ios(9.0))
             } else {    // 预取号失败
                 
             }
+            
+            sender.enabled = YES;
         }];
     } else {
         [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
@@ -348,6 +374,8 @@ API_AVAILABLE(ios(9.0))
                 kAppDelegate.preGetTokenSuccessedTime = 0;
             }
             [wself finishRequestingToken:result];
+            
+            sender.enabled = YES;
         }];
     }
 }
@@ -356,11 +384,25 @@ API_AVAILABLE(ios(9.0))
     [self dismissAuthVC];
 }
 
-- (IBAction)popupLoginAction:(id)sender {
+- (IBAction)popupLoginAction:(UIButton *)sender {
+    // 防抖，避免重复点击
+    sender.enabled = NO;
+    
     // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可，但是弹窗模式时，isPopup一定要设置为YES
     OLAuthViewModel *viewModel = [OLAuthViewModel new];
     viewModel.isPopup = YES;
     viewModel.switchButtonHidden = YES;
+    
+    // --------------点击弹窗背景收起弹窗 -------------------
+    viewModel.canClosePopupFromTapGesture = YES;
+
+    // --------------授权页面生命周期回调 -------------------
+    viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
+        NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
+        if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
+            sender.enabled = YES;
+        }
+    };
     
 #ifdef NeedCustomAuthUI
     // 弹窗内的元素设置同- (IBAction)normalLoginAction:(id)sender 方法中的设置，这里紧示例弹窗自身的设置，如大小、偏移、动画
@@ -382,6 +424,10 @@ API_AVAILABLE(ios(9.0))
 //    viewModel.closePopupImage = [UIImage imageNamed:@"back"]; // 关闭按钮
     viewModel.closePopupTopOffset = @(3);  // 关闭按钮距弹窗顶部偏移
     viewModel.closePopupRightOffset = @(-8); // 关闭按钮距弹窗右边偏移
+    
+    viewModel.tapAuthBackgroundBlock = ^{
+        NSLog(@"tapAuthBackgroundBlock");
+    };
 #endif
     
     __weak typeof(self) wself = self;
@@ -406,6 +452,8 @@ API_AVAILABLE(ios(9.0))
             } else {    // 预取号失败
                 
             }
+            
+            sender.enabled = YES;
         }];
     } else {
         [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
@@ -417,6 +465,8 @@ API_AVAILABLE(ios(9.0))
                 kAppDelegate.preGetTokenSuccessedTime = 0;
             }
             [wself finishRequestingToken:result];
+            
+            sender.enabled = YES;
         }];
     }
 }

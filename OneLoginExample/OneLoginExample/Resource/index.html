@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>index</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">OneLogin</h1>
+
+<p><code>OneLogin</code> 的主要外部调用接口</p>
+
+<h2 id="toc_1">Macro</h2>
+
+<h3 id="toc_2">OneLoginUseCUSDK</h3>
+
+<p>是否使用联通的SDK，注释该宏定义表示不使用联通的SDK</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">#define OneLoginUseCUSDK</code></pre></div>
+
+<h3 id="toc_3">OneLoginUseCTSDK</h3>
+
+<p>是否使用电信的SDK，注释该宏定义表示不使用电信的SDK</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">#define OneLoginUseCTSDK</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p>SDK默认提供移动、联通、电信三网预取号及取号能力，若只需要其中的一个或两个运营商预取号及取号能力，可注释掉宏定义并且删除对应运营商的SDK，目前可支持的组合有：</p>
+
+<ol>
+<li>移动、联通、电信 </li>
+<li>移动、联通，注释<code>// #define OneLoginUseCTSDK</code>，剔除电信的<strong>SDK</strong> -- <code>EAccountApiSDK.framework</code></li>
+<li>移动、电信，注释<code>// #define OneLoginUseCUSDK</code>，剔除联通的<strong>SDK</strong> -- <code>account_login_sdk_noui_core.framework</code></li>
+<li>移动，注释<code>// #define OneLoginUseCTSDK</code>、<code>// #define OneLoginUseCUSDK</code>，剔除电信和联通的<strong>SDK</strong> -- <code>EAccountApiSDK.framework</code>、<code>account_login_sdk_noui_core.framework</code></li>
+</ol>
+
+<h2 id="toc_4">Protocol</h2>
+
+<h3 id="toc_5">userDidDismissAuthViewController</h3>
+
+<p>用户点击了授权页面的返回按钮</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">- (void)userDidDismissAuthViewController;</code></pre></div>
+
+<h3 id="toc_6">userDidSwitchAccount</h3>
+
+<p>用户点击了授权页面的&quot;切换账户&quot;按钮</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">- (void)userDidSwitchAccount;</code></pre></div>
+
+<h2 id="toc_7">Method</h2>
+
+<h3 id="toc_8">currentNetworkInfo</h3>
+
+<p>获取当前 OneLogin 可用的网络信息</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (nullable OLNetworkInfo *)currentNetworkInfo;</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<ol>
+<li>当使用的是非移动、联通、电信三大运营商, 则返回nil。</li>
+<li>OneLogin 仅在大陆支持移动、联通、电信三大运营商。</li>
+</ol>
+
+<p><strong>Return Value</strong></p>
+
+<p>描述当前可用的网络信息</p>
+
+<p><strong>Seealso</strong></p>
+
+<p><a href="#OLNetworkInfo">OLNetworkInfo</a></p>
+
+<h3 id="toc_9">registerWithAppID:</h3>
+
+<p>向SDK注册AppID</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)registerWithAppID:(NSString *)appID;</code></pre></div>
+
+<p><strong>Parameters</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>appID</td>
+<td>产品id, 请在官网注册获取</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_10">setDelegate:</h3>
+
+<p>设置代理对象</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)setDelegate:(nullable id&lt;OneLoginDelegate&gt;)delegate;</code></pre></div>
+
+<p><strong>Parameters</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>delegate</td>
+<td>代理对象</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_11">setRequestTimeout:</h3>
+
+<p>设置请求超时时长。默认8秒。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)setRequestTimeout:(NSTimeInterval)timeout;</code></pre></div>
+
+<p><strong>Parameters</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>timeout</td>
+<td>请求超时的时长</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="toc_12">preGetTokenWithCompletion:</h3>
+
+<p>预取号接口</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)preGetTokenWithCompletion:(void(^)(NSDictionary *sender))completion;</code></pre></div>
+
+<p><strong>Parameters</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>completion</td>
+<td>预取号的处理回调</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Discussion</strong></p>
+
+<p>调用限制说明: 在调用该方法后, 未回调之前, 再次调用该方法时, 方法会直接跳出, 不执行预取号逻辑, 并返回相关错误。</p>
+
+<p>预取号成功后的有效期说明: 有效期内需要调用 <code>requestTokenWithViewController:viewModel:completion:</code>,
+ 否则需要重新访问 <code>preGetTokenWithCompletion:</code>。 其中中国移动有效期为 1 小时,
+ 中国联通和中国电信为 10 分钟。</p>
+
+<p>回调返回数据示例:</p>
+
+<div><pre><code class="language-none"> // 成功的返回格式
+ {
+ status = 200; // NSNumber, 200为成功的状态码
+ processID = 47dab9b7c26629cd9bc117f88e2f9233; // NSString, 流水号
+ appID = 2**************************d; // NSString, 产品ID
+ operatorType = CU; // NSString, 运营商类型(CM/CU/CT)
+ msg = &quot;\U83b7\U53d6accessCode\U6210\U529f&quot;; // NSString, 相关的描述消息
+ }
+ 
+ // 失败的返回格式
+ {
+ status = 500; // NSNumber, 500为失败的状态码
+ processID = 47dab9b7c26629********f88e2f9233; // NSString, 流水号
+ appID = 2**************************d; // NSString, 产品ID
+ operatorType = CT; // NSString, 运营商类型(CM/CU/CT)
+ errorCode = -30003, // NSNumber, 当运营商不成功时的错误码
+ msg = &quot;\U83b7\U53d6accessCode\U6210\U529f&quot;; // NSString, 相关的描述消息
+ }</code></pre></div>
+
+<h3 id="toc_13">requestTokenWithViewController:viewModel:completion:</h3>
+
+<p>取号接口</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)requestTokenWithViewController:(UIViewController *)viewController viewModel:(nullable OLAuthViewModel *)viewModel completion:(void(^)(NSDictionary * _Nullable result))completion;</code></pre></div>
+
+<p><strong>Parameters</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>viewController</td>
+<td>视图控制器</td>
+</tr>
+<tr>
+<td>viewModel</td>
+<td>自定义的试图模型</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>取号接口的处理回调</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Discussion</strong></p>
+
+<p>调用限制说明: 为避免授权页面多次弹出, 在调用该方法后, 授权页面弹出后, 再次调用该方法时, 该方法会直接跳出, 不执行授权逻辑。</p>
+
+<p>需要用户在弹出的页面上同意服务意条款后, 才会进行免密认证。</p>
+
+<p>授权页面弹出后, 需要手动调用<code>[OneLogin dismissAuthViewController];</code>关闭<code>OLAuthViewContorller</code>。</p>
+
+<p>token有效期: 中国移动的有效期为 2 分钟，中国联通的为 30 分钟，中国电信的为 30 天。</p>
+
+<p>回调返回数据示例:</p>
+
+<div><pre><code class="language-none"> // 成功返回的格式:
+ {
+ status = 200; // NSNumber, 200为成功的状态码
+ processID = 47dab9b7c26629cd9bc117********33; // NSString, 流水号
+ appID = 2**************************d; // NSString, 产品ID
+ token = 62718774ad1247188bc678********d3; // NSString, 运营商返回的accessToken, 用于查询真实的本机号
+ operatorType = CU; // NSString, 运营商类型(CM/CU/CT)
+ msg = &quot;\U83b7\U53d6accessCode\U6210\U529f&quot;; // NSString, 运营商返回的Msg
+ }
+ 
+ // 失败返回的格式
+ {
+ status = 500; // NSNumber, 500为失败的状态码
+ processID = 47dab9b7c26629cd9bc117********33; // NSString, 流水号
+ appID = 2**************************d; // NSString, 产品ID
+ operatorType = CT; // NSString, 运营商类型(CM/CU/CT)
+ errorCode = -30003, // NSNumber, 运营商返回的错误码
+ msg = &quot;\U83b7\U53d6accessCode\U6210\U529f&quot;; // NSString, 相关的描述消息
+ }</code></pre></div>
+
+<h3 id="toc_14">dismissAuthViewController</h3>
+
+<p>关闭当前的授权页面</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)dismissAuthViewController:(BOOL)animated completion:(void (^ __nullable)(void))completion;
++ (void)dismissAuthViewController:(void (^ __nullable)(void))completion;</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p>请不要使用其他方式关闭授权页面, 否则可能导致 OneLogin 无法再次调起</p>
+
+<h3 id="toc_15">stopLoading</h3>
+
+<p>停止点击授权页面登录按钮之后的加载进度条</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)stopLoading;</code></pre></div>
+
+<h3 id="toc_16">enableAuthButton</h3>
+
+<p>enable授权页面登录按钮</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)enableAuthButton;</code></pre></div>
+
+<h3 id="toc_17">disableAuthButton</h3>
+
+<p>disable授权页面登录按钮</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)disableAuthButton;</code></pre></div>
+
+<h3 id="toc_18">isProtocolCheckboxChecked</h3>
+
+<p>服务条款左边复选框是否勾选</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (BOOL)isProtocolCheckboxChecked;</code></pre></div>
+
+<p><strong>Return Value</strong></p>
+
+<p>服务条款左边复选框勾选状态</p>
+
+<h3 id="toc_19">isPreGettedTokenValidate</h3>
+
+<p>预取号拿到的token是否还在有效期</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (BOOL)isPreGettedTokenValidate;</code></pre></div>
+
+<p><strong>Return Value</strong></p>
+
+<p>YES - 还在有效期，可直接调用requestTokenWithViewController方法进行取号<br>
+NO  - 已失效，需重新调用preGetTokenWithCompletion进行预取号之后再调用requestTokenWithViewController方法进行取号</p>
+
+<h3 id="toc_20">sdkVersion</h3>
+
+<p>获取SDK版本号</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (NSString *)sdkVersion;</code></pre></div>
+
+<p><strong>Return Value</strong></p>
+
+<p>当前的SDK版本号</p>
+
+<h3 id="toc_21">setLogEnabled:</h3>
+
+<p>关闭日志</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (void)setLogEnabled:(BOOL)enabled;</code></pre></div>
+
+<p><strong>Parameters</strong></p>
+
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>enabled</td>
+<td>YES，允许打印日志 NO，禁止打印日志</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Discussion</strong></p>
+
+<p>OneLogin SDK内部的日志可以通过 <code>👁‍🗨[OneLoginSDK]👁‍🗨</code> 来筛选</p>
+
+<p><strong>Return Value</strong></p>
+
+<p>当前的SDK版本号</p>
+
+<h3 id="toc_22">isLogEnabled</h3>
+
+<p>获取日志开关状态</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">+ (BOOL)isLogEnabled;</code></pre></div>
+
+<p><strong>Return Value</strong></p>
+
+<p>YES，允许打印日志 NO，禁止打印日志</p>
+
+<h1 id="toc_23">OLAuthViewModel</h1>
+
+<p>授权页面自定义UI模型</p>
+
+<h2 id="toc_24">Enum</h2>
+
+<h3 id="toc_25">OLRect</h3>
+
+<p>布局结构体</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef struct OLRect {
+    /**
+     竖屏时
+     导航栏隐藏时，为控件顶部到状态栏的距离；导航栏显示时，为控件顶部到导航栏底部的距离
+     弹窗时
+     为控件顶部到弹窗顶部的距离
+     */
+    CGFloat portraitTopYOffset;
+    
+    /**
+     竖屏时
+     控件的x轴中点到屏幕x轴中点的距离，默认为0
+     弹窗时
+     控件的x轴中点到弹窗x轴中点的距离，默认为0
+     */
+    CGFloat portraitCenterXOffset;
+    
+    /**
+     竖屏时
+     控件的左边缘到屏幕左边缘的距离，默认为0
+     弹窗时
+     控件的左边缘到屏幕左边缘的距离，默认为0
+     
+     portraitLeftXOffset与portraitCenterXOffset设置一个即可，portraitLeftXOffset优先级大于portraitCenterXOffset，
+     设置此属性时，portraitCenterXOffset属性失效
+     */
+    CGFloat portraitLeftXOffset;
+    
+    /**
+     横屏时
+     导航栏隐藏时，为控件顶部到屏幕顶部的距离；导航栏显示时，为控件顶部到导航栏底部的距离
+     弹窗时
+     为控件顶部到弹窗顶部的距离
+     */
+    CGFloat landscapeTopYOffset;
+    
+    /**
+     横屏时
+     控件的x轴中点到屏幕x轴中点的距离，默认为0
+     弹窗时
+     控件的x轴中点到弹窗x轴中点的距离，默认为0
+     */
+    CGFloat landscapeCenterXOffset;
+    
+    /**
+     横屏时
+     控件的左边缘到屏幕左边缘的距离，默认为0
+     弹窗时
+     控件的左边缘到屏幕左边缘的距离，默认为0
+     
+     landscapeLeftXOffset与landscapeCenterXOffset设置一个即可，landscapeLeftXOffset优先级大于landscapeCenterXOffset，
+     设置此属性时，landscapeCenterXOffset属性失效
+     */
+    CGFloat landscapeLeftXOffset;
+    
+    /**
+     控件大小，只有宽度、高度同时大于0，设置的size才会生效，否则为控件默认的size
+     */
+    CGSize size;
+} OLRect;</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<ol>
+<li>若授权页面只支持竖屏，只设置竖屏方向偏移；</li>
+<li>若授权页面只支持横屏，只设置横屏方向偏移；</li>
+<li>若授权页面支持旋转自动切换横竖屏，则同时设置竖屏方向和横屏方向偏移；</li>
+<li>弹窗模式，同以上1、2、3；</li>
+<li>size默认都可以不用设置，会根据字体大小自适应；</li>
+<li>x轴方向偏移量有两个值可以设置，portraitCenterXOffset为控件的x轴中点到弹窗x轴中点的距离，portraitLeftXOffset为控件的左边缘到屏幕左边缘的距离，两者选其一即可。</li>
+</ol>
+
+<h3 id="toc_26">OLAuthPopupAnimationStyle</h3>
+
+<p>弹窗模式时支持的动画类型</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">/**
+ * @abstract 弹窗模式时支持的动画类型
+ */
+typedef NS_ENUM(NSInteger, OLAuthPopupAnimationStyle) {
+    OLAuthPopupAnimationStyleCoverVertical = 0,
+    OLAuthPopupAnimationStyleFlipHorizontal,
+    OLAuthPopupAnimationStyleCrossDissolve,
+    OLAuthPopupAnimationStyleCustom
+};</code></pre></div>
+
+<h3 id="toc_27">OLLoadingViewBlock</h3>
+
+<p>授权页自定义Loading的Block</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef void(^OLLoadingViewBlock)(UIView *containerView);</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p>授权页自定义Loading，会在点击登录按钮之后触发<code>containerView</code>为loading的全屏蒙版view。请自行在<code>containerView</code>添加自定义loading。设置block后，默认loading将无效。</p>
+
+<h3 id="toc_28">OLStopLoadingViewBlock</h3>
+
+<p>停止授权页自定义Loading的Block</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef void(^OLStopLoadingViewBlock)(UIView *containerView);</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p>停止授权页自定义Loading，会在调用[OneLogin stopLoading]时触发</p>
+
+<h3 id="toc_29">OLCustomUIHandler</h3>
+
+<p>授权登录页面自定义视图</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef void(^OLCustomUIHandler)(UIView *customAreaView);</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p><code>customAreaView</code>为授权页面的 view，如，可将三方登录添加到授权登录页面</p>
+
+<h3 id="toc_30">OLAuthViewLifeCycleBlock</h3>
+
+<p>授权页面视图生命周期回调</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef void(^OLAuthViewLifeCycleBlock)(NSString *viewLifeCycle, BOOL animated);</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p><code>viewLifeCycle</code> 值为<code>viewDidLoad</code>、<code>viewWillAppear</code>、<code>viewWillDisappear</code>、<code>viewDidAppear</code>、<code>viewDidDisappear</code><br>
+<code>animated</code> 是否有动画</p>
+
+<h3 id="toc_31">OLClickAuthButtonBlock</h3>
+
+<p>点击授权页面授权按钮的回调</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef void(^OLClickAuthButtonBlock)(void);</code></pre></div>
+
+<h3 id="toc_32">OLClickCheckboxBlock</h3>
+
+<p>点击授权页面隐私协议前勾选框的回调</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef void(^OLClickCheckboxBlock)(BOOL isChecked);</code></pre></div>
+
+<h3 id="toc_33">OLTapAuthBackgroundBlock</h3>
+
+<p>点击授权页面弹窗背景的回调</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef void(^OLTapAuthBackgroundBlock)(void);</code></pre></div>
+
+<h2 id="toc_34">Property</h2>
+
+<h3 id="toc_35">statusBarStyle</h3>
+
+<p>状态栏样式。 默认 <code>UIStatusBarStyleDefault</code>。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) UIStatusBarStyle statusBarStyle;</code></pre></div>
+
+<h3 id="toc_36">naviTitle</h3>
+
+<p>授权页导航的标题。默认为空字符串。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) NSAttributedString *naviTitle;</code></pre></div>
+
+<h3 id="toc_37">naviBgColor</h3>
+
+<p>授权页导航的背景颜色。默认白色。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIColor *naviBgColor;</code></pre></div>
+
+<h3 id="toc_38">naviBackImage</h3>
+
+<p>授权页导航左边的返回按钮的图片。默认白色系统样式返回图片。尺寸约束为22x22。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIImage *naviBackImage;</code></pre></div>
+
+<h3 id="toc_39">naviRightControl</h3>
+
+<p>授权页导航右边的自定义控件。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIView *naviRightControl;</code></pre></div>
+
+<h3 id="toc_40">naviHidden</h3>
+
+<p>导航栏隐藏。默认不隐藏。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) BOOL naviHidden;</code></pre></div>
+
+<h3 id="toc_41">backButtonRect</h3>
+
+<p>返回按钮位置及大小，返回按钮最大size为CGSizeMake(40, 40)。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect backButtonRect;</code></pre></div>
+
+<h3 id="toc_42">backButtonHidden</h3>
+
+<p>返回按钮隐藏。默认不隐藏。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect backButtonHidden;</code></pre></div>
+
+<h3 id="toc_43">appLogo</h3>
+
+<p>授权页面上展示的图标。默认为 &quot;OneLogin&quot; 图标。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIImage *appLogo;</code></pre></div>
+
+<h3 id="toc_44">logoRect</h3>
+
+<p>Logo 位置及大小。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect logoRect;</code></pre></div>
+
+<h3 id="toc_45">logoHidden</h3>
+
+<p>Logo 图片隐藏。默认不隐藏。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) BOOL logoHidden;</code></pre></div>
+
+<h3 id="toc_46">logoCornerRadius</h3>
+
+<p>logo圆角，默认为0。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) CGFloat logoCornerRadius;</code></pre></div>
+
+<h3 id="toc_47">phoneNumColor</h3>
+
+<p>号码预览文字的颜色。默认黑色。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIColor *phoneNumColor;</code></pre></div>
+
+<h3 id="toc_48">phoneNumFont</h3>
+
+<p>号码预览文字的字体。默认粗体，24pt。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIFont *phoneNumFont;</code></pre></div>
+
+<h3 id="toc_49">phoneNumRect</h3>
+
+<p>号码预览 位置及大小，电话号码不支持设置大小，大小根据电话号码文字自适应。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect phoneNumRect;</code></pre></div>
+
+<h3 id="toc_50">switchButtonText</h3>
+
+<p>授权页切换账号按钮的文案。默认为“切换账号”。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, copy) NSString *switchButtonText;</code></pre></div>
+
+<h3 id="toc_51">switchButtonColor</h3>
+
+<p>授权页切换账号按钮的颜色。默认蓝色。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIColor *switchButtonColor;</code></pre></div>
+
+<h3 id="toc_52">switchButtonFont</h3>
+
+<p>授权页切换账号的字体。默认字体，15pt。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIFont *switchButtonFont;</code></pre></div>
+
+<h3 id="toc_53">switchButtonRect</h3>
+
+<p>授权页切换账号按钮 位置及大小。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect switchButtonRect;</code></pre></div>
+
+<h3 id="toc_54">switchButtonHidden</h3>
+
+<p>隐藏切换账号按钮。默认不隐藏。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) BOOL switchButtonHidden;</code></pre></div>
+
+<h3 id="toc_55">authButtonImages</h3>
+
+<p>授权页认证按钮的背景图片, @[正常状态的背景图片, 不可用状态的背景图片, 高亮状态的背景图片]。默认正常状态为蓝色纯色, 不可用状态的背景图片时为灰色, 高亮状态为灰蓝色。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) NSArray&lt;UIImage *&gt; *authButtonImages;</code></pre></div>
+
+<h3 id="toc_56">authButtonTitle</h3>
+
+<p>授权按钮文案。默认白色的&quot;一键登录&quot;。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) NSAttributedString *authButtonTitle;</code></pre></div>
+
+<h3 id="toc_57">authButtonRect</h3>
+
+<p>授权按钮 位置及大小。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect authButtonRect;</code></pre></div>
+
+<h3 id="toc_58">authButtonCornerRadius</h3>
+
+<p>授权按钮圆角，默认为0。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) CGFloat authButtonCornerRadius;</code></pre></div>
+
+<h3 id="toc_59">clickAuthButtonBlock</h3>
+
+<p>点击授权页面授权按钮的回调。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, copy) OLClickAuthButtonBlock clickAuthButtonBlock;</code></pre></div>
+
+<h3 id="toc_60">sloganRect</h3>
+
+<p>Slogan 位置及大小。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect sloganRect;</code></pre></div>
+
+<h3 id="toc_61">sloganTextColor</h3>
+
+<p>Slogan 文字颜色。默认灰色, 12pt。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, strong) UIColor *sloganTextColor;</code></pre></div>
+
+<h3 id="toc_62">sloganTextFont</h3>
+
+<p>Slogan字体。默认字体, 12pt。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, strong) UIFont *sloganTextFont;</code></pre></div>
+
+<h3 id="toc_63">defaultCheckBoxState</h3>
+
+<p>授权页面上条款勾选框初始状态。默认 YES。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) BOOL defaultCheckBoxState;</code></pre></div>
+
+<h3 id="toc_64">checkedImage</h3>
+
+<p>授权页面上勾选框勾选的图标。默认为蓝色图标。推荐尺寸为12x12。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIImage *checkedImage;</code></pre></div>
+
+<h3 id="toc_65">uncheckedImage</h3>
+
+<p>授权页面上勾选框未勾选的图标。默认为白色图标。推荐尺寸为12x12。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIImage *uncheckedImage;</code></pre></div>
+
+<h3 id="toc_66">checkBoxSize</h3>
+
+<p>授权页面上条款勾选框大小。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) CGSize checkBoxSize;</code></pre></div>
+
+<h3 id="toc_67">privacyTermsAttributes</h3>
+
+<p>隐私条款文字属性。默认基础文字灰色, 条款蓝色高亮, 12pt。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) NSDictionary&lt;NSAttributedStringKey, id&gt; *privacyTermsAttributes;</code></pre></div>
+
+<h3 id="toc_68">additionalPrivacyTerms</h3>
+
+<p>额外的条款。默认为空。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) NSArray&lt;OLPrivacyTermItem *&gt; *additionalPrivacyTerms;</code></pre></div>
+
+<p><strong>Seealso</strong></p>
+
+<p><a href="#OLPrivacyTermItem">OLPrivacyTermItem</a></p>
+
+<h3 id="toc_69">termTextColor</h3>
+
+<p>服务条款普通文字的颜色。默认灰色。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIColor *termTextColor;</code></pre></div>
+
+<h3 id="toc_70">termsRect</h3>
+
+<p>隐私条款 位置及大小，隐私条款，宽需大于50，高需大于20，才会生效。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect termsRect;</code></pre></div>
+
+<h3 id="toc_71">auxiliaryPrivacyWords</h3>
+
+<p>除隐私条款外的其他文案，数组大小必须为4，元素依次为：条款前的文案、条款一和条款二连接符、条款二和条款三连接符，条款后的文案。<br>
+默认为@[@&quot;登录即同意&quot;, @&quot;和&quot;, @&quot;、&quot;, @&quot;并使用本机号码登录&quot;]。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, copy) NSArray&lt;NSString *&gt; *auxiliaryPrivacyWords;</code></pre></div>
+
+<h3 id="toc_72">clickCheckboxBlock</h3>
+
+<p>点击授权页面隐私协议前勾选框的回调。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, copy) OLClickCheckboxBlock clickCheckboxBlock;</code></pre></div>
+
+<h3 id="toc_73">customUIHandler</h3>
+
+<p>自定义区域视图的处理block</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, copy) OLCustomUIHandler customUIHandler;</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p>提供的视图容器使用NSLayoutConstraint与相关的视图进行布局约束。
+如果导航栏没有隐藏, 顶部与导航栏底部对齐, 左边与屏幕左边对齐, 右边与屏幕右边对齐, 底部与屏幕底部对齐。
+如果导航栏隐藏, 顶部与状态栏底部对齐, 左边与屏幕左边对齐, 右边与屏幕右边对齐, 底部与屏幕底部对齐。</p>
+
+<p><strong>Seealso</strong></p>
+
+<div><pre><code class="language-objectivec">typedef void(^OLCustomUIHandler)(UIView *customAreaView);</code></pre></div>
+
+<h3 id="toc_74">backgroundColor</h3>
+
+<p>授权页背景颜色。默认白色。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIColor *backgroundColor;</code></pre></div>
+
+<h3 id="toc_75">backgroundImage</h3>
+
+<p>授权页面背景图片</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIImage *backgroundImage;</code></pre></div>
+
+<h3 id="toc_76">landscapeBackgroundImage</h3>
+
+<p>横屏模式授权页面背景图片</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIImage *landscapeBackgroundImage;</code></pre></div>
+
+<h3 id="toc_77">supportedInterfaceOrientations</h3>
+
+<p>授权页面支持的横竖屏方向</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) UIInterfaceOrientationMask supportedInterfaceOrientations;</code></pre></div>
+
+<h3 id="toc_78">isPopup</h3>
+
+<p>是否为弹窗模式</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) BOOL isPopup;</code></pre></div>
+
+<h3 id="toc_79">popupRect</h3>
+
+<p>弹窗 位置及大小。弹窗模式时，x轴偏移只支持portraitLeftXOffset和landscapeLeftXOffset</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLRect popupRect;</code></pre></div>
+
+<h3 id="toc_80">popupCornerRadius</h3>
+
+<p>弹窗圆角，默认为6</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) CGFloat popupCornerRadius;</code></pre></div>
+
+<h3 id="toc_81">popupAnimationStyle</h3>
+
+<p>弹窗动画类型，当popupAnimationStyle为OLAuthPopupAnimationStyleStyleCustom时，动画为用户自定义，用户需要传一个CATransition对象来设置动画</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLAuthPopupAnimationStyle popupAnimationStyle;</code></pre></div>
+
+<h3 id="toc_82">popupTransitionAnimation</h3>
+
+<p>弹窗自定义动画</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, strong) CATransition *popupTransitionAnimation;</code></pre></div>
+
+<h3 id="toc_83">closePopupImage</h3>
+
+<p>弹窗关闭按钮图片，弹窗关闭按钮的尺寸跟图片尺寸保持一致。
+ 弹窗关闭按钮位于弹窗右上角，目前只支持设置其距顶部偏移和距右边偏移</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIImage *closePopupImage;</code></pre></div>
+
+<h3 id="toc_84">closePopupTopOffset</h3>
+
+<p>弹窗关闭按钮距弹窗顶部偏移</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, strong) NSNumber *closePopupTopOffset;</code></pre></div>
+
+<h3 id="toc_85">closePopupRightOffset</h3>
+
+<p>弹窗关闭按钮距弹窗右边偏移</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, strong) NSNumber *closePopupRightOffset;</code></pre></div>
+
+<h3 id="toc_86">canClosePopupFromTapGesture</h3>
+
+<p>是否需要通过点击弹窗的背景区域以关闭授权页面</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) BOOL canClosePopupFromTapGesture;</code></pre></div>
+
+<h3 id="toc_87">tapAuthBackgroundBlock</h3>
+
+<p>点击授权页面弹窗背景的回调</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, copy) OLTapAuthBackgroundBlock tapAuthBackgroundBlock;</code></pre></div>
+
+<h3 id="toc_88">loadingViewBlock</h3>
+
+<p>授权页面，点击登录按钮之后的回调</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, copy, nullable) OLLoadingViewBlock loadingViewBlock;</code></pre></div>
+
+<h3 id="toc_89">webNaviHidden</h3>
+
+<p>服务条款页面导航栏隐藏。默认不隐藏</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) BOOL webNaviHidden;</code></pre></div>
+
+<h3 id="toc_90">webNaviTitle</h3>
+
+<p>服务条款页面导航的标题。默认为&quot;服务条款&quot;，粗体、17pt</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) NSAttributedString *webNaviTitle;</code></pre></div>
+
+<h3 id="toc_91">webNaviBgColor</h3>
+
+<p>服务条款页面导航的背景颜色。默认白色</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) UIColor *webNaviBgColor;</code></pre></div>
+
+<h3 id="toc_92">notCheckProtocolHint</h3>
+
+<p>未勾选服务条款复选框时，点击登录按钮的提示。默认为&quot;请同意服务条款&quot;</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, copy) NSString *notCheckProtocolHint;</code></pre></div>
+
+<h3 id="toc_93">viewLifeCycleBlock</h3>
+
+<p>授权页面视图生命周期回调。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, copy) OLAuthViewLifeCycleBlock viewLifeCycleBlock;</code></pre></div>
+
+<h3 id="toc_94">modalPresentationStyle</h3>
+
+<p>present授权页面时的样式，默认为UIModalPresentationFullScreen。</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) UIModalPresentationStyle modalPresentationStyle;</code></pre></div>
+
+<h1 id="toc_95">OLNetworkInfo</h1>
+
+<h2 id="toc_96">Enum</h2>
+
+<h3 id="toc_97">OLNetworkType</h3>
+
+<p>设备网络的类型</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">typedef NS_ENUM(NSInteger, OLNetworkType) {
+    /** 网络类型未知 */
+    OLNetworkTypeNone = 0,
+    /** 仅移动蜂窝数据网络 */
+    OLNetworkTypeCellular,
+    /** 仅 WIFI 网络 */
+    OLNetworkTypeWIFI,
+    /** 移动蜂窝数据网络及 WIFI 网络 */
+    OLNetworkTypeCellularAndWIFI,
+};</code></pre></div>
+
+<h2 id="toc_98">Property</h2>
+
+<h3 id="toc_99">carrierName</h3>
+
+<p>运营商名称</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nullable, nonatomic, strong) NSString *carrierName;</code></pre></div>
+
+<h3 id="toc_100">networkType</h3>
+
+<p>网络类型</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) OLNetworkType networkType;</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p>即使返回非 <code>OLNetworkTypeNone</code>, 也可能因为终端用户未授权数据网络网络权限而无法访问设备的移动蜂窝数据网络</p>
+
+<p><strong>Seealso</strong></p>
+
+<p><a href="#OLNetworkType">OLNetworkType</a></p>
+
+<h3 id="toc_101">detailNetworkType</h3>
+
+<p>具体的网络类型，如2G、3G、4G、WIFI</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, copy) NSString *detailNetworkType;</code></pre></div>
+
+<p><strong>Discussion</strong></p>
+
+<p>即使返回非 <code>OLNetworkTypeNone</code>, 也可能因为终端用户未授权数据网络网络权限而无法访问设备的移动蜂窝数据网络</p>
+
+<h1 id="toc_102">OLPrivacyTermItem</h1>
+
+<p>隐私和条款条目</p>
+
+<h2 id="toc_103">Property</h2>
+
+<h3 id="toc_104">termTitle</h3>
+
+<p>隐私和条款的标题</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, strong) NSString *termTitle;</code></pre></div>
+
+<h3 id="toc_105">termLink</h3>
+
+<p>隐私和条款的链接</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, strong) NSURL *termLink;</code></pre></div>
+
+<h3 id="toc_106">urlRequest</h3>
+
+<p>隐私和条款的链接</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, strong) NSURLRequest *urlRequest;</code></pre></div>
+
+<h3 id="toc_107">block</h3>
+
+<p>查看条款链接回调，当设置该回调时，查看服务条款时不进入SDK内部服务条款页面，由客户自定义处理</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, copy, nullable) OLViewPrivacyTermItemBlock block;</code></pre></div>
+
+<h3 id="toc_108">index</h3>
+
+<p>条款索引，默认为0，当有多条条款时，会根据此属性升序排列条款</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">@property (nonatomic, assign) NSInteger index;</code></pre></div>
+
+<h2 id="toc_109">Method</h2>
+
+<h3 id="toc_110">initWithTitle:linkURL:</h3>
+
+<p>使用标题和链接创建实例</p>
+
+<p><strong>Declaration</strong></p>
+
+<div><pre><code class="language-objectivec">- (instancetype)initWithTitle:(NSString *)title linkURL:(NSURL *)url;
+- (instancetype)initWithTitle:(NSString *)title linkURL:(NSURL *)url index:(NSInteger)index;
+- (instancetype)initWithTitle:(NSString *)title linkURL:(NSURL *)url index:(NSInteger)index block:(OLViewPrivacyTermItemBlock _Nullable)block;
+- (instancetype)initWithTitle:(NSString *)title urlRequest:(NSURLRequest *)urlRequest index:(NSInteger)index block:(OLViewPrivacyTermItemBlock _Nullable)block;</code></pre></div>
+
+<p><strong>Return Value</strong></p>
+
+<p>返回新的<code>OLPrivacyTermItem</code>实例</p>
+
+
+
+
+</body>
+
+</html>

@@ -126,6 +126,11 @@ typedef void(^OLClickAuthButtonBlock)(void);
  */
 typedef void(^OLClickCheckboxBlock)(BOOL isChecked);
 
+/**
+ * 点击授权页面弹窗背景的回调
+ */
+typedef void(^OLTapAuthBackgroundBlock)(void);
+
 @interface OLAuthViewModel : NSObject
 
 #pragma mark - Status Bar/状态栏
@@ -397,7 +402,7 @@ typedef void(^OLClickCheckboxBlock)(BOOL isChecked);
 /**
  * 弹窗自定义动画
  */
-@property (nonatomic, strong) CATransition *popupTransitionAnimation;
+@property (nonatomic, strong) CAAnimation *popupTransitionAnimation;
 
 /**
  弹窗关闭按钮图片，弹窗关闭按钮的尺寸跟图片尺寸保持一致。
@@ -414,6 +419,16 @@ typedef void(^OLClickCheckboxBlock)(BOOL isChecked);
  弹窗关闭按钮距弹窗右边偏移。
  */
 @property (nonatomic, strong) NSNumber *closePopupRightOffset;
+
+/**
+是否需要通过点击弹窗的背景区域以关闭授权页面。
+*/
+@property (nonatomic, assign) BOOL canClosePopupFromTapGesture;
+
+/**
+* 点击授权页面弹窗背景的回调
+*/
+@property (nonatomic, copy) OLTapAuthBackgroundBlock tapAuthBackgroundBlock;
 
 #pragma mark - Loading
 
@@ -464,6 +479,11 @@ typedef void(^OLClickCheckboxBlock)(BOOL isChecked);
  present授权页面时的样式，默认为UIModalPresentationFullScreen
  */
 @property (nonatomic, assign) UIModalPresentationStyle modalPresentationStyle;
+
+/**
+ * present授权页面时的自定义动画
+ */
+@property (nonatomic, strong) CAAnimation *modalPresentationAnimation;
 
 @end
 
