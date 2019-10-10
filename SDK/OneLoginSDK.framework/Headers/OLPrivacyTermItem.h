@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class OLPrivacyTermItem;
 
-typedef void(^OLViewPrivacyTermItemBlock)(OLPrivacyTermItem *termItem);
+typedef void(^OLViewPrivacyTermItemBlock)(OLPrivacyTermItem *termItem, UIViewController *controller);
 
 @interface OLPrivacyTermItem : NSObject
 

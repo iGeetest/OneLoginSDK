@@ -340,6 +340,11 @@ typedef void(^OLTapAuthBackgroundBlock)(void);
  */
 @property (nullable, nonatomic, copy) OLClickCheckboxBlock clickCheckboxBlock;
 
+/**
+* 服务条款文案对齐方式，默认为NSTextAlignmentLeft
+*/
+@property (nonatomic, assign) NSTextAlignment termsAlignment;
+
 #pragma mark - Custom Area/自定义区域
 
 /**
@@ -484,6 +489,11 @@ typedef void(^OLTapAuthBackgroundBlock)(void);
  * present授权页面时的自定义动画
  */
 @property (nonatomic, strong) CAAnimation *modalPresentationAnimation;
+
+/**
+ * dismiss授权页面时的自定义动画
+ */
+@property (nonatomic, strong) CAAnimation *modalDismissAnimation;
 
 @end
 

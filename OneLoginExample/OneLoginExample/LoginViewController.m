@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import <CoreTelephony/CTCellularData.h>
 
-//#define NeedCustomAuthUI
+#define NeedCustomAuthUI
 
 API_AVAILABLE(ios(9.0))
 @interface LoginViewController () <OneLoginDelegate, UIAlertViewDelegate>
@@ -260,8 +260,8 @@ API_AVAILABLE(ios(9.0))
     OLPrivacyTermItem *item1 = [[OLPrivacyTermItem alloc] initWithTitle:@"自定义服务条款1"
                                                                 linkURL:[NSURL URLWithString:@"https://docs.geetest.com/onelogin/overview/start"]
                                                                   index:0
-                                                                  block:^(OLPrivacyTermItem * _Nonnull termItem) {
-                                                                      NSLog(@"termItem.termLink: %@", termItem.termLink);
+                                                                  block:^(OLPrivacyTermItem * _Nonnull termItem, UIViewController *controller) {
+                                                                      NSLog(@"termItem.termLink: %@, controller: %@", termItem.termLink, controller);
                                                                       // 自定义操作，可进入自定义服务条款页面
                                                                   }];
     OLPrivacyTermItem *item2 = [[OLPrivacyTermItem alloc] initWithTitle:@"自定义服务条款2"
@@ -282,6 +282,8 @@ API_AVAILABLE(ios(9.0))
     viewModel.clickCheckboxBlock = ^(BOOL isChecked) {      // 点击隐私条款前勾选框回调
         NSLog(@"clickCheckboxBlock isChecked: %@", isChecked ? @"YES" : @"NO");
     };
+    
+    viewModel.termsAlignment = NSTextAlignmentCenter;
     
     // -------------- 服务条款H5页面导航栏设置 -------------------
     viewModel.webNaviTitle = [[NSAttributedString alloc] initWithString:@"服务条款"
@@ -335,6 +337,13 @@ API_AVAILABLE(ios(9.0))
     animation.type = kCATransitionPush;
     animation.subtype = kCATransitionFromRight;
     viewModel.modalPresentationAnimation = animation;
+    
+    CATransition *dismissAnimation = [CATransition animation];
+    dismissAnimation.duration = 0.5;
+    dismissAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    dismissAnimation.type = kCATransitionPush;
+    dismissAnimation.subtype = kCATransitionFromLeft;
+    viewModel.modalDismissAnimation = dismissAnimation;
 #endif
     
     __weak typeof(self) wself = self;
