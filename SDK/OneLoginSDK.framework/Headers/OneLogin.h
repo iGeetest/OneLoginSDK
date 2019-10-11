@@ -238,6 +238,20 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)customInterfaceURL:(const NSString * __nullable)URL;
 
+/**
+ * @abstract 获取当前授权页面对应的ViewController
+ *
+ * @return 当前授权页面对应的ViewController
+ */
++ (UIViewController * _Nullable)currentAuthViewController;
+
+/**
+ * @abstract 更新授权页面一键登录按钮的文案
+ *
+ * @param authButtonTitle 一键登录按钮的文案
+ */
++ (void)updateAuthButtonTitle:(NSAttributedString *)authButtonTitle;
+
 #ifdef OneLoginEnableSetTestEnvironment
 /**
  * @abstract 当前接口是否为测试环境
