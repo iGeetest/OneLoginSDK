@@ -165,10 +165,19 @@ NS_ASSUME_NONNULL_BEGIN
  @seealso OLAuthViewModel
  
  */
-+ (void)requestTokenWithViewController:(UIViewController *)viewController
++ (void)requestTokenWithViewController:(nullable UIViewController *)viewController
                              viewModel:(nullable OLAuthViewModel *)viewModel
                             completion:(void(^)(NSDictionary * _Nullable result))completion;
 
+/**
+ 进行用户认证授权, 获取网关 token 。
+ 
+ @discussion 当用户使用自定义的授权页面而非SDK提供的授权页面时，调用此方法获取token，然后通过获取的token调极验服务端接口获取手机号
+ 
+ @param completion 结果处理回调
+ 
+ */
++ (void)requestTokenWithCompletion:(void(^)(NSDictionary * _Nullable result))completion;
 
 /**
  @abstract 关闭当前的授权页面
@@ -251,6 +260,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param authButtonTitle 一键登录按钮的文案
  */
 + (void)updateAuthButtonTitle:(NSAttributedString *)authButtonTitle;
+
 
 #ifdef OneLoginEnableSetTestEnvironment
 /**

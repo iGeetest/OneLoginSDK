@@ -18,6 +18,9 @@ API_AVAILABLE(ios(9.0))
 
 @property (weak, nonatomic) IBOutlet UIButton *normalLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *popupLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *floatWindowLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *landscapeLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *customAuthVCButton;
 
 @property (nonatomic, strong) CTCellularData *cellularData;
 
@@ -29,28 +32,9 @@ API_AVAILABLE(ios(9.0))
     NSLog(@"------------- %@ %@ -------------", [self class], NSStringFromSelector(_cmd));
 }
 
-/**
- * @abstract 调用requestTokenWithViewController方法之前判断是否需要进行预取号
- *           此处判断，可以根据从接口获取的预取号token有效时长自行判断，也可直接使用SDK的isPreGettedTokenValidate方法进行判断
- */
 - (BOOL)needPreGetToken {
-    if (kAppDelegate.expireTime > 0) {
-        NSTimeInterval currentTimeInterval = [[NSDate date] timeIntervalSince1970];
-        if (currentTimeInterval - kAppDelegate.preGetTokenSuccessedTime < kAppDelegate.expireTime) {
-            return NO;
-        }
-    }
-    
-    return YES;
+    return ![OneLogin isPreGettedTokenValidate];
 }
-
-/**
- * @abstract 调用requestTokenWithViewController方法之前判断是否需要进行预取号
- *           直接使用SDK的isPreGettedTokenValidate方法进行判断
- */
-//- (BOOL)needPreGetToken {
-//    return ![OneLogin isPreGettedTokenValidate];
-//}
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -60,6 +44,8 @@ API_AVAILABLE(ios(9.0))
     }
     self.normalLoginButton.enabled = YES;
     self.popupLoginButton.enabled = YES;
+    self.floatWindowLoginButton.enabled = YES;
+    self.landscapeLoginButton.enabled = YES;
 }
 
 - (void)viewDidLoad {
@@ -70,6 +56,12 @@ API_AVAILABLE(ios(9.0))
     self.normalLoginButton.layer.cornerRadius = 5;
     self.popupLoginButton.layer.masksToBounds = YES;
     self.popupLoginButton.layer.cornerRadius = 5;
+    self.floatWindowLoginButton.layer.masksToBounds = YES;
+    self.floatWindowLoginButton.layer.cornerRadius = 5;
+    self.landscapeLoginButton.layer.masksToBounds = YES;
+    self.landscapeLoginButton.layer.cornerRadius = 5;
+    self.customAuthVCButton.layer.masksToBounds = YES;
+    self.customAuthVCButton.layer.cornerRadius = 5;
     
     // 获取网络权限，此处可结合SDK返回的当前网络状态和用户是否打开APP的网络权限来判断是否需要提示用户去打开APP的网络权限，预取号功能必需在打开了移动网络的情况下才能成功
 //    OLNetworkInfo *networkInfo = [OneLogin currentNetworkInfo];
@@ -102,10 +94,6 @@ API_AVAILABLE(ios(9.0))
             NSNumber *status = [sender objectForKey:@"status"];
             if (status && [@(200) isEqualToNumber:status]) {
                 // 预取号成功
-                if (sender[@"expire_time"] && [sender[@"expire_time"] integerValue] > 0) {
-                    kAppDelegate.expireTime = [sender[@"expire_time"] integerValue];
-                    kAppDelegate.preGetTokenSuccessedTime = [[NSDate date] timeIntervalSince1970];
-                }
             } else {
 #warning 请处理预取号的错误, 更多错误码请参考错误码文档
                 NSString *errCode   = [sender objectForKey:@"errorCode"];
@@ -162,6 +150,7 @@ API_AVAILABLE(ios(9.0))
     OLAuthViewModel *viewModel = [OLAuthViewModel new];
     // -------------- 自定义UI设置 -----------------
     
+#ifdef NeedCustomAuthUI
     // --------------授权页面生命周期回调 -------------------
     viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
         NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
@@ -170,7 +159,6 @@ API_AVAILABLE(ios(9.0))
         }
     };
     
-#ifdef NeedCustomAuthUI
     // --------------状态栏设置 -------------------
     viewModel.statusBarStyle = UIStatusBarStyleLightContent;
     
@@ -186,7 +174,6 @@ API_AVAILABLE(ios(9.0))
                                                                        }];  // 导航栏标题
     viewModel.naviBgColor = UIColor.greenColor; // 导航栏背景色
     viewModel.naviBackImage = [UIImage imageNamed:@"back"]; // 导航栏返回按钮
-    viewModel.naviHidden = YES;  // 导航栏是否隐藏，默认不隐藏，注意，此处导航栏隐藏，不会隐藏返回按钮和标题，另，页面其他控件距顶部偏移，导航栏隐藏时，为到状态栏顶部的距离，导航栏不隐藏时，为到导航栏底部的距离
     viewModel.backButtonHidden = NO; // 是否隐藏返回按钮，默认不隐藏
     OLRect backButtonRect = {0, 0, 0, 0, 0, 0, {0, 0}}; // 返回按钮偏移、大小设置，偏移量和大小设置值需大于0，否则取默认值，默认可不设置
     viewModel.backButtonRect = backButtonRect;
@@ -351,18 +338,8 @@ API_AVAILABLE(ios(9.0))
         [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
             NSLog(@"preGetTokenWithCompletion result: %@", preResult);
             if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
-                if (preResult[@"expire_time"] && [preResult[@"expire_time"] integerValue] > 0) {
-                    kAppDelegate.expireTime = [preResult[@"expire_time"] integerValue];
-                    kAppDelegate.preGetTokenSuccessedTime = [[NSDate date] timeIntervalSince1970];
-                }
                 [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
                     NSLog(@"requestTokenWithViewController result: %@", result);
-                    // 由于preGetToken的结果只能使用一次，故requestToken之后，需要重置expireTime和preGetTokenSuccessedTime
-                    if (![result[@"errorCode"] isEqual:@"-20302"] &&
-                        ![result[@"errorCode"] isEqual:@"-20302"]) {
-                        kAppDelegate.expireTime = 0;
-                        kAppDelegate.preGetTokenSuccessedTime = 0;
-                    }
                     // 自定义授权页面点击登录按钮之后的loading时，调用此方法会触发stopLoadingViewBlock回调，可以在此回调中停止自定义的loading
                     [OneLogin stopLoading];
                     [wself finishRequestingToken:result];
@@ -376,35 +353,25 @@ API_AVAILABLE(ios(9.0))
     } else {
         [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
             NSLog(@"requestTokenWithViewController result: %@", result);
-            // 由于preGetToken的结果只能使用一次，故requestToken之后，需要重置expireTime和preGetTokenSuccessedTime
-            if (![result[@"errorCode"] isEqual:@"-20302"] &&
-                ![result[@"errorCode"] isEqual:@"-20302"]) {
-                kAppDelegate.expireTime = 0;
-                kAppDelegate.preGetTokenSuccessedTime = 0;
-            }
             [wself finishRequestingToken:result];
-            
             sender.enabled = YES;
         }];
     }
-}
-
-- (void)doneAction:(UIButton *)button {
-    [self dismissAuthVC];
 }
 
 - (IBAction)popupLoginAction:(UIButton *)sender {
     // 防抖，避免重复点击
     sender.enabled = NO;
     
-    // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可，但是弹窗模式时，isPopup一定要设置为YES
     OLAuthViewModel *viewModel = [OLAuthViewModel new];
     viewModel.isPopup = YES;
     viewModel.switchButtonHidden = YES;
-    
-    // --------------点击弹窗背景收起弹窗 -------------------
     viewModel.canClosePopupFromTapGesture = YES;
-
+    
+    viewModel.tapAuthBackgroundBlock = ^{
+        NSLog(@"tapAuthBackgroundBlock");
+    };
+    
     // --------------授权页面生命周期回调 -------------------
     viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
         NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
@@ -413,8 +380,49 @@ API_AVAILABLE(ios(9.0))
         }
     };
     
-#ifdef NeedCustomAuthUI
-    // 弹窗内的元素设置同- (IBAction)normalLoginAction:(id)sender 方法中的设置，这里紧示例弹窗自身的设置，如大小、偏移、动画
+    __weak typeof(self) wself = self;
+    if ([self needPreGetToken]) {
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
+            NSLog(@"preGetTokenWithCompletion result: %@", preResult);
+            if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
+                [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+                    NSLog(@"requestTokenWithViewController result: %@", result);
+                    [wself finishRequestingToken:result];
+                }];
+            } else {    // 预取号失败
+                
+            }
+            
+            sender.enabled = YES;
+        }];
+    } else {
+        [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+            NSLog(@"requestTokenWithViewController result: %@", result);
+            [wself finishRequestingToken:result];
+            sender.enabled = YES;
+        }];
+    }
+}
+
+- (IBAction)floatWindowLogin:(UIButton *)sender {
+    // 防抖，避免重复点击
+    sender.enabled = NO;
+    
+    OLAuthViewModel *viewModel = [OLAuthViewModel new];
+    viewModel.isPopup = YES;
+    viewModel.switchButtonHidden = YES;
+    
+    // --------------点击弹窗背景收起弹窗 -------------------
+    viewModel.canClosePopupFromTapGesture = YES;
+    
+    // --------------授权页面生命周期回调 -------------------
+    viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
+        NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
+        if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
+            sender.enabled = YES;
+        }
+    };
+    
     // -------------- 弹窗设置 -------------------
     
     // 自定义弹窗动画
@@ -437,25 +445,14 @@ API_AVAILABLE(ios(9.0))
     viewModel.tapAuthBackgroundBlock = ^{
         NSLog(@"tapAuthBackgroundBlock");
     };
-#endif
     
     __weak typeof(self) wself = self;
     if ([self needPreGetToken]) {
         [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
             NSLog(@"preGetTokenWithCompletion result: %@", preResult);
             if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
-                if (preResult[@"expire_time"] && [preResult[@"expire_time"] integerValue] > 0) {
-                    kAppDelegate.expireTime = [preResult[@"expire_time"] integerValue];
-                    kAppDelegate.preGetTokenSuccessedTime = [[NSDate date] timeIntervalSince1970];
-                }
                 [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
                     NSLog(@"requestTokenWithViewController result: %@", result);
-                    // 由于preGetToken的结果只能使用一次，故requestToken之后，需要重置expireTime和preGetTokenSuccessedTime
-                    if (![result[@"errorCode"] isEqual:@"-20302"] &&
-                        ![result[@"errorCode"] isEqual:@"-20302"]) {
-                        kAppDelegate.expireTime = 0;
-                        kAppDelegate.preGetTokenSuccessedTime = 0;
-                    }
                     [wself finishRequestingToken:result];
                 }];
             } else {    // 预取号失败
@@ -467,14 +464,41 @@ API_AVAILABLE(ios(9.0))
     } else {
         [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
             NSLog(@"requestTokenWithViewController result: %@", result);
-            // 由于preGetToken的结果只能使用一次，故requestToken之后，需要重置expireTime和preGetTokenSuccessedTime
-            if (![result[@"errorCode"] isEqual:@"-20302"] &&
-                ![result[@"errorCode"] isEqual:@"-20302"]) {
-                kAppDelegate.expireTime = 0;
-                kAppDelegate.preGetTokenSuccessedTime = 0;
-            }
             [wself finishRequestingToken:result];
+            sender.enabled = YES;
+        }];
+    }
+}
+
+- (IBAction)landscapeLogin:(UIButton *)sender {
+    // 防抖，避免重复点击
+    sender.enabled = NO;
+    
+    // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可
+    OLAuthViewModel *viewModel = [OLAuthViewModel new];
+    viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+    
+    __weak typeof(self) wself = self;
+    if ([self needPreGetToken]) {
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
+            NSLog(@"preGetTokenWithCompletion result: %@", preResult);
+            if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
+                [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+                    NSLog(@"requestTokenWithViewController result: %@", result);
+                    // 自定义授权页面点击登录按钮之后的loading时，调用此方法会触发stopLoadingViewBlock回调，可以在此回调中停止自定义的loading
+                    [OneLogin stopLoading];
+                    [wself finishRequestingToken:result];
+                }];
+            } else {    // 预取号失败
+                
+            }
             
+            sender.enabled = YES;
+        }];
+    } else {
+        [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+            NSLog(@"requestTokenWithViewController result: %@", result);
+            [wself finishRequestingToken:result];
             sender.enabled = YES;
         }];
     }
@@ -485,7 +509,8 @@ API_AVAILABLE(ios(9.0))
         NSString *token = result[@"token"];
         NSString *appID = result[@"appID"];
         NSString *processID = result[@"processID"];
-        [self validateTokenAndGetLoginInfo:token appID:appID processID:processID];
+        NSString *gwAuth = result[@"gwAuth"];
+        [self validateTokenAndGetLoginInfo:token appID:appID processID:processID gwAuth:gwAuth];
     } else {
 #warning 请处理获取token的错误, 更多错误码请参考错误码文档
         NSString *errCode   = [result objectForKey:@"errorCode"];
@@ -532,13 +557,12 @@ API_AVAILABLE(ios(9.0))
 }
 
 // 使用token获取用户的登录信息
-- (void)validateTokenAndGetLoginInfo:(NSString *)token appID:(NSString *)appID processID:(NSString *)processID {
+- (void)validateTokenAndGetLoginInfo:(NSString *)token appID:(NSString *)appID processID:(NSString *)processID gwAuth:(NSString *)gwAuth {
     // 根据用户自己接口构造
     // demo仅做演示
     // 请不要在线上使用该接口 `http://onepass.geetest.com/onelogin/result`
     
     NSURL *url = [NSURL URLWithString:@"http://onepass.geetest.com/onelogin/result"];
-    //    NSURL *url = [NSURL URLWithString:@"http://115.28.227.76:8000/onelogin/result"];
     
     NSMutableURLRequest *mRequest = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:(NSURLRequestCachePolicy)0 timeoutInterval:10.0];
     
@@ -546,6 +570,9 @@ API_AVAILABLE(ios(9.0))
     [params setValue:processID  forKey:@"process_id"];
     [params setValue:appID      forKey:@"id_2_sign"];
     [params setValue:token      forKey:@"token"];
+    if (gwAuth) {
+        params[@"authcode"] = gwAuth;
+    }
     
     NSData *data = [NSJSONSerialization dataWithJSONObject:params options:(NSJSONWritingOptions)0 error:nil];
     
@@ -554,12 +581,26 @@ API_AVAILABLE(ios(9.0))
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:mRequest
                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                         NSLog(@"result data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-                                         
+                                         id result = nil;
+                                         if (data && !error) {
+                                             result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                                         }
+                                         NSLog(@"validateToken result: %@, error: %@", result, error);
                                          // 一键登录校验成功, 手动关闭授权页面
-                                         [OneLogin dismissAuthViewController:nil];
+                                         if (result && result[@"status"] && 200 == [result[@"status"] integerValue] && result[@"result"]) {
+                                             NSLog(@"手机号为: %@", result[@"result"]);
+                                             [OneLogin dismissAuthViewController:nil];
+                                         } else {
+                                             NSLog(@"校验失败: %@", result[@"result"]);
+                                             [OneLogin stopLoading];
+                                         }
                                      }] resume];
     
+}
+
+
+- (void)doneAction:(UIButton *)button {
+    [self dismissAuthVC];
 }
 
 - (void)dismissAuthVC {
