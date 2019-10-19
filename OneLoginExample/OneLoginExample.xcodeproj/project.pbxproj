@@ -28,13 +28,6 @@
 		E996EC35233B1A7000F93FB3 /* login_back_landscape@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2B233B1A7000F93FB3 /* login_back_landscape@3x.png */; };
 		E996EC36233B1A7000F93FB3 /* bg_logo_launch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */; };
 		E996EC37233B1A7000F93FB3 /* bg_logo_launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */; };
-		E9A912082358503B00DBAA5E /* GTNoUILoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A912062358503B00DBAA5E /* GTNoUILoginViewController.m */; };
-		E9A912092358503B00DBAA5E /* GTNoUIRequestTokenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A912072358503B00DBAA5E /* GTNoUIRequestTokenViewController.m */; };
-		E9A9120C2358506000DBAA5E /* GTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A9120A2358506000DBAA5E /* GTBaseViewController.m */; };
-		E9A91212235850A500DBAA5E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A9120E235850A500DBAA5E /* MBProgressHUD.m */; };
-		E9A91213235850A500DBAA5E /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E9A9120F235850A500DBAA5E /* LICENSE */; };
-		E9A91214235850A500DBAA5E /* README.mdown in Resources */ = {isa = PBXBuildFile; fileRef = E9A91211235850A500DBAA5E /* README.mdown */; };
-		E9A91217235850B500DBAA5E /* GTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A91216235850B500DBAA5E /* GTProgressHUD.m */; };
 		E9E7784E2302CAFE002D91D1 /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9E778482302CAFE002D91D1 /* TYRZResource.bundle */; };
 		E9E7784F2302CAFE002D91D1 /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E778492302CAFE002D91D1 /* TYRZSDK.framework */; };
 		E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */; };
@@ -70,18 +63,6 @@
 		E996EC2B233B1A7000F93FB3 /* login_back_landscape@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_back_landscape@3x.png"; sourceTree = "<group>"; };
 		E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_logo_launch@3x.png"; sourceTree = "<group>"; };
 		E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_logo_launch@2x.png"; sourceTree = "<group>"; };
-		E9A912042358503B00DBAA5E /* GTNoUIRequestTokenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTNoUIRequestTokenViewController.h; sourceTree = "<group>"; };
-		E9A912052358503B00DBAA5E /* GTNoUILoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTNoUILoginViewController.h; sourceTree = "<group>"; };
-		E9A912062358503B00DBAA5E /* GTNoUILoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTNoUILoginViewController.m; sourceTree = "<group>"; };
-		E9A912072358503B00DBAA5E /* GTNoUIRequestTokenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTNoUIRequestTokenViewController.m; sourceTree = "<group>"; };
-		E9A9120A2358506000DBAA5E /* GTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTBaseViewController.m; sourceTree = "<group>"; };
-		E9A9120B2358506000DBAA5E /* GTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTBaseViewController.h; sourceTree = "<group>"; };
-		E9A9120E235850A500DBAA5E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		E9A9120F235850A500DBAA5E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		E9A91210235850A500DBAA5E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		E9A91211235850A500DBAA5E /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
-		E9A91215235850B500DBAA5E /* GTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTProgressHUD.h; sourceTree = "<group>"; };
-		E9A91216235850B500DBAA5E /* GTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTProgressHUD.m; sourceTree = "<group>"; };
 		E9E778482302CAFE002D91D1 /* TYRZResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRZResource.bundle; sourceTree = "<group>"; };
 		E9E778492302CAFE002D91D1 /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
 		E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneLoginSDK.framework; sourceTree = "<group>"; };
@@ -129,7 +110,6 @@
 		7A3F71C32241D9A2007EA470 /* OneLoginExample */ = {
 			isa = PBXGroup;
 			children = (
-				E9A9120D235850A500DBAA5E /* MBProgressHUD */,
 				E996EC23233B1A7000F93FB3 /* Resource */,
 				7A3F71C42241D9A2007EA470 /* AppDelegate.h */,
 				7A3F71C52241D9A2007EA470 /* AppDelegate.m */,
@@ -137,14 +117,6 @@
 				7A3F71C82241D9A2007EA470 /* ViewController.m */,
 				E93A027D22FC10C800804D0E /* LoginViewController.h */,
 				E93A027E22FC10C800804D0E /* LoginViewController.m */,
-				E9A91215235850B500DBAA5E /* GTProgressHUD.h */,
-				E9A91216235850B500DBAA5E /* GTProgressHUD.m */,
-				E9A9120B2358506000DBAA5E /* GTBaseViewController.h */,
-				E9A9120A2358506000DBAA5E /* GTBaseViewController.m */,
-				E9A912052358503B00DBAA5E /* GTNoUILoginViewController.h */,
-				E9A912062358503B00DBAA5E /* GTNoUILoginViewController.m */,
-				E9A912042358503B00DBAA5E /* GTNoUIRequestTokenViewController.h */,
-				E9A912072358503B00DBAA5E /* GTNoUIRequestTokenViewController.m */,
 				E962EC2B233B04D100EEC3AE /* Assets.xcassets */,
 				7A3F71CA2241D9A2007EA470 /* Main.storyboard */,
 				7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */,
@@ -180,17 +152,6 @@
 				E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		E9A9120D235850A500DBAA5E /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				E9A9120E235850A500DBAA5E /* MBProgressHUD.m */,
-				E9A9120F235850A500DBAA5E /* LICENSE */,
-				E9A91210235850A500DBAA5E /* MBProgressHUD.h */,
-				E9A91211235850A500DBAA5E /* README.mdown */,
-			);
-			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		E9E778472302CAFE002D91D1 /* SDK */ = {
@@ -272,8 +233,6 @@
 				E932E71123418D9A00A06ED9 /* index.html in Resources */,
 				7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */,
 				E996EC36233B1A7000F93FB3 /* bg_logo_launch@3x.png in Resources */,
-				E9A91213235850A500DBAA5E /* LICENSE in Resources */,
-				E9A91214235850A500DBAA5E /* README.mdown in Resources */,
 				7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */,
 				E996EC30233B1A7000F93FB3 /* 网关取号_logo@2x.png in Resources */,
 				E996EC35233B1A7000F93FB3 /* login_back_landscape@3x.png in Resources */,
@@ -294,13 +253,8 @@
 			files = (
 				E93A027F22FC10C800804D0E /* LoginViewController.m in Sources */,
 				7A3F71C92241D9A2007EA470 /* ViewController.m in Sources */,
-				E9A9120C2358506000DBAA5E /* GTBaseViewController.m in Sources */,
-				E9A912092358503B00DBAA5E /* GTNoUIRequestTokenViewController.m in Sources */,
 				7A3F71D42241D9A4007EA470 /* main.m in Sources */,
 				7A3F71C62241D9A2007EA470 /* AppDelegate.m in Sources */,
-				E9A91217235850B500DBAA5E /* GTProgressHUD.m in Sources */,
-				E9A912082358503B00DBAA5E /* GTNoUILoginViewController.m in Sources */,
-				E9A91212235850A500DBAA5E /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
