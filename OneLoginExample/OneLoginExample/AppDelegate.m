@@ -22,9 +22,15 @@
     // 建议APP启动时就进行预取号，若是用户首次安装APP，网络未开启，在此处肯定无法预取号成功，故，建议在需要进入授权页面的页面的viewDidLoad中也进行预取号
     // 若您修改了bundleId，此处请将appId修改为与bundleId相对应的值，appId一定要与bundleId一一对应
     [OneLogin registerWithAppID:@"53cd718a9fd11e4dea99a22f138dc509"];
-    [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull sender) {
-        
-    }];
+    // 预取号方法会先调用系统API检测当前手机流量对应的运营商，而在程序刚刚启动时，该检测方法往往会检测不到正确的运营商
+    // 所以若didFinishLaunchingWithOptions方法中有较多其他初始化操作，可以将preGetTokenWithCompletion方法放到最后面执行
+    // 若didFinishLaunchingWithOptions方法中操作很简单，可以稍微延迟一点再去执行preGetTokenWithCompletion方法
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull sender) {
+            NSLog(@"didFinishLaunchingWithOptions pre get token result: %@", sender);
+        }];
+    });
+    
     
     return YES;
 }
