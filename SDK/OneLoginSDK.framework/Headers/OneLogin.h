@@ -172,8 +172,6 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  进行用户认证授权, 获取网关 token 。
  
- @discussion 当用户使用自定义的授权页面而非SDK提供的授权页面时，调用此方法获取token，然后通过获取的token调极验服务端接口获取手机号
- 
  @param completion 结果处理回调
  
  */
