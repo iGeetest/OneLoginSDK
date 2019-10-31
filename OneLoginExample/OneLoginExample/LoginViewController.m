@@ -284,14 +284,27 @@ API_AVAILABLE(ios(9.0))
     viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown; // 默认为UIInterfaceOrientationMaskPortrait
     
     // -------------- 自定义UI设置，如，可以在授权页面添加三方登录入口 -------------------
+    UIButton *customBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    [customBtn setTitle:@"我是自定义UI" forState:UIControlStateNormal];
+    customBtn.backgroundColor = [UIColor redColor];
+    customBtn.layer.cornerRadius = 2.0;
+    [customBtn addTarget:self action:@selector(dismissAuthVC) forControlEvents:UIControlEventTouchUpInside];
+    __block CGFloat customAreaWidth = 0;
+    __block CGFloat customAreaHeight = 0;
     viewModel.customUIHandler = ^(UIView * _Nonnull customAreaView) {
-        UIButton *customBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
-        [customBtn setTitle:@"我是自定义UI" forState:UIControlStateNormal];
-        customBtn.backgroundColor = [UIColor redColor];
-        customBtn.layer.cornerRadius = 2.0;
-        [customBtn addTarget:self action:@selector(dismissAuthVC) forControlEvents:UIControlEventTouchUpInside];
         [customAreaView addSubview:customBtn];
         customBtn.center = CGPointMake(customAreaView.bounds.size.width/2, customAreaView.bounds.size.height/2 + 150);
+        customAreaWidth = customAreaView.bounds.size.width > customAreaView.bounds.size.height ? customAreaView.bounds.size.height : customAreaView.bounds.size.width;
+        customAreaHeight = customAreaView.bounds.size.width < customAreaView.bounds.size.height ? customAreaView.bounds.size.height : customAreaView.bounds.size.width;
+    };
+    
+    // -------------- 授权页面自动旋转时的回调，在该回调中调整自定义视图的frame，若授权页面不支持自动旋转，或者没有添加自定义视图，可不用实现该block -------------------
+    viewModel.authVCTransitionBlock = ^(CGSize size, id<UIViewControllerTransitionCoordinator>  _Nonnull coordinator, UIView * _Nonnull customAreaView) {
+        if (size.width > size.height) { // 横屏
+            customBtn.center = CGPointMake(customAreaHeight/2, customAreaWidth/2 - 15);
+        } else {                        // 竖屏
+            customBtn.center = CGPointMake(customAreaWidth/2, customAreaHeight/2 + 150);
+        }
     };
     
     // -------------- 授权页面点击登录按钮之后的loading设置 -------------------

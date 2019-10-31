@@ -131,6 +131,11 @@ typedef void(^OLClickCheckboxBlock)(BOOL isChecked);
  */
 typedef void(^OLTapAuthBackgroundBlock)(void);
 
+/**
+ * @abstract 授权页面旋转时的回调，可在该回调中修改自定义视图的frame，以适应新的布局
+ */
+typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitionCoordinator> coordinator, UIView *customAreaView);
+
 @interface OLAuthViewModel : NSObject
 
 #pragma mark - Status Bar/状态栏
@@ -356,6 +361,11 @@ typedef void(^OLTapAuthBackgroundBlock)(void);
  如果导航栏隐藏, 顶部与状态栏底部对齐, 左边与屏幕左边对齐, 右边与屏幕右边对齐, 底部与屏幕底部对齐。
  */
 @property (nullable, nonatomic, copy) OLCustomUIHandler customUIHandler;
+
+/**
+ * 授权页面旋转时的回调，可在该回调中修改自定义视图的frame，以适应新的布局
+ */
+@property (nullable, nonatomic, copy) OLAuthVCTransitionBlock authVCTransitionBlock;
 
 #pragma mark - Background Image/授权页面背景图片
 
