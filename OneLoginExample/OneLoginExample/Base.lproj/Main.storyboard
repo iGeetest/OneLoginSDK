@@ -38,29 +38,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VI-f6-ANQ">
-                                <rect key="frame" x="87.5" y="313.5" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="281.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="M8M-uy-cZj"/>
                                     <constraint firstAttribute="width" constant="200" id="ck6-5d-LtU"/>
                                 </constraints>
+                                <state key="normal" title="一键登录(新)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="nLoginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t8m-eh-ZdX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybf-59-G9F">
+                                <rect key="frame" x="87.5" y="346.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="eWF-y5-J9G"/>
+                                    <constraint firstAttribute="height" constant="40" id="sms-Zb-xkF"/>
+                                </constraints>
                                 <state key="normal" title="一键登录">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="1zu-Rh-LB1" kind="show" id="sLF-gf-Sq1"/>
+                                    <action selector="loginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CU0-Zg-6fG"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3VI-f6-ANQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="d1b-04-oCQ"/>
+                            <constraint firstItem="ybf-59-G9F" firstAttribute="leading" secondItem="3VI-f6-ANQ" secondAttribute="leading" id="3eS-Y8-Fcx"/>
+                            <constraint firstItem="3VI-f6-ANQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-32" id="d1b-04-oCQ"/>
+                            <constraint firstItem="ybf-59-G9F" firstAttribute="top" secondItem="3VI-f6-ANQ" secondAttribute="bottom" constant="25" id="hB2-fh-J0p"/>
                             <constraint firstItem="3VI-f6-ANQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tUd-Jo-kYd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="igj-Et-EMG"/>
                     <connections>
-                        <outlet property="loginButton" destination="3VI-f6-ANQ" id="xbO-De-zz4"/>
+                        <outlet property="loginButton" destination="ybf-59-G9F" id="FwV-ZT-lvS"/>
+                        <outlet property="nLoginButton" destination="3VI-f6-ANQ" id="IPj-Gp-myH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -70,7 +87,7 @@
         <!--Login View Controller-->
         <scene sceneID="78s-cg-Fcq">
             <objects>
-                <viewController id="1zu-Rh-LB1" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="1zu-Rh-LB1" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gtl-Wj-xIo"/>
                         <viewControllerLayoutGuide type="bottom" id="v9Y-zd-6ZF"/>
@@ -107,20 +124,6 @@
                                     <action selector="floatWindowLogin:" destination="1zu-Rh-LB1" eventType="touchUpInside" id="tDH-km-0Xm"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kg0-Hw-LF6">
-                                <rect key="frame" x="87.5" y="407" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="F5T-2G-k9C"/>
-                                    <constraint firstAttribute="width" constant="200" id="IxG-Vq-oN8"/>
-                                </constraints>
-                                <state key="normal" title="自定义授权页面">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Hf6-gW-xB1" kind="show" id="S6Z-2D-V7g"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRA-71-DSy">
                                 <rect key="frame" x="87.5" y="223" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -154,18 +157,15 @@
                         <constraints>
                             <constraint firstItem="FRA-71-DSy" firstAttribute="top" secondItem="rmj-7V-6PD" secondAttribute="bottom" constant="17" id="0Q2-fp-24e"/>
                             <constraint firstItem="Jg9-ql-W83" firstAttribute="centerY" secondItem="rux-ok-ART" secondAttribute="centerY" constant="30" id="8C5-9Q-ohV"/>
-                            <constraint firstItem="kg0-Hw-LF6" firstAttribute="centerX" secondItem="Jg9-ql-W83" secondAttribute="centerX" id="9bh-e2-42p"/>
                             <constraint firstItem="Jtp-er-Zx8" firstAttribute="centerX" secondItem="rux-ok-ART" secondAttribute="centerX" id="Af6-Ff-HZx"/>
                             <constraint firstItem="FRA-71-DSy" firstAttribute="centerX" secondItem="Jtp-er-Zx8" secondAttribute="centerX" id="KsP-G0-7bP"/>
                             <constraint firstItem="rmj-7V-6PD" firstAttribute="centerX" secondItem="FRA-71-DSy" secondAttribute="centerX" id="OHi-oZ-N76"/>
                             <constraint firstItem="Jtp-er-Zx8" firstAttribute="centerY" secondItem="rux-ok-ART" secondAttribute="centerY" constant="-30" id="TCA-w4-Co2"/>
                             <constraint firstItem="Jg9-ql-W83" firstAttribute="centerX" secondItem="rux-ok-ART" secondAttribute="centerX" id="Wji-wK-DK5"/>
                             <constraint firstItem="Jtp-er-Zx8" firstAttribute="top" secondItem="FRA-71-DSy" secondAttribute="bottom" constant="20.5" id="rmt-cO-AUS"/>
-                            <constraint firstItem="kg0-Hw-LF6" firstAttribute="top" secondItem="Jg9-ql-W83" secondAttribute="bottom" constant="23.5" id="sr9-zJ-qLA"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="customAuthVCButton" destination="kg0-Hw-LF6" id="bqJ-Sq-5T8"/>
                         <outlet property="floatWindowLoginButton" destination="Jtp-er-Zx8" id="p8e-OV-H3c"/>
                         <outlet property="landscapeLoginButton" destination="Jg9-ql-W83" id="OxL-n6-VLg"/>
                         <outlet property="normalLoginButton" destination="rmj-7V-6PD" id="AuD-zw-hw7"/>
@@ -176,59 +176,97 @@
             </objects>
             <point key="canvasLocation" x="1743" y="-260"/>
         </scene>
-        <!--NoUI Login View Controller-->
-        <scene sceneID="nny-Zh-NMZ">
+        <!--New Login View Controller-->
+        <scene sceneID="9kp-7z-m4m">
             <objects>
-                <viewController id="Hf6-gW-xB1" customClass="GTNoUILoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewLoginViewController" id="wax-Dj-HDH" customClass="NewLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RZ4-Bo-Lal"/>
-                        <viewControllerLayoutGuide type="bottom" id="Nyp-go-0ct"/>
+                        <viewControllerLayoutGuide type="top" id="SAl-XH-WsU"/>
+                        <viewControllerLayoutGuide type="bottom" id="QAn-m0-K9K"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MDk-ge-ySC">
+                    <view key="view" contentMode="scaleToFill" id="9cs-E8-cMb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0j-dO-Gem">
-                                <rect key="frame" x="87.5" y="283.5" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Ggr-dY-KEI"/>
-                                    <constraint firstAttribute="width" constant="200" id="j8Y-US-dI1"/>
-                                </constraints>
-                                <state key="normal" title="预取号">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="preGetToken:" destination="Hf6-gW-xB1" eventType="touchUpInside" id="60U-Uu-V80"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ovw-Tg-pX1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysA-n3-Lgv">
                                 <rect key="frame" x="87.5" y="343.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="UYC-9p-egA"/>
-                                    <constraint firstAttribute="height" constant="40" id="Zdk-wK-x6D"/>
+                                    <constraint firstAttribute="height" constant="40" id="B4z-f9-ckB"/>
+                                    <constraint firstAttribute="width" constant="200" id="HUm-qU-SBO"/>
                                 </constraints>
-                                <state key="normal" title="取号">
+                                <state key="normal" title="一键登录(横屏)">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="getToken:" destination="Hf6-gW-xB1" eventType="touchUpInside" id="0Y5-6p-5HY"/>
+                                    <action selector="landscapeLogin:" destination="wax-Dj-HDH" eventType="touchUpInside" id="PZe-Nh-Pt8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-zt-V4F">
+                                <rect key="frame" x="87.5" y="283.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3Rq-lZ-rke"/>
+                                    <constraint firstAttribute="height" constant="40" id="iQA-uo-n5V"/>
+                                </constraints>
+                                <state key="normal" title="一键登录(浮窗模式)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="floatWindowLogin:" destination="wax-Dj-HDH" eventType="touchUpInside" id="Fu3-8Y-O8I"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttZ-VO-SPo">
+                                <rect key="frame" x="87.5" y="223" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ooq-u5-qdN"/>
+                                    <constraint firstAttribute="width" constant="200" id="szN-DE-sw6"/>
+                                </constraints>
+                                <state key="normal" title="一键登录(弹窗模式)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="popupLoginAction:" destination="wax-Dj-HDH" eventType="touchUpInside" id="muH-1Y-C0N"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9O-oC-3ze">
+                                <rect key="frame" x="87.5" y="166" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="klr-uP-WS5"/>
+                                    <constraint firstAttribute="height" constant="40" id="kvB-Xk-Swe"/>
+                                </constraints>
+                                <state key="normal" title="一键登录(正常模式)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="normalLoginAction:" destination="wax-Dj-HDH" eventType="touchUpInside" id="at8-Pc-Tm7"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="l0j-dO-Gem" firstAttribute="centerX" secondItem="MDk-ge-ySC" secondAttribute="centerX" id="7sI-as-e55"/>
-                            <constraint firstItem="ovw-Tg-pX1" firstAttribute="centerY" secondItem="MDk-ge-ySC" secondAttribute="centerY" constant="30" id="WuR-wo-0NP"/>
-                            <constraint firstItem="ovw-Tg-pX1" firstAttribute="centerX" secondItem="MDk-ge-ySC" secondAttribute="centerX" id="jrd-xk-IXd"/>
-                            <constraint firstItem="l0j-dO-Gem" firstAttribute="centerY" secondItem="MDk-ge-ySC" secondAttribute="centerY" constant="-30" id="lF3-cR-42U"/>
+                            <constraint firstItem="AxS-zt-V4F" firstAttribute="top" secondItem="ttZ-VO-SPo" secondAttribute="bottom" constant="20.5" id="Ei5-T0-9fx"/>
+                            <constraint firstItem="K9O-oC-3ze" firstAttribute="centerX" secondItem="ttZ-VO-SPo" secondAttribute="centerX" id="Heb-7r-nVd"/>
+                            <constraint firstItem="AxS-zt-V4F" firstAttribute="centerY" secondItem="9cs-E8-cMb" secondAttribute="centerY" constant="-30" id="Sc6-Tt-ouA"/>
+                            <constraint firstItem="ysA-n3-Lgv" firstAttribute="centerY" secondItem="9cs-E8-cMb" secondAttribute="centerY" constant="30" id="Ucg-1Z-SvC"/>
+                            <constraint firstItem="ttZ-VO-SPo" firstAttribute="centerX" secondItem="AxS-zt-V4F" secondAttribute="centerX" id="ZDo-jv-Ajd"/>
+                            <constraint firstItem="AxS-zt-V4F" firstAttribute="centerX" secondItem="9cs-E8-cMb" secondAttribute="centerX" id="i5m-Vw-KRx"/>
+                            <constraint firstItem="ttZ-VO-SPo" firstAttribute="top" secondItem="K9O-oC-3ze" secondAttribute="bottom" constant="17" id="ncd-Hr-Nnb"/>
+                            <constraint firstItem="ysA-n3-Lgv" firstAttribute="centerX" secondItem="9cs-E8-cMb" secondAttribute="centerX" id="qvo-Nq-V1l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="floatWindowLoginButton" destination="AxS-zt-V4F" id="zhR-Hd-4yg"/>
+                        <outlet property="landscapeLoginButton" destination="ysA-n3-Lgv" id="mR9-B1-l52"/>
+                        <outlet property="normalLoginButton" destination="K9O-oC-3ze" id="0YH-FT-ZjZ"/>
+                        <outlet property="popupLoginButton" destination="ttZ-VO-SPo" id="M0y-Kh-eRF"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="35q-G6-Mhg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LMG-8H-HEb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="-266"/>
+            <point key="canvasLocation" x="2510" y="-260"/>
         </scene>
     </scenes>
 </document>

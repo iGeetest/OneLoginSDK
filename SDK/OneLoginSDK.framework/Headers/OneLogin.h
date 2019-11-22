@@ -9,12 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OLAuthViewModel.h"
 #import "OLNetworkInfo.h"
-
-// 是否使用联通的SDK，注释该宏定义表示不使用联通的SDK
-#define OneLoginUseCUSDK
-
-// 是否使用电信的SDK，注释该宏定义表示不使用电信的SDK
-#define OneLoginUseCTSDK
+#import "OneLoginHeader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -51,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setDelegate:(nullable id<OneLoginDelegate>)delegate;
 
 /**
- 设置请求超时时长。默认时长8s。
+ 设置请求超时时长。默认时长5s。
 
  @param timeout 超时时长
  */
@@ -258,23 +253,6 @@ NS_ASSUME_NONNULL_BEGIN
  * @param authButtonTitle 一键登录按钮的文案
  */
 + (void)updateAuthButtonTitle:(NSAttributedString *)authButtonTitle;
-
-
-#ifdef OneLoginEnableSetTestEnvironment
-/**
- * @abstract 当前接口是否为测试环境
- *
- * @return YES，当前接口为测试环境地址 NO，当前接口为生产环境
- */
-+ (BOOL)isTestEnvironment;
-
-/**
- * @abstract 设置当前接口为测试环境
- *
- * @param isTest YES，测试环境 NO，生产环境
- */
-+ (void)setTestEnvironment:(BOOL)isTest;
-#endif
 
 @end
 

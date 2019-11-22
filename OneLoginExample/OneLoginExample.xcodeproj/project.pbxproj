@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A3F71C62241D9A2007EA470 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71C52241D9A2007EA470 /* AppDelegate.m */; };
-		7A3F71C92241D9A2007EA470 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71C82241D9A2007EA470 /* ViewController.m */; };
 		7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CA2241D9A2007EA470 /* Main.storyboard */; };
 		7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */; };
-		7A3F71D42241D9A4007EA470 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3F71D32241D9A4007EA470 /* main.m */; };
 		7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */; };
 		7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595F2242290600230BE0 /* libc++.1.tbd */; };
+		E92EFDD3238783130060CD5E /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E92EFDD1238783120060CD5E /* logo@2x.png */; };
+		E92EFDD4238783130060CD5E /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E92EFDD2238783120060CD5E /* logo@3x.png */; };
+		E92EFDD7238789140060CD5E /* NewLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92EFDD6238789140060CD5E /* NewLoginViewController.m */; };
+		E92EFDDA238789560060CD5E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92EFDD8238789560060CD5E /* BaseViewController.m */; };
 		E932E71123418D9A00A06ED9 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E932E71023418D9A00A06ED9 /* index.html */; };
-		E93A027F22FC10C800804D0E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A027E22FC10C800804D0E /* LoginViewController.m */; };
 		E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */; };
+		E94D7BF123866DEE00980D5A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BEE23866DEE00980D5A /* MBProgressHUD.m */; };
+		E94D7BF223866DEE00980D5A /* GTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BF023866DEE00980D5A /* GTProgressHUD.m */; };
+		E94D7BFA23866E1000980D5A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BF523866E1000980D5A /* LoginViewController.m */; };
+		E94D7BFB23866E1000980D5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BF623866E1000980D5A /* ViewController.m */; };
+		E94D7BFC23866E1000980D5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BF723866E1000980D5A /* AppDelegate.m */; };
+		E94D7C0023866E5800980D5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BFE23866E5800980D5A /* main.m */; };
 		E962EC2C233B04D100EEC3AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E962EC2B233B04D100EEC3AE /* Assets.xcassets */; };
 		E996EC2E233B1A7000F93FB3 /* 网关取号_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC24233B1A7000F93FB3 /* 网关取号_logo@3x.png */; };
 		E996EC2F233B1A7000F93FB3 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC25233B1A7000F93FB3 /* back@2x.png */; };
@@ -38,20 +44,30 @@
 
 /* Begin PBXFileReference section */
 		7A3F71C12241D9A2007EA470 /* OneLoginExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneLoginExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A3F71C42241D9A2007EA470 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7A3F71C52241D9A2007EA470 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7A3F71C72241D9A2007EA470 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7A3F71C82241D9A2007EA470 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7A3F71CB2241D9A2007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A3F71D02241D9A4007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7A3F71D22241D9A4007EA470 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A3F71D32241D9A4007EA470 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 		7AF5595F2242290600230BE0 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		E92EFDD1238783120060CD5E /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		E92EFDD2238783120060CD5E /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
+		E92EFDD5238789140060CD5E /* NewLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLoginViewController.h; sourceTree = "<group>"; };
+		E92EFDD6238789140060CD5E /* NewLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLoginViewController.m; sourceTree = "<group>"; };
+		E92EFDD8238789560060CD5E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		E92EFDD9238789560060CD5E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E932E71023418D9A00A06ED9 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		E93A027D22FC10C800804D0E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		E93A027E22FC10C800804D0E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E94D7BEC23866DEE00980D5A /* GTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTProgressHUD.h; sourceTree = "<group>"; };
+		E94D7BEE23866DEE00980D5A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		E94D7BEF23866DEE00980D5A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		E94D7BF023866DEE00980D5A /* GTProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTProgressHUD.m; sourceTree = "<group>"; };
+		E94D7BF423866E1000980D5A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E94D7BF523866E1000980D5A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		E94D7BF623866E1000980D5A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E94D7BF723866E1000980D5A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E94D7BF823866E1000980D5A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		E94D7BF923866E1000980D5A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E94D7BFE23866E5800980D5A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E94D7BFF23866E5800980D5A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E962EC2B233B04D100EEC3AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E996EC24233B1A7000F93FB3 /* 网关取号_logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "网关取号_logo@3x.png"; sourceTree = "<group>"; };
 		E996EC25233B1A7000F93FB3 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
@@ -111,17 +127,12 @@
 			isa = PBXGroup;
 			children = (
 				E996EC23233B1A7000F93FB3 /* Resource */,
-				7A3F71C42241D9A2007EA470 /* AppDelegate.h */,
-				7A3F71C52241D9A2007EA470 /* AppDelegate.m */,
-				7A3F71C72241D9A2007EA470 /* ViewController.h */,
-				7A3F71C82241D9A2007EA470 /* ViewController.m */,
-				E93A027D22FC10C800804D0E /* LoginViewController.h */,
-				E93A027E22FC10C800804D0E /* LoginViewController.m */,
-				E962EC2B233B04D100EEC3AE /* Assets.xcassets */,
+				E94D7BF323866E1000980D5A /* Main */,
+				E94D7BEB23866DEE00980D5A /* ProgressHUD */,
+				E94D7BFD23866E5800980D5A /* Support */,
 				7A3F71CA2241D9A2007EA470 /* Main.storyboard */,
 				7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */,
-				7A3F71D22241D9A4007EA470 /* Info.plist */,
-				7A3F71D32241D9A4007EA470 /* main.m */,
+				E962EC2B233B04D100EEC3AE /* Assets.xcassets */,
 			);
 			path = OneLoginExample;
 			sourceTree = "<group>";
@@ -136,20 +147,67 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E94D7BEB23866DEE00980D5A /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E94D7BEC23866DEE00980D5A /* GTProgressHUD.h */,
+				E94D7BF023866DEE00980D5A /* GTProgressHUD.m */,
+				E94D7BED23866DEE00980D5A /* MBProgressHUD */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		E94D7BED23866DEE00980D5A /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				E94D7BEF23866DEE00980D5A /* MBProgressHUD.h */,
+				E94D7BEE23866DEE00980D5A /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		E94D7BF323866E1000980D5A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E94D7BF423866E1000980D5A /* AppDelegate.h */,
+				E94D7BF723866E1000980D5A /* AppDelegate.m */,
+				E94D7BF923866E1000980D5A /* ViewController.h */,
+				E94D7BF623866E1000980D5A /* ViewController.m */,
+				E92EFDD9238789560060CD5E /* BaseViewController.h */,
+				E92EFDD8238789560060CD5E /* BaseViewController.m */,
+				E94D7BF823866E1000980D5A /* LoginViewController.h */,
+				E94D7BF523866E1000980D5A /* LoginViewController.m */,
+				E92EFDD5238789140060CD5E /* NewLoginViewController.h */,
+				E92EFDD6238789140060CD5E /* NewLoginViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		E94D7BFD23866E5800980D5A /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E94D7BFE23866E5800980D5A /* main.m */,
+				E94D7BFF23866E5800980D5A /* Info.plist */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		E996EC23233B1A7000F93FB3 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				E932E71023418D9A00A06ED9 /* index.html */,
+				E996EC26233B1A7000F93FB3 /* 网关取号_logo@2x.png */,
 				E996EC24233B1A7000F93FB3 /* 网关取号_logo@3x.png */,
 				E996EC25233B1A7000F93FB3 /* back@2x.png */,
-				E996EC26233B1A7000F93FB3 /* 网关取号_logo@2x.png */,
 				E996EC27233B1A7000F93FB3 /* back@3x.png */,
-				E996EC28233B1A7000F93FB3 /* login_back@3x.png */,
-				E996EC29233B1A7000F93FB3 /* login_back@2x.png */,
+				E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */,
+				E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */,
 				E996EC2A233B1A7000F93FB3 /* login_back_landscape@2x.png */,
 				E996EC2B233B1A7000F93FB3 /* login_back_landscape@3x.png */,
-				E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */,
-				E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */,
+				E996EC29233B1A7000F93FB3 /* login_back@2x.png */,
+				E996EC28233B1A7000F93FB3 /* login_back@3x.png */,
+				E92EFDD1238783120060CD5E /* logo@2x.png */,
+				E92EFDD2238783120060CD5E /* logo@3x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -232,8 +290,10 @@
 				E996EC2F233B1A7000F93FB3 /* back@2x.png in Resources */,
 				E932E71123418D9A00A06ED9 /* index.html in Resources */,
 				7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */,
+				E92EFDD3238783130060CD5E /* logo@2x.png in Resources */,
 				E996EC36233B1A7000F93FB3 /* bg_logo_launch@3x.png in Resources */,
 				7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */,
+				E92EFDD4238783130060CD5E /* logo@3x.png in Resources */,
 				E996EC30233B1A7000F93FB3 /* 网关取号_logo@2x.png in Resources */,
 				E996EC35233B1A7000F93FB3 /* login_back_landscape@3x.png in Resources */,
 				E996EC37233B1A7000F93FB3 /* bg_logo_launch@2x.png in Resources */,
@@ -251,10 +311,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E93A027F22FC10C800804D0E /* LoginViewController.m in Sources */,
-				7A3F71C92241D9A2007EA470 /* ViewController.m in Sources */,
-				7A3F71D42241D9A4007EA470 /* main.m in Sources */,
-				7A3F71C62241D9A2007EA470 /* AppDelegate.m in Sources */,
+				E94D7BFA23866E1000980D5A /* LoginViewController.m in Sources */,
+				E92EFDDA238789560060CD5E /* BaseViewController.m in Sources */,
+				E94D7BF123866DEE00980D5A /* MBProgressHUD.m in Sources */,
+				E94D7BFC23866E1000980D5A /* AppDelegate.m in Sources */,
+				E94D7BF223866DEE00980D5A /* GTProgressHUD.m in Sources */,
+				E92EFDD7238789140060CD5E /* NewLoginViewController.m in Sources */,
+				E94D7C0023866E5800980D5A /* main.m in Sources */,
+				E94D7BFB23866E1000980D5A /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,13 +459,14 @@
 		7A3F71D82241D9A4007EA470 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2448B7W898;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../SDK",
 				);
-				INFOPLIST_FILE = OneLoginExample/Info.plist;
+				INFOPLIST_FILE = OneLoginExample/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -416,13 +481,14 @@
 		7A3F71D92241D9A4007EA470 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2448B7W898;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../SDK",
 				);
-				INFOPLIST_FILE = OneLoginExample/Info.plist;
+				INFOPLIST_FILE = OneLoginExample/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
