@@ -27,4 +27,44 @@
     return MAX([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
 }
 
+- (void)requestToken {
+    OLAuthViewModel *viewModel = [OLAuthViewModel new];
+    __block BOOL isViewDidLoad = NO;
+    viewModel.viewLifeCycleBlock = ^(NSString * _Nonnull viewLifeCycle, BOOL animated) {
+        if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
+            isViewDidLoad = YES;
+        }
+    };
+    __weak typeof(self) wself = self;
+    [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+        NSLog(@"requestTokenWithViewController result: %@", result);
+        if ([wself isAuthViewControllerNotPresented:result] && !isViewDidLoad) {
+            // 未弹出授权页面
+        }
+    }];
+}
+
+- (BOOL)isAuthViewControllerNotPresented:(NSDictionary *)result {
+    if (result && result[@"errorCode"]) {
+        NSString *errorCode = [NSString stringWithFormat:@"%@", result[@"errorCode"]];
+        if ([errorCode isEqual:@"-20205"] ||
+            [errorCode isEqual:@"-20206"] ||
+            [errorCode isEqual:@"-20103"]) {
+            return YES;
+        }
+        
+        NSDictionary *metadata = result[@"metadata"];
+        if (metadata && [metadata isKindOfClass:[NSDictionary class]] && metadata.count > 0) {
+            NSString *resultCode = [NSString stringWithFormat:@"%@", metadata[@"resultCode"]];
+            // 200022 无网络, 200023 请求超时, 200027 未开启数据网络
+            if ([resultCode isEqual:@"200022"] ||
+                [resultCode isEqual:@"200023"] ||
+                [resultCode isEqual:@"200027"]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
 @end

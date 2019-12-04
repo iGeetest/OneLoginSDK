@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  向SDK注册AppID
  
- @discussion `AppID`通过后台注册获得
+ @discussion `AppID`通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
 
  @param appID 产品ID
  */

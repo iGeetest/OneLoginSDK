@@ -48,16 +48,13 @@
     self.landscapeLoginButton.layer.masksToBounds = YES;
     self.landscapeLoginButton.layer.cornerRadius = 5;
     
-    [OneLogin registerWithAppID:GTOneLoginAppId];
+    // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
     [OneLogin setLogEnabled:YES];
-#ifdef GTOneLoginIntranetTestURL
-    [OneLogin customInterfaceURL:GTOneLoginIntranetTestURL];
-#endif
-    
-#ifdef GTOneLoginExtranetTestURL
-    [OneLogin customInterfaceURL:GTOneLoginExtranetTestURL];
-#endif
+    // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
+    [OneLogin registerWithAppID:GTOneLoginAppId];
+    // 设置delegate，在授权页面点击返回按钮、切换账号按钮时，会执行对应protocol的方法
     [OneLogin setDelegate:self];
+    // 开始预取号
     [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull result) {
         
     }];
@@ -196,10 +193,10 @@
     viewModel.termsAlignment = NSTextAlignmentCenter;
     
     // -------------- 服务条款H5页面导航栏设置 -------------------
-    viewModel.webNaviTitle = [[NSAttributedString alloc] initWithString:@"服务条款"
-                                                             attributes:@{NSForegroundColorAttributeName : UIColor.whiteColor,
-                                                                          NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
-                                                                          }];  // 服务条款H5页面导航栏标题
+//    viewModel.webNaviTitle = [[NSAttributedString alloc] initWithString:@"服务条款"
+//                                                             attributes:@{NSForegroundColorAttributeName : UIColor.whiteColor,
+//                                                                          NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
+//                                                                          }];  // 服务条款H5页面导航栏标题
     viewModel.webNaviBgColor = UIColor.purpleColor; // 服务条款导航栏背景色
     viewModel.webNaviHidden = NO;   // 服务条款导航栏是否隐藏
     
@@ -269,6 +266,7 @@
     viewModel.modalDismissAnimation = dismissAnimation;
 #endif
     
+    // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
@@ -318,6 +316,7 @@
         }
     };
     
+    // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
@@ -386,6 +385,7 @@
         NSLog(@"tapAuthBackgroundBlock");
     };
     
+    // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
@@ -420,6 +420,7 @@
     OLAuthViewModel *viewModel = [OLAuthViewModel new];
     viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
     
+    // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];

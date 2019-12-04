@@ -30,6 +30,7 @@
 }
 
 - (IBAction)nLoginAction:(id)sender {
+    // OneLogin 1.9.0版本提供的新的流程，由SDK内部控制预取号流程
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     NewLoginViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"NewLoginViewController"];
     if (controller) {
@@ -39,6 +40,7 @@
 }
 
 - (IBAction)loginAction:(id)sender {
+    // OneLogin 1.9.0及以下版本的原流程，由开发者自行控制预取号时机
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     LoginViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     if (controller) {

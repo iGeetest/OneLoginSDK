@@ -44,14 +44,9 @@
     self.landscapeLoginButton.layer.masksToBounds = YES;
     self.landscapeLoginButton.layer.cornerRadius = 5;
     
+    // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
     [OneLoginPro setLogEnabled:YES];
-#ifdef GTOneLoginIntranetTestURL
-    [OneLoginPro customInterfaceURL:GTOneLoginIntranetTestURL];
-#endif
-    
-#ifdef GTOneLoginExtranetTestURL
-    [OneLoginPro customInterfaceURL:GTOneLoginExtranetTestURL];
-#endif
+    // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
     [OneLoginPro registerWithAppID:GTOneLoginAppId];
 }
 
@@ -181,10 +176,10 @@
     viewModel.termsAlignment = NSTextAlignmentCenter;
     
     // -------------- 服务条款H5页面导航栏设置 -------------------
-    viewModel.webNaviTitle = [[NSAttributedString alloc] initWithString:@"服务条款"
-                                                             attributes:@{NSForegroundColorAttributeName : UIColor.whiteColor,
-                                                                          NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
-                                                                          }];  // 服务条款H5页面导航栏标题
+//    viewModel.webNaviTitle = [[NSAttributedString alloc] initWithString:@"服务条款"
+//                                                             attributes:@{NSForegroundColorAttributeName : UIColor.whiteColor,
+//                                                                          NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
+//                                                                          }];  // 服务条款H5页面导航栏标题
     viewModel.webNaviBgColor = UIColor.purpleColor; // 服务条款导航栏背景色
     viewModel.webNaviHidden = NO;   // 服务条款导航栏是否隐藏
     
@@ -255,6 +250,7 @@
 #endif
     
     __weak typeof(self) wself = self;
+    // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
@@ -264,6 +260,7 @@
         if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
             sender.enabled = YES;
         } else if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
+            // 授权页面出现时，关掉进度条
             [GTProgressHUD hideAllHUD];
         }
     };
@@ -288,6 +285,7 @@
     };
     
     __weak typeof(self) wself = self;
+    // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
@@ -297,6 +295,7 @@
         if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
             sender.enabled = YES;
         } else if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
+            // 授权页面出现时，关掉进度条
             [GTProgressHUD hideAllHUD];
         }
     };
@@ -342,6 +341,7 @@
     };
     
     __weak typeof(self) wself = self;
+    // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
@@ -351,6 +351,7 @@
         if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
             sender.enabled = YES;
         } else if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
+            // 授权页面出现时，关掉进度条
             [GTProgressHUD hideAllHUD];
         }
     };
@@ -370,6 +371,7 @@
     viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
     
     __weak typeof(self) wself = self;
+    // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
@@ -379,6 +381,7 @@
         if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
             sender.enabled = YES;
         } else if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
+            // 授权页面出现时，关掉进度条
             [GTProgressHUD hideAllHUD];
         }
     };
@@ -464,6 +467,8 @@
         [GTProgressHUD hideAllHUD];
         if (result && result[@"status"] && 200 == [result[@"status"] integerValue] && !error) {
             [GTProgressHUD showToastWithMessage:result[@"result"]?[NSString stringWithFormat:@"手机号为：%@", result[@"result"]]:@"取号成功"];
+            // 开启重新预取号，以保证下次可以更快的拉起授权页面，此处仅做演示，建议将重新预取号的时机放在用户退出登录时
+            [OneLoginPro renewPreGetToken];
         } else {
             [GTProgressHUD showToastWithMessage:result[@"result"]?:@"token验证失败"];
         }
