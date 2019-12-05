@@ -11,6 +11,7 @@
 		7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */; };
 		7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */; };
 		7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595F2242290600230BE0 /* libc++.1.tbd */; };
+		E9245D512398B82B003155C9 /* CustomProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9245D502398B82B003155C9 /* CustomProtocolViewController.m */; };
 		E92EFDD3238783130060CD5E /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E92EFDD1238783120060CD5E /* logo@2x.png */; };
 		E92EFDD4238783130060CD5E /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E92EFDD2238783120060CD5E /* logo@3x.png */; };
 		E92EFDD7238789140060CD5E /* NewLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E92EFDD6238789140060CD5E /* NewLoginViewController.m */; };
@@ -48,6 +49,8 @@
 		7A3F71D02241D9A4007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 		7AF5595F2242290600230BE0 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		E9245D4F2398B82B003155C9 /* CustomProtocolViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomProtocolViewController.h; sourceTree = "<group>"; };
+		E9245D502398B82B003155C9 /* CustomProtocolViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomProtocolViewController.m; sourceTree = "<group>"; };
 		E92EFDD1238783120060CD5E /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		E92EFDD2238783120060CD5E /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
 		E92EFDD5238789140060CD5E /* NewLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLoginViewController.h; sourceTree = "<group>"; };
@@ -179,6 +182,8 @@
 				E94D7BF523866E1000980D5A /* LoginViewController.m */,
 				E92EFDD5238789140060CD5E /* NewLoginViewController.h */,
 				E92EFDD6238789140060CD5E /* NewLoginViewController.m */,
+				E9245D4F2398B82B003155C9 /* CustomProtocolViewController.h */,
+				E9245D502398B82B003155C9 /* CustomProtocolViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				E92EFDD7238789140060CD5E /* NewLoginViewController.m in Sources */,
 				E94D7C0023866E5800980D5A /* main.m in Sources */,
 				E94D7BFB23866E1000980D5A /* ViewController.m in Sources */,
+				E9245D512398B82B003155C9 /* CustomProtocolViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

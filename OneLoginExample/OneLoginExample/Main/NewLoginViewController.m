@@ -7,6 +7,7 @@
 //
 
 #import "NewLoginViewController.h"
+#import "CustomProtocolViewController.h"
 
 @interface NewLoginViewController ()
 
@@ -151,8 +152,19 @@
                                                                 linkURL:[NSURL URLWithString:@"https://docs.geetest.com/onelogin/overview/start"]
                                                                   index:0
                                                                   block:^(OLPrivacyTermItem * _Nonnull termItem, UIViewController *controller) {
-                                                                      NSLog(@"termItem.termLink: %@, controller: %@", termItem.termLink, controller);
-                                                                      // 自定义操作，可进入自定义服务条款页面
+                                                                       NSLog(@"termItem.termLink: %@, controller: %@", termItem.termLink, controller);
+                                                                       // 自定义操作，可进入自定义服务条款页面
+        
+                                                                        CATransition *animation = [CATransition animation];
+                                                                        animation.duration = 0.5;
+                                                                        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+                                                                        animation.type = kCATransitionPush;
+                                                                        animation.subtype = kCATransitionFromRight;
+        
+                                                                        CustomProtocolViewController *customProtocolController = [CustomProtocolViewController new];
+                                                                        [[OneLoginPro currentAuthViewController].view.window.layer addAnimation:animation forKey:nil];
+                                                                        customProtocolController.modalPresentationStyle = UIModalPresentationFullScreen;
+                                                                        [[OneLoginPro currentAuthViewController] presentViewController:customProtocolController animated:NO completion:nil];
                                                                   }];
     OLPrivacyTermItem *item2 = [[OLPrivacyTermItem alloc] initWithTitle:@"自定义服务条款2"
                                                                 linkURL:[NSURL URLWithString:@"https://docs.geetest.com/"]
