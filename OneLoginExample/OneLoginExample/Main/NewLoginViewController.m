@@ -132,9 +132,10 @@
     
     // -------------- 服务条款设置 -------------------
     viewModel.defaultCheckBoxState = YES; // 是否默认选择同意服务条款，默认同意
-    //    viewModel.checkedImage = [UIImage imageNamed:@""]; // 复选框选中状态图片
-    //    viewModel.uncheckedImage = [UIImage imageNamed:@""]; // 复选框未选中状态图片
-    viewModel.checkBoxSize = CGSizeMake(12, 12); // 复选框尺寸，默认为12*12
+//    viewModel.checkedImage = [UIImage imageNamed:@""]; // 复选框选中状态图片
+//    viewModel.uncheckedImage = [UIImage imageNamed:@""]; // 复选框未选中状态图片
+    OLRect checkBoxRect = {0, 0, 0, 0, 0, 0, {12, 12}};
+    viewModel.checkBoxRect = checkBoxRect; // 复选框尺寸，默认为12*12
     // 隐私条款文字属性
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 1.33;
@@ -343,8 +344,9 @@
     // 弹窗位置、大小设置，弹窗默认大小为300*340，居于屏幕中间，假如要弹窗居于底部，可做如下设置
     OLRect popupRect = {[self ol_screenHeight] - 340, 0, 0, 0, 0, 0, {[self ol_screenWidth], 340}};  // 弹窗偏移、大小设置
     viewModel.popupRect = popupRect;
-    viewModel.popupCornerRadius = 0; // 弹窗圆角，默认为6
-    //    viewModel.closePopupImage = [UIImage imageNamed:@"back"]; // 关闭按钮
+    viewModel.popupCornerRadius = 8; // 弹窗圆角，默认为6
+    viewModel.popupRectCorners = @[@(UIRectCornerTopLeft), @(UIRectCornerTopRight)];  // 设置部分圆角
+//    viewModel.closePopupImage = [UIImage imageNamed:@"back"]; // 关闭按钮
     viewModel.closePopupTopOffset = @(3);  // 关闭按钮距弹窗顶部偏移
     viewModel.closePopupRightOffset = @(-8); // 关闭按钮距弹窗右边偏移
     

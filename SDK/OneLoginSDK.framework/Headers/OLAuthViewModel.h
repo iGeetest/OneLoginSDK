@@ -312,7 +312,12 @@ typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitio
 /**
  授权页面上条款勾选框大小。
  */
-@property (nonatomic, assign) CGSize checkBoxSize;
+@property (nonatomic, assign) CGSize checkBoxSize __attribute__((deprecated("use checkBoxRect instead.")));
+
+/**
+ 授权页面上条款勾选框大小及位置。
+ */
+@property (nonatomic, assign) OLRect checkBoxRect;
 
 /**
  隐私条款文字属性。默认基础文字灰色, 条款蓝色高亮, 12pt。
@@ -410,6 +415,12 @@ typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitio
 @property (nonatomic, assign) CGFloat popupCornerRadius;
 
 /**
+ 当只需要设置弹窗的部分圆角时，通过popupCornerRadius设置圆角大小，通过popupRectCorners设置需要设置圆角的位置。
+ popupRectCorners数组元素不超过四个，超过四个时，只取前四个。比如，要设置左上和右上为圆角，则传值：@[@(UIRectCornerTopLeft), @(UIRectCornerTopRight)]
+ */
+@property (nonatomic, strong) NSArray<NSNumber *> *popupRectCorners;
+
+/**
  * 弹窗动画类型，当popupAnimationStyle为OLAuthPopupAnimationStyleStyleCustom时，动画为用户自定义，用户需要传一个CATransition对象来设置动画
  */
 @property (nonatomic, assign) OLAuthPopupAnimationStyle popupAnimationStyle;
@@ -465,7 +476,9 @@ typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitio
 @property (nonatomic, assign) BOOL webNaviHidden;
 
 /**
- 服务条款页面导航的标题。默认为"服务条款"，粗体、17pt。
+ 服务条款页面导航栏的标题，默认与协议名称保持一致，粗体、17pt。
+ 设置后，自定义协议的文案、颜色、字体都与设置的值保持一致，
+ 运营商协议的颜色、字体与设置的值保持一致，文案不变，与运营商协议名称保持一致。
  */
 @property (nullable, nonatomic, strong) NSAttributedString *webNaviTitle;
 
