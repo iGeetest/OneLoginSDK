@@ -174,6 +174,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (BOOL)isLogEnabled;
 
+/**
+* @abstract 删除预取号的缓存
+*/
++ (void)deletePreResultCache;
+
 @end
 
 NS_ASSUME_NONNULL_END

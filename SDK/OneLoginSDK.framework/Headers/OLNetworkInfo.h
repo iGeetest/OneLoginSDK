@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion
  @"CM" 移动, @"CU" 联通, @"CT" 电信
  */
-@property (nullable, nonatomic, strong) NSString *carrierName;
+@property (nullable, nonatomic, copy) NSString *carrierName;
 
 /**
  网络类型

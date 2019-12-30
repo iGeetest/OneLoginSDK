@@ -254,6 +254,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)updateAuthButtonTitle:(NSAttributedString *)authButtonTitle;
 
+/**
+* @abstract 删除预取号的缓存
+*/
++ (void)deletePreResultCache;
+
 @end
 
 @protocol OneLoginDelegate <NSObject>

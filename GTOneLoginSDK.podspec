@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GTOneLoginSDK'
-  s.version          = '1.9.1'
+  s.version          = '2.0.0'
   s.summary          = '极验一键登录SDK'
   s.homepage         = 'https://www.geetest.com'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -20,5 +20,11 @@ Pod::Spec.new do |s|
   s.libraries = 'c++.1', 'z.1.2.8'
 
   s.vendored_frameworks = 'SDK/account_login_sdk_noui_core.framework', 'SDK/EAccountApiSDK.framework', 'SDK/TYRZSDK.framework', 'SDK/OneLoginSDK.framework'
-  s.resources = 'SDK/TYRZResource.bundle', 'SDK/OneLoginResource.bundle', 'README.md'
+  s.resources = 'SDK/OneLoginResource.bundle', 'README.md'
+
+  # s.subspec 'GTDeepknow' do |sd|
+  #   sd.framework = 'AdSupport'
+  #   sd.vendored_frameworks = 'SDK/DeepKnowSDK.framework'
+  # end
+
 end

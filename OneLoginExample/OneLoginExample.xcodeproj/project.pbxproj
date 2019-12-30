@@ -35,10 +35,9 @@
 		E996EC35233B1A7000F93FB3 /* login_back_landscape@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2B233B1A7000F93FB3 /* login_back_landscape@3x.png */; };
 		E996EC36233B1A7000F93FB3 /* bg_logo_launch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */; };
 		E996EC37233B1A7000F93FB3 /* bg_logo_launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */; };
-		E9E7784E2302CAFE002D91D1 /* TYRZResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9E778482302CAFE002D91D1 /* TYRZResource.bundle */; };
-		E9E7784F2302CAFE002D91D1 /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E778492302CAFE002D91D1 /* TYRZSDK.framework */; };
+		E9C7962223B4C13D00032AB1 /* TYRZSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C7962123B4C13D00032AB1 /* TYRZSDK.framework */; };
+		E9C7962423B4C1CC00032AB1 /* account_login_sdk_noui_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C7962323B4C1CC00032AB1 /* account_login_sdk_noui_core.framework */; };
 		E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */; };
-		E9E778512302CAFE002D91D1 /* account_login_sdk_noui_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784B2302CAFE002D91D1 /* account_login_sdk_noui_core.framework */; };
 		E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784C2302CAFE002D91D1 /* EAccountApiSDK.framework */; };
 		E9E778532302CAFE002D91D1 /* OneLoginResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9E7784D2302CAFE002D91D1 /* OneLoginResource.bundle */; };
 /* End PBXBuildFile section */
@@ -82,10 +81,9 @@
 		E996EC2B233B1A7000F93FB3 /* login_back_landscape@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_back_landscape@3x.png"; sourceTree = "<group>"; };
 		E996EC2C233B1A7000F93FB3 /* bg_logo_launch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_logo_launch@3x.png"; sourceTree = "<group>"; };
 		E996EC2D233B1A7000F93FB3 /* bg_logo_launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_logo_launch@2x.png"; sourceTree = "<group>"; };
-		E9E778482302CAFE002D91D1 /* TYRZResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TYRZResource.bundle; sourceTree = "<group>"; };
-		E9E778492302CAFE002D91D1 /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
+		E9C7962123B4C13D00032AB1 /* TYRZSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZSDK.framework; sourceTree = "<group>"; };
+		E9C7962323B4C1CC00032AB1 /* account_login_sdk_noui_core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = account_login_sdk_noui_core.framework; sourceTree = "<group>"; };
 		E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneLoginSDK.framework; sourceTree = "<group>"; };
-		E9E7784B2302CAFE002D91D1 /* account_login_sdk_noui_core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = account_login_sdk_noui_core.framework; sourceTree = "<group>"; };
 		E9E7784C2302CAFE002D91D1 /* EAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EAccountApiSDK.framework; sourceTree = "<group>"; };
 		E9E7784D2302CAFE002D91D1 /* OneLoginResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OneLoginResource.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,10 +95,10 @@
 			files = (
 				E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */,
 				7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */,
-				E9E7784F2302CAFE002D91D1 /* TYRZSDK.framework in Frameworks */,
 				E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */,
-				E9E778512302CAFE002D91D1 /* account_login_sdk_noui_core.framework in Frameworks */,
 				E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */,
+				E9C7962423B4C1CC00032AB1 /* account_login_sdk_noui_core.framework in Frameworks */,
+				E9C7962223B4C13D00032AB1 /* TYRZSDK.framework in Frameworks */,
 				7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,10 +218,9 @@
 		E9E778472302CAFE002D91D1 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				E9E778482302CAFE002D91D1 /* TYRZResource.bundle */,
-				E9E778492302CAFE002D91D1 /* TYRZSDK.framework */,
+				E9C7962323B4C1CC00032AB1 /* account_login_sdk_noui_core.framework */,
+				E9C7962123B4C13D00032AB1 /* TYRZSDK.framework */,
 				E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */,
-				E9E7784B2302CAFE002D91D1 /* account_login_sdk_noui_core.framework */,
 				E9E7784C2302CAFE002D91D1 /* EAccountApiSDK.framework */,
 				E9E7784D2302CAFE002D91D1 /* OneLoginResource.bundle */,
 			);
@@ -288,7 +285,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9E7784E2302CAFE002D91D1 /* TYRZResource.bundle in Resources */,
 				E996EC2E233B1A7000F93FB3 /* 网关取号_logo@3x.png in Resources */,
 				E996EC33233B1A7000F93FB3 /* login_back@2x.png in Resources */,
 				E9E778532302CAFE002D91D1 /* OneLoginResource.bundle in Resources */,

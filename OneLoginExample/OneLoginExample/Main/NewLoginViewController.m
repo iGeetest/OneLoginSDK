@@ -297,6 +297,8 @@
         NSLog(@"tapAuthBackgroundBlock");
     };
     
+    viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
+    
     __weak typeof(self) wself = self;
     // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {

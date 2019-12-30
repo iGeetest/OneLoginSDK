@@ -20,4 +20,4 @@ FOUNDATION_EXPORT const unsigned char OneLoginSDKVersionString[];
 #import <OneLoginSDK/OLPrivacyTermItem.h>
 #import <OneLoginSDK/OneLoginPro.h>
 #import <OneLoginSDK/OneLoginHeader.h>
-
+#import <OneLoginSDK/OLErrorInfo.h>

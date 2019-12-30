@@ -149,9 +149,10 @@
     
     // -------------- 服务条款设置 -------------------
     viewModel.defaultCheckBoxState = YES; // 是否默认选择同意服务条款，默认同意
-    //    viewModel.checkedImage = [UIImage imageNamed:@""]; // 复选框选中状态图片
-    //    viewModel.uncheckedImage = [UIImage imageNamed:@""]; // 复选框未选中状态图片
-    viewModel.checkBoxSize = CGSizeMake(12, 12); // 复选框尺寸，默认为12*12
+//    viewModel.checkBoxSize = CGSizeMake(12, 12);
+    OLRect checkBoxRect = {0, 0, 0, 0, 0, 0, {12, 12}}; // 复选框尺寸，默认为12*12
+    viewModel.checkBoxRect = checkBoxRect;
+    
     // 隐私条款文字属性
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 1.33;
@@ -319,6 +320,8 @@
     viewModel.tapAuthBackgroundBlock = ^{
         NSLog(@"tapAuthBackgroundBlock");
     };
+    
+    viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
     
     // --------------授权页面生命周期回调 -------------------
     viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
