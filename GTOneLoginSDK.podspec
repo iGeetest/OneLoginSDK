@@ -7,12 +7,13 @@
 #
 
 Pod::Spec.new do |s|
-  s.name = 'GTOneLoginSDK'
-  s.version = '2.1.0' 
-  s.summary = '极验一键登录SDK'
-  s.homepage = 'https://www.geetest.com'
-  s.license  = { :type => 'MIT', :file => 'LICENSE' }
-  s.author = { 'Geetest' => 'liulian@geetest.com' }
+  s.name             = 'GTOneLoginSDK'
+  s.version          = '2.1.0'
+  s.summary          = '极验一键登录SDK'
+  s.homepage         = 'https://www.geetest.com'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = { 'Geetest' => 'liulian@geetest.com' }
+  s.source           = { :git => 'https://github.com/iGeetest/OneLoginSDK.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
 
   s.frameworks = 'CFNetwork', 'CoreTelephony', 'Foundation', 'SystemConfiguration', 'UIKit'
