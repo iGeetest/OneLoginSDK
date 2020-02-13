@@ -10,10 +10,14 @@
 #import <OneLoginSDK/OneLoginSDK.h>
 #import "GTProgressHUD.h"
 
-#define GTOneLoginAppId @"53cd718a9fd11e4dea99a22f138dc509"
+#define GTOneLoginAppId @"b41a959b5cac4dd1277183e074630945"
 #define GTOneLoginResultURL @"http://onepass.geetest.com/"
 
+#define GTOnePassAppId @"3996159873d7ccc36f25803b88dda97a"
+#define GTOnePassVerifyURL @"http://onepass.geetest.com/v2.0/result"
+
 #define NeedCustomAuthUI
+#define OLAuthVCAutoLayout
 
 NS_ASSUME_NONNULL_BEGIN
 

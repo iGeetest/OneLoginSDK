@@ -136,6 +136,26 @@ typedef void(^OLTapAuthBackgroundBlock)(void);
  */
 typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitionCoordinator> coordinator, UIView *customAreaView);
 
+/**
+ * @abstract 授权页面视图控件自动布局回调，可在该回调中，对控件通过 masonry 或者其他方式进行自动布局，若需要自定义视图，请直接在该回调中添加
+ *
+ * authView 为 authContentView 的父视图
+ * authContentView 为 authBackgroundImageView、authNavigationView、authLogoView、authPhoneView、authSwitchButton、authLoginButton、authSloganView、authAgreementView、authClosePopupButton 的父视图
+ * authNavigationView 为 authNavigationContainerView 的父视图
+ * authNavigationContainerView 为 authBackButton 和 authNavigationTitleView 的父视图
+ * authAgreementView 为 authCheckbox 和 authProtocolView 的父视图
+ *
+ */
+typedef void(^OLAuthVCAutoLayoutBlock)(UIView *authView, UIView *authContentView, UIView *authBackgroundImageView, UIView *authNavigationView, UIView *authNavigationContainerView, UIView *authBackButton, UIView *authNavigationTitleView, UIView *authLogoView, UIView *authPhoneView, UIView *authSwitchButton, UIView *authLoginButton, UIView *authSloganView, UIView *authAgreementView, UIView *authCheckbox, UIView *authProtocolView, UIView *authClosePopupButton);
+
+/**
+ * @abstract 进入授权页面的方式，默认为 modal 方式，即 present 到授权页面，从授权页面进入服务条款页面的方式与此保持一致
+ */
+typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
+    OLPullAuthVCStyleModal,
+    OLPullAuthVCStylePush
+};
+
 @interface OLAuthViewModel : NSObject
 
 #pragma mark - Status Bar/状态栏
@@ -232,6 +252,11 @@ typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitio
  授权页切换账号按钮的颜色。默认蓝色。
  */
 @property (nullable, nonatomic, strong) UIColor *switchButtonColor;
+
+/**
+ 授权页切换账号按钮背景颜色。默认为 nil。
+ */
+@property (nullable, nonatomic, strong) UIColor *switchButtonBackgroundColor;
 
 /**
  授权页切换账号的字体。默认字体，15pt。
@@ -389,6 +414,13 @@ typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitio
  */
 @property (nullable, nonatomic, strong) UIImage *landscapeBackgroundImage;
 
+#pragma mark - Autolayout
+
+/**
+ * 授权页面视图控件自动布局回调
+ */
+@property (nullable, nonatomic, copy) OLAuthVCAutoLayoutBlock autolayoutBlock;
+
 #pragma mark - orientationMask
 
 /**
@@ -517,6 +549,13 @@ typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitio
  * dismiss授权页面时的自定义动画
  */
 @property (nonatomic, strong) CAAnimation *modalDismissAnimation;
+
+#pragma mark - OLPullAuthVCStyle
+
+/**
+ * @abstract 进入授权页面的方式，默认为 modal 方式，即 present 到授权页面，从授权页面进入服务条款页面的方式与此保持一致
+ */
+@property (nonatomic, assign) OLPullAuthVCStyle pullAuthVCStyle;
 
 @end
 

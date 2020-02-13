@@ -8,6 +8,7 @@
 
 #import "NewLoginViewController.h"
 #import "CustomProtocolViewController.h"
+#import "Masonry.h"
 
 @interface NewLoginViewController ()
 
@@ -84,7 +85,9 @@
     UIButton *rightBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightBarButton setTitle:@"完成" forState:UIControlStateNormal];
     [rightBarButton addTarget:self action:@selector(doneAction:) forControlEvents:UIControlEventTouchUpInside];
+#ifndef OLAuthVCAutoLayout
     viewModel.naviRightControl = rightBarButton;    // 导航栏右侧控制视图
+#endif
     
     // -------------- logo设置 -------------------
     viewModel.appLogo = [UIImage imageNamed:@"网关取号_logo"];  // 自定义logo图片
@@ -116,7 +119,7 @@
     viewModel.authButtonTitle = [[NSAttributedString alloc] initWithString:@"授权登录"
                                                                 attributes:@{NSForegroundColorAttributeName : UIColor.whiteColor,
                                                                              NSFontAttributeName : [UIFont boldSystemFontOfSize:18]
-                                                                             }];  // 导航栏标题
+                                                                             }];  // 登录按钮文案
     OLRect authButtonRect = {0, 0, 0, 0, 0, 0, {300, 40}};  // 授权按钮偏移、大小设置，偏移量和大小设置值需大于0，否则取默认值，默认可不设置
     viewModel.authButtonRect = authButtonRect;
     viewModel.authButtonCornerRadius = 0; // 授权按钮圆角，默认为0
@@ -246,20 +249,137 @@
     // -------------- 授权页面未勾选服务条款时点击登录按钮的提示 -------------------
     viewModel.notCheckProtocolHint = @"请您先同意服务条款";  // 授权页面未勾选服务条款时点击登录按钮的提示，默认为"请同意服务条款"
     
-    // -------------- 弹出授权页面转场动画设置 -------------------
-    CATransition *animation = [CATransition animation];
-    animation.duration = 0.5;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.type = kCATransitionPush;
-    animation.subtype = kCATransitionFromRight;
-    viewModel.modalPresentationAnimation = animation;
+    // -------------- Autolayout -------------------
+#ifdef OLAuthVCAutoLayout
+    viewModel.autolayoutBlock = ^(UIView *authView, UIView *authContentView, UIView *authBackgroundImageView, UIView *authNavigationView, UIView *authNavigationContainerView, UIView *authBackButton, UIView *authNavigationTitleView, UIView *authLogoView, UIView *authPhoneView, UIView *authSwitchButton, UIView *authLoginButton, UIView *authSloganView, UIView *authAgreementView, UIView *authCheckbox, UIView *authProtocolView, UIView *authClosePopupButton) {
+        // content
+        [authContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(authView);
+        }];
+        
+        // background
+        [authBackgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(authContentView);
+        }];
+        
+        // navigation
+        [authNavigationView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.right.equalTo(authContentView);
+            make.height.mas_equalTo(64);
+        }];
+        
+        [authNavigationContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(authNavigationView);
+        }];
+        
+        [authBackButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(authNavigationContainerView).offset(20);
+            make.centerY.equalTo(authNavigationContainerView).offset(10);
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+        }];
+        
+        [authNavigationTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(authNavigationContainerView);
+            make.centerY.equalTo(authNavigationContainerView).offset(10);
+            make.size.mas_equalTo(CGSizeMake(100, 40));
+        }];
+        
+        UIButton *rightBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [rightBarButton setTitle:@"完成" forState:UIControlStateNormal];
+        [rightBarButton addTarget:self action:@selector(doneAction:) forControlEvents:UIControlEventTouchUpInside];
+        [authNavigationContainerView addSubview:rightBarButton];
+        [rightBarButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(authNavigationContainerView).offset(-10);
+            make.centerY.equalTo(authNavigationContainerView).offset(10);
+            make.size.mas_equalTo(CGSizeMake(60, 40));
+        }];
+        
+        // logo
+        [authLogoView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(authContentView);
+            make.top.equalTo(authNavigationView.mas_bottom).offset(100);
+            make.size.mas_equalTo(CGSizeMake(107, 22));
+        }];
+        
+        // phone
+        [authPhoneView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(authContentView);
+            make.top.equalTo(authLogoView.mas_bottom).offset(20);
+            make.size.mas_equalTo(CGSizeMake(200, 40));
+        }];
+        
+        // switchbutton
+        [authSwitchButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(authContentView);
+            make.top.equalTo(authPhoneView.mas_bottom).offset(20);
+            make.size.mas_equalTo(CGSizeMake(200, 20));
+        }];
+        
+        // loginbutton
+        [authLoginButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(authContentView);
+            make.top.equalTo(authSwitchButton.mas_bottom).offset(30);
+            make.size.mas_equalTo(CGSizeMake(260, 40));
+        }];
+        
+        // slogan
+        [authSloganView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(authContentView);
+            make.top.equalTo(authLoginButton.mas_bottom).offset(20);
+            make.size.mas_equalTo(CGSizeMake(260, 20));
+        }];
+        
+        // agreementview
+        [authAgreementView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(authContentView).offset(20);
+            make.right.equalTo(authContentView).offset(-20);
+            make.top.equalTo(authSloganView.mas_bottom).offset(50);
+            make.height.mas_equalTo(80);
+        }];
+        
+        [authCheckbox mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(authAgreementView).offset(10);
+            make.top.equalTo(authAgreementView).offset(10);
+        }];
+        
+        [authProtocolView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(authCheckbox.mas_right).offset(5);
+            make.right.equalTo(authAgreementView).offset(-10);
+            make.height.equalTo(authAgreementView);
+        }];
+        
+        // 自定义视图
+        UIButton *customBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+        [customBtn setTitle:@"我是自定义UI" forState:UIControlStateNormal];
+        customBtn.backgroundColor = [UIColor lightGrayColor];
+        customBtn.layer.cornerRadius = 2.0;
+        [customBtn addTarget:self action:@selector(dismissAuthVC) forControlEvents:UIControlEventTouchUpInside];
+        [authContentView addSubview:customBtn];
+        [customBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(authContentView).offset(20);
+            make.right.equalTo(authContentView).offset(-20);
+            make.height.mas_equalTo(40);
+            make.top.equalTo(authAgreementView.mas_bottom).offset(30);
+        }];
+    };
+#endif
     
-    CATransition *dismissAnimation = [CATransition animation];
-    dismissAnimation.duration = 0.5;
-    dismissAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    dismissAnimation.type = kCATransitionPush;
-    dismissAnimation.subtype = kCATransitionFromLeft;
-    viewModel.modalDismissAnimation = dismissAnimation;
+    viewModel.pullAuthVCStyle = OLPullAuthVCStylePush;
+    
+    // -------------- 弹出授权页面转场动画设置 -------------------
+//    CATransition *animation = [CATransition animation];
+//    animation.duration = 0.5;
+//    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    animation.type = kCATransitionPush;
+//    animation.subtype = kCATransitionFromRight;
+//    viewModel.modalPresentationAnimation = animation;
+//
+//    CATransition *dismissAnimation = [CATransition animation];
+//    dismissAnimation.duration = 0.5;
+//    dismissAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    dismissAnimation.type = kCATransitionPush;
+//    dismissAnimation.subtype = kCATransitionFromLeft;
+//    viewModel.modalDismissAnimation = dismissAnimation;
 #endif
     
     __weak typeof(self) wself = self;
@@ -442,7 +562,7 @@
     // demo仅做演示
     // 请不要在线上使用该接口 `http://onepass.geetest.com/onelogin/result`
     
-    NSURL *url = [NSURL URLWithString:@"http://onepass.geetest.com/onelogin/result"];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@onelogin/result", GTOneLoginResultURL]];
 #ifdef GTOneLoginIntranetTestURL
     url = [NSURL URLWithString:[NSString stringWithFormat:@"%@onelogin/result", GTOneLoginIntranetTestURL]];
 #endif

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "OLAuthViewModel.h"
 #import "OLNetworkInfo.h"
-#import "OneLoginHeader.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
