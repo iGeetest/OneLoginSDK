@@ -8,13 +8,23 @@
 
 import UIKit
 import OneLoginSDK
+import GT3Captcha
 
 class SwiftLoginViewController: SwiftBaseViewController {
-
+    
     @IBOutlet weak var normalLoginButton: UIButton!
     @IBOutlet weak var popupLoginButton: UIButton!
     @IBOutlet weak var floatWindowLoginButton: UIButton!
     @IBOutlet weak var landscapeLoginButton: UIButton!
+    
+    private lazy var gt3CaptchaManager: GT3CaptchaManager = {
+        let manager = GT3CaptchaManager.init(api1: GTCaptchaAPI1, api2: GTCaptchaAPI2, timeout: 5.0)
+        manager!.delegate = self as GT3CaptchaManagerDelegate
+        manager!.viewDelegate = self as GT3CaptchaManagerViewDelegate
+        return manager!
+    }()
+    
+    private var isPreGettingToken = false
     
     // MARK: View Lifecycle
     
@@ -38,8 +48,11 @@ class SwiftLoginViewController: SwiftBaseViewController {
         // 设置delegate，在授权页面点击返回按钮、切换账号按钮时，会执行对应protocol的方法
         OneLogin.setDelegate(self as OneLoginDelegate)
         // 开始预取号
-        OneLogin.preGetToken { ([AnyHashable : Any]) in
-            
+        self.isPreGettingToken = true
+        OneLogin.preGetToken { [weak self] ([AnyHashable : Any]) in
+            if let strongSelf = self {
+                strongSelf.isPreGettingToken = false
+            }
         }
     }
     
@@ -54,6 +67,10 @@ class SwiftLoginViewController: SwiftBaseViewController {
     // MARK: Button Actions
     
     @IBAction func normalLoginAction(_ sender: UIButton) {
+        if self.isPreGettingToken {
+            return
+        }
+        
         // 防抖，避免重复点击
         sender.isEnabled = false
         
@@ -336,6 +353,17 @@ class SwiftLoginViewController: SwiftBaseViewController {
             }
         }
         
+        // 结合行为验证
+        if self.ol_integrateGTCaptcha() {
+            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+                if let strongSelf = self {
+                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                }
+                return true
+            }
+        }
+        
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
             OneLogin.requestToken(with: self, viewModel: viewModel) { [weak self] result in
@@ -365,6 +393,10 @@ class SwiftLoginViewController: SwiftBaseViewController {
     }
     
     @IBAction func popupLoginAction(_ sender: UIButton) {
+        if self.isPreGettingToken {
+            return
+        }
+        
         // 防抖，避免重复点击
         sender.isEnabled = false
         
@@ -387,6 +419,17 @@ class SwiftLoginViewController: SwiftBaseViewController {
             print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
             if (viewLifeCycle == "viewDidDisappear:") {
                 sender.isEnabled = true
+            }
+        }
+        
+        // 结合行为验证
+        if self.ol_integrateGTCaptcha() {
+            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+                if let strongSelf = self {
+                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                }
+                return true
             }
         }
         
@@ -419,6 +462,10 @@ class SwiftLoginViewController: SwiftBaseViewController {
     }
     
     @IBAction func floatWindowLogin(_ sender: UIButton) {
+        if self.isPreGettingToken {
+            return
+        }
+        
         // 防抖，避免重复点击
         sender.isEnabled = false
         
@@ -460,6 +507,17 @@ class SwiftLoginViewController: SwiftBaseViewController {
         viewModel.closePopupTopOffset = NSNumber.init(value: 3)  // 关闭按钮距弹窗顶部偏移
         viewModel.closePopupRightOffset = NSNumber.init(value: -8)
         
+        // 结合行为验证
+        if self.ol_integrateGTCaptcha() {
+            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+                if let strongSelf = self {
+                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                }
+                return true
+            }
+        }
+        
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
             OneLogin.requestToken(with: self, viewModel: viewModel) { [weak self] result in
@@ -489,6 +547,10 @@ class SwiftLoginViewController: SwiftBaseViewController {
     }
     
     @IBAction func landscapeLogin(_ sender: UIButton) {
+        if self.isPreGettingToken {
+            return
+        }
+        
         // 防抖，避免重复点击
         sender.isEnabled = false
         
@@ -500,6 +562,17 @@ class SwiftLoginViewController: SwiftBaseViewController {
             print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
             if (viewLifeCycle == "viewDidDisappear:") {
                 sender.isEnabled = true
+            }
+        }
+        
+        // 结合行为验证
+        if self.ol_integrateGTCaptcha() {
+            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+                if let strongSelf = self {
+                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                }
+                return true
             }
         }
         
@@ -624,7 +697,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
     }
 }
 
-extension SwiftLoginViewController : OneLoginDelegate {
+extension SwiftLoginViewController: OneLoginDelegate {
     func userDidSwitchAccount() {
         OneLogin.dismissAuthViewController {
             
@@ -635,5 +708,29 @@ extension SwiftLoginViewController : OneLoginDelegate {
         OneLogin.dismissAuthViewController {
             
         }
+    }
+}
+
+extension SwiftLoginViewController: GT3CaptchaManagerDelegate {
+    func gtCaptcha(_ manager: GT3CaptchaManager!, errorHandler error: GT3Error!) {
+        print("gtCaptcha errorHandler: %@", error!)
+    }
+    
+    func gtCaptcha(_ manager: GT3CaptchaManager!, didReceiveSecondaryCaptchaData data: Data!, response: URLResponse!, error: GT3Error!, decisionHandler: ((GT3SecondaryCaptchaPolicy) -> Void)!) {
+        if nil == error {
+            // 处理验证结果
+            print("\ndata: %@", String.init(data: data!, encoding: String.Encoding.utf8)!);
+            decisionHandler(GT3SecondaryCaptchaPolicy.allow);
+            OneLogin.startRequestToken()
+        } else {
+            // 二次验证发生错误
+            decisionHandler(GT3SecondaryCaptchaPolicy.forbidden);
+        }
+    }
+}
+
+extension SwiftLoginViewController: GT3CaptchaManagerViewDelegate {
+    func gtCaptchaWillShowGTView(_ manager: GT3CaptchaManager!) {
+        print("gtCaptchaWillShowGTView")
     }
 }

@@ -12,10 +12,12 @@
 #import "GTProgressHUD.h"
 #import "ResultViewController.h"
 
-@interface OnePassViewController () <GOPManagerDelegate, UITextFieldDelegate, ResultVCDelegate>
+@interface OnePassViewController () <GOPManagerDelegate, UITextFieldDelegate, ResultVCDelegate, GT3CaptchaManagerDelegate, GT3CaptchaManagerViewDelegate>
 
 @property (nonatomic, strong) GOPManager *gopManager;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTF;
+
+@property (nonatomic, strong) GT3CaptchaManager *gt3CaptchaManager;
 
 @end
 
@@ -47,6 +49,15 @@
     return _gopManager;
 }
 
+- (GT3CaptchaManager *)gt3CaptchaManager {
+    if (!_gt3CaptchaManager) {
+        _gt3CaptchaManager = [[GT3CaptchaManager alloc] initWithAPI1:GTCaptchaAPI1 API2:GTCaptchaAPI2 timeout:10.f];
+        _gt3CaptchaManager.viewDelegate = self;
+        _gt3CaptchaManager.delegate = self;
+    }
+    return _gt3CaptchaManager;
+}
+
 // MARK: Action
 
 - (IBAction)nextAction:(id)sender {
@@ -56,6 +67,15 @@
 // MARK: OnePass
 
 - (void)startOnePass {
+    if (self.integrateGTCaptcha) {
+        [self.gt3CaptchaManager registerCaptcha:nil];
+        [self.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+    } else {
+        [self doOnePass];
+    }
+}
+
+- (void)doOnePass {
     NSString *phoneNumber = self.phoneNumberTF.text;
     phoneNumber = [phoneNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
     if ([self checkPhoneNumFormat:phoneNumber]) {
@@ -195,6 +215,30 @@
 
 - (void)resultVCDidReturn {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+// MARK: GT3CaptchaManagerViewDelegate
+
+- (void)gtCaptchaWillShowGTView:(GT3CaptchaManager *)manager {
+    NSLog(@"gtCaptchaWillShowGTView");
+}
+
+// MARK: GT3CaptchaManagerDelegate
+
+- (void)gtCaptcha:(GT3CaptchaManager *)manager errorHandler:(GT3Error *)error {
+    NSLog(@"gtCaptcha errorHandler: %@", error);
+}
+
+- (void)gtCaptcha:(GT3CaptchaManager *)manager didReceiveSecondaryCaptchaData:(NSData *)data response:(NSURLResponse *)response error:(GT3Error *)error decisionHandler:(void (^)(GT3SecondaryCaptchaPolicy))decisionHandler {
+    if (!error) {
+        // 处理验证结果
+        NSLog(@"\ndata: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        decisionHandler(GT3SecondaryCaptchaPolicyAllow);
+        [self doOnePass];
+    } else {
+        // 二次验证发生错误
+        decisionHandler(GT3SecondaryCaptchaPolicyForbidden);
+    }
 }
 
 @end

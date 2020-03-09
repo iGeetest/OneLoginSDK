@@ -44,6 +44,8 @@
 		1CB545C423E9466100EDCDE3 /* SwiftNewLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB545C323E9466100EDCDE3 /* SwiftNewLoginViewController.swift */; };
 		1CB545C623EA612800EDCDE3 /* SwiftOnePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB545C523EA612800EDCDE3 /* SwiftOnePassViewController.swift */; };
 		1CB545C823EA613B00EDCDE3 /* SwiftResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB545C723EA613B00EDCDE3 /* SwiftResultViewController.swift */; };
+		1CE7AF5A24109EE4002CF952 /* GT3Captcha.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CE7AF5824109EE3002CF952 /* GT3Captcha.bundle */; };
+		1CE7AF5B24109EE4002CF952 /* GT3Captcha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CE7AF5924109EE3002CF952 /* GT3Captcha.framework */; };
 		7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CA2241D9A2007EA470 /* Main.storyboard */; };
 		7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */; };
 		7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */; };
@@ -136,6 +138,8 @@
 		1CB545C323E9466100EDCDE3 /* SwiftNewLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNewLoginViewController.swift; sourceTree = "<group>"; };
 		1CB545C523EA612800EDCDE3 /* SwiftOnePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOnePassViewController.swift; sourceTree = "<group>"; };
 		1CB545C723EA613B00EDCDE3 /* SwiftResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftResultViewController.swift; sourceTree = "<group>"; };
+		1CE7AF5824109EE3002CF952 /* GT3Captcha.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GT3Captcha.bundle; sourceTree = "<group>"; };
+		1CE7AF5924109EE3002CF952 /* GT3Captcha.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT3Captcha.framework; sourceTree = "<group>"; };
 		7A3F71C12241D9A2007EA470 /* 无感本机认证.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "无感本机认证.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A3F71CB2241D9A2007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A3F71D02241D9A4007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 			files = (
 				E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */,
 				7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */,
+				1CE7AF5B24109EE4002CF952 /* GT3Captcha.framework in Frameworks */,
 				E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */,
 				E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */,
 				E9C7962423B4C1CC00032AB1 /* account_login_sdk_noui_core.framework in Frameworks */,
@@ -263,9 +268,20 @@
 			path = SwiftMain;
 			sourceTree = "<group>";
 		};
+		1CE7AF5724109EE3002CF952 /* GT3Captcha */ = {
+			isa = PBXGroup;
+			children = (
+				1CE7AF5824109EE3002CF952 /* GT3Captcha.bundle */,
+				1CE7AF5924109EE3002CF952 /* GT3Captcha.framework */,
+			);
+			name = GT3Captcha;
+			path = ../GT3Captcha;
+			sourceTree = "<group>";
+		};
 		7A3F71B82241D9A2007EA470 = {
 			isa = PBXGroup;
 			children = (
+				1CE7AF5724109EE3002CF952 /* GT3Captcha */,
 				E9E778472302CAFE002D91D1 /* SDK */,
 				7A3F71C32241D9A2007EA470 /* OneLoginExample */,
 				7A3F71C22241D9A2007EA470 /* Products */,
@@ -477,6 +493,7 @@
 				E932E71123418D9A00A06ED9 /* index.html in Resources */,
 				1C5069AF23E81F5D006C0213 /* left_yellow@2x.png in Resources */,
 				7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */,
+				1CE7AF5A24109EE4002CF952 /* GT3Captcha.bundle in Resources */,
 				1C5069BB23E81F5E006C0213 /* left_cyan@2x.png in Resources */,
 				1C5069B723E81F5D006C0213 /* right_orange@3x.png in Resources */,
 				1C50698423E80E6D006C0213 /* LICENSE in Resources */,
@@ -688,6 +705,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../SDK",
+					"$(PROJECT_DIR)/../GT3Captcha",
 				);
 				INFOPLIST_FILE = OneLoginExample/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -715,6 +733,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../SDK",
+					"$(PROJECT_DIR)/../GT3Captcha",
 				);
 				INFOPLIST_FILE = OneLoginExample/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

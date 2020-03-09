@@ -10,12 +10,16 @@
 #import "CustomProtocolViewController.h"
 #import "Masonry.h"
 
-@interface LoginViewController () <OneLoginDelegate>
+@interface LoginViewController () <OneLoginDelegate, GT3CaptchaManagerDelegate, GT3CaptchaManagerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *normalLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *popupLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *floatWindowLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *landscapeLoginButton;
+
+@property (nonatomic, strong) GT3CaptchaManager *gt3CaptchaManager;
+
+@property (nonatomic, assign) BOOL isPreGettingToken;
 
 @end
 
@@ -28,6 +32,8 @@
 - (BOOL)needPreGetToken {
     return ![OneLogin isPreGettedTokenValidate];
 }
+
+#pragma mark - View LifeCycle
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -57,14 +63,30 @@
     // 设置delegate，在授权页面点击返回按钮、切换账号按钮时，会执行对应protocol的方法
     [OneLogin setDelegate:self];
     // 开始预取号
+    self.isPreGettingToken = YES;
     [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull result) {
-        
+        self.isPreGettingToken = NO;
     }];
+}
+
+#pragma mark - Getter
+
+- (GT3CaptchaManager *)gt3CaptchaManager {
+    if (!_gt3CaptchaManager) {
+        _gt3CaptchaManager = [[GT3CaptchaManager alloc] initWithAPI1:GTCaptchaAPI1 API2:GTCaptchaAPI2 timeout:10.f];
+        _gt3CaptchaManager.viewDelegate = self;
+        _gt3CaptchaManager.delegate = self;
+    }
+    return _gt3CaptchaManager;
 }
 
 #pragma mark - Action
 
 - (IBAction)normalLoginAction:(UIButton *)sender {
+    if (self.isPreGettingToken) {
+        return;
+    }
+    
     // 防抖，避免重复点击
     sender.enabled = NO;
     
@@ -396,9 +418,19 @@
     dismissAnimation.subtype = kCATransitionFromLeft;
     viewModel.modalDismissAnimation = dismissAnimation;
 #endif
-    
+        
     // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
+    
+    // 结合行为验证
+    if (self.integrateGTCaptcha) {
+        viewModel.customAuthActionBlock = ^BOOL{
+            [wself.gt3CaptchaManager registerCaptcha:nil];
+            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+            return YES;
+        };
+    }
+    
     if ([OneLogin isPreGettedTokenValidate]) {
         [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
             NSLog(@"requestTokenWithViewController result: %@", result);
@@ -427,6 +459,10 @@
 }
 
 - (IBAction)popupLoginAction:(UIButton *)sender {
+    if (self.isPreGettingToken) {
+        return;
+    }
+    
     // 防抖，避免重复点击
     sender.enabled = NO;
     
@@ -451,6 +487,16 @@
     
     // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
+    
+    // 结合行为验证
+    if (self.integrateGTCaptcha) {
+        viewModel.customAuthActionBlock = ^BOOL{
+            [wself.gt3CaptchaManager registerCaptcha:nil];
+            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+            return YES;
+        };
+    }
+    
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
         [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
@@ -477,6 +523,10 @@
 }
 
 - (IBAction)floatWindowLogin:(UIButton *)sender {
+    if (self.isPreGettingToken) {
+        return;
+    }
+    
     // 防抖，避免重复点击
     sender.enabled = NO;
     
@@ -520,6 +570,16 @@
     
     // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
+    
+    // 结合行为验证
+    if (self.integrateGTCaptcha) {
+        viewModel.customAuthActionBlock = ^BOOL{
+            [wself.gt3CaptchaManager registerCaptcha:nil];
+            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+            return YES;
+        };
+    }
+    
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
         [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
@@ -546,6 +606,10 @@
 }
 
 - (IBAction)landscapeLogin:(UIButton *)sender {
+    if (self.isPreGettingToken) {
+        return;
+    }
+    
     // 防抖，避免重复点击
     sender.enabled = NO;
     
@@ -555,6 +619,16 @@
     
     // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
+    
+    // 结合行为验证
+    if (self.integrateGTCaptcha) {
+        viewModel.customAuthActionBlock = ^BOOL{
+            [wself.gt3CaptchaManager registerCaptcha:nil];
+            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+            return YES;
+        };
+    }
+    
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
         [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
@@ -669,6 +743,30 @@
 - (void)userDidDismissAuthViewController {
     if (!self.isNewLogin) {
         [OneLogin dismissAuthViewController:nil];
+    }
+}
+
+// MARK: GT3CaptchaManagerViewDelegate
+
+- (void)gtCaptchaWillShowGTView:(GT3CaptchaManager *)manager {
+    NSLog(@"gtCaptchaWillShowGTView");
+}
+
+// MARK: GT3CaptchaManagerDelegate
+
+- (void)gtCaptcha:(GT3CaptchaManager *)manager errorHandler:(GT3Error *)error {
+    NSLog(@"gtCaptcha errorHandler: %@", error);
+}
+
+- (void)gtCaptcha:(GT3CaptchaManager *)manager didReceiveSecondaryCaptchaData:(NSData *)data response:(NSURLResponse *)response error:(GT3Error *)error decisionHandler:(void (^)(GT3SecondaryCaptchaPolicy))decisionHandler {
+    if (!error) {
+        // 处理验证结果
+        NSLog(@"\ndata: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        decisionHandler(GT3SecondaryCaptchaPolicyAllow);
+        [OneLogin startRequestToken];
+    } else {
+        // 二次验证发生错误
+        decisionHandler(GT3SecondaryCaptchaPolicyForbidden);
     }
 }
 

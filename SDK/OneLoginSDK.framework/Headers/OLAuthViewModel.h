@@ -117,9 +117,24 @@ typedef void(^OLStopLoadingViewBlock)(UIView *containerView);
 typedef void(^OLAuthViewLifeCycleBlock)(NSString *viewLifeCycle, BOOL animated);
 
 /**
- * 点击授权页面授权按钮的回调
+ * 点击授权页面授权按钮的回调，用于监听授权页面登录按钮的点击
  */
 typedef void(^OLClickAuthButtonBlock)(void);
+
+/**
+ * 是否自定义授权页面登录按钮点击事件，用于完全接管授权页面点击事件，当返回 YES 时，可以在 block 中添加自定义操作
+ */
+typedef BOOL(^OLCustomAuthActionBlock)(void);
+
+/**
+ * 点击授权页面返回按钮的回调
+ */
+typedef void(^OLClickBackButtonBlock)(void);
+
+/**
+ * 点击授权页面切换账号按钮的回调
+ */
+typedef void(^OLClickSwitchButtonBlock)(void);
 
 /**
  * 点击授权页面隐私协议前勾选框的回调
@@ -150,6 +165,8 @@ typedef void(^OLAuthVCAutoLayoutBlock)(UIView *authView, UIView *authContentView
 
 /**
  * @abstract 进入授权页面的方式，默认为 modal 方式，即 present 到授权页面，从授权页面进入服务条款页面的方式与此保持一致
+ *
+ * @discussion push 模式不支持弹窗
  */
 typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
     OLPullAuthVCStyleModal,
@@ -201,6 +218,11 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  返回按钮隐藏。默认不隐藏。
  */
 @property (nonatomic, assign) BOOL backButtonHidden;
+
+/**
+ * 点击授权页面返回按钮的回调
+ */
+@property (nullable, nonatomic, copy) OLClickBackButtonBlock clickBackButtonBlock;
 
 #pragma mark - Logo/图标
 
@@ -273,6 +295,11 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  */
 @property (nonatomic, assign) BOOL switchButtonHidden;
 
+/**
+ * 点击授权页面切换账号按钮的回调
+ */
+@property (nullable, nonatomic, copy) OLClickSwitchButtonBlock clickSwitchButtonBlock;
+
 #pragma mark - Authorization Button/认证按钮
 
 /**
@@ -296,9 +323,14 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 @property (nonatomic, assign) CGFloat authButtonCornerRadius;
 
 /**
- * 点击授权页面授权按钮的回调
+ * 点击授权页面授权按钮的回调，用于监听授权页面登录按钮的点击
  */
 @property (nullable, nonatomic, copy) OLClickAuthButtonBlock clickAuthButtonBlock;
+
+/**
+ * 自定义授权页面登录按钮点击事件，用于完全接管授权页面点击事件，当返回 YES 时，可以在 block 中添加自定义操作
+ */
+@property (nullable, nonatomic, copy) OLCustomAuthActionBlock customAuthActionBlock;
 
 #pragma mark - Slogan/口号标语
 
@@ -376,9 +408,19 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 @property (nullable, nonatomic, copy) OLClickCheckboxBlock clickCheckboxBlock;
 
 /**
-* 服务条款文案对齐方式，默认为NSTextAlignmentLeft
-*/
+ * 服务条款文案对齐方式，默认为NSTextAlignmentLeft
+ */
 @property (nonatomic, assign) NSTextAlignment termsAlignment;
+
+/**
+ * 点击授权页面运营商隐私协议的回调
+ */
+@property (nullable, nonatomic, copy) OLViewPrivacyTermItemBlock carrierTermItemBlock;
+
+/**
+ * 是否在运营商协议名称上加书名号《》
+ */
+@property (nonatomic, assign) BOOL hasQuotationMarkOnCarrierProtocol;
 
 #pragma mark - Custom Area/自定义区域
 

@@ -254,9 +254,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)updateAuthButtonTitle:(NSAttributedString *)authButtonTitle;
 
 /**
-* @abstract 删除预取号的缓存
-*/
+ * @abstract 删除预取号的缓存
+ */
 + (void)deletePreResultCache;
+
+/**
+ * @abstract 开始取号
+ */
++ (void)startRequestToken;
 
 @end
 

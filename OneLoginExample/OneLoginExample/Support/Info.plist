@@ -56,6 +56,13 @@
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
+			<key>www.geetest.com</key>
+			<dict>
+				<key>NSAllowsArbitraryLoadsInWebContent</key>
+				<true/>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 		</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>
@@ -83,5 +90,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>ko</string>
+		<string>de</string>
+		<string>it</string>
+		<string>fr</string>
+		<string>ja</string>
+		<string>en</string>
+		<string>zh_CN</string>
+		<string>zh_TW</string>
+	</array>
 </dict>
 </plist>

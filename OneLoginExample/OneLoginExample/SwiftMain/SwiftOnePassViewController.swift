@@ -8,6 +8,7 @@
 
 import UIKit
 import OneLoginSDK
+import GT3Captcha
 
 class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, UITextFieldDelegate {
 
@@ -17,6 +18,13 @@ class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, U
         let manager = GOPManager.init(customID: GTOnePassAppId, timeout: 10.0)
         manager.delegate = self as GOPManagerDelegate
         return manager
+    }()
+    
+    private lazy var gt3CaptchaManager: GT3CaptchaManager = {
+        let manager = GT3CaptchaManager.init(api1: GTCaptchaAPI1, api2: GTCaptchaAPI2, timeout: 5.0)
+        manager!.delegate = self as GT3CaptchaManagerDelegate
+        manager!.viewDelegate = self as GT3CaptchaManagerViewDelegate
+        return manager!
     }()
     
     // MARK: ViewLifeCycle
@@ -41,6 +49,15 @@ class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, U
     // MARK: OnePass
     
     func startOnepass() {
+        if self.ol_integrateGTCaptcha() {
+            self.gt3CaptchaManager.registerCaptcha(nil)
+            self.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+        } else {
+            self.doOnePass()
+        }
+    }
+    
+    func doOnePass() {
         var phoneNumber = self.phoneNumberTF.text
         phoneNumber = phoneNumber?.replacingOccurrences(of: " ", with: "")
         if self.checkPhoneNumFormat(phoneNumber) {
@@ -178,5 +195,29 @@ class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, U
         }
         
         return false
+    }
+}
+
+extension SwiftOnePassViewController: GT3CaptchaManagerDelegate {
+    func gtCaptcha(_ manager: GT3CaptchaManager!, errorHandler error: GT3Error!) {
+        print("gtCaptcha errorHandler: %@", error!)
+    }
+    
+    func gtCaptcha(_ manager: GT3CaptchaManager!, didReceiveSecondaryCaptchaData data: Data!, response: URLResponse!, error: GT3Error!, decisionHandler: ((GT3SecondaryCaptchaPolicy) -> Void)!) {
+        if nil == error {
+            // 处理验证结果
+            print("\ndata: %@", String.init(data: data!, encoding: String.Encoding.utf8)!);
+            decisionHandler(GT3SecondaryCaptchaPolicy.allow);
+            self.doOnePass()
+        } else {
+            // 二次验证发生错误
+            decisionHandler(GT3SecondaryCaptchaPolicy.forbidden);
+        }
+    }
+}
+
+extension SwiftOnePassViewController: GT3CaptchaManagerViewDelegate {
+    func gtCaptchaWillShowGTView(_ manager: GT3CaptchaManager!) {
+        print("gtCaptchaWillShowGTView")
     }
 }

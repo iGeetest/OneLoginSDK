@@ -8,6 +8,7 @@
 
 import UIKit
 import OneLoginSDK
+import GT3Captcha
 
 class SwiftNewLoginViewController: SwiftBaseViewController {
 
@@ -15,6 +16,13 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
     @IBOutlet weak var popupLoginButton: UIButton!
     @IBOutlet weak var floatWindowLoginButton: UIButton!
     @IBOutlet weak var landscapeLoginButton: UIButton!
+    
+    private lazy var gt3CaptchaManager: GT3CaptchaManager = {
+        let manager = GT3CaptchaManager.init(api1: GTCaptchaAPI1, api2: GTCaptchaAPI2, timeout: 5.0)
+        manager!.delegate = self as GT3CaptchaManagerDelegate
+        manager!.viewDelegate = self as GT3CaptchaManagerViewDelegate
+        return manager!
+    }()
     
     // MARK: View Lifecycle
     
@@ -333,6 +341,17 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             }
         }
         
+        // 结合行为验证
+        if self.ol_integrateGTCaptcha() {
+            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+                if let strongSelf = self {
+                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                }
+                return true
+            }
+        }
+        
         // 进入授权页面
         
         if !OneLoginPro.isPreGetTokenResultValidate() {
@@ -373,6 +392,17 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             } else if viewLifeCycle == "viewDidLoad" {
                 // 授权页面出现时，关掉进度条
                 GTProgressHUD.hideAllHUD()
+            }
+        }
+        
+        // 结合行为验证
+        if self.ol_integrateGTCaptcha() {
+            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+                if let strongSelf = self {
+                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                }
+                return true
             }
         }
         
@@ -436,6 +466,17 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             }
         }
         
+        // 结合行为验证
+        if self.ol_integrateGTCaptcha() {
+            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+                if let strongSelf = self {
+                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                }
+                return true
+            }
+        }
+        
         // 进入授权页面
         
         if !OneLoginPro.isPreGetTokenResultValidate() {
@@ -465,6 +506,17 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             } else if viewLifeCycle == "viewDidLoad" {
                 // 授权页面出现时，关掉进度条
                 GTProgressHUD.hideAllHUD()
+            }
+        }
+        
+        // 结合行为验证
+        if self.ol_integrateGTCaptcha() {
+            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+                if let strongSelf = self {
+                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                }
+                return true
             }
         }
         
@@ -573,5 +625,29 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
                 
             }
         }
+    }
+}
+
+extension SwiftNewLoginViewController: GT3CaptchaManagerDelegate {
+    func gtCaptcha(_ manager: GT3CaptchaManager!, errorHandler error: GT3Error!) {
+        print("gtCaptcha errorHandler: %@", error!)
+    }
+    
+    func gtCaptcha(_ manager: GT3CaptchaManager!, didReceiveSecondaryCaptchaData data: Data!, response: URLResponse!, error: GT3Error!, decisionHandler: ((GT3SecondaryCaptchaPolicy) -> Void)!) {
+        if nil == error {
+            // 处理验证结果
+            print("\ndata: %@", String.init(data: data!, encoding: String.Encoding.utf8)!);
+            decisionHandler(GT3SecondaryCaptchaPolicy.allow);
+            OneLoginPro.startRequestToken()
+        } else {
+            // 二次验证发生错误
+            decisionHandler(GT3SecondaryCaptchaPolicy.forbidden);
+        }
+    }
+}
+
+extension SwiftNewLoginViewController: GT3CaptchaManagerViewDelegate {
+    func gtCaptchaWillShowGTView(_ manager: GT3CaptchaManager!) {
+        print("gtCaptchaWillShowGTView")
     }
 }

@@ -14,9 +14,12 @@ class SwiftBaseViewController: UIViewController {
     let GTOnePassAppId = "3996159873d7ccc36f25803b88dda97a"
     let GTOnePassVerifyURL = "http://onepass.geetest.com/v2.0/result"
     
+    let GTCaptchaAPI1 = "http://www.geetest.com/demo/gt/register-test"
+    let GTCaptchaAPI2 = "http://www.geetest.com/demo/gt/validate-test"
+    
     let NeedCustomAuthUI = true
     let OLAuthVCAutoLayout = true
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,5 +32,10 @@ class SwiftBaseViewController: UIViewController {
     
     func ol_screenWidth() -> CGFloat {
         return min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+    }
+    
+    func ol_integrateGTCaptcha() -> Bool {
+        let x = arc4random() % 2
+        return 0 == x
     }
 }

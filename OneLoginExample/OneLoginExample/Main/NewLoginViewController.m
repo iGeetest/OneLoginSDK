@@ -10,12 +10,14 @@
 #import "CustomProtocolViewController.h"
 #import "Masonry.h"
 
-@interface NewLoginViewController ()
+@interface NewLoginViewController () <GT3CaptchaManagerDelegate, GT3CaptchaManagerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *normalLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *popupLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *floatWindowLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *landscapeLoginButton;
+
+@property (nonatomic, strong) GT3CaptchaManager *gt3CaptchaManager;
 
 @end
 
@@ -24,6 +26,8 @@
 - (void)dealloc {
     NSLog(@"------------- %@ %@ -------------", [self class], NSStringFromSelector(_cmd));
 }
+
+#pragma mark - View LifeCycle
 
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -50,6 +54,17 @@
     [OneLoginPro setLogEnabled:YES];
     // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
     [OneLoginPro registerWithAppID:GTOneLoginAppId];
+}
+
+#pragma mark - Getter
+
+- (GT3CaptchaManager *)gt3CaptchaManager {
+    if (!_gt3CaptchaManager) {
+        _gt3CaptchaManager = [[GT3CaptchaManager alloc] initWithAPI1:GTCaptchaAPI1 API2:GTCaptchaAPI2 timeout:10.f];
+        _gt3CaptchaManager.viewDelegate = self;
+        _gt3CaptchaManager.delegate = self;
+    }
+    return _gt3CaptchaManager;
 }
 
 #pragma mark - Action
@@ -383,10 +398,21 @@
 #endif
     
     __weak typeof(self) wself = self;
+    
+    // 结合行为验证
+    if (self.integrateGTCaptcha) {
+        viewModel.customAuthActionBlock = ^BOOL{
+            [wself.gt3CaptchaManager registerCaptcha:nil];
+            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+            return YES;
+        };
+    }
+    
     // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
+    
     // --------------授权页面生命周期回调 -------------------
     viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
         NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
@@ -397,6 +423,7 @@
             [GTProgressHUD hideAllHUD];
         }
     };
+    
     [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
@@ -420,10 +447,12 @@
     viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
     
     __weak typeof(self) wself = self;
+    
     // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
+    
     // --------------授权页面生命周期回调 -------------------
     viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
         NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
@@ -434,6 +463,16 @@
             [GTProgressHUD hideAllHUD];
         }
     };
+    
+    // 结合行为验证
+    if (self.integrateGTCaptcha) {
+        viewModel.customAuthActionBlock = ^BOOL{
+            [wself.gt3CaptchaManager registerCaptcha:nil];
+            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+            return YES;
+        };
+    }
+    
     [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
@@ -477,10 +516,12 @@
     };
     
     __weak typeof(self) wself = self;
+    
     // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
+    
     // --------------授权页面生命周期回调 -------------------
     viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
         NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
@@ -491,6 +532,16 @@
             [GTProgressHUD hideAllHUD];
         }
     };
+    
+    // 结合行为验证
+    if (self.integrateGTCaptcha) {
+        viewModel.customAuthActionBlock = ^BOOL{
+            [wself.gt3CaptchaManager registerCaptcha:nil];
+            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+            return YES;
+        };
+    }
+    
     [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
@@ -507,10 +558,12 @@
     viewModel.supportedInterfaceOrientations = UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
     
     __weak typeof(self) wself = self;
+    
     // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
+    
     // --------------授权页面生命周期回调 -------------------
     viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
         NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
@@ -521,6 +574,16 @@
             [GTProgressHUD hideAllHUD];
         }
     };
+    
+    // 结合行为验证
+    if (self.integrateGTCaptcha) {
+        viewModel.customAuthActionBlock = ^BOOL{
+            [wself.gt3CaptchaManager registerCaptcha:nil];
+            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+            return YES;
+        };
+    }
+    
     [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
@@ -612,4 +675,29 @@
         [OneLoginPro dismissAuthViewController:nil];
     });
 }
+
+// MARK: GT3CaptchaManagerViewDelegate
+
+- (void)gtCaptchaWillShowGTView:(GT3CaptchaManager *)manager {
+    NSLog(@"gtCaptchaWillShowGTView");
+}
+
+// MARK: GT3CaptchaManagerDelegate
+
+- (void)gtCaptcha:(GT3CaptchaManager *)manager errorHandler:(GT3Error *)error {
+    NSLog(@"gtCaptcha errorHandler: %@", error);
+}
+
+- (void)gtCaptcha:(GT3CaptchaManager *)manager didReceiveSecondaryCaptchaData:(NSData *)data response:(NSURLResponse *)response error:(GT3Error *)error decisionHandler:(void (^)(GT3SecondaryCaptchaPolicy))decisionHandler {
+    if (!error) {
+        // 处理验证结果
+        NSLog(@"\ndata: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        decisionHandler(GT3SecondaryCaptchaPolicyAllow);
+        [OneLoginPro startRequestToken];
+    } else {
+        // 二次验证发生错误
+        decisionHandler(GT3SecondaryCaptchaPolicyForbidden);
+    }
+}
+
 @end
