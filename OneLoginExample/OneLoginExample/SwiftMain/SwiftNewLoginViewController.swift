@@ -412,7 +412,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             GTProgressHUD.showLoadingHUD(withMessage: nil)
         }
         
-        OneLoginPro.requestToken(with: self, viewModel: viewModel) { [weak self] result in
+        OneLoginPro.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
             if let strongSelf = self {
                 strongSelf.finishRequsetingToken(result: result!)
             }
@@ -483,7 +483,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             GTProgressHUD.showLoadingHUD(withMessage: nil)
         }
         
-        OneLoginPro.requestToken(with: self, viewModel: viewModel) { [weak self] result in
+        OneLoginPro.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
             if let strongSelf = self {
                 strongSelf.finishRequsetingToken(result: result!)
             }
@@ -549,7 +549,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
     // MARK: Validate Token
     
     func finishRequsetingToken(result: Dictionary<AnyHashable, Any>?) {
-        let status = NSString.init(format: "%@", result?["status"] as! NSNumber)
+        let status = NSString.init(format: "%@", (nil != result?["status"]) ? (result?["status"] as! NSNumber) : "0")
         if 200 == status.integerValue {
             let token = result?["token"] as! String
             let appID = result?["appID"] as! String

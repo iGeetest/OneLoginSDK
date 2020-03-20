@@ -435,7 +435,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
         
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
-            OneLogin.requestToken(with: self, viewModel: viewModel) { [weak self] result in
+            OneLogin.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
                 if let strongSelf = self {
                     strongSelf.finishRequsetingToken(result: result!)
                 }
@@ -448,7 +448,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
                 if let strongSelf = self {
                     let status = NSString.init(format: "%@", preResult["status"] as! NSNumber)
                     if 200 == status.integerValue {
-                        OneLogin.requestToken(with: strongSelf, viewModel: viewModel) { (result) in
+                        OneLogin.requestToken(with: strongSelf.navigationController, viewModel: viewModel) { (result) in
                             strongSelf.finishRequsetingToken(result: result!)
                         }
                     } else {
@@ -520,7 +520,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
         
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
-            OneLogin.requestToken(with: self, viewModel: viewModel) { [weak self] result in
+            OneLogin.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
                 if let strongSelf = self {
                     strongSelf.finishRequsetingToken(result: result!)
                 }
@@ -533,7 +533,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
                 if let strongSelf = self {
                     let status = NSString.init(format: "%@", preResult["status"] as! NSNumber)
                     if 200 == status.integerValue {
-                        OneLogin.requestToken(with: strongSelf, viewModel: viewModel) { (result) in
+                        OneLogin.requestToken(with: strongSelf.navigationController, viewModel: viewModel) { (result) in
                             strongSelf.finishRequsetingToken(result: result!)
                         }
                     } else {
@@ -619,7 +619,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
     // MARK: Validate Token
     
     func finishRequsetingToken(result: Dictionary<AnyHashable, Any>?) {
-        let status = NSString.init(format: "%@", result?["status"] as! NSNumber)
+        let status = NSString.init(format: "%@", (nil != result?["status"]) ? (result?["status"] as! NSNumber) : "0")
         if 200 == status.integerValue {
             let token = result?["token"] as! String
             let appID = result?["appID"] as! String

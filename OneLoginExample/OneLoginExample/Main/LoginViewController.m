@@ -503,7 +503,7 @@
             [GTProgressHUD hideAllHUD];
             NSLog(@"preGetTokenWithCompletion result: %@", preResult);
             if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
-                [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+                [OneLogin requestTokenWithViewController:wself.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
                     NSLog(@"requestTokenWithViewController result: %@", result);
                     [wself finishRequestingToken:result];
                 }];
@@ -514,7 +514,7 @@
             sender.enabled = YES;
         }];
     } else {
-        [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+        [OneLogin requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
             NSLog(@"requestTokenWithViewController result: %@", result);
             [wself finishRequestingToken:result];
             sender.enabled = YES;
@@ -586,7 +586,7 @@
             [GTProgressHUD hideAllHUD];
             NSLog(@"preGetTokenWithCompletion result: %@", preResult);
             if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
-                [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+                [OneLogin requestTokenWithViewController:wself.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
                     NSLog(@"requestTokenWithViewController result: %@", result);
                     [wself finishRequestingToken:result];
                 }];
@@ -597,7 +597,7 @@
             sender.enabled = YES;
         }];
     } else {
-        [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+        [OneLogin requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
             NSLog(@"requestTokenWithViewController result: %@", result);
             [wself finishRequestingToken:result];
             sender.enabled = YES;

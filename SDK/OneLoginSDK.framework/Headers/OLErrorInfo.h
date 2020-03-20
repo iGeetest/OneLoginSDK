@@ -63,6 +63,14 @@ static NSString * const OLErrorDesc_20405 = @"Is requesting token, donot request
 static NSString * const OLErrorCode_20406 = @"-20406";  // 预取号超时
 static NSString * const OLErrorDesc_20406 = @"Preget token timeout.";
 
+static NSString * const OLCarrierSDKErrorDomain  = @"com.geetest.carriersdkerror";
+static NSString * const OLErrorCode_20407 = @"-20407";  // 移动 SDK TYRZSDK.framework 有误
+static NSString * const OLErrorCode_20408 = @"-20408";  // 联通 SDK account_login_sdk_noui_core.framework 有误
+static NSString * const OLErrorCode_20409 = @"-20409";  // 移动 SDK EAccountApiSDK.framework 有误
+
+static NSString * const OLErrorCode_20410 = @"-20410";  // 未获取到 key window
+static NSString * const OLErrorDesc_20410 = @"Key window is nil.";
+
 // ****************** -2041. iOS专用，rsa加密失败 ******************/
 static NSString * const OLRsaErrorDomain  = @"com.geetest.rsaencrypterror";
 static NSString * const OLRsaErrorMsg     = @"Rsa encrypt failed.";

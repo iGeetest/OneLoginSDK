@@ -166,7 +166,7 @@ typedef void(^OLAuthVCAutoLayoutBlock)(UIView *authView, UIView *authContentView
 /**
  * @abstract 进入授权页面的方式，默认为 modal 方式，即 present 到授权页面，从授权页面进入服务条款页面的方式与此保持一致
  *
- * @discussion push 模式不支持弹窗
+ * @discussion push 模式时，不支持弹窗模式
  */
 typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
     OLPullAuthVCStyleModal,
@@ -598,6 +598,18 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  * @abstract 进入授权页面的方式，默认为 modal 方式，即 present 到授权页面，从授权页面进入服务条款页面的方式与此保持一致
  */
 @property (nonatomic, assign) OLPullAuthVCStyle pullAuthVCStyle;
+
+#pragma mark - UIUserInterfaceStyle
+
+/**
+ * @abstract 授权页面 UIUserInterfaceStyle，默认为 UIUserInterfaceStyleLight，即 @(UIUserInterfaceStyleLight)
+ *
+ * UIUserInterfaceStyle
+ * UIUserInterfaceStyleUnspecified - 不指定样式，跟随系统设置进行展示
+ * UIUserInterfaceStyleLight       - 明亮
+ * UIUserInterfaceStyleDark        - 暗黑 仅对 iOS 13+ 系统有效
+ */
+@property (nonatomic, strong) NSNumber *userInterfaceStyle;
 
 @end
 

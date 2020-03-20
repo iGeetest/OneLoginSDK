@@ -473,7 +473,7 @@
         };
     }
     
-    [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+    [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
         sender.enabled = YES;
@@ -542,7 +542,7 @@
         };
     }
     
-    [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+    [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
         sender.enabled = YES;

@@ -39,6 +39,7 @@
 		1C5069BA23E81F5E006C0213 /* purple_center@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C5069AB23E81F5D006C0213 /* purple_center@3x.png */; };
 		1C5069BB23E81F5E006C0213 /* left_cyan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C5069AC23E81F5D006C0213 /* left_cyan@2x.png */; };
 		1C523F7223E8289E00F9534F /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C523F7123E8289E00F9534F /* ResultViewController.m */; };
+		1C832CA0241F1B33002956C4 /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C832C9F241F1B33002956C4 /* Bugly.framework */; };
 		1CB545C023E9430800EDCDE3 /* SwiftLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB545BF23E9430800EDCDE3 /* SwiftLoginViewController.swift */; };
 		1CB545C223E9434900EDCDE3 /* SwiftBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB545C123E9434900EDCDE3 /* SwiftBaseViewController.swift */; };
 		1CB545C423E9466100EDCDE3 /* SwiftNewLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB545C323E9466100EDCDE3 /* SwiftNewLoginViewController.swift */; };
@@ -132,6 +133,7 @@
 		1C5069AC23E81F5D006C0213 /* left_cyan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_cyan@2x.png"; sourceTree = "<group>"; };
 		1C523F7023E8289E00F9534F /* ResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		1C523F7123E8289E00F9534F /* ResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		1C832C9F241F1B33002956C4 /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		1CB545BE23E9430700EDCDE3 /* OneLoginExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneLoginExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		1CB545BF23E9430800EDCDE3 /* SwiftLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftLoginViewController.swift; sourceTree = "<group>"; };
 		1CB545C123E9434900EDCDE3 /* SwiftBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBaseViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */,
 				E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */,
 				E9C7962423B4C1CC00032AB1 /* account_login_sdk_noui_core.framework in Frameworks */,
+				1C832CA0241F1B33002956C4 /* Bugly.framework in Frameworks */,
 				E9C7962223B4C13D00032AB1 /* TYRZSDK.framework in Frameworks */,
 				7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */,
 			);
@@ -255,6 +258,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		1C832C9E241F1B33002956C4 /* Bugly */ = {
+			isa = PBXGroup;
+			children = (
+				1C832C9F241F1B33002956C4 /* Bugly.framework */,
+			);
+			name = Bugly;
+			path = ../Bugly;
+			sourceTree = "<group>";
+		};
 		1CB545BD23E942DD00EDCDE3 /* SwiftMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +293,7 @@
 		7A3F71B82241D9A2007EA470 = {
 			isa = PBXGroup;
 			children = (
+				1C832C9E241F1B33002956C4 /* Bugly */,
 				1CE7AF5724109EE3002CF952 /* GT3Captcha */,
 				E9E778472302CAFE002D91D1 /* SDK */,
 				7A3F71C32241D9A2007EA470 /* OneLoginExample */,
@@ -706,6 +719,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../SDK",
 					"$(PROJECT_DIR)/../GT3Captcha",
+					"$(PROJECT_DIR)/../Bugly",
 				);
 				INFOPLIST_FILE = OneLoginExample/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -734,6 +748,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/../SDK",
 					"$(PROJECT_DIR)/../GT3Captcha",
+					"$(PROJECT_DIR)/../Bugly",
 				);
 				INFOPLIST_FILE = OneLoginExample/Support/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

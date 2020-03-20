@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <OneLoginSDK/OneLoginSDK.h>
+#import <Bugly/Bugly.h>
 
 @interface AppDelegate ()
 
@@ -18,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Bugly startWithAppId:@"c5f79035a3"];
+    
     return YES;
 }
 

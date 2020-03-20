@@ -20,7 +20,7 @@ typedef void(^OLViewPrivacyTermItemBlock)(OLPrivacyTermItem *termItem, UIViewCon
 /**
  条款标题
  */
-@property (nonatomic, strong) NSString *termTitle;
+@property (nonatomic, copy) NSString *termTitle;
 
 /**
  条款链接
