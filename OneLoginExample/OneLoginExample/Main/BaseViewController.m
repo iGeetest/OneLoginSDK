@@ -19,6 +19,11 @@
     return 0 == x;
 }
 
+- (BOOL)integrateGTCaptchaInSDK {
+    int x = arc4random() % 2;
+    return 0 == x;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

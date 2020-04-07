@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C50698423E80E6D006C0213 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 1C50696823E80E6D006C0213 /* LICENSE */; };
 		1C50698523E80E6D006C0213 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C50696B23E80E6D006C0213 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		1C50698623E80E6D006C0213 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C50697423E80E6D006C0213 /* ViewController+MASAdditions.m */; };
 		1C50698723E80E6D006C0213 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C50697823E80E6D006C0213 /* MASCompositeConstraint.m */; };
@@ -83,7 +82,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C50696823E80E6D006C0213 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		1C50696A23E80E6D006C0213 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		1C50696B23E80E6D006C0213 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
 		1C50696C23E80E6D006C0213 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 		1C50696723E80E6D006C0213 /* Masonry */ = {
 			isa = PBXGroup;
 			children = (
-				1C50696823E80E6D006C0213 /* LICENSE */,
 				1C50696923E80E6D006C0213 /* Masonry */,
 				1C50698323E80E6D006C0213 /* README.md */,
 			);
@@ -221,30 +218,30 @@
 			isa = PBXGroup;
 			children = (
 				1C50696A23E80E6D006C0213 /* MASCompositeConstraint.h */,
-				1C50696B23E80E6D006C0213 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				1C50697823E80E6D006C0213 /* MASCompositeConstraint.m */,
+				1C50697623E80E6D006C0213 /* MASConstraint.h */,
+				1C50697F23E80E6D006C0213 /* MASConstraint.m */,
 				1C50696C23E80E6D006C0213 /* MASConstraint+Private.h */,
-				1C50696D23E80E6D006C0213 /* MASLayoutConstraint.h */,
-				1C50696E23E80E6D006C0213 /* NSArray+MASShorthandAdditions.h */,
 				1C50696F23E80E6D006C0213 /* MASConstraintMaker.h */,
-				1C50697023E80E6D006C0213 /* View+MASAdditions.h */,
-				1C50697123E80E6D006C0213 /* NSArray+MASAdditions.h */,
+				1C50697923E80E6D006C0213 /* MASConstraintMaker.m */,
+				1C50696D23E80E6D006C0213 /* MASLayoutConstraint.h */,
+				1C50697A23E80E6D006C0213 /* MASLayoutConstraint.m */,
+				1C50697E23E80E6D006C0213 /* Masonry.h */,
 				1C50697223E80E6D006C0213 /* MASUtilities.h */,
 				1C50697323E80E6D006C0213 /* MASViewAttribute.h */,
-				1C50697423E80E6D006C0213 /* ViewController+MASAdditions.m */,
+				1C50698223E80E6D006C0213 /* MASViewAttribute.m */,
 				1C50697523E80E6D006C0213 /* MASViewConstraint.h */,
-				1C50697623E80E6D006C0213 /* MASConstraint.h */,
-				1C50697723E80E6D006C0213 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				1C50697823E80E6D006C0213 /* MASCompositeConstraint.m */,
-				1C50697923E80E6D006C0213 /* MASConstraintMaker.m */,
-				1C50697A23E80E6D006C0213 /* MASLayoutConstraint.m */,
+				1C50698123E80E6D006C0213 /* MASViewConstraint.m */,
+				1C50697123E80E6D006C0213 /* NSArray+MASAdditions.h */,
 				1C50697B23E80E6D006C0213 /* NSArray+MASAdditions.m */,
+				1C50696E23E80E6D006C0213 /* NSArray+MASShorthandAdditions.h */,
+				1C50697723E80E6D006C0213 /* NSLayoutConstraint+MASDebugAdditions.h */,
+				1C50696B23E80E6D006C0213 /* NSLayoutConstraint+MASDebugAdditions.m */,
+				1C50697023E80E6D006C0213 /* View+MASAdditions.h */,
 				1C50697C23E80E6D006C0213 /* View+MASAdditions.m */,
 				1C50697D23E80E6D006C0213 /* View+MASShorthandAdditions.h */,
-				1C50697E23E80E6D006C0213 /* Masonry.h */,
-				1C50697F23E80E6D006C0213 /* MASConstraint.m */,
 				1C50698023E80E6D006C0213 /* ViewController+MASAdditions.h */,
-				1C50698123E80E6D006C0213 /* MASViewConstraint.m */,
-				1C50698223E80E6D006C0213 /* MASViewAttribute.m */,
+				1C50697423E80E6D006C0213 /* ViewController+MASAdditions.m */,
 			);
 			path = Masonry;
 			sourceTree = "<group>";
@@ -509,7 +506,6 @@
 				1CE7AF5A24109EE4002CF952 /* GT3Captcha.bundle in Resources */,
 				1C5069BB23E81F5E006C0213 /* left_cyan@2x.png in Resources */,
 				1C5069B723E81F5D006C0213 /* right_orange@3x.png in Resources */,
-				1C50698423E80E6D006C0213 /* LICENSE in Resources */,
 				1C5069AD23E81F5D006C0213 /* purple_center@2x.png in Resources */,
 				E92EFDD3238783130060CD5E /* logo@2x.png in Resources */,
 				1C50699623E8111E006C0213 /* logo_normal@3x.png in Resources */,

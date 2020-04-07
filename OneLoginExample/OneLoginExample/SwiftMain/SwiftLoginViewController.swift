@@ -364,6 +364,12 @@ class SwiftLoginViewController: SwiftBaseViewController {
             }
         }
         
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        if self.ol_integrateGTCaptchaInSDK() {
+            viewModel.captchaAPI1 = GTCaptchaAPI1
+            viewModel.captchaAPI2 = GTCaptchaAPI2
+        }
+        
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
             OneLogin.requestToken(with: self, viewModel: viewModel) { [weak self] result in
@@ -431,6 +437,12 @@ class SwiftLoginViewController: SwiftBaseViewController {
                 }
                 return true
             }
+        }
+        
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        if self.ol_integrateGTCaptchaInSDK() {
+            viewModel.captchaAPI1 = GTCaptchaAPI1
+            viewModel.captchaAPI2 = GTCaptchaAPI2
         }
         
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
@@ -518,6 +530,12 @@ class SwiftLoginViewController: SwiftBaseViewController {
             }
         }
         
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        if self.ol_integrateGTCaptchaInSDK() {
+            viewModel.captchaAPI1 = GTCaptchaAPI1
+            viewModel.captchaAPI2 = GTCaptchaAPI2
+        }
+        
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
             OneLogin.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
@@ -574,6 +592,12 @@ class SwiftLoginViewController: SwiftBaseViewController {
                 }
                 return true
             }
+        }
+        
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        if self.ol_integrateGTCaptchaInSDK() {
+            viewModel.captchaAPI1 = GTCaptchaAPI1
+            viewModel.captchaAPI2 = GTCaptchaAPI2
         }
         
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面

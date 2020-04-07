@@ -38,4 +38,9 @@ class SwiftBaseViewController: UIViewController {
         let x = arc4random() % 2
         return 0 == x
     }
+    
+    func ol_integrateGTCaptchaInSDK() -> Bool {
+        let x = arc4random() % 2
+        return 0 == x
+    }
 }

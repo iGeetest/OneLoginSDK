@@ -352,6 +352,12 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             }
         }
         
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        if self.ol_integrateGTCaptchaInSDK() {
+            viewModel.captchaAPI1 = GTCaptchaAPI1
+            viewModel.captchaAPI2 = GTCaptchaAPI2
+        }
+        
         // 进入授权页面
         
         if !OneLoginPro.isPreGetTokenResultValidate() {
@@ -404,6 +410,12 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
                 }
                 return true
             }
+        }
+        
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        if self.ol_integrateGTCaptchaInSDK() {
+            viewModel.captchaAPI1 = GTCaptchaAPI1
+            viewModel.captchaAPI2 = GTCaptchaAPI2
         }
         
         // 进入授权页面
@@ -477,6 +489,12 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             }
         }
         
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        if self.ol_integrateGTCaptchaInSDK() {
+            viewModel.captchaAPI1 = GTCaptchaAPI1
+            viewModel.captchaAPI2 = GTCaptchaAPI2
+        }
+        
         // 进入授权页面
         
         if !OneLoginPro.isPreGetTokenResultValidate() {
@@ -518,6 +536,12 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
                 }
                 return true
             }
+        }
+        
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        if self.ol_integrateGTCaptchaInSDK() {
+            viewModel.captchaAPI1 = GTCaptchaAPI1
+            viewModel.captchaAPI2 = GTCaptchaAPI2
         }
         
         // 进入授权页面

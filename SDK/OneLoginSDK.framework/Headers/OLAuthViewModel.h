@@ -526,9 +526,9 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 @property (nonatomic, assign) BOOL canClosePopupFromTapGesture;
 
 /**
-* 点击授权页面弹窗背景的回调
-*/
-@property (nonatomic, copy) OLTapAuthBackgroundBlock tapAuthBackgroundBlock;
+ * 点击授权页面弹窗背景的回调
+ */
+@property (nonatomic, copy, nullable) OLTapAuthBackgroundBlock tapAuthBackgroundBlock;
 
 #pragma mark - Loading
 
@@ -610,6 +610,17 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  * UIUserInterfaceStyleDark        - 暗黑 仅对 iOS 13+ 系统有效
  */
 @property (nonatomic, strong) NSNumber *userInterfaceStyle;
+
+#pragma mark - GT3Captcha
+
+/**
+ * @abstract 行为验证集成参数
+ *
+ * @discussion 当需要集成行为验证时，请参考 https://docs.geetest.com/sensebot/deploy/client/ios 先将行为验证 SDK 集成到工程中，然后给 captchaAPI1、captchaAPI2、captchaTimeout 进行赋值，在授权页面点击一键登录时，就会先弹出行为验证页面，验证通过之后才会进行获取 token 的操作
+ */
+@property (nonatomic, copy, nullable) NSString *captchaAPI1;
+@property (nonatomic, copy, nullable) NSString *captchaAPI2;
+@property (nonatomic, assign) NSTimeInterval captchaTimeout;
 
 @end
 

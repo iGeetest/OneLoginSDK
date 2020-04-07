@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL isNewLogin;
 @property (nonatomic, assign) BOOL integrateGTCaptcha;
+@property (nonatomic, assign) BOOL integrateGTCaptchaInSDK;
 
 - (CGFloat)ol_screenWidth;
 - (CGFloat)ol_screenHeight;

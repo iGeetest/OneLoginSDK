@@ -408,6 +408,12 @@
         };
     }
     
+    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+    if (self.integrateGTCaptchaInSDK) {
+        viewModel.captchaAPI1 = GTCaptchaAPI1;
+        viewModel.captchaAPI2 = GTCaptchaAPI2;
+    }
+    
     // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
@@ -471,6 +477,12 @@
             [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
             return YES;
         };
+    }
+    
+    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+    if (self.integrateGTCaptchaInSDK) {
+        viewModel.captchaAPI1 = GTCaptchaAPI1;
+        viewModel.captchaAPI2 = GTCaptchaAPI2;
     }
     
     [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
@@ -542,6 +554,12 @@
         };
     }
     
+    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+    if (self.integrateGTCaptchaInSDK) {
+        viewModel.captchaAPI1 = GTCaptchaAPI1;
+        viewModel.captchaAPI2 = GTCaptchaAPI2;
+    }
+    
     [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
@@ -582,6 +600,12 @@
             [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
             return YES;
         };
+    }
+    
+    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+    if (self.integrateGTCaptchaInSDK) {
+        viewModel.captchaAPI1 = GTCaptchaAPI1;
+        viewModel.captchaAPI2 = GTCaptchaAPI2;
     }
     
     [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
