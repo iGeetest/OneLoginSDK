@@ -2,7 +2,7 @@
 //  OneLoginPro.h
 //  OneLoginSDK
 //
-//  Created by NikoXu on 2019/3/18.
+//  Created by liulian on 2019/3/18.
 //  Copyright © 2019 geetest. All rights reserved.
 //
 

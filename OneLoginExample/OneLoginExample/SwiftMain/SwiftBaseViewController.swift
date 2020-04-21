@@ -33,14 +33,4 @@ class SwiftBaseViewController: UIViewController {
     func ol_screenWidth() -> CGFloat {
         return min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
     }
-    
-    func ol_integrateGTCaptcha() -> Bool {
-        let x = arc4random() % 2
-        return 0 == x
-    }
-    
-    func ol_integrateGTCaptchaInSDK() -> Bool {
-        let x = arc4random() % 2
-        return 0 == x
-    }
 }

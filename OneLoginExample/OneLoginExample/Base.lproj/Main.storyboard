@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Base Navigation View Controller-->
         <scene sceneID="EKF-NW-nAR">
             <objects>
-                <navigationController id="XWX-11-Qe1" sceneMemberID="viewController">
+                <navigationController id="XWX-11-Qe1" customClass="BaseNavigationViewController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ceP-yw-IOv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -36,13 +36,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VI-f6-ANQ">
-                                <rect key="frame" x="87.5" y="251.5" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="223.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="M8M-uy-cZj"/>
                                     <constraint firstAttribute="width" constant="200" id="ck6-5d-LtU"/>
                                 </constraints>
-                                <state key="normal" title="一键登录(新)">
+                                <state key="normal" title="一键登录(进阶)">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -50,12 +50,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybf-59-G9F">
-                                <rect key="frame" x="87.5" y="316.5" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="288.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="sms-Zb-xkF"/>
                                 </constraints>
-                                <state key="normal" title="一键登录">
+                                <state key="normal" title="一键登录(常规)">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -63,7 +63,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP1-Yw-k6A">
-                                <rect key="frame" x="87.5" y="381.5" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="353.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="Hvg-fY-3xw"/>
@@ -82,7 +82,7 @@
                             <constraint firstItem="ybf-59-G9F" firstAttribute="leading" secondItem="3VI-f6-ANQ" secondAttribute="leading" id="3eS-Y8-Fcx"/>
                             <constraint firstItem="EP1-Yw-k6A" firstAttribute="centerX" secondItem="ybf-59-G9F" secondAttribute="centerX" id="A3N-xJ-gkY"/>
                             <constraint firstItem="EP1-Yw-k6A" firstAttribute="top" secondItem="ybf-59-G9F" secondAttribute="bottom" constant="25" id="crp-KI-dMq"/>
-                            <constraint firstItem="3VI-f6-ANQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-62" id="d1b-04-oCQ"/>
+                            <constraint firstItem="3VI-f6-ANQ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-90" id="d1b-04-oCQ"/>
                             <constraint firstItem="ybf-59-G9F" firstAttribute="top" secondItem="3VI-f6-ANQ" secondAttribute="bottom" constant="25" id="hB2-fh-J0p"/>
                             <constraint firstItem="EP1-Yw-k6A" firstAttribute="height" secondItem="ybf-59-G9F" secondAttribute="height" id="jJi-kG-92i"/>
                             <constraint firstItem="3VI-f6-ANQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tUd-Jo-kYd"/>
@@ -141,7 +141,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRA-71-DSy">
-                                <rect key="frame" x="87.5" y="223" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="223.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="7k7-VD-VJr"/>
@@ -155,7 +155,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmj-7V-6PD">
-                                <rect key="frame" x="87.5" y="166" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="163.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7GQ-cf-Ur4"/>
@@ -168,20 +168,54 @@
                                     <action selector="normalLoginAction:" destination="1zu-Rh-LB1" eventType="touchUpInside" id="Ivk-kw-DQM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXO-LP-dye">
+                                <rect key="frame" x="87.5" y="403.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ADf-c8-QWr"/>
+                                    <constraint firstAttribute="height" constant="40" id="mCB-1W-063"/>
+                                </constraints>
+                                <state key="normal" title="一键登录结合行为验证">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captchaLoginAction:" destination="1zu-Rh-LB1" eventType="touchUpInside" id="YBx-IW-6d6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldm-AL-bmL">
+                                <rect key="frame" x="87.5" y="463.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="AQG-Ol-g2Y"/>
+                                    <constraint firstAttribute="height" constant="40" id="obZ-qO-Z3v"/>
+                                </constraints>
+                                <state key="normal" title="SDK内结合行为验证">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captchaInSDKLoginAction:" destination="1zu-Rh-LB1" eventType="touchUpInside" id="Rug-cw-dJ8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FRA-71-DSy" firstAttribute="top" secondItem="rmj-7V-6PD" secondAttribute="bottom" constant="17" id="0Q2-fp-24e"/>
+                            <constraint firstItem="FRA-71-DSy" firstAttribute="top" secondItem="rmj-7V-6PD" secondAttribute="bottom" constant="20" id="0Q2-fp-24e"/>
                             <constraint firstItem="Jg9-ql-W83" firstAttribute="centerY" secondItem="rux-ok-ART" secondAttribute="centerY" constant="30" id="8C5-9Q-ohV"/>
+                            <constraint firstItem="Ldm-AL-bmL" firstAttribute="centerX" secondItem="YXO-LP-dye" secondAttribute="centerX" id="9zT-iw-trB"/>
                             <constraint firstItem="Jtp-er-Zx8" firstAttribute="centerX" secondItem="rux-ok-ART" secondAttribute="centerX" id="Af6-Ff-HZx"/>
+                            <constraint firstItem="YXO-LP-dye" firstAttribute="top" secondItem="Jg9-ql-W83" secondAttribute="bottom" constant="20" id="EmN-di-WCs"/>
                             <constraint firstItem="FRA-71-DSy" firstAttribute="centerX" secondItem="Jtp-er-Zx8" secondAttribute="centerX" id="KsP-G0-7bP"/>
                             <constraint firstItem="rmj-7V-6PD" firstAttribute="centerX" secondItem="FRA-71-DSy" secondAttribute="centerX" id="OHi-oZ-N76"/>
                             <constraint firstItem="Jtp-er-Zx8" firstAttribute="centerY" secondItem="rux-ok-ART" secondAttribute="centerY" constant="-30" id="TCA-w4-Co2"/>
                             <constraint firstItem="Jg9-ql-W83" firstAttribute="centerX" secondItem="rux-ok-ART" secondAttribute="centerX" id="Wji-wK-DK5"/>
-                            <constraint firstItem="Jtp-er-Zx8" firstAttribute="top" secondItem="FRA-71-DSy" secondAttribute="bottom" constant="20.5" id="rmt-cO-AUS"/>
+                            <constraint firstItem="YXO-LP-dye" firstAttribute="centerX" secondItem="Jg9-ql-W83" secondAttribute="centerX" id="pha-eY-onh"/>
+                            <constraint firstItem="Jtp-er-Zx8" firstAttribute="top" secondItem="FRA-71-DSy" secondAttribute="bottom" constant="20" id="rmt-cO-AUS"/>
+                            <constraint firstItem="Ldm-AL-bmL" firstAttribute="top" secondItem="YXO-LP-dye" secondAttribute="bottom" constant="20" id="z5P-JS-BoZ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captchaInSDKLoginButton" destination="Ldm-AL-bmL" id="oag-ED-37w"/>
+                        <outlet property="captchaLoginButton" destination="YXO-LP-dye" id="KRl-cH-haO"/>
                         <outlet property="floatWindowLoginButton" destination="Jtp-er-Zx8" id="p8e-OV-H3c"/>
                         <outlet property="landscapeLoginButton" destination="Jg9-ql-W83" id="OxL-n6-VLg"/>
                         <outlet property="normalLoginButton" destination="rmj-7V-6PD" id="AuD-zw-hw7"/>
@@ -233,7 +267,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttZ-VO-SPo">
-                                <rect key="frame" x="87.5" y="223" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="223.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ooq-u5-qdN"/>
@@ -247,7 +281,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9O-oC-3ze">
-                                <rect key="frame" x="87.5" y="166" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="163.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="klr-uP-WS5"/>
@@ -260,20 +294,54 @@
                                     <action selector="normalLoginAction:" destination="wax-Dj-HDH" eventType="touchUpInside" id="at8-Pc-Tm7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77e-Cj-DjR">
+                                <rect key="frame" x="87.5" y="403.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="lMh-hm-7oo"/>
+                                    <constraint firstAttribute="height" constant="40" id="p7s-Ax-hyY"/>
+                                </constraints>
+                                <state key="normal" title="一键登录结合行为验证">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captchaLoginAction:" destination="wax-Dj-HDH" eventType="touchUpInside" id="jfo-iu-7GB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcR-7g-32f">
+                                <rect key="frame" x="87.5" y="463.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1ph-8r-8aW"/>
+                                    <constraint firstAttribute="height" constant="40" id="cKg-1P-MvV"/>
+                                </constraints>
+                                <state key="normal" title="SDK内结合行为验证">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captchaInSDKLoginButton:" destination="wax-Dj-HDH" eventType="touchUpInside" id="NOL-pj-FTm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="AxS-zt-V4F" firstAttribute="top" secondItem="ttZ-VO-SPo" secondAttribute="bottom" constant="20.5" id="Ei5-T0-9fx"/>
+                            <constraint firstItem="AxS-zt-V4F" firstAttribute="top" secondItem="ttZ-VO-SPo" secondAttribute="bottom" constant="20" id="Ei5-T0-9fx"/>
                             <constraint firstItem="K9O-oC-3ze" firstAttribute="centerX" secondItem="ttZ-VO-SPo" secondAttribute="centerX" id="Heb-7r-nVd"/>
                             <constraint firstItem="AxS-zt-V4F" firstAttribute="centerY" secondItem="9cs-E8-cMb" secondAttribute="centerY" constant="-30" id="Sc6-Tt-ouA"/>
+                            <constraint firstItem="AcR-7g-32f" firstAttribute="centerX" secondItem="77e-Cj-DjR" secondAttribute="centerX" id="UMC-Y9-M2X"/>
                             <constraint firstItem="ysA-n3-Lgv" firstAttribute="centerY" secondItem="9cs-E8-cMb" secondAttribute="centerY" constant="30" id="Ucg-1Z-SvC"/>
+                            <constraint firstItem="77e-Cj-DjR" firstAttribute="centerX" secondItem="ysA-n3-Lgv" secondAttribute="centerX" id="WPx-CZ-B1X"/>
                             <constraint firstItem="ttZ-VO-SPo" firstAttribute="centerX" secondItem="AxS-zt-V4F" secondAttribute="centerX" id="ZDo-jv-Ajd"/>
+                            <constraint firstItem="AcR-7g-32f" firstAttribute="top" secondItem="77e-Cj-DjR" secondAttribute="bottom" constant="20" id="e7J-Rd-jaY"/>
                             <constraint firstItem="AxS-zt-V4F" firstAttribute="centerX" secondItem="9cs-E8-cMb" secondAttribute="centerX" id="i5m-Vw-KRx"/>
-                            <constraint firstItem="ttZ-VO-SPo" firstAttribute="top" secondItem="K9O-oC-3ze" secondAttribute="bottom" constant="17" id="ncd-Hr-Nnb"/>
+                            <constraint firstItem="ttZ-VO-SPo" firstAttribute="top" secondItem="K9O-oC-3ze" secondAttribute="bottom" constant="20" id="ncd-Hr-Nnb"/>
                             <constraint firstItem="ysA-n3-Lgv" firstAttribute="centerX" secondItem="9cs-E8-cMb" secondAttribute="centerX" id="qvo-Nq-V1l"/>
+                            <constraint firstItem="77e-Cj-DjR" firstAttribute="top" secondItem="ysA-n3-Lgv" secondAttribute="bottom" constant="20" id="sxc-34-0P9"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captchaInSDKLoginButton" destination="AcR-7g-32f" id="aC1-MH-5ei"/>
+                        <outlet property="captchaLoginButton" destination="77e-Cj-DjR" id="awv-Ye-gtI"/>
                         <outlet property="floatWindowLoginButton" destination="AxS-zt-V4F" id="zhR-Hd-4yg"/>
                         <outlet property="landscapeLoginButton" destination="ysA-n3-Lgv" id="mR9-B1-l52"/>
                         <outlet property="normalLoginButton" destination="K9O-oC-3ze" id="0YH-FT-ZjZ"/>
@@ -296,7 +364,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_normal.png" translatesAutoresizingMaskIntoConstraints="NO" id="24c-b1-duF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_normal" translatesAutoresizingMaskIntoConstraints="NO" id="24c-b1-duF">
                                 <rect key="frame" x="20" y="47" width="123" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="1AI-Ua-IyD"/>
@@ -478,7 +546,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_normal.png" translatesAutoresizingMaskIntoConstraints="NO" id="6dg-G7-lNa">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_normal" translatesAutoresizingMaskIntoConstraints="NO" id="6dg-G7-lNa">
                                 <rect key="frame" x="32" y="24" width="123" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="123" id="4Gj-Qf-xv2"/>
@@ -648,7 +716,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6H-nv-fpI">
-                                <rect key="frame" x="87.5" y="223" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="223.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="6lG-Od-aTk"/>
@@ -662,7 +730,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yH-cS-ZH1">
-                                <rect key="frame" x="87.5" y="166" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="163.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="fxv-cv-qNt"/>
@@ -675,20 +743,54 @@
                                     <action selector="normalLoginAction:" destination="ESM-NB-yzW" eventType="touchUpInside" id="hoS-en-HXf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F9B-zg-5Jp">
+                                <rect key="frame" x="87.5" y="403.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1uw-7O-cnK"/>
+                                    <constraint firstAttribute="width" constant="200" id="ZyW-4o-Msw"/>
+                                </constraints>
+                                <state key="normal" title="一键登录结合行为验证">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captchaLoginAction:" destination="ESM-NB-yzW" eventType="touchUpInside" id="h2u-SF-7MS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="swt-wo-VZ9">
+                                <rect key="frame" x="87.5" y="463.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="amf-YS-HMi"/>
+                                    <constraint firstAttribute="width" constant="200" id="mDV-I4-glj"/>
+                                </constraints>
+                                <state key="normal" title="SDK内结合行为验证">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captchaInSDKLoginAction:" destination="ESM-NB-yzW" eventType="touchUpInside" id="Ojc-ev-ecv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="swt-wo-VZ9" firstAttribute="centerX" secondItem="F9B-zg-5Jp" secondAttribute="centerX" id="29K-Pl-VMm"/>
                             <constraint firstItem="DUe-Q6-yTs" firstAttribute="centerY" secondItem="CLn-jt-1cC" secondAttribute="centerY" constant="30" id="3nN-yP-sVm"/>
                             <constraint firstItem="Z6H-nv-fpI" firstAttribute="centerX" secondItem="iyg-Q4-8j3" secondAttribute="centerX" id="91c-Jt-WDV"/>
+                            <constraint firstItem="F9B-zg-5Jp" firstAttribute="centerX" secondItem="DUe-Q6-yTs" secondAttribute="centerX" id="D6E-gW-9aV"/>
                             <constraint firstItem="9yH-cS-ZH1" firstAttribute="centerX" secondItem="Z6H-nv-fpI" secondAttribute="centerX" id="F3H-JO-Scl"/>
                             <constraint firstItem="iyg-Q4-8j3" firstAttribute="centerX" secondItem="CLn-jt-1cC" secondAttribute="centerX" id="IHL-OK-md6"/>
                             <constraint firstItem="DUe-Q6-yTs" firstAttribute="centerX" secondItem="CLn-jt-1cC" secondAttribute="centerX" id="OnO-2V-W2G"/>
-                            <constraint firstItem="iyg-Q4-8j3" firstAttribute="top" secondItem="Z6H-nv-fpI" secondAttribute="bottom" constant="20.5" id="dDi-kF-c6n"/>
-                            <constraint firstItem="Z6H-nv-fpI" firstAttribute="top" secondItem="9yH-cS-ZH1" secondAttribute="bottom" constant="17" id="etP-0B-oTC"/>
+                            <constraint firstItem="iyg-Q4-8j3" firstAttribute="top" secondItem="Z6H-nv-fpI" secondAttribute="bottom" constant="20" id="dDi-kF-c6n"/>
+                            <constraint firstItem="Z6H-nv-fpI" firstAttribute="top" secondItem="9yH-cS-ZH1" secondAttribute="bottom" constant="20" id="etP-0B-oTC"/>
+                            <constraint firstItem="F9B-zg-5Jp" firstAttribute="top" secondItem="DUe-Q6-yTs" secondAttribute="bottom" constant="20" id="h2E-BU-1FV"/>
                             <constraint firstItem="iyg-Q4-8j3" firstAttribute="centerY" secondItem="CLn-jt-1cC" secondAttribute="centerY" constant="-30" id="jtf-Bi-iQf"/>
+                            <constraint firstItem="swt-wo-VZ9" firstAttribute="top" secondItem="F9B-zg-5Jp" secondAttribute="bottom" constant="20" id="vAW-YR-ccE"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captchaInSDKLoginButton" destination="swt-wo-VZ9" id="ktA-Gu-8fs"/>
+                        <outlet property="captchaLoginButton" destination="F9B-zg-5Jp" id="LnR-8F-2RZ"/>
                         <outlet property="floatWindowLoginButton" destination="iyg-Q4-8j3" id="zCZ-um-WW1"/>
                         <outlet property="landscapeLoginButton" destination="DUe-Q6-yTs" id="cSp-i5-X9h"/>
                         <outlet property="normalLoginButton" destination="9yH-cS-ZH1" id="FrL-5e-snn"/>
@@ -740,7 +842,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zxp-R1-YYl">
-                                <rect key="frame" x="87.5" y="223" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="223.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="MWK-Q0-aLT"/>
@@ -754,7 +856,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BeA-cl-v8g">
-                                <rect key="frame" x="87.5" y="166" width="200" height="40"/>
+                                <rect key="frame" x="87.5" y="163.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="BBV-6F-ZOE"/>
@@ -767,20 +869,54 @@
                                     <action selector="normalLoginAction:" destination="DWD-Xn-jcf" eventType="touchUpInside" id="Llm-6k-7mD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQv-E6-j1I">
+                                <rect key="frame" x="87.5" y="403.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5bJ-Hw-7io"/>
+                                    <constraint firstAttribute="width" constant="200" id="JuE-Ct-byx"/>
+                                </constraints>
+                                <state key="normal" title="一键登录结合行为验证">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captchaLoginAction:" destination="DWD-Xn-jcf" eventType="touchUpInside" id="22E-cu-Q8h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2D-Lf-awe">
+                                <rect key="frame" x="87.5" y="463.5" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="3q8-3f-VSV"/>
+                                    <constraint firstAttribute="width" constant="200" id="fQ2-Xn-pdw"/>
+                                </constraints>
+                                <state key="normal" title="SDK内结合行为验证">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captchaInSDKLoginAction:" destination="DWD-Xn-jcf" eventType="touchUpInside" id="HP8-Wu-O61"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="p2D-Lf-awe" firstAttribute="top" secondItem="qQv-E6-j1I" secondAttribute="bottom" constant="20" id="1Mk-Nt-ZC1"/>
+                            <constraint firstItem="p2D-Lf-awe" firstAttribute="centerX" secondItem="qQv-E6-j1I" secondAttribute="centerX" id="1ep-j8-lJ4"/>
                             <constraint firstItem="Buc-0m-sHd" firstAttribute="centerY" secondItem="nOz-jc-Xqv" secondAttribute="centerY" constant="-30" id="Arl-6d-e69"/>
-                            <constraint firstItem="Buc-0m-sHd" firstAttribute="top" secondItem="Zxp-R1-YYl" secondAttribute="bottom" constant="20.5" id="HzN-vT-XMQ"/>
+                            <constraint firstItem="Buc-0m-sHd" firstAttribute="top" secondItem="Zxp-R1-YYl" secondAttribute="bottom" constant="20" id="HzN-vT-XMQ"/>
                             <constraint firstItem="Zxp-R1-YYl" firstAttribute="centerX" secondItem="Buc-0m-sHd" secondAttribute="centerX" id="URg-Zh-HOj"/>
-                            <constraint firstItem="Zxp-R1-YYl" firstAttribute="top" secondItem="BeA-cl-v8g" secondAttribute="bottom" constant="17" id="et9-Pn-EMk"/>
+                            <constraint firstItem="Zxp-R1-YYl" firstAttribute="top" secondItem="BeA-cl-v8g" secondAttribute="bottom" constant="20" id="et9-Pn-EMk"/>
                             <constraint firstItem="H2e-kv-WZa" firstAttribute="centerX" secondItem="nOz-jc-Xqv" secondAttribute="centerX" id="evD-3u-xRo"/>
+                            <constraint firstItem="qQv-E6-j1I" firstAttribute="centerX" secondItem="H2e-kv-WZa" secondAttribute="centerX" id="gR0-dV-jcs"/>
                             <constraint firstItem="H2e-kv-WZa" firstAttribute="centerY" secondItem="nOz-jc-Xqv" secondAttribute="centerY" constant="30" id="ksN-8H-m1i"/>
                             <constraint firstItem="BeA-cl-v8g" firstAttribute="centerX" secondItem="Zxp-R1-YYl" secondAttribute="centerX" id="n76-GX-Mjw"/>
                             <constraint firstItem="Buc-0m-sHd" firstAttribute="centerX" secondItem="nOz-jc-Xqv" secondAttribute="centerX" id="oIP-JK-J7x"/>
+                            <constraint firstItem="qQv-E6-j1I" firstAttribute="top" secondItem="H2e-kv-WZa" secondAttribute="bottom" constant="20" id="ori-uq-57w"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="captchaInSDKLoginButton" destination="p2D-Lf-awe" id="b1k-FP-Y6M"/>
+                        <outlet property="captchaLoginButton" destination="qQv-E6-j1I" id="zq7-Ld-F0m"/>
                         <outlet property="floatWindowLoginButton" destination="Buc-0m-sHd" id="XLb-gO-6wc"/>
                         <outlet property="landscapeLoginButton" destination="H2e-kv-WZa" id="hAa-1j-QsW"/>
                         <outlet property="normalLoginButton" destination="BeA-cl-v8g" id="svz-IZ-Q2y"/>
@@ -803,7 +939,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_normal.png" translatesAutoresizingMaskIntoConstraints="NO" id="4kl-XQ-3vS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_normal" translatesAutoresizingMaskIntoConstraints="NO" id="4kl-XQ-3vS">
                                 <rect key="frame" x="20" y="47" width="123" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="a7I-cG-TFi"/>
@@ -975,6 +1111,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo_normal.png" width="123" height="31"/>
+        <image name="logo_normal" width="123" height="31"/>
     </resources>
 </document>

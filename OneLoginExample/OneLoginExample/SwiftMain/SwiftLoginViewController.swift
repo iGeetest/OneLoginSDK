@@ -16,7 +16,9 @@ class SwiftLoginViewController: SwiftBaseViewController {
     @IBOutlet weak var popupLoginButton: UIButton!
     @IBOutlet weak var floatWindowLoginButton: UIButton!
     @IBOutlet weak var landscapeLoginButton: UIButton!
-    
+    @IBOutlet weak var captchaLoginButton: UIButton!
+    @IBOutlet weak var captchaInSDKLoginButton: UIButton!
+        
     private lazy var gt3CaptchaManager: GT3CaptchaManager = {
         let manager = GT3CaptchaManager.init(api1: GTCaptchaAPI1, api2: GTCaptchaAPI2, timeout: 5.0)
         manager!.delegate = self as GT3CaptchaManagerDelegate
@@ -31,7 +33,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.navigationItem.title = "OneLogin"
+        self.navigationItem.title = "一键登录(常规)"
         self.normalLoginButton.layer.masksToBounds = true
         self.normalLoginButton.layer.cornerRadius = 5
         self.popupLoginButton.layer.masksToBounds = true
@@ -40,6 +42,10 @@ class SwiftLoginViewController: SwiftBaseViewController {
         self.floatWindowLoginButton.layer.cornerRadius = 5
         self.landscapeLoginButton.layer.masksToBounds = true
         self.landscapeLoginButton.layer.cornerRadius = 5
+        self.captchaLoginButton.layer.masksToBounds = true
+        self.captchaLoginButton.layer.cornerRadius = 5
+        self.captchaInSDKLoginButton.layer.masksToBounds = true
+        self.captchaInSDKLoginButton.layer.cornerRadius = 5
         
         // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
         OneLogin.setLogEnabled(true)
@@ -91,7 +97,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
             viewModel.statusBarStyle = .lightContent
             
             // -------------- 授权页面背景图片设置 -------------------
-            viewModel.backgroundColor = .lightGray
+            viewModel.backgroundColor = .white
             
             // -------------- 导航栏设置 -------------------
             viewModel.naviTitle = NSAttributedString.init(string: "一键登录", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)]) // 导航栏标题
@@ -201,7 +207,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
             }
             
             // -------------- 授权页面自动旋转时的回调，在该回调中调整自定义视图的frame，若授权页面不支持自动旋转，或者没有添加自定义视图，可不用实现该block -------------------
-            viewModel.authVCTransitionBlock = { (size, coordinator, customAreaView) in
+            viewModel.authVCTransitionBlock = { (size, coordinator, customAreaView) in                
                 if size.width > size.height { // 横屏
                     customBtn.center = CGPoint.init(x: customAreaHeight/2, y: customAreaWidth/2 - 15)
                 } else {                      // 竖屏
@@ -348,26 +354,9 @@ class SwiftLoginViewController: SwiftBaseViewController {
                         make?.right.equalTo()(authContentView)?.offset()(-20)
                         make?.height.mas_equalTo()(40)
                         make?.top.equalTo()(authAgreementView.mas_bottom)?.offset()(30)
-                    }
+                    }                    
                 }
             }
-        }
-        
-        // 结合行为验证
-        if self.ol_integrateGTCaptcha() {
-            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
-                if let strongSelf = self {
-                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
-                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
-                }
-                return true
-            }
-        }
-        
-        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-        if self.ol_integrateGTCaptchaInSDK() {
-            viewModel.captchaAPI1 = GTCaptchaAPI1
-            viewModel.captchaAPI2 = GTCaptchaAPI2
         }
         
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
@@ -426,23 +415,6 @@ class SwiftLoginViewController: SwiftBaseViewController {
             if (viewLifeCycle == "viewDidDisappear:") {
                 sender.isEnabled = true
             }
-        }
-        
-        // 结合行为验证
-        if self.ol_integrateGTCaptcha() {
-            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
-                if let strongSelf = self {
-                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
-                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
-                }
-                return true
-            }
-        }
-        
-        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-        if self.ol_integrateGTCaptchaInSDK() {
-            viewModel.captchaAPI1 = GTCaptchaAPI1
-            viewModel.captchaAPI2 = GTCaptchaAPI2
         }
         
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
@@ -519,23 +491,6 @@ class SwiftLoginViewController: SwiftBaseViewController {
         viewModel.closePopupTopOffset = NSNumber.init(value: 3)  // 关闭按钮距弹窗顶部偏移
         viewModel.closePopupRightOffset = NSNumber.init(value: -8)
         
-        // 结合行为验证
-        if self.ol_integrateGTCaptcha() {
-            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
-                if let strongSelf = self {
-                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
-                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
-                }
-                return true
-            }
-        }
-        
-        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-        if self.ol_integrateGTCaptchaInSDK() {
-            viewModel.captchaAPI1 = GTCaptchaAPI1
-            viewModel.captchaAPI2 = GTCaptchaAPI2
-        }
-        
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
             OneLogin.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
@@ -583,23 +538,111 @@ class SwiftLoginViewController: SwiftBaseViewController {
             }
         }
         
-        // 结合行为验证
-        if self.ol_integrateGTCaptcha() {
-            viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+        // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
+        if OneLogin.isPreGettedTokenValidate() {
+            OneLogin.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
                 if let strongSelf = self {
-                    strongSelf.gt3CaptchaManager.registerCaptcha(nil)
-                    strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+                    strongSelf.finishRequsetingToken(result: result!)
                 }
-                return true
+                sender.isEnabled = true
+            }
+        } else {
+            GTProgressHUD.showLoadingHUD(withMessage: nil)
+            OneLogin.preGetToken { [weak self] preResult in
+                GTProgressHUD.hideAllHUD()
+                if let strongSelf = self {
+                    let status = NSString.init(format: "%@", preResult["status"] as! NSNumber)
+                    if 200 == status.integerValue {
+                        OneLogin.requestToken(with: strongSelf.navigationController, viewModel: viewModel) { (result) in
+                            strongSelf.finishRequsetingToken(result: result!)
+                        }
+                    } else {
+                        let message = (preResult["msg"] != nil) ? (preResult["msg"] as! String) : "预取号失败"
+                        GTProgressHUD.showToast(withMessage: message)
+                    }
+                }
+                sender.isEnabled = true
+            }
+        }
+    }
+    
+    @IBAction func captchaLoginAction(_ sender: UIButton) {
+        if self.isPreGettingToken {
+            return
+        }
+        
+        // 防抖，避免重复点击
+        sender.isEnabled = false
+        
+        let viewModel = OLAuthViewModel()
+        
+        // --------------授权页面生命周期回调 -------------------
+        viewModel.viewLifeCycleBlock = { (viewLifeCycle: String, animated: Bool) in
+            print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
+            if (viewLifeCycle == "viewDidDisappear:") {
+                sender.isEnabled = true
+            }
+        }
+        
+        // 结合行为验证
+        viewModel.customAuthActionBlock = { [weak self] () -> Bool in
+            if let strongSelf = self {
+                strongSelf.gt3CaptchaManager.registerCaptcha(nil)
+                strongSelf.gt3CaptchaManager.startGTCaptchaWith(animated: true)
+            }
+            return true
+        }
+                
+        // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
+        if OneLogin.isPreGettedTokenValidate() {
+            OneLogin.requestToken(with: self, viewModel: viewModel) { [weak self] result in
+                if let strongSelf = self {
+                    strongSelf.finishRequsetingToken(result: result!)
+                }
+                sender.isEnabled = true
+            }
+        } else {
+            GTProgressHUD.showLoadingHUD(withMessage: nil)
+            OneLogin.preGetToken { [weak self] preResult in
+                GTProgressHUD.hideAllHUD()
+                if let strongSelf = self {
+                    let status = NSString.init(format: "%@", preResult["status"] as! NSNumber)
+                    if 200 == status.integerValue {
+                        OneLogin.requestToken(with: strongSelf, viewModel: viewModel) { (result) in
+                            strongSelf.finishRequsetingToken(result: result!)
+                        }
+                    } else {
+                        let message = (preResult["msg"] != nil) ? (preResult["msg"] as! String) : "预取号失败"
+                        GTProgressHUD.showToast(withMessage: message)
+                    }
+                }
+                sender.isEnabled = true
+            }
+        }
+    }
+    
+    @IBAction func captchaInSDKLoginAction(_ sender: UIButton) {
+        if self.isPreGettingToken {
+            return
+        }
+        
+        // 防抖，避免重复点击
+        sender.isEnabled = false
+        
+        let viewModel = OLAuthViewModel()
+        
+        // --------------授权页面生命周期回调 -------------------
+        viewModel.viewLifeCycleBlock = { (viewLifeCycle: String, animated: Bool) in
+            print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
+            if (viewLifeCycle == "viewDidDisappear:") {
+                sender.isEnabled = true
             }
         }
         
         // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-        if self.ol_integrateGTCaptchaInSDK() {
-            viewModel.captchaAPI1 = GTCaptchaAPI1
-            viewModel.captchaAPI2 = GTCaptchaAPI2
-        }
-        
+        viewModel.captchaAPI1 = GTCaptchaAPI1
+        viewModel.captchaAPI2 = GTCaptchaAPI2
+                
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
             OneLogin.requestToken(with: self, viewModel: viewModel) { [weak self] result in
@@ -643,14 +686,13 @@ class SwiftLoginViewController: SwiftBaseViewController {
     // MARK: Validate Token
     
     func finishRequsetingToken(result: Dictionary<AnyHashable, Any>?) {
-        let status = NSString.init(format: "%@", (nil != result?["status"]) ? (result?["status"] as! NSNumber) : "0")
-        if 200 == status.integerValue {
-            let token = result?["token"] as! String
-            let appID = result?["appID"] as! String
-            let processID = result?["processID"] as! String
+        if let result = result, let status = result[OLStatusKey], 200 == (status as! NSNumber).intValue {
+            let token = result[OLTokenKey] as! String
+            let appID = result[OLAppIDKey] as! String
+            let processID = result[OLProcessIDKey] as! String
             var authcode: String? = nil
-            if nil != result?["authcode"] {
-                authcode = result?["authcode"] as? String
+            if nil != result[OLAuthcodeKey] {
+                authcode = result[OLAuthcodeKey] as? String
             }
             self.validateToken(token: token, appId: appID, processID: processID, authcode: authcode)
         } else {
@@ -663,10 +705,16 @@ class SwiftLoginViewController: SwiftBaseViewController {
     
     func validateToken(token: String?, appId: String?, processID: String?, authcode: String?) {
         var params = Dictionary<String, Any>.init()
-        params["process_id"] = (nil != processID) ? processID : ""
-        params["id_2_sign"] = (nil != appId) ? appId : ""
-        params["token"] = (nil != token) ? token : ""
-        if nil != authcode {
+        if let token = token {
+            params["token"] = token
+        }
+        if let processID = processID {
+            params["process_id"] = processID
+        }
+        if let appId = appId {
+            params["id_2_sign"] = appId
+        }
+        if let authcode = authcode {
             params["authcode"] = authcode
         }
         do {
@@ -702,9 +750,8 @@ class SwiftLoginViewController: SwiftBaseViewController {
         print("validateToken result: %@, error: %@", (nil != result) ? result! : "", (nil != error) ? error! : "")
         DispatchQueue.main.async {
             GTProgressHUD.hideAllHUD()
-            let status = NSString.init(format: "%@", (nil != result) ? (result?["status"] as! NSNumber) : "0")
-            if 200 == status.integerValue {
-                let message = result?["result"] as? String
+            if let result = result, let status = result["status"], 200 == (status as! NSNumber).intValue {
+                let message = result["result"] as? String
                 if nil != message {
                     GTProgressHUD.showToast(withMessage: String.init(format: "手机号为：%@", message!))
                 } else {

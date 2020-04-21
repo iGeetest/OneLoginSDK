@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *popupLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *floatWindowLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *landscapeLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *captchaLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *captchaInSDKLoginButton;
 
 @property (nonatomic, strong) GT3CaptchaManager *gt3CaptchaManager;
 
@@ -55,6 +57,10 @@
     self.floatWindowLoginButton.layer.cornerRadius = 5;
     self.landscapeLoginButton.layer.masksToBounds = YES;
     self.landscapeLoginButton.layer.cornerRadius = 5;
+    self.captchaLoginButton.layer.masksToBounds = YES;
+    self.captchaLoginButton.layer.cornerRadius = 5;
+    self.captchaInSDKLoginButton.layer.masksToBounds = YES;
+    self.captchaInSDKLoginButton.layer.cornerRadius = 5;
     
     // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
     [OneLogin setLogEnabled:YES];
@@ -422,21 +428,6 @@
     // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
     
-    // 结合行为验证
-    if (self.integrateGTCaptcha) {
-        viewModel.customAuthActionBlock = ^BOOL{
-            [wself.gt3CaptchaManager registerCaptcha:nil];
-            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-            return YES;
-        };
-    }
-    
-    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    if (self.integrateGTCaptchaInSDK) {
-        viewModel.captchaAPI1 = GTCaptchaAPI1;
-        viewModel.captchaAPI2 = GTCaptchaAPI2;
-    }
-    
     if ([OneLogin isPreGettedTokenValidate]) {
         [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
             NSLog(@"requestTokenWithViewController result: %@", result);
@@ -493,21 +484,6 @@
     
     // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
-    
-    // 结合行为验证
-    if (self.integrateGTCaptcha) {
-        viewModel.customAuthActionBlock = ^BOOL{
-            [wself.gt3CaptchaManager registerCaptcha:nil];
-            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-            return YES;
-        };
-    }
-    
-    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    if (self.integrateGTCaptchaInSDK) {
-        viewModel.captchaAPI1 = GTCaptchaAPI1;
-        viewModel.captchaAPI2 = GTCaptchaAPI2;
-    }
     
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
@@ -583,21 +559,6 @@
     // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
     
-    // 结合行为验证
-    if (self.integrateGTCaptcha) {
-        viewModel.customAuthActionBlock = ^BOOL{
-            [wself.gt3CaptchaManager registerCaptcha:nil];
-            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-            return YES;
-        };
-    }
-    
-    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    if (self.integrateGTCaptchaInSDK) {
-        viewModel.captchaAPI1 = GTCaptchaAPI1;
-        viewModel.captchaAPI2 = GTCaptchaAPI2;
-    }
-    
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
         [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
@@ -638,21 +599,99 @@
     // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
     __weak typeof(self) wself = self;
     
-    // 结合行为验证
-    if (self.integrateGTCaptcha) {
-        viewModel.customAuthActionBlock = ^BOOL{
-            [wself.gt3CaptchaManager registerCaptcha:nil];
-            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-            return YES;
-        };
+    if ([self needPreGetToken]) {
+        [GTProgressHUD showLoadingHUDWithMessage:nil];
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
+            [GTProgressHUD hideAllHUD];
+            NSLog(@"preGetTokenWithCompletion result: %@", preResult);
+            if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
+                [OneLogin requestTokenWithViewController:wself.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+                    NSLog(@"requestTokenWithViewController result: %@", result);
+                    // 自定义授权页面点击登录按钮之后的loading时，调用此方法会触发stopLoadingViewBlock回调，可以在此回调中停止自定义的loading
+                    [OneLogin stopLoading];
+                    [wself finishRequestingToken:result];
+                }];
+            } else {    // 预取号失败
+                [GTProgressHUD showToastWithMessage:preResult[@"msg"]?:@"预取号失败"];
+            }
+            
+            sender.enabled = YES;
+        }];
+    } else {
+        [OneLogin requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+            NSLog(@"requestTokenWithViewController result: %@", result);
+            [wself finishRequestingToken:result];
+            sender.enabled = YES;
+        }];
     }
+}
+
+- (IBAction)captchaLoginAction:(UIButton *)sender {
+    if (self.isPreGettingToken) {
+        return;
+    }
+    
+    // 防抖，避免重复点击
+    sender.enabled = NO;
+    
+    // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可
+    OLAuthViewModel *viewModel = [OLAuthViewModel new];
+    
+    // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
+    __weak typeof(self) wself = self;
+    
+    // 结合行为验证
+    viewModel.customAuthActionBlock = ^BOOL{
+        [wself.gt3CaptchaManager registerCaptcha:nil];
+        [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+        return YES;
+    };
+        
+    if ([self needPreGetToken]) {
+        [GTProgressHUD showLoadingHUDWithMessage:nil];
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
+            [GTProgressHUD hideAllHUD];
+            NSLog(@"preGetTokenWithCompletion result: %@", preResult);
+            if (preResult.count > 0 && preResult[@"status"] && 200 == [preResult[@"status"] integerValue]) {
+                [OneLogin requestTokenWithViewController:wself viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+                    NSLog(@"requestTokenWithViewController result: %@", result);
+                    // 自定义授权页面点击登录按钮之后的loading时，调用此方法会触发stopLoadingViewBlock回调，可以在此回调中停止自定义的loading
+                    [OneLogin stopLoading];
+                    [wself finishRequestingToken:result];
+                }];
+            } else {    // 预取号失败
+                [GTProgressHUD showToastWithMessage:preResult[@"msg"]?:@"预取号失败"];
+            }
+            
+            sender.enabled = YES;
+        }];
+    } else {
+        [OneLogin requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+            NSLog(@"requestTokenWithViewController result: %@", result);
+            [wself finishRequestingToken:result];
+            sender.enabled = YES;
+        }];
+    }
+}
+
+- (IBAction)captchaInSDKLoginAction:(UIButton *)sender {
+    if (self.isPreGettingToken) {
+        return;
+    }
+    
+    // 防抖，避免重复点击
+    sender.enabled = NO;
+    
+    // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可
+    OLAuthViewModel *viewModel = [OLAuthViewModel new];
+    
+    // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
+    __weak typeof(self) wself = self;
     
     // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    if (self.integrateGTCaptchaInSDK) {
-        viewModel.captchaAPI1 = GTCaptchaAPI1;
-        viewModel.captchaAPI2 = GTCaptchaAPI2;
-    }
-    
+    viewModel.captchaAPI1 = GTCaptchaAPI1;
+    viewModel.captchaAPI2 = GTCaptchaAPI2;
+        
     if ([self needPreGetToken]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
         [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull preResult) {
@@ -689,11 +728,11 @@
 }
 
 - (void)finishRequestingToken:(NSDictionary *)result {
-    if (result.count > 0 && result[@"status"] && 200 == [result[@"status"] integerValue]) {
-        NSString *token = result[@"token"];
-        NSString *appID = result[@"appID"];
-        NSString *processID = result[@"processID"];
-        NSString *authcode = result[@"authcode"];
+    if (result.count > 0 && result[OLStatusKey] && 200 == [result[OLStatusKey] integerValue]) {
+        NSString *token = result[OLTokenKey];
+        NSString *appID = result[OLAppIDKey];
+        NSString *processID = result[OLProcessIDKey];
+        NSString *authcode = result[OLAuthcodeKey];
         [self validateToken:token appID:appID processID:processID authcode:authcode];
     } else {
         [GTProgressHUD showToastWithMessage:@"登录失败"];

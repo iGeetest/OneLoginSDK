@@ -46,6 +46,13 @@ class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, U
         self.view.endEditing(true)
     }
     
+    // MARK: Integrate GTCaptcha
+    
+    func ol_integrateGTCaptcha() -> Bool {
+        let x = arc4random() % 2
+        return 0 == x
+    }
+    
     // MARK: OnePass
     
     func startOnepass() {
@@ -138,7 +145,6 @@ class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, U
             let dataTask = URLSession.shared.dataTask(with: mRequest) { [weak self] (data: Data?, response: URLResponse?, error: Error?) in
                 DispatchQueue.main.async {
                     GTProgressHUD.hideAllHUD()
-                    
                     if let strongSelf = self {
                         var result: [AnyHashable : Any]?
                         if nil != data && nil == error {

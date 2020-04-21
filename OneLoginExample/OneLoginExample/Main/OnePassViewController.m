@@ -64,6 +64,13 @@
     [self startOnePass];
 }
 
+// MARK: Integrate GTCaptcha
+
+- (BOOL)integrateGTCaptcha {
+    int x = arc4random() % 2;
+    return 0 == x;
+}
+
 // MARK: OnePass
 
 - (void)startOnePass {

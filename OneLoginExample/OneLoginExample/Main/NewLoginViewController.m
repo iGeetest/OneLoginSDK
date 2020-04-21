@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *popupLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *floatWindowLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *landscapeLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *captchaLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *captchaInSDKLoginButton;
 
 @property (nonatomic, strong) GT3CaptchaManager *gt3CaptchaManager;
 
@@ -49,6 +51,10 @@
     self.floatWindowLoginButton.layer.cornerRadius = 5;
     self.landscapeLoginButton.layer.masksToBounds = YES;
     self.landscapeLoginButton.layer.cornerRadius = 5;
+    self.captchaLoginButton.layer.masksToBounds = YES;
+    self.captchaLoginButton.layer.cornerRadius = 5;
+    self.captchaInSDKLoginButton.layer.masksToBounds = YES;
+    self.captchaInSDKLoginButton.layer.cornerRadius = 5;
     
     // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
     [OneLoginPro setLogEnabled:YES];
@@ -399,21 +405,6 @@
     
     __weak typeof(self) wself = self;
     
-    // 结合行为验证
-    if (self.integrateGTCaptcha) {
-        viewModel.customAuthActionBlock = ^BOOL{
-            [wself.gt3CaptchaManager registerCaptcha:nil];
-            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-            return YES;
-        };
-    }
-    
-    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    if (self.integrateGTCaptchaInSDK) {
-        viewModel.captchaAPI1 = GTCaptchaAPI1;
-        viewModel.captchaAPI2 = GTCaptchaAPI2;
-    }
-    
     // 在SDK内部预取号未成功时，建议加载进度条
     if (![OneLoginPro isPreGetTokenResultValidate]) {
         [GTProgressHUD showLoadingHUDWithMessage:nil];
@@ -469,21 +460,6 @@
             [GTProgressHUD hideAllHUD];
         }
     };
-    
-    // 结合行为验证
-    if (self.integrateGTCaptcha) {
-        viewModel.customAuthActionBlock = ^BOOL{
-            [wself.gt3CaptchaManager registerCaptcha:nil];
-            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-            return YES;
-        };
-    }
-    
-    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    if (self.integrateGTCaptchaInSDK) {
-        viewModel.captchaAPI1 = GTCaptchaAPI1;
-        viewModel.captchaAPI2 = GTCaptchaAPI2;
-    }
     
     [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
@@ -545,21 +521,6 @@
         }
     };
     
-    // 结合行为验证
-    if (self.integrateGTCaptcha) {
-        viewModel.customAuthActionBlock = ^BOOL{
-            [wself.gt3CaptchaManager registerCaptcha:nil];
-            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-            return YES;
-        };
-    }
-    
-    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    if (self.integrateGTCaptchaInSDK) {
-        viewModel.captchaAPI1 = GTCaptchaAPI1;
-        viewModel.captchaAPI2 = GTCaptchaAPI2;
-    }
-    
     [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
@@ -593,20 +554,80 @@
         }
     };
     
-    // 结合行为验证
-    if (self.integrateGTCaptcha) {
-        viewModel.customAuthActionBlock = ^BOOL{
-            [wself.gt3CaptchaManager registerCaptcha:nil];
-            [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-            return YES;
-        };
+    [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+        NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
+        [wself finishRequestingToken:result];
+        sender.enabled = YES;
+    }];
+}
+
+- (IBAction)captchaLoginAction:(UIButton *)sender {
+    // 防抖，避免重复点击
+    sender.enabled = NO;
+    
+    // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可
+    OLAuthViewModel *viewModel = [OLAuthViewModel new];
+    
+    __weak typeof(self) wself = self;
+    
+    // 在SDK内部预取号未成功时，建议加载进度条
+    if (![OneLoginPro isPreGetTokenResultValidate]) {
+        [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
     
-    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    if (self.integrateGTCaptchaInSDK) {
-        viewModel.captchaAPI1 = GTCaptchaAPI1;
-        viewModel.captchaAPI2 = GTCaptchaAPI2;
+    // --------------授权页面生命周期回调 -------------------
+    viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
+        NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
+        if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
+            sender.enabled = YES;
+        } else if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
+            // 授权页面出现时，关掉进度条
+            [GTProgressHUD hideAllHUD];
+        }
+    };
+    
+    // 结合行为验证
+    viewModel.customAuthActionBlock = ^BOOL{
+        [wself.gt3CaptchaManager registerCaptcha:nil];
+        [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
+        return YES;
+    };
+        
+    [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
+        NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
+        [wself finishRequestingToken:result];
+        sender.enabled = YES;
+    }];
+}
+
+- (IBAction)captchaInSDKLoginButton:(UIButton *)sender {
+    // 防抖，避免重复点击
+    sender.enabled = NO;
+    
+    // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可
+    OLAuthViewModel *viewModel = [OLAuthViewModel new];
+    
+    __weak typeof(self) wself = self;
+    
+    // 在SDK内部预取号未成功时，建议加载进度条
+    if (![OneLoginPro isPreGetTokenResultValidate]) {
+        [GTProgressHUD showLoadingHUDWithMessage:nil];
     }
+    
+    // --------------授权页面生命周期回调 -------------------
+    viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
+        NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
+        if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
+            sender.enabled = YES;
+        } else if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
+            // 授权页面出现时，关掉进度条
+            [GTProgressHUD hideAllHUD];
+        }
+    };
+    
+    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+    viewModel.captchaAPI1 = GTCaptchaAPI1;
+    viewModel.captchaAPI2 = GTCaptchaAPI2;
     
     [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
@@ -624,16 +645,16 @@
 }
 
 - (void)finishRequestingToken:(NSDictionary *)result {
-    if (result.count > 0 && result[@"status"] && 200 == [result[@"status"] integerValue]) {
-        NSString *token = result[@"token"];
-        NSString *appID = result[@"appID"];
-        NSString *processID = result[@"processID"];
-        NSString *authcode = result[@"authcode"];
+    if (result.count > 0 && result[OLStatusKey] && 200 == [result[OLStatusKey] integerValue]) {
+        NSString *token = result[OLTokenKey];
+        NSString *appID = result[OLAppIDKey];
+        NSString *processID = result[OLProcessIDKey];
+        NSString *authcode = result[OLAuthcodeKey];
         [self validateToken:token appID:appID processID:processID authcode:authcode];
     } else {
-        if (result[@"errorCode"] && [result[@"errorCode"] isEqual:@"-20302"]) { // 点击授权页面返回按钮退出授权页面
+        if (result[OLErrCodeKey] && [result[OLErrCodeKey] isEqual:OLErrorCode_20302]) { // 点击授权页面返回按钮退出授权页面
             
-        } else if (result[@"errorCode"] && [result[@"errorCode"] isEqual:@"-20303"]) { // 点击授权页面切换账号按钮
+        } else if (result[OLErrCodeKey] && [result[OLErrCodeKey] isEqual:OLErrorCode_20303]) { // 点击授权页面切换账号按钮
             [GTProgressHUD showToastWithMessage:@"切换账号"];
             [OneLoginPro dismissAuthViewController:nil];
         } else {

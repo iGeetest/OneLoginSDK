@@ -2,7 +2,7 @@
 //  OLAuthViewModel.h
 //  OneLoginSDK
 //
-//  Created by NikoXu on 2019/3/25.
+//  Created by liulian on 2019/3/25.
 //  Copyright © 2019 geetest. All rights reserved.
 //
 
@@ -463,7 +463,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  */
 @property (nullable, nonatomic, copy) OLAuthVCAutoLayoutBlock autolayoutBlock;
 
-#pragma mark - orientationMask
+#pragma mark - orientation
 
 /**
  * 授权页面支持的横竖屏方向
@@ -602,7 +602,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 #pragma mark - UIUserInterfaceStyle
 
 /**
- * @abstract 授权页面 UIUserInterfaceStyle，默认为 UIUserInterfaceStyleLight，即 @(UIUserInterfaceStyleLight)
+ * @abstract 授权页面 UIUserInterfaceStyle，iOS 12 及以上系统，默认为 UIUserInterfaceStyleLight
  *
  * UIUserInterfaceStyle
  * UIUserInterfaceStyleUnspecified - 不指定样式，跟随系统设置进行展示
