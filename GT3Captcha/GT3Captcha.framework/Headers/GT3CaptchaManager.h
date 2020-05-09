@@ -173,6 +173,16 @@
 - (void)useGTViewWithCornerRadius:(CGFloat)cornerRadius;
 
 /**
+ *  @abstract 验证静态参数
+ *
+ *  @discussion
+ *  内部将参数转换成表单格式，并拼接到静态资源的请求上
+ *
+ *  @param params 自定义参数
+ */
+- (void)useGTViewWithParams:(NSDictionary *)params;
+
+/**
  *  @abstract 验证标题
  *
  *  @discussion

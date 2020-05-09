@@ -29,6 +29,7 @@
 
 - (void)dealloc {
     NSLog(@"------------- %@ %@ -------------", [self class], NSStringFromSelector(_cmd));
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)needPreGetToken {
@@ -62,17 +63,50 @@
     self.captchaInSDKLoginButton.layer.masksToBounds = YES;
     self.captchaInSDKLoginButton.layer.cornerRadius = 5;
     
-    // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
-    [OneLogin setLogEnabled:YES];
-    // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
-    [OneLogin registerWithAppID:GTOneLoginAppId];
-    // 设置delegate，在授权页面点击返回按钮、切换账号按钮时，会执行对应protocol的方法
-    [OneLogin setDelegate:self];
-    // 开始预取号
-    self.isPreGettingToken = YES;
-    [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull result) {
-        self.isPreGettingToken = NO;
-    }];
+    [self initOneLogin];
+}
+
+#pragma mark - Init OneLogin
+
+- (void)initOneLogin {
+    if ([self canInitOneLogin]) {
+        [self reallyInitOneLogin];
+    } else {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveBecomeActiveNotification:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    }
+}
+
+- (void)reallyInitOneLogin {
+    if (![OneLogin hasRegistered]) {
+        // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
+        [OneLogin setLogEnabled:YES];
+        // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
+        [OneLogin registerWithAppID:GTOneLoginAppId];
+        // 设置delegate，在授权页面点击返回按钮、切换账号按钮时，会执行对应protocol的方法
+        [OneLogin setDelegate:self];
+        // 开始预取号
+        self.isPreGettingToken = YES;
+        [OneLogin preGetTokenWithCompletion:^(NSDictionary * _Nonnull result) {
+            self.isPreGettingToken = NO;
+        }];
+    }
+}
+
+- (BOOL)canInitOneLogin {
+    OLNetworkInfo *networkInfo = [OneLogin currentNetworkInfo];
+    if (nil != networkInfo.carrierName && (OLNetworkTypeCellular == networkInfo.networkType || OLNetworkTypeCellularAndWIFI == networkInfo.networkType)) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+#pragma mark - didReceiveBecomeActiveNotification
+
+- (void)didReceiveBecomeActiveNotification:(NSNotification *)noti {
+    if ([self canInitOneLogin]) {
+        [self reallyInitOneLogin];
+    }
 }
 
 #pragma mark - Getter
@@ -144,7 +178,7 @@
     // -------------- 手机号设置 -------------------
     viewModel.phoneNumColor = UIColor.redColor; // 颜色
     viewModel.phoneNumFont = [UIFont boldSystemFontOfSize:25]; // 字体
-    OLRect phoneNumRect = {0, 0, 0, 0, 0, 0, {0, 0}};  // 手机号偏移设置，手机号不支持设置宽高
+    OLRect phoneNumRect = {0, 0, 0, 0, 0, 0, {0, 0}};  // 手机号偏移设置
     viewModel.phoneNumRect = phoneNumRect;
     
     // -------------- 切换账号设置 -------------------
@@ -742,19 +776,12 @@
 
 // 使用token获取用户的登录信息
 - (void)validateToken:(NSString *)token appID:(NSString *)appID processID:(NSString *)processID authcode:(NSString *)authcode {
-    // 根据用户自己接口构造
-    // demo仅做演示
-    // 请不要在线上使用该接口 `http://onepass.geetest.com/onelogin/result`
-    
+    /**
+     * 根据用户自己接口构造
+     * demo仅做演示
+     * 请不要在线上使用该接口 http://onepass.geetest.com/onelogin/result
+     */
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@onelogin/result", GTOneLoginResultURL]];
-#ifdef GTOneLoginIntranetTestURL
-    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@onelogin/result", GTOneLoginIntranetTestURL]];
-#endif
-    
-#ifdef GTOneLoginExtranetTestURL
-    url = [NSURL URLWithString:[NSString stringWithFormat:@"%@onelogin/result", GTOneLoginExtranetTestURL]];
-#endif
-    
     NSMutableURLRequest *mRequest = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:(NSURLRequestCachePolicy)0 timeoutInterval:10.0];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setValue:processID forKey:@"process_id"];
@@ -819,6 +846,25 @@
 
 - (void)gtCaptcha:(GT3CaptchaManager *)manager errorHandler:(GT3Error *)error {
     NSLog(@"gtCaptcha errorHandler: %@", error);
+}
+
+- (void)gtCaptcha:(GT3CaptchaManager *)manager willSendRequestAPI1:(NSURLRequest *)originalRequest withReplacedHandler:(void (^)(NSURLRequest *))replacedHandler {
+    NSMutableURLRequest *mRequest = [originalRequest mutableCopy];
+    NSString *originURL = originalRequest.URL.absoluteString;
+    NSRange tRange = [originURL rangeOfString:@"?t="];
+    NSString *newURL = originURL.copy;
+    if (NSNotFound != tRange.location) {
+        if (newURL.length >= tRange.location + tRange.length + 13) {
+            newURL = [newURL stringByReplacingCharactersInRange:NSMakeRange(tRange.location + tRange.length, 13) withString:[NSString stringWithFormat:@"%.0f", 1000 * [[[NSDate alloc] init] timeIntervalSince1970]]];
+        }
+    } else {
+        newURL = [NSString stringWithFormat:@"%@?t=%.0f", originURL, 1000 * [[[NSDate alloc] init] timeIntervalSince1970]];
+    }
+    
+    mRequest.URL = [NSURL URLWithString:newURL];
+    NSLog(@"gtCaptcha willSendRequestAPI1 newURL: %@", newURL);
+    
+    replacedHandler(mRequest);
 }
 
 - (void)gtCaptcha:(GT3CaptchaManager *)manager didReceiveSecondaryCaptchaData:(NSData *)data response:(NSURLResponse *)response error:(GT3Error *)error decisionHandler:(void (^)(GT3SecondaryCaptchaPolicy))decisionHandler {

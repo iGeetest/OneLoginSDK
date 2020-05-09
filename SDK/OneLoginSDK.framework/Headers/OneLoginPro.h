@@ -36,6 +36,13 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)registerWithAppID:(NSString *)appID;
 
 /**
+ * 判断是否已经注册
+ *
+ * @return 已注册，返回 YES，未注册，返回 NO
+ */
++ (BOOL)hasRegistered;
+
+/**
  设置请求超时时长。默认时长5s。
 
  @param timeout 超时时长

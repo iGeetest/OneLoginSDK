@@ -38,6 +38,13 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)registerWithAppID:(NSString *)appID;
 
 /**
+ * 判断是否已经注册
+ *
+ * @return 已注册，返回 YES，未注册，返回 NO
+ */
++ (BOOL)hasRegistered;
+
+/**
  设置代理对象
 
  @param delegate 代理对象

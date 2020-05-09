@@ -10,6 +10,15 @@ import UIKit
 import OneLoginSDK
 import GT3Captcha
 
+struct CheckSmsResult: Codable {
+    var result: Bool
+}
+
+struct VerifyPhoneResult: Codable {
+    var status: Int
+    var result: String
+}
+
 class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var phoneNumberTF: UITextField!
@@ -145,32 +154,36 @@ class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, U
             let dataTask = URLSession.shared.dataTask(with: mRequest) { [weak self] (data: Data?, response: URLResponse?, error: Error?) in
                 DispatchQueue.main.async {
                     GTProgressHUD.hideAllHUD()
-                    if let strongSelf = self {
-                        var result: [AnyHashable : Any]?
-                        if nil != data && nil == error {
-                            do {
-                                result = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [AnyHashable : Any]
-                            } catch {
-                                
-                            }
+                    
+                    guard let strongSelf = self else { return }
+                    
+                    if let error = error {
+                        print("verify phone error: \(error)")
+                        strongSelf.verifyPhoneNumberFailed()
+                        return
+                    }
+                    
+                    var verifyPhoneResult: VerifyPhoneResult?
+                    if let data = data {
+                        do {
+                            verifyPhoneResult = try JSONDecoder().decode(VerifyPhoneResult.self, from: data)
+                        } catch {
+                            
                         }
-                        if nil != result {
-                            let status = result?["status"] as! NSNumber
-                            let resultString = result?["result"] as! String
-                            if 200 == status.intValue {
-                                if "0" == resultString {
-                                    let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-                                    let resultViewController = storyboard.instantiateViewController(withIdentifier: "SwiftResultViewController")
-                                    self?.navigationController?.pushViewController(resultViewController, animated: true)
-                                } else if "1" == resultString {
-                                    GTProgressHUD.showToast(withMessage: "非本机号码")
-                                } else {
-                                    strongSelf.verifyPhoneNumberFailed()
-                                }
-                            }
+                    }
+                    
+                    if let verifyPhoneResult = verifyPhoneResult, 200 == verifyPhoneResult.status {
+                        if "0" == verifyPhoneResult.result {
+                            let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+                            let resultViewController = storyboard.instantiateViewController(withIdentifier: "SwiftResultViewController")
+                            strongSelf.navigationController?.pushViewController(resultViewController, animated: true)
+                        } else if "1" == verifyPhoneResult.result {
+                            GTProgressHUD.showToast(withMessage: "非本机号码")
                         } else {
                             strongSelf.verifyPhoneNumberFailed()
                         }
+                    } else {
+                        strongSelf.verifyPhoneNumberFailed()
                     }
                 }
             }
@@ -181,7 +194,7 @@ class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, U
     }
     
     func gtOnePass(_ manager: GOPManager, errorHandler error: GOPError) {
-        print("gtonepass errorHandler: %@", error)
+        print("gtonepass errorHandler: ", error)
         self.verifyPhoneNumberFailed()
     }
     
@@ -206,13 +219,40 @@ class SwiftOnePassViewController: SwiftBaseViewController, GOPManagerDelegate, U
 
 extension SwiftOnePassViewController: GT3CaptchaManagerDelegate {
     func gtCaptcha(_ manager: GT3CaptchaManager!, errorHandler error: GT3Error!) {
-        print("gtCaptcha errorHandler: %@", error!)
+        print("gtCaptcha errorHandler: ", error!)
+    }
+    
+    func gtCaptcha(_ manager: GT3CaptchaManager!, willSendRequestAPI1 originalRequest: URLRequest!, withReplacedHandler replacedHandler: ((URLRequest?) -> Void)!) {
+        if let originalRequest = originalRequest, let url = originalRequest.url {
+            var mRequest = originalRequest
+            let originURL = url.absoluteString
+            var newURL = originURL
+            
+            let currentTimeInterval = 1000 * Date.init().timeIntervalSince1970
+            let range = originURL.range(of: "?t=")
+            if let range = range {
+                let nsRange = NSRange.init(range, in: originURL)
+                if originURL.count >= nsRange.location + nsRange.length + 13 {
+                    let replaceStartIndex = originURL.index(originURL.startIndex, offsetBy: nsRange.location + nsRange.length)
+                    let replaceEndIndex = originURL.index(originURL.startIndex, offsetBy: nsRange.location + nsRange.length + 13)
+                    newURL = String(newURL.replacingCharacters(in: replaceStartIndex..<replaceEndIndex, with: String.init(format: "%.0f", currentTimeInterval)))
+                }
+            } else {
+                newURL = String.init(format: "%@?t=%.0f", newURL, currentTimeInterval)
+            }
+            
+            print("gtCaptcha willSendRequestAPI1 newURL: \(newURL)")
+            mRequest.url = URL.init(string: newURL)
+            replacedHandler(mRequest)
+        } else {
+            replacedHandler(originalRequest)
+        }
     }
     
     func gtCaptcha(_ manager: GT3CaptchaManager!, didReceiveSecondaryCaptchaData data: Data!, response: URLResponse!, error: GT3Error!, decisionHandler: ((GT3SecondaryCaptchaPolicy) -> Void)!) {
         if nil == error {
             // 处理验证结果
-            print("\ndata: %@", String.init(data: data!, encoding: String.Encoding.utf8)!);
+            print("\ndata: ", String.init(data: data!, encoding: String.Encoding.utf8)!);
             decisionHandler(GT3SecondaryCaptchaPolicy.allow);
             self.doOnePass()
         } else {

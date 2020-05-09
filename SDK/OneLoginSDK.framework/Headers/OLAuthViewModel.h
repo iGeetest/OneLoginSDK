@@ -259,7 +259,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 @property (nullable, nonatomic, strong) UIFont *phoneNumFont;
 
 /**
- 号码预览 位置及大小，电话号码不支持设置大小，大小根据电话号码文字自适应
+ 号码预览 位置及大小
  */
 @property (nonatomic, assign) OLRect phoneNumRect;
 

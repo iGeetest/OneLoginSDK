@@ -29,7 +29,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         manager!.viewDelegate = self as GT3CaptchaManagerViewDelegate
         return manager!
     }()
-    
+        
     // MARK: deinit
     
     deinit {
@@ -57,10 +57,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         self.captchaInSDKLoginButton.layer.masksToBounds = true
         self.captchaInSDKLoginButton.layer.cornerRadius = 5
         
-        // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
-        OneLoginPro.setLogEnabled(true)
-        // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
-        OneLoginPro.register(withAppID: GTOneLoginAppId)
+        self.initOneLogin()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -69,6 +66,35 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         self.popupLoginButton.isEnabled = true
         self.floatWindowLoginButton.isEnabled = true
         self.landscapeLoginButton.isEnabled = true
+    }
+    
+    // MARK: Init OneLogin
+    
+    func initOneLogin() {
+        // 获取到了运营商，且开启了蜂窝移动网络时，才进行初始化
+        if self.canInitOneLogin() {
+            self.reallyInitOneLogin()
+        } else {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveBecomeActiveNotification(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        }
+    }
+    
+    func reallyInitOneLogin() {
+        if !OneLoginPro.hasRegistered() {
+            // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
+            OneLoginPro.setLogEnabled(true)
+            // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
+            OneLoginPro.register(withAppID: GTOneLoginAppId)
+        }
+    }
+    
+    func canInitOneLogin() -> Bool {
+        let networkInfo = OneLoginPro.currentNetworkInfo()
+        if let networkInfo = networkInfo, let _ = networkInfo.carrierName, networkInfo.networkType == .cellular || networkInfo.networkType == .cellularAndWIFI {
+            return true
+        } else {
+            return false
+        }
     }
     
     // MARK: Button Actions
@@ -113,7 +139,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             // -------------- 手机号设置 -------------------
             viewModel.phoneNumColor = UIColor.red // 颜色
             viewModel.phoneNumFont = UIFont.boldSystemFont(ofSize: 25) // 字体
-            let phoneNumRect = OLRect(portraitTopYOffset: 0, portraitCenterXOffset: 0, portraitLeftXOffset: 0, landscapeTopYOffset: 0, landscapeCenterXOffset: 0, landscapeLeftXOffset: 0, size: CGSize(width: 0, height: 0)) // 手机号偏移设置，手机号不支持设置宽高
+            let phoneNumRect = OLRect(portraitTopYOffset: 0, portraitCenterXOffset: 0, portraitLeftXOffset: 0, landscapeTopYOffset: 0, landscapeCenterXOffset: 0, landscapeLeftXOffset: 0, size: CGSize(width: 0, height: 0)) // 手机号偏移设置
             viewModel.phoneNumRect = phoneNumRect
             
             // -------------- 切换账号设置 -------------------
@@ -154,7 +180,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             viewModel.privacyTermsAttributes = [NSAttributedString.Key.foregroundColor : UIColor.orange, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12), NSAttributedString.Key.paragraphStyle : paragraphStyle]
             
             let item1 = OLPrivacyTermItem.init(title: "自定义服务条款1", linkURL: URL.init(string: "https://docs.geetest.com/onelogin/overview/start")!, index: 0) { (termItem: OLPrivacyTermItem, controller: UIViewController) in
-                print("termItem.termLink: %@, controller: %@", termItem.termLink, controller)
+                print("termItem.termLink: \(termItem.termLink), controller: \(controller)")
             }
             let item2 = OLPrivacyTermItem.init(title: "自定义服务条款2", linkURL: URL.init(string: "https://docs.geetest.com/")!, index: 0)
             // 加载本地的html
@@ -166,7 +192,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             viewModel.auxiliaryPrivacyWords = ["条款前文案", "&", "&", "条款后的文案"]   // 条款之外的文案，默认可不设置
             
             viewModel.clickCheckboxBlock = { (isChecked) in      // 点击隐私条款前勾选框回调
-                print("clickCheckboxBlock isChecked: %@", isChecked ? "true" : "false")
+                print("clickCheckboxBlock isChecked: \(isChecked ? "true" : "false")")
             }
             
             viewModel.termsAlignment = NSTextAlignment.center
@@ -359,17 +385,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
                             strongSelf.playerLayer = AVPlayerLayer.init(player: player)
                             if let playerLayer = strongSelf.playerLayer {
                                 playerLayer.videoGravity = .resize
-                                
-                                NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: OperationQueue.main) { (notification) in
-                                    let time = CMTime.init(value: 0, timescale: 1)
-                                    player.seek(to: time)
-                                    player.play()
-                                }
-                                
-                                NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: OperationQueue.main) { (notification) in
-                                    player.play()
-                                }
-                                
+                                                                
                                 let playerView = UIView.init()
                                 playerView.frame = UIScreen.main.bounds
                                 playerView.backgroundColor = .white
@@ -384,6 +400,9 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
                                 playerLayer.frame = playerView.bounds
                                 
                                 player.play()
+                                
+                                NotificationCenter.default.addObserver(strongSelf, selector: #selector(strongSelf.didReceiveAVPlayerItemDidPlayToEndTimeNotification(_:)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
+                                NotificationCenter.default.addObserver(strongSelf, selector: #selector(strongSelf.didReceiveBecomeActiveNotification(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
                             }
                         }
                     }
@@ -393,7 +412,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
                 
         // --------------授权页面生命周期回调 -------------------
         viewModel.viewLifeCycleBlock = { (viewLifeCycle : String, animated : Bool) in
-            print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
+            print("viewLifeCycle: \(viewLifeCycle), animated: \(animated ? "true" : "false")")
             if viewLifeCycle == "viewDidDisappear:" {
                 sender.isEnabled = true
             } else if viewLifeCycle == "viewDidLoad" {
@@ -436,7 +455,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         
         // --------------授权页面生命周期回调 -------------------
         viewModel.viewLifeCycleBlock = { (viewLifeCycle : String, animated : Bool) in
-            print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
+            print("viewLifeCycle: \(viewLifeCycle), animated: \(animated ? "true" : "false")")
             if viewLifeCycle == "viewDidDisappear:" {
                 sender.isEnabled = true
             } else if viewLifeCycle == "viewDidLoad" {
@@ -496,7 +515,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         
         // --------------授权页面生命周期回调 -------------------
         viewModel.viewLifeCycleBlock = { (viewLifeCycle : String, animated : Bool) in
-            print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
+            print("viewLifeCycle: \(viewLifeCycle), animated: \(animated ? "true" : "false")")
             if viewLifeCycle == "viewDidDisappear:" {
                 sender.isEnabled = true
             } else if viewLifeCycle == "viewDidLoad" {
@@ -528,7 +547,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         
         // --------------授权页面生命周期回调 -------------------
         viewModel.viewLifeCycleBlock = { (viewLifeCycle : String, animated : Bool) in
-            print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
+            print("viewLifeCycle: \(viewLifeCycle), animated: \(animated ? "true" : "false")")
             if viewLifeCycle == "viewDidDisappear:" {
                 sender.isEnabled = true
             } else if viewLifeCycle == "viewDidLoad" {
@@ -560,42 +579,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         
         // --------------授权页面生命周期回调 -------------------
         viewModel.viewLifeCycleBlock = { (viewLifeCycle : String, animated : Bool) in
-            print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
-            if viewLifeCycle == "viewDidDisappear:" {
-                sender.isEnabled = true
-            } else if viewLifeCycle == "viewDidLoad" {
-                // 授权页面出现时，关掉进度条
-                GTProgressHUD.hideAllHUD()
-            }
-        }
-        
-        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-        viewModel.captchaAPI1 = GTCaptchaAPI1
-        viewModel.captchaAPI2 = GTCaptchaAPI2
-                
-        // 进入授权页面
-        
-        if !OneLoginPro.isPreGetTokenResultValidate() {
-            GTProgressHUD.showLoadingHUD(withMessage: nil)
-        }
-        
-        OneLoginPro.requestToken(with: self, viewModel: viewModel) { [weak self] result in
-            if let strongSelf = self {
-                strongSelf.finishRequsetingToken(result: result!)
-            }
-            sender.isEnabled = true
-        }
-    }
-    
-    @IBAction func captchaInSDKLoginAction(_ sender: UIButton) {
-        // 防抖，避免重复点击
-        sender.isEnabled = false
-        
-        let viewModel = OLAuthViewModel()
-        
-        // --------------授权页面生命周期回调 -------------------
-        viewModel.viewLifeCycleBlock = { (viewLifeCycle : String, animated : Bool) in
-            print("viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? "true" : "false")
+            print("viewLifeCycle: \(viewLifeCycle), animated: \(animated ? "true" : "false")")
             if viewLifeCycle == "viewDidDisappear:" {
                 sender.isEnabled = true
             } else if viewLifeCycle == "viewDidLoad" {
@@ -627,6 +611,41 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         }
     }
     
+    @IBAction func captchaInSDKLoginAction(_ sender: UIButton) {
+        // 防抖，避免重复点击
+        sender.isEnabled = false
+        
+        let viewModel = OLAuthViewModel()
+        
+        // --------------授权页面生命周期回调 -------------------
+        viewModel.viewLifeCycleBlock = { (viewLifeCycle : String, animated : Bool) in
+            print("viewLifeCycle: \(viewLifeCycle), animated: \(animated ? "true" : "false")")
+            if viewLifeCycle == "viewDidDisappear:" {
+                sender.isEnabled = true
+            } else if viewLifeCycle == "viewDidLoad" {
+                // 授权页面出现时，关掉进度条
+                GTProgressHUD.hideAllHUD()
+            }
+        }
+        
+        // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
+        viewModel.captchaAPI1 = GTCaptchaAPI1
+        viewModel.captchaAPI2 = GTCaptchaAPI2
+                
+        // 进入授权页面
+        
+        if !OneLoginPro.isPreGetTokenResultValidate() {
+            GTProgressHUD.showLoadingHUD(withMessage: nil)
+        }
+        
+        OneLoginPro.requestToken(with: self, viewModel: viewModel) { [weak self] result in
+            if let strongSelf = self {
+                strongSelf.finishRequsetingToken(result: result!)
+            }
+            sender.isEnabled = true
+        }
+    }
+    
     @objc func doneAction(_ sender: UIButton) {
         OneLoginPro.dismissAuthViewController {
             
@@ -636,6 +655,26 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
     @objc func dismissAuthVC(_ sender: UIButton) {
         OneLoginPro.dismissAuthViewController {
             
+        }
+    }
+    
+    // MARK: AVPlayer
+    
+    @objc func didReceiveAVPlayerItemDidPlayToEndTimeNotification(_ noti: Notification) {
+        if let player = self.player {
+            let time = CMTime.init(value: 0, timescale: 1)
+            player.seek(to: time)
+            player.play()
+        }
+    }
+    
+    @objc func didReceiveBecomeActiveNotification(_ noti: Notification) {
+        if self.canInitOneLogin() {
+            self.reallyInitOneLogin()
+        }
+        
+        if let player = self.player {
+            player.play()
         }
     }
     
@@ -650,74 +689,32 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             if nil != result[OLAuthcodeKey] {
                 authcode = result[OLAuthcodeKey] as? String
             }
-            self.validateToken(token: token, appId: appID, processID: processID, authcode: authcode)
+            self.validateToken(token: token, appId: appID, processID: processID, authcode: authcode) { validateTokenResult in
+                DispatchQueue.main.async {
+                    switch validateTokenResult {
+                    case .success(let validateTokenResult):
+                        if 200 == validateTokenResult.status, let phone = validateTokenResult.result {
+                            GTProgressHUD.showToast(withMessage: String.init(format: "手机号为：%@", phone))
+                            OneLoginPro.renewPreGetToken()
+                        } else {
+                            if let message = validateTokenResult.result {
+                                print("validate token error: \(message)")
+                            } else {
+                                print("validate token failed")
+                            }
+                        }
+                        
+                    case .failure(let error):
+                        print("validate token error: \(error)")
+                    }
+                    
+                    OneLoginPro.dismissAuthViewController {
+                        
+                    }
+                }
+            }
         } else {
             GTProgressHUD.showToast(withMessage: "登录失败")
-            OneLoginPro.dismissAuthViewController {
-                
-            }
-        }
-    }
-    
-    func validateToken(token: String?, appId: String?, processID: String?, authcode: String?) {
-        var params = Dictionary<String, Any>.init()
-        if let token = token {
-            params["token"] = token
-        }
-        if let processID = processID {
-            params["process_id"] = processID
-        }
-        if let appId = appId {
-            params["id_2_sign"] = appId
-        }
-        if let authcode = authcode {
-            params["authcode"] = authcode
-        }
-        do {
-            let data = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.fragmentsAllowed)
-            let url = URL.init(string: GTOneLoginResultURL)
-            var mRequest = URLRequest.init(url: url!, cachePolicy: NSURLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10.0)
-            mRequest.httpMethod = "POST"
-            mRequest.httpBody = data
-            let dataTask = URLSession.shared.dataTask(with: mRequest) { [weak self] (data: Data?, response: URLResponse?, error: Error?) in
-                if let strongSelf = self {
-                    var result: Any?;
-                    if nil != data && nil == error {
-                        do {
-                            result = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
-                        } catch {
-                            
-                        }
-                    }
-                    if nil != result {
-                        strongSelf.finishValidatingToken(result: result as? Dictionary<AnyHashable, Any>, error: error)
-                    } else {
-                        strongSelf.finishValidatingToken(result: nil, error: error)
-                    }
-                }
-            }
-            dataTask.resume()
-        } catch {
-            
-        }
-    }
-    
-    func finishValidatingToken(result: Dictionary<AnyHashable, Any>?, error: Error?) {
-        print("validateToken result: %@, error: %@", (nil != result) ? result! : "", (nil != error) ? error! : "")
-        DispatchQueue.main.async {
-            GTProgressHUD.hideAllHUD()
-            if let result = result, let status = result["status"], 200 == (status as! NSNumber).intValue {
-                let message = result["result"] as? String
-                if nil != message {
-                    GTProgressHUD.showToast(withMessage: String.init(format: "手机号为：%@", message!))
-                    OneLoginPro.renewPreGetToken()
-                } else {
-                    GTProgressHUD.showToast(withMessage: "取号成功")
-                }
-            } else {
-                let message = (result?["result"] != nil) ? (result?["result"] as! String) : "token验证失败"
-                GTProgressHUD.showToast(withMessage: message)
-            }
             OneLoginPro.dismissAuthViewController {
                 
             }
@@ -727,13 +724,40 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
 
 extension SwiftNewLoginViewController: GT3CaptchaManagerDelegate {
     func gtCaptcha(_ manager: GT3CaptchaManager!, errorHandler error: GT3Error!) {
-        print("gtCaptcha errorHandler: %@", error!)
+        print("gtCaptcha errorHandler: ", error!)
+    }
+    
+    func gtCaptcha(_ manager: GT3CaptchaManager!, willSendRequestAPI1 originalRequest: URLRequest!, withReplacedHandler replacedHandler: ((URLRequest?) -> Void)!) {
+        if let originalRequest = originalRequest, let url = originalRequest.url {
+            var mRequest = originalRequest
+            let originURL = url.absoluteString
+            var newURL = originURL
+            
+            let currentTimeInterval = 1000 * Date.init().timeIntervalSince1970
+            let range = originURL.range(of: "?t=")
+            if let range = range {
+                let nsRange = NSRange.init(range, in: originURL)
+                if originURL.count >= nsRange.location + nsRange.length + 13 {
+                    let replaceStartIndex = originURL.index(originURL.startIndex, offsetBy: nsRange.location + nsRange.length)
+                    let replaceEndIndex = originURL.index(originURL.startIndex, offsetBy: nsRange.location + nsRange.length + 13)
+                    newURL = String(newURL.replacingCharacters(in: replaceStartIndex..<replaceEndIndex, with: String.init(format: "%.0f", currentTimeInterval)))
+                }
+            } else {
+                newURL = String.init(format: "%@?t=%.0f", newURL, currentTimeInterval)
+            }
+            
+            print("gtCaptcha willSendRequestAPI1 newURL: \(newURL)")
+            mRequest.url = URL.init(string: newURL)
+            replacedHandler(mRequest)
+        } else {
+            replacedHandler(originalRequest)
+        }
     }
     
     func gtCaptcha(_ manager: GT3CaptchaManager!, didReceiveSecondaryCaptchaData data: Data!, response: URLResponse!, error: GT3Error!, decisionHandler: ((GT3SecondaryCaptchaPolicy) -> Void)!) {
         if nil == error {
             // 处理验证结果
-            print("\ndata: %@", String.init(data: data!, encoding: String.Encoding.utf8)!);
+            print("\ndata: ", String.init(data: data!, encoding: String.Encoding.utf8)!);
             decisionHandler(GT3SecondaryCaptchaPolicy.allow);
             OneLoginPro.startRequestToken()
         } else {

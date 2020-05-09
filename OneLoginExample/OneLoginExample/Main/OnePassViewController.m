@@ -236,6 +236,25 @@
     NSLog(@"gtCaptcha errorHandler: %@", error);
 }
 
+- (void)gtCaptcha:(GT3CaptchaManager *)manager willSendRequestAPI1:(NSURLRequest *)originalRequest withReplacedHandler:(void (^)(NSURLRequest *))replacedHandler {
+    NSMutableURLRequest *mRequest = [originalRequest mutableCopy];
+    NSString *originURL = originalRequest.URL.absoluteString;
+    NSRange tRange = [originURL rangeOfString:@"?t="];
+    NSString *newURL = originURL.copy;
+    if (NSNotFound != tRange.location) {
+        if (newURL.length >= tRange.location + tRange.length + 13) {
+            newURL = [newURL stringByReplacingCharactersInRange:NSMakeRange(tRange.location + tRange.length, 13) withString:[NSString stringWithFormat:@"%.0f", 1000 * [[[NSDate alloc] init] timeIntervalSince1970]]];
+        }
+    } else {
+        newURL = [NSString stringWithFormat:@"%@?t=%.0f", originURL, 1000 * [[[NSDate alloc] init] timeIntervalSince1970]];
+    }
+    
+    mRequest.URL = [NSURL URLWithString:newURL];
+    NSLog(@"gtCaptcha willSendRequestAPI1 newURL: %@", newURL);
+    
+    replacedHandler(mRequest);
+}
+
 - (void)gtCaptcha:(GT3CaptchaManager *)manager didReceiveSecondaryCaptchaData:(NSData *)data response:(NSURLResponse *)response error:(GT3Error *)error decisionHandler:(void (^)(GT3SecondaryCaptchaPolicy))decisionHandler {
     if (!error) {
         // 处理验证结果
