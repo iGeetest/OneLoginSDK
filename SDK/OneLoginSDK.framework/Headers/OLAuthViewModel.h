@@ -152,7 +152,7 @@ typedef void(^OLTapAuthBackgroundBlock)(void);
 typedef void(^OLAuthVCTransitionBlock)(CGSize size, id<UIViewControllerTransitionCoordinator> coordinator, UIView *customAreaView);
 
 /**
- * @abstract 授权页面视图控件自动布局回调，可在该回调中，对控件通过 masonry 或者其他方式进行自动布局，若需要自定义视图，请直接在该回调中添加
+ * @abstract 授权页面视图控件自动布局回调，可在该回调中，对控件通过 masonry 或者其他方式进行自动布局，若需要自定义视图，请直接在该回调中添加，实现该回调后，授权页面所有视图的约束都会被删除，您需要重新设置所有视图的约束
  *
  * authView 为 authContentView 的父视图
  * authContentView 为 authBackgroundImageView、authNavigationView、authLogoView、authPhoneView、authSwitchButton、authLoginButton、authSloganView、authAgreementView、authClosePopupButton 的父视图
@@ -166,7 +166,7 @@ typedef void(^OLAuthVCAutoLayoutBlock)(UIView *authView, UIView *authContentView
 /**
  * @abstract 进入授权页面的方式，默认为 modal 方式，即 present 到授权页面，从授权页面进入服务条款页面的方式与此保持一致
  *
- * @discussion push 模式时，不支持弹窗模式
+ * @discussion push 模式时，不支持弹窗模式，进入授权页面时，会隐藏导航栏，退出授权页面时，会显示导航栏，如果您进入授权页面的当前页面导航栏为隐藏状态，在授权页面消失时，请注意将导航栏隐藏
  */
 typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
     OLPullAuthVCStyleModal,
@@ -529,6 +529,11 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  * 点击授权页面弹窗背景的回调
  */
 @property (nonatomic, copy, nullable) OLTapAuthBackgroundBlock tapAuthBackgroundBlock;
+
+/**
+ * 弹窗蒙板视图
+ */
+@property (nonatomic, strong, nullable) UIView *popupMaskView;
 
 #pragma mark - Loading
 

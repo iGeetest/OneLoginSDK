@@ -51,6 +51,8 @@
 		E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */; };
 		E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784C2302CAFE002D91D1 /* EAccountApiSDK.framework */; };
 		E9E778532302CAFE002D91D1 /* OneLoginResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9E7784D2302CAFE002D91D1 /* OneLoginResource.bundle */; };
+		E9FA9C0A2473B4E800EC43A0 /* KsyzVerify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9FA9C082473B4E700EC43A0 /* KsyzVerify.framework */; };
+		E9FA9C0B2473B4E800EC43A0 /* OAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9FA9C092473B4E800EC43A0 /* OAuth.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +130,8 @@
 		E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneLoginSDK.framework; sourceTree = "<group>"; };
 		E9E7784C2302CAFE002D91D1 /* EAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EAccountApiSDK.framework; sourceTree = "<group>"; };
 		E9E7784D2302CAFE002D91D1 /* OneLoginResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OneLoginResource.bundle; sourceTree = "<group>"; };
+		E9FA9C082473B4E700EC43A0 /* KsyzVerify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KsyzVerify.framework; sourceTree = "<group>"; };
+		E9FA9C092473B4E800EC43A0 /* OAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OAuth.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,10 +139,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FA9C0B2473B4E800EC43A0 /* OAuth.framework in Frameworks */,
 				1CC98C5C2449B7CC00CE4312 /* MediaPlayer.framework in Frameworks */,
 				E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */,
 				7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */,
 				1CE7AF5B24109EE4002CF952 /* GT3Captcha.framework in Frameworks */,
+				E9FA9C0A2473B4E800EC43A0 /* KsyzVerify.framework in Frameworks */,
 				E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */,
 				E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */,
 				E9C7962423B4C1CC00032AB1 /* account_login_sdk_noui_core.framework in Frameworks */,
@@ -326,6 +332,8 @@
 		E9E778472302CAFE002D91D1 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				E9FA9C082473B4E700EC43A0 /* KsyzVerify.framework */,
+				E9FA9C092473B4E800EC43A0 /* OAuth.framework */,
 				E9C7962323B4C1CC00032AB1 /* account_login_sdk_noui_core.framework */,
 				E9C7962123B4C13D00032AB1 /* TYRZSDK.framework */,
 				E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */,

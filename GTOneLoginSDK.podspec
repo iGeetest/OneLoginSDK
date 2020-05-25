@@ -8,18 +8,24 @@
 
 Pod::Spec.new do |s|
   s.name = 'GTOneLoginSDK'
-  s.version = '2.1.3.1' 
+  s.version = '2.1.4' 
   s.summary = '极验一键登录SDK'
   s.homepage = 'https://www.geetest.com'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
   s.author = { 'Geetest' => 'liulian@geetest.com' }
-  s.source = { :git => 'https://github.com/iGeetest/OneLoginSDK.git', :tag => s.version.to_s } 
+  s.source = { :git => 'https://github.com/iGeetest/OneLoginSDK.git', :tag => s.version.to_s, :submodules => true } 
   s.ios.deployment_target = '8.0'
 
   s.frameworks = 'CFNetwork', 'CoreTelephony', 'Foundation', 'SystemConfiguration', 'UIKit'
   s.libraries = 'c++.1', 'z.1.2.8'
 
-  s.vendored_frameworks = 'SDK/account_login_sdk_noui_core.framework', 'SDK/EAccountApiSDK.framework', 'SDK/TYRZSDK.framework', 'SDK/OneLoginSDK.framework'
-  s.resources = 'SDK/OneLoginResource.bundle', 'README.md'
+  s.subspec 'Main' do |dm|
+    s.vendored_frameworks = 'SDK/account_login_sdk_noui_core.framework', 'SDK/EAccountApiSDK.framework', 'SDK/TYRZSDK.framework', 'SDK/OneLoginSDK.framework'
+    s.resources = 'SDK/OneLoginResource.bundle', 'README.md'
+  end
+
+  s.subspec 'CUCC' do |dc|
+    s.vendored_frameworks = 'SDK/KsyzVerify.framework', 'SDK/OAuth.framework'
+  end
 
 end

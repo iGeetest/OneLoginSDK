@@ -89,6 +89,7 @@ static NSString * const OLErrorDesc_40101 = @"China Mobile return invalid data."
 static NSString * const OLErrorCode_40102 = @"-40102";  // 移动取号，未返回正确结果
 
 static NSString * const OLErrorCode_40201 = @"-40201";  // 联通预取号，未返回正确结果
+static NSString * const OLErrorDesc_40201 = @"China Unicom return invalid data.";
 static NSString * const OLErrorCode_40202 = @"-40202";  // 联通取号，未返回正确结果
 
 static NSString * const OLErrorCode_40301 = @"-40301";  // 电信预取号，未返回正确结果

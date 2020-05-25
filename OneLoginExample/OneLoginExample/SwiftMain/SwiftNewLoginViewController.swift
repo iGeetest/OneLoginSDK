@@ -71,30 +71,10 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
     // MARK: Init OneLogin
     
     func initOneLogin() {
-        // 获取到了运营商，且开启了蜂窝移动网络时，才进行初始化
-        if self.canInitOneLogin() {
-            self.reallyInitOneLogin()
-        } else {
-            NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveBecomeActiveNotification(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
-        }
-    }
-    
-    func reallyInitOneLogin() {
-        if !OneLoginPro.hasRegistered() {
-            // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
-            OneLoginPro.setLogEnabled(true)
-            // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
-            OneLoginPro.register(withAppID: GTOneLoginAppId)
-        }
-    }
-    
-    func canInitOneLogin() -> Bool {
-        let networkInfo = OneLoginPro.currentNetworkInfo()
-        if let networkInfo = networkInfo, let _ = networkInfo.carrierName, networkInfo.networkType == .cellular || networkInfo.networkType == .cellularAndWIFI {
-            return true
-        } else {
-            return false
-        }
+        // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
+        OneLoginPro.setLogEnabled(true)
+        // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
+        OneLoginPro.register(withAppID: GTOneLoginAppId)
     }
     
     // MARK: Button Actions
@@ -470,6 +450,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             GTProgressHUD.showLoadingHUD(withMessage: nil)
         }
         
+        // 弹窗模式，请传 navigationController
         OneLoginPro.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
             if let strongSelf = self {
                 strongSelf.finishRequsetingToken(result: result!)
@@ -530,6 +511,7 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             GTProgressHUD.showLoadingHUD(withMessage: nil)
         }
         
+        // 弹窗模式，请传 navigationController
         OneLoginPro.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
             if let strongSelf = self {
                 strongSelf.finishRequsetingToken(result: result!)
@@ -571,6 +553,9 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         }
     }
     
+    /**
+     * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
+     */
     @IBAction func captchaLoginAction(_ sender: UIButton) {
         // 防抖，避免重复点击
         sender.isEnabled = false
@@ -611,6 +596,9 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
         }
     }
     
+    /**
+     * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
+     */
     @IBAction func captchaInSDKLoginAction(_ sender: UIButton) {
         // 防抖，避免重复点击
         sender.isEnabled = false
@@ -669,10 +657,6 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
     }
     
     @objc func didReceiveBecomeActiveNotification(_ noti: Notification) {
-        if self.canInitOneLogin() {
-            self.reallyInitOneLogin()
-        }
-        
         if let player = self.player {
             player.play()
         }
@@ -691,9 +675,11 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
             }
             self.validateToken(token: token, appId: appID, processID: processID, authcode: authcode) { validateTokenResult in
                 DispatchQueue.main.async {
+                    var successed = false
                     switch validateTokenResult {
                     case .success(let validateTokenResult):
                         if 200 == validateTokenResult.status, let phone = validateTokenResult.result {
+                            successed = true
                             GTProgressHUD.showToast(withMessage: String.init(format: "手机号为：%@", phone))
                             OneLoginPro.renewPreGetToken()
                         } else {
@@ -706,6 +692,10 @@ class SwiftNewLoginViewController: SwiftBaseViewController {
                         
                     case .failure(let error):
                         print("validate token error: \(error)")
+                    }
+                    
+                    if !successed {
+                        GTProgressHUD.showToast(withMessage: "登录失败")
                     }
                     
                     OneLoginPro.dismissAuthViewController {

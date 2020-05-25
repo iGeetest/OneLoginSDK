@@ -457,6 +457,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
         
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
+            // 弹窗模式，请传 navigationController
             OneLogin.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
                 if let strongSelf = self {
                     strongSelf.finishRequsetingToken(result: result!)
@@ -531,6 +532,7 @@ class SwiftLoginViewController: SwiftBaseViewController {
         
         // 根据SDK的方法判断当前预取号结果是否有效，若当前预取号结果有效，则直接调用requestTokenWithViewController方法拉起授权页面，否则，先调用预取号方法进行预取号，预取号成功后再拉起授权页面
         if OneLogin.isPreGettedTokenValidate() {
+            // 弹窗模式，请传 navigationController
             OneLogin.requestToken(with: self.navigationController, viewModel: viewModel) { [weak self] result in
                 if let strongSelf = self {
                     strongSelf.finishRequsetingToken(result: result!)
@@ -604,6 +606,9 @@ class SwiftLoginViewController: SwiftBaseViewController {
         }
     }
     
+    /**
+     * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
+     */
     @IBAction func captchaLoginAction(_ sender: UIButton) {
         if self.isPreGettingToken {
             return
@@ -659,6 +664,9 @@ class SwiftLoginViewController: SwiftBaseViewController {
         }
     }
     
+    /**
+     * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
+     */
     @IBAction func captchaInSDKLoginAction(_ sender: UIButton) {
         if self.isPreGettingToken {
             return
@@ -734,9 +742,11 @@ class SwiftLoginViewController: SwiftBaseViewController {
             }
             self.validateToken(token: token, appId: appID, processID: processID, authcode: authcode) { validateTokenResult in
                 DispatchQueue.main.async {
+                    var successed = false
                     switch validateTokenResult {
                     case .success(let validateTokenResult):
                         if 200 == validateTokenResult.status, let phone = validateTokenResult.result {
+                            successed = true
                             GTProgressHUD.showToast(withMessage: String.init(format: "手机号为：%@", phone))
                         } else {
                             if let message = validateTokenResult.result {
@@ -750,6 +760,10 @@ class SwiftLoginViewController: SwiftBaseViewController {
                         print("validate token error: \(error)")
                     }
                     
+                    if !successed {
+                        GTProgressHUD.showToast(withMessage: "登录失败")
+                    }
+
                     OneLogin.dismissAuthViewController {
                         
                     }

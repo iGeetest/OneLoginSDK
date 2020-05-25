@@ -536,6 +536,7 @@
             sender.enabled = YES;
         }];
     } else {
+        // 弹窗模式，请传 navigationController
         [OneLogin requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
             NSLog(@"requestTokenWithViewController result: %@", result);
             [wself finishRequestingToken:result];
@@ -610,6 +611,7 @@
             sender.enabled = YES;
         }];
     } else {
+        // 弹窗模式，请传 navigationController
         [OneLogin requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
             NSLog(@"requestTokenWithViewController result: %@", result);
             [wself finishRequestingToken:result];
@@ -660,6 +662,9 @@
     }
 }
 
+/**
+ * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
+ */
 - (IBAction)captchaLoginAction:(UIButton *)sender {
     if (self.isPreGettingToken) {
         return;
@@ -708,6 +713,9 @@
     }
 }
 
+/**
+ * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
+ */
 - (IBAction)captchaInSDKLoginAction:(UIButton *)sender {
     if (self.isPreGettingToken) {
         return;

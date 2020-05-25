@@ -27,7 +27,6 @@
 
 - (void)dealloc {
     NSLog(@"------------- %@ %@ -------------", [self class], NSStringFromSelector(_cmd));
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - View LifeCycle
@@ -63,37 +62,10 @@
 #pragma mark - Init OneLogin
 
 - (void)initOneLogin {
-    if ([self canInitOneLogin]) {
-        [self reallyInitOneLogin];
-    } else {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveBecomeActiveNotification:) name:UIApplicationDidBecomeActiveNotification object:nil];
-    }
-}
-
-- (void)reallyInitOneLogin {
-    if (![OneLoginPro hasRegistered]) {
-        // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
-        [OneLoginPro setLogEnabled:YES];
-        // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
-        [OneLoginPro registerWithAppID:GTOneLoginAppId];
-    }
-}
-
-- (BOOL)canInitOneLogin {
-    OLNetworkInfo *networkInfo = [OneLoginPro currentNetworkInfo];
-    if (nil != networkInfo.carrierName && (OLNetworkTypeCellular == networkInfo.networkType || OLNetworkTypeCellularAndWIFI == networkInfo.networkType)) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
-#pragma mark - didReceiveBecomeActiveNotification
-
-- (void)didReceiveBecomeActiveNotification:(NSNotification *)noti {
-    if ([self canInitOneLogin]) {
-        [self reallyInitOneLogin];
-    }
+    // 设置日志开关，建议平常调试过程中打开，便于排查问题，上线时可以关掉日志
+    [OneLoginPro setLogEnabled:YES];
+    // 设置AppId，AppID通过后台注册获得，从极验后台获取该AppID，AppID需与bundleID配套
+    [OneLoginPro registerWithAppID:GTOneLoginAppId];
 }
 
 #pragma mark - Getter
@@ -495,6 +467,7 @@
         }
     };
     
+    // 弹窗模式，请传 navigationController
     [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
@@ -555,6 +528,7 @@
         }
     };
     
+    // 弹窗模式，请传 navigationController
     [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
@@ -595,6 +569,9 @@
     }];
 }
 
+/**
+ * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
+ */
 - (IBAction)captchaLoginAction:(UIButton *)sender {
     // 防抖，避免重复点击
     sender.enabled = NO;
@@ -634,6 +611,9 @@
     }];
 }
 
+/**
+ * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
+ */
 - (IBAction)captchaInSDKLoginButton:(UIButton *)sender {
     // 防抖，避免重复点击
     sender.enabled = NO;

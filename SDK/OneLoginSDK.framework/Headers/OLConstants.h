@@ -67,11 +67,12 @@ static NSString * const OLAuthcodeKey          = @"authcode";
 static NSString * const OLExpireTimeKey        = @"expire_time";
 static NSString * const OLPreGetTokenSuccessedTimeKey = @"preGetTokenSuccessedTime";
 
-static NSString * const OLSDKVersion           = @"2.1.3.1";
+static NSString * const OLSDKVersion           = @"2.1.4";
 
 static NSString * const OLCM                   = @"CM";     // 移动
 static NSString * const OLCU                   = @"CU";     // 联通
 static NSString * const OLCT                   = @"CT";     // 电信
+static NSString * const OLCUCC                 = @"CUCC";   // 联通在线
 
 static NSString * const OLServerConfig         = @"server_config";
 static NSString * const OLCarrierID            = @"get_token_id";
@@ -91,6 +92,8 @@ static NSString * const OLCTSlogan             = @"天翼账号提供认证服�
 
 static NSString * const OLLeftQuotationMark    = @"《";
 static NSString * const OLRightQuotationMark   = @"》";
+
+static NSString * const OLTokenSeperator = @"__";
 
 static NSTimeInterval const OLDefaultTimeout   = 5;
 
