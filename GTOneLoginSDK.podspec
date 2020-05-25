@@ -20,12 +20,12 @@ Pod::Spec.new do |s|
   s.libraries = 'c++.1', 'z.1.2.8'
 
   s.subspec 'Main' do |dm|
-    s.vendored_frameworks = 'SDK/account_login_sdk_noui_core.framework', 'SDK/EAccountApiSDK.framework', 'SDK/TYRZSDK.framework', 'SDK/OneLoginSDK.framework'
-    s.resources = 'SDK/OneLoginResource.bundle', 'README.md'
+    dm.vendored_frameworks = 'SDK/account_login_sdk_noui_core.framework', 'SDK/EAccountApiSDK.framework', 'SDK/TYRZSDK.framework', 'SDK/OneLoginSDK.framework'
+    dm.resources = 'SDK/OneLoginResource.bundle', 'README.md'
   end
 
   s.subspec 'CUCC' do |dc|
-    s.vendored_frameworks = 'SDK/KsyzVerify.framework', 'SDK/OAuth.framework'
+    dc.vendored_frameworks = 'SDK/KsyzVerify.framework', 'SDK/OAuth.framework'
   end
 
 end
