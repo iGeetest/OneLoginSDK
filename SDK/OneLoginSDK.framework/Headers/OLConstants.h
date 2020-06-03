@@ -67,7 +67,7 @@ static NSString * const OLAuthcodeKey          = @"authcode";
 static NSString * const OLExpireTimeKey        = @"expire_time";
 static NSString * const OLPreGetTokenSuccessedTimeKey = @"preGetTokenSuccessedTime";
 
-static NSString * const OLSDKVersion           = @"2.1.4";
+static NSString * const OLSDKVersion           = @"2.1.4.1";
 
 static NSString * const OLCM                   = @"CM";     // 移动
 static NSString * const OLCU                   = @"CU";     // 联通

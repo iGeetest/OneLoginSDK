@@ -190,6 +190,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)startRequestToken;
 
++ (void)setOperatorParams:(NSDictionary *)params;
+
 @end
 
 NS_ASSUME_NONNULL_END

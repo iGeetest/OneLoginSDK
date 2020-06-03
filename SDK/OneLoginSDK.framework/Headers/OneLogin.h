@@ -270,6 +270,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)startRequestToken;
 
++ (void)setOperatorParams:(NSDictionary *)params;
+
 @end
 
 @protocol OneLoginDelegate <NSObject>

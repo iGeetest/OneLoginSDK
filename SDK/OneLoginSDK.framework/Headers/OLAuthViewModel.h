@@ -422,6 +422,11 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  */
 @property (nonatomic, assign) BOOL hasQuotationMarkOnCarrierProtocol;
 
+/**
+ * 未勾选勾选框时，是否禁止一键登录按钮的点击
+ */
+@property (nonatomic, assign) BOOL disableAuthButtonWhenUnchecked;
+
 #pragma mark - Custom Area/自定义区域
 
 /**
