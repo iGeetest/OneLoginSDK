@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'GTOneLoginSDK'
-  s.version = '2.1.4.1' 
+  s.version = '2.1.4.2' 
   s.summary = '极验一键登录SDK'
   s.homepage = 'https://www.geetest.com'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
