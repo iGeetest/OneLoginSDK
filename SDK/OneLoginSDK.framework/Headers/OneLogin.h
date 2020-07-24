@@ -231,6 +231,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param enabled YES，允许打印日志 NO，禁止打印日志
  */
 + (void)setLogEnabled:(BOOL)enabled;
++ (void)setCMLogEnabled:(BOOL)enabled;
 
 /**
  * @abstract 指示是否打印日志的状态

@@ -19,6 +19,8 @@ FOUNDATION_EXPORT NSString * const GOPErrorUnsupportedNetworkDesc;
 FOUNDATION_EXPORT NSString * const GOPErrorUnsupportedOperatorDesc;
 FOUNDATION_EXPORT NSString * const GOPErrorInvalidPreGatewayReturnsDesc;
 
+FOUNDATION_EXPORT NSString * const GOPErrorRepeatPreGatewayDesc;
+
 typedef NS_ENUM(NSInteger, GOPErrorCode) {
     // Client Error
     GOPErrorInvalidPhoneNumber          = -20301,
@@ -40,6 +42,8 @@ typedef NS_ENUM(NSInteger, GOPErrorCode) {
     GOPErrorOperatorUnknownError        = -49900,
     // Server Error
     GOPErrorInvalidPreGatewayReturns    = -50100,
+    // Repeat pregetway
+    GOPErrorRepeatPreGateway            = -20404,
 };
 
 @interface GOPError : NSError

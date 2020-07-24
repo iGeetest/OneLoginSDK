@@ -10,6 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/** 验证注册参数 */
 @interface GT3RegisterParameter : NSObject
 
 /** 验证ID(gt) */
@@ -23,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+/** 验证校验参数 */
 @interface GT3ValidationParam : NSObject
 
 /** 验证初步判定结果。@"1" 通过, @"0" 未通过。*/

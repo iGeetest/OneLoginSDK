@@ -397,7 +397,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 @property (nonatomic, assign) OLRect termsRect;
 
 /**
- 除隐私条款外的其他文案，数组大小必须为4，元素依次为：条款前的文案、条款一和条款二连接符、条款二和条款三连接符，条款后的文案。
+ 除隐私条款外的其他文案，数组大小必须 >= 4，元素依次为：条款前的文案、条款一和条款二连接符、条款二和条款三连接符、条款三和条款四连接符、……，条款后的文案。
  默认为@[@"登录即同意", @"和", @"、", @"并使用本机号码登录"]
  */
 @property (nullable, nonatomic, copy) NSArray<NSString *> *auxiliaryPrivacyWords;

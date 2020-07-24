@@ -60,6 +60,7 @@ static NSString * const OLDataCache            = @"dataCache";
 static NSString * const OLSecurityPhone        = @"securityPhone";
 static NSString * const OLErrorMsgKey          = @"error_msg";
 static NSString * const OLOperatorErrorCodeKey = @"operator_error_code";
+static NSString * const OLNIKey                = @"n_i";
 
 static NSString * const OLGWAuthKey            = @"gwAuth";
 static NSString * const OLAuthcodeKey          = @"authcode";
@@ -67,7 +68,9 @@ static NSString * const OLAuthcodeKey          = @"authcode";
 static NSString * const OLExpireTimeKey        = @"expire_time";
 static NSString * const OLPreGetTokenSuccessedTimeKey = @"preGetTokenSuccessedTime";
 
-static NSString * const OLSDKVersion           = @"2.1.4.2";
+static NSString * const OLSDKVersion           = @"2.3.0";
+
+static NSString * const OLFirstRegister        = @"f_r_o";
 
 static NSString * const OLCM                   = @"CM";     // 移动
 static NSString * const OLCU                   = @"CU";     // 联通
@@ -116,6 +119,7 @@ static NSString * const OLPrivatizationKey     = @"Privatization";
 static NSString * const OnePassURLPrefix       = @"https://onepass.geetest.com/v2.0/";
 static NSString * const OnePassURLClientReport = @"clientreport";
 static NSString * const OnePassURLPreGetway    = @"pre_gateway";
+static NSString * const OnePassURLDeepknow     = @"deepknown";
 
 static NSString * const OPErrorData            = @"error_data";
 static NSString * const OPErrorFailingURL      = @"GOPFailingURL";
