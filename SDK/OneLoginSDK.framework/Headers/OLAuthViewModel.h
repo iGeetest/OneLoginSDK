@@ -335,6 +335,11 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 #pragma mark - Slogan/口号标语
 
 /**
+ Slogan 文案。
+ */
+@property (nonatomic, copy) NSString *sloganText;
+
+/**
  Slogan 位置及大小。
  */
 @property (nonatomic, assign) OLRect sloganRect;
