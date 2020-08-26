@@ -337,7 +337,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 /**
  Slogan 文案。
  */
-@property (nonatomic, copy) NSString *sloganText;
+@property (nonatomic, copy, nullable) NSString *sloganText;
 
 /**
  Slogan 位置及大小。
