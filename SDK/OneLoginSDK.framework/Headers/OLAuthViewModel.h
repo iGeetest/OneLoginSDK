@@ -263,6 +263,11 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  */
 @property (nonatomic, assign) OLRect phoneNumRect;
 
+/**
+ 号码富文本，默认为空。
+*/
+@property (nullable, nonatomic, copy) NSAttributedString *attrPhone;
+
 #pragma mark - Switch Button/切换按钮
 
 /**

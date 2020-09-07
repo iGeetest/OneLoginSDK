@@ -7,7 +7,6 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ZOAUResultListener.h"
 #import "ZOAuthManager.h"
 
 @interface ZUOAuthManager : ZOAuthManager
@@ -28,7 +27,7 @@
 /**
  *  取号-联通
  */
-- (void) login:(double)timeout resultListener:(resultListener)listener;
+- (void) login:(double)timeout resultListener:(void (^)(NSDictionary *data))listener;
 
 
 /**
@@ -38,6 +37,7 @@
 
 
 /**
+ 不推荐使用
  中断取号登录流程(按需使用)
  取消取号请求
  */
@@ -48,7 +48,7 @@
  *  认证-联通
  注意***：在不手动关闭缓存的时，请及时调用清除缓存方法
  */
-- (void) oauth:(double)timeout resultListener:(resultListener)listener;
+- (void) oauth:(double)timeout resultListener:(void (^)(NSDictionary *data))listener;
 
 
 /** 联通认证：是否关闭缓存策略（默认开启）
@@ -71,13 +71,13 @@
  *  获取登录/认证结果
  *  测试接口
  */
-- (void) gmbc:(NSString*)accessCode mobile:(NSString *)mobile listener:(resultListener)listener;
+- (void) gmbc:(NSString*)accessCode mobile:(NSString *)mobile listener:(void (^)(NSDictionary *data))listener;
 
 
 /**
  *  测试接口
  */
-- (void) gmbc:(NSString*)accessCode listener:(resultListener)listener;
+- (void) gmbc:(NSString*)accessCode listener:(void (^)(NSDictionary *data))listener;
 
 
 //释放SDK内部单例对象

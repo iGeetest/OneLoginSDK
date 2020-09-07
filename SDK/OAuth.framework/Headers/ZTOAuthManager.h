@@ -7,11 +7,9 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ZOAUResultListener.h"
 #import "ZOAuthManager.h"
 
 @interface ZTOAuthManager : ZOAuthManager
-
 
 /**
  *  获取电信能力接入单例对象
@@ -28,7 +26,7 @@
 /**
  * 取号-电信
  */
-- (void) login:(double)timeout resultListener:(resultListener)listener;
+- (void) login:(double)timeout resultListener:(void (^)(NSDictionary *data))listener;
 
 
 /**
@@ -38,6 +36,7 @@
 
 
 /**
+    不推荐使用
   中断取号登录流程(按需使用)
   取消取号请求
  */
@@ -47,7 +46,7 @@
 /**
  *  认证-电信 ***注意***：在不手动关闭缓存的时，请及时调用清除缓存方法；
  */
-- (void) oauth:(double)timeout resultListener:(resultListener)listener;
+- (void) oauth:(double)timeout resultListener:(void (^)(NSDictionary *data))listener;
 
 
 /** 电信认证：是否关闭缓存策略（默认开启）
@@ -69,7 +68,7 @@
 /**
  *  （测试接口）获取登录/认证结果
  */
-- (void) gmbc:(NSString*)accessCode mobile:(NSString *)mobile listener:(resultListener)listener;
+- (void) gmbc:(NSString*)accessCode mobile:(NSString *)mobile listener:(void (^)(NSDictionary *data))listener;
 
 
 

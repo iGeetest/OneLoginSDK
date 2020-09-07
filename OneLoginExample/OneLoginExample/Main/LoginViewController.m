@@ -425,6 +425,7 @@
             make.left.equalTo(authCheckbox.mas_right).offset(5);
             make.right.equalTo(authAgreementView).offset(-10);
             make.height.equalTo(authAgreementView);
+            make.top.equalTo(authAgreementView);
         }];
         
         // 自定义视图

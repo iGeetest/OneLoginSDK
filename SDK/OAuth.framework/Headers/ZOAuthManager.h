@@ -16,5 +16,22 @@
  *
  *  @param isDebug true／false
  */
-+ (void) setDebug:(Boolean) isDebug ;
++ (void) setDebug:(BOOL) isDebug ;
+
+/**
+ *  是否使用SHA256
+ *
+ *  @param schemeB true／false （默认是NO）
+ */
++ (void) useSchemeBInSecurityModule:(BOOL)schemeB;
+
+//设置UA
++ (void)setUAString:(NSString *)UAString;
+
+//删除保存在本地的UA
++ (void)removeUAString;
+
+//获取SDK版本信息
++ (NSString *)getVersionInfo;
+
 @end
