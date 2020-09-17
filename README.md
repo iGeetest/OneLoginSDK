@@ -6,14 +6,17 @@ order: 0
 
 # iOS最新版本
 
+下载的 SDK 为 OneLogin 和 OnePass 的整合 SDK
+
 |版本|更新内容|更新日期|下载地址|
 | --------- |------------------------------------------------------------|--------- | -------- |
-| **2.3.1.2** | 1、更新联通和移动新版本 SDK；<br>2、适配 iOS14；<br>3、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-09-07 | [点击下载](https://docs.geetest.com/downloads/onelogin-ios.zip)
+| **2.3.1.3** | 1、checkbox交互优化；<br>2、未勾选服务条款时，可以自定义点击一键登录的提示；<br>3、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-09-18 | [点击下载](https://docs.geetest.com/downloads/onelogin&onepass-ios.zip)
 
 # 更新日志
 
 版本|更新内容|更新日期
 -----|-----|-----
+**2.3.1.2** | 1、更新联通和移动新版本 SDK；<br>2、适配 iOS14；<br>3、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-09-07
 **2.3.1.1**| 1、修改 iOS 13 上通过 createLocalStatusBar 私有 API 获取双卡手机当前流量卡运营商类型的方法，不再使用私有 API，避免 APP Store 审核被拒；<br>2、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-08-26
 **2.3.1** | 1、更新移动 SDK 到最新版，修复了由于证书引起的服务不可用 Bug；<br>2、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-08-20
 **2.3.0** | 1、优化 OnePass 校验流程，缩短校验时长；<br>2、优化设备风险判断和设备指纹功能（基础SDK不包含）<br>3、其他功能优化；<br><font color="#ff0000">Tips：1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</font>| 2020-07-24

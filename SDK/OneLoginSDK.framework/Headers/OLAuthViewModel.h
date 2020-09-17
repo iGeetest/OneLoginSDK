@@ -142,6 +142,11 @@ typedef void(^OLClickSwitchButtonBlock)(void);
 typedef void(^OLClickCheckboxBlock)(BOOL isChecked);
 
 /**
+ * 未勾选授权页面隐私协议前勾选框时，点击授权页面登录按钮时提示 block
+ */
+typedef void(^OLNotCheckProtocolHintBlock)(void);
+
+/**
  * 点击授权页面弹窗背景的回调
  */
 typedef void(^OLTapAuthBackgroundBlock)(void);
@@ -382,7 +387,7 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
 @property (nonatomic, assign) CGSize checkBoxSize __attribute__((deprecated("use checkBoxRect instead.")));
 
 /**
- 授权页面上条款勾选框大小及位置。
+ 授权页面上条款勾选框大小及位置，请不要设置勾选框的横向偏移，整体隐私条款的横向偏移，请通过 termsRect 设置
  */
 @property (nonatomic, assign) OLRect checkBoxRect;
 
@@ -436,6 +441,16 @@ typedef NS_ENUM(NSInteger, OLPullAuthVCStyle) {
  * 未勾选勾选框时，是否禁止一键登录按钮的点击
  */
 @property (nonatomic, assign) BOOL disableAuthButtonWhenUnchecked;
+
+/**
+ * 未勾选授权页面隐私协议前勾选框时，点击授权页面登录按钮时提示 block
+ */
+@property (nonatomic, copy) OLNotCheckProtocolHintBlock hintBlock;
+
+/**
+ * 勾选框与服务条款文案之间的间距。默认为 2
+ */
+@property (nonatomic, assign) CGFloat spaceBetweenCheckboxAndTermsText;
 
 #pragma mark - Custom Area/自定义区域
 
