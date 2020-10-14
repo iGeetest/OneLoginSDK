@@ -57,7 +57,6 @@
 @property (nonatomic, strong) NSNumber * numberOffsetX;
 /**14、号码栏Y偏移量*/
 @property (nonatomic, strong) NSNumber * numberOffsetY;
-
 /**15、号码栏Y偏移量（基于底部）*/
 @property (nonatomic, strong) NSNumber * numberOffsetY_B;
 
@@ -81,11 +80,6 @@
 /**21、隐私条款默认协议是否开启书名号
  */
 @property (nonatomic, assign) BOOL privacySymbol;
-
-/**22、隐私条款文字内容的方向:默认是居左
-注意：该属性废弃，隐私条款文字内容的方向可通过属性字符串appPrivacyDemo设置NSMutableParagraphStyle来设置文字对齐方式。
- */
-//@property (nonatomic, assign) NSTextAlignment appPrivacyAlignment;
 
 /**23、隐私条款:数组（务必按顺序）要设置NSLinkAttributeName属性可以跳转协议
  对象举例：
