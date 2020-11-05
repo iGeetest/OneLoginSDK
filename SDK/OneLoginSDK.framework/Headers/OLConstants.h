@@ -68,7 +68,7 @@ static NSString * const OLAuthcodeKey          = @"authcode";
 static NSString * const OLExpireTimeKey        = @"expire_time";
 static NSString * const OLPreGetTokenSuccessedTimeKey = @"preGetTokenSuccessedTime";
 
-static NSString * const OLSDKVersion           = @"2.3.2";
+static NSString * const OLSDKVersion           = @"2.3.3";
 
 static NSString * const OLFirstRegister        = @"f_r_o";
 
@@ -76,10 +76,13 @@ static NSString * const OLCM                   = @"CM";     // 移动
 static NSString * const OLCU                   = @"CU";     // 联通
 static NSString * const OLCT                   = @"CT";     // 电信
 static NSString * const OLCUCC                 = @"CUCC";   // 联通在线
+static NSString * const OLCMSS                 = @"CMSS";   // 苏数
 
 static NSString * const OLServerConfig         = @"server_config";
 static NSString * const OLCarrierID            = @"get_token_id";
 static NSString * const OLCarrierKey           = @"get_token_key";
+static NSString * const OLCMSSAuth             = @"get_token_auth";
+static NSString * const OLCMSSCustid           = @"get_token_custid";
 
 static NSString * const OLCMTermTitle          = @"中国移动认证服务条款";
 static NSString * const OLCMTermLink           = @"http://wap.cmpassport.com/resources/html/contract.html";
@@ -103,11 +106,6 @@ static NSTimeInterval const OLDefaultTimeout   = 5;
 static NSTimeInterval const OLMinTimeInterval  = 0.7;
 
 static NSInteger const OLMaxKeyWindowNilRetryTime = 2;
-
-// MARK: Deepknow
-
-static NSString * const OLDeepKnowSessionKey   = @"deepknow_session_id";
-static NSString * const OLDeepKnowAppId        = @"ca2a4725af052672f25faf64b181bb5b";
 
 // MARK: Config
 

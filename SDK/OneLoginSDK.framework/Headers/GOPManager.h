@@ -93,6 +93,8 @@ typedef void(^GOPFailure)(NSError *error);
  */
 + (BOOL)isLogEnabled;
 
++ (void)setAsyncSocketEnabled:(BOOL)enabled;
+
 @end
 
 @protocol GOPManagerDelegate <NSObject>
