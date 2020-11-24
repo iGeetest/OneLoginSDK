@@ -11,13 +11,23 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol OLAgreementViewDelegate;
+
 @interface OLAgreementView : UITextView
+
+@property (nonatomic, weak) id<OLAgreementViewDelegate> agreementDelegate;
 
 - (void)updateTermItems:(NSArray<OLPrivacyTermItem *> *)termItems
           withTextColor:(UIColor *)textColor
               termsAttr:(NSDictionary<NSAttributedStringKey, id> *)termsAttr
   auxiliaryPrivacyWords:(NSArray<NSString *> *)auxiliaryPrivacyWords
           textAlignment:(NSTextAlignment)textAlignment;
+
+@end
+
+@protocol OLAgreementViewDelegate <NSObject>
+
+- (BOOL)agreementView:(OLAgreementView *)agreementView shouldInteractWithURL:(NSURL *)URL;
 
 @end
 

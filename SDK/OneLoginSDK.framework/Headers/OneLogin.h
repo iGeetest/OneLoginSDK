@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol OneLoginDelegate;
 
+//DEPRECATED_MSG_ATTRIBUTE("Please Use OneLoginPro instead.")
 @interface OneLogin : NSObject
 
 /**

@@ -61,6 +61,7 @@ static NSString * const OLSecurityPhone        = @"securityPhone";
 static NSString * const OLErrorMsgKey          = @"error_msg";
 static NSString * const OLOperatorErrorCodeKey = @"operator_error_code";
 static NSString * const OLNIKey                = @"n_i";
+static NSString * const OLMobileBridgeTokenKey = @"mobile_bridge_token";
 
 static NSString * const OLGWAuthKey            = @"gwAuth";
 static NSString * const OLAuthcodeKey          = @"authcode";
@@ -68,20 +69,17 @@ static NSString * const OLAuthcodeKey          = @"authcode";
 static NSString * const OLExpireTimeKey        = @"expire_time";
 static NSString * const OLPreGetTokenSuccessedTimeKey = @"preGetTokenSuccessedTime";
 
-static NSString * const OLSDKVersion           = @"2.3.3";
+static NSString * const OLSDKVersion           = @"2.3.4";
 
 static NSString * const OLFirstRegister        = @"f_r_o";
 
 static NSString * const OLCM                   = @"CM";     // 移动
 static NSString * const OLCU                   = @"CU";     // 联通
 static NSString * const OLCT                   = @"CT";     // 电信
-static NSString * const OLCUCC                 = @"CUCC";   // 联通在线
-static NSString * const OLCMSS                 = @"CMSS";   // 苏数
 
 static NSString * const OLServerConfig         = @"server_config";
 static NSString * const OLCarrierID            = @"get_token_id";
 static NSString * const OLCarrierKey           = @"get_token_key";
-static NSString * const OLCMSSAuth             = @"get_token_auth";
 static NSString * const OLCMSSCustid           = @"get_token_custid";
 
 static NSString * const OLCMTermTitle          = @"中国移动认证服务条款";

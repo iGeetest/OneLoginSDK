@@ -65,17 +65,49 @@ NS_ASSUME_NONNULL_BEGIN
  
  @seealso OLAuthViewModel
  
+ @discussion completion 的 result 数据如下：
+ 
+ 获取成功：
+ {
+   "model" : "iPhone9,1",
+   "authcode" : "0000",
+   "operatorType" : "CU",
+   "release" : "13.5.1",
+   "processID" : "967ceb230b3fdfb4d74ebcb470c5830c",
+   "appID" : "b41a959b5cac4dd1277183e074630945",
+   "pre_token_time" : "1012",
+   "token" : "CU__0__b41a959b5cac4dd1277183e074630945__2.3.4__1__f632d01ab7c64efda96580c3274de971__NOTCUCC",
+   "number" : "186****6173",
+   "preGetTokenSuccessedTime" : 1604890895.807291,
+   "errorCode" : "0",
+   "msg" : "获取accessCode成功",
+   "status" : 200,
+   "expire_time" : 580
+ }
+ 
+ 获取失败：
+ {
+   "status" : 500,
+   "operatorType" : "CU",
+   "appID" : "b41a959b5cac4dd1277183e074630945",
+   "model" : "iPhone9,1",
+   "release" : "13.5.1",
+   "msg" : "Can't access cellular.",
+   "errorCode" : "-20202"
+ }
+ 
+ status - 200 表示获取预取号结果成功，500 表示获取预取号结果失败
+ token - 换取手机号需要的 token
+ processID - 流水号
+ appID - appId
+ authcode - authcode
+ operatorType - 运营商
+ errorCode - 获取失败时的错误码
+ msg - 获取失败时表示失败原因
  */
 + (void)requestTokenWithViewController:(nullable UIViewController *)viewController
                              viewModel:(nullable OLAuthViewModel *)viewModel
                             completion:(void(^)(NSDictionary * _Nullable result))completion;
-
-/**
- 进行用户认证授权, 获取网关 token 。
- 
- @param completion 结果处理回调
- 
- */
 + (void)requestTokenWithCompletion:(void(^)(NSDictionary * _Nullable result))completion;
 
 /**
@@ -89,6 +121,40 @@ NS_ASSUME_NONNULL_BEGIN
 * @abstract 获取预取号结果
 *
 * @param completion 预取号结果
+*
+* @discussion completion 的 result 数据如下：
+ 获取成功：
+ {
+   "model" : "iPhone9,1",
+   "accessCode" : "d3f3c605a2684a8fbb4b43ee0f94f1ff",
+   "operatorType" : "CU",
+   "release" : "13.5.1",
+   "processID" : "1f1437fd0b3026ff44500c3d03cdd822",
+   "appID" : "b41a959b5cac4dd1277183e074630945",
+   "pre_token_time" : "1087",
+   "number" : "186****6173",
+   "preGetTokenSuccessedTime" : 1604890389.0020308,
+   "msg" : "获取accessCode成功",
+   "status" : 200,
+   "expire_time" : 580
+ }
+ 
+ 获取失败：
+ {
+   "status" : 500,
+   "operatorType" : "CU",
+   "appID" : "b41a959b5cac4dd1277183e074630945",
+   "model" : "iPhone9,1",
+   "release" : "13.5.1",
+   "msg" : "Can't access cellular.",
+   "errorCode" : "-20202"
+ }
+ 
+ status - 200 表示获取预取号结果成功，500 表示获取预取号结果失败
+ number - 脱敏手机号
+ operatorType - 运营商
+ errorCode - 获取失败时的错误码
+ msg - 获取失败时表示失败原因
 */
 + (void)getPreGetTokenResult:(void(^)(NSDictionary * _Nullable result))completion;
 

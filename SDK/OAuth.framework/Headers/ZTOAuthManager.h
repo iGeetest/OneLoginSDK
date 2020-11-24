@@ -72,7 +72,7 @@
 
 
 
-//释放SDK内部单例对象
+//释放SDK内部单例对象 不推荐使用
 -(void)ZOAURelease;
 
 

@@ -74,13 +74,7 @@
 - (void) gmbc:(NSString*)accessCode mobile:(NSString *)mobile listener:(void (^)(NSDictionary *data))listener;
 
 
-/**
- *  测试接口
- */
-- (void) gmbc:(NSString*)accessCode listener:(void (^)(NSDictionary *data))listener;
-
-
-//释放SDK内部单例对象
+//释放SDK内部单例对象 不推荐使用
 -(void)ZOAURelease;
 
 @end
