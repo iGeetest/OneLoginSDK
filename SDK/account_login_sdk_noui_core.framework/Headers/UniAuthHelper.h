@@ -6,21 +6,22 @@
 //  Copyright © 2018年 xiaowo. All rights reserved.
 //  4.1.3IR01B0320 优化token获取流程。 减少交互。 使用者自行缓存accessCode（具备有效期）。
 //  4.3.0IR01B0615 socket通讯优化（GCD方案）
-//  4.4.0IR01B0715 1. 预取号流程修改 2.降低打点频率。
+//  4.4.0IR01B0715 1. 预取号流程修改 2.增加读取idfa的功能 3.降低打点频率。
+//  4.5.0IR01B1020 1.关闭idfa 2.关闭日志 3.包体大小降低 4.错误码细化
 
 #import <Foundation/Foundation.h>
 
-typedef void (^UniResultListener)(NSDictionary *data);
+typedef void (^UniResultListener)(NSDictionary * _Nonnull data);
 
 @interface UniAuthHelper : NSObject
 
-+(UniAuthHelper *) getInstance;
++(UniAuthHelper *_Nonnull) getInstance;
 
 /*
  sdk初始化，每个app只能执行一次初始化调用。
  注意：某些使用者尝试在同一个app中使用多个appid初始化sdk，这可能导致未知隐患发生。
  */
--(void) initWithAppId:(NSString*) appId appSecret:(NSString*) appSecret;
+-(void) initWithAppId:(NSString* _Nonnull) appId appSecret:(NSString* _Nonnull) appSecret;
 
 /*
  预取号接口。
@@ -33,12 +34,12 @@ typedef void (^UniResultListener)(NSDictionary *data);
  
  预取号获得的accessCode具有效期，请在有效期内使用accesscode换取用户信息。
  */
--(void) getAccessCode:(double)timeout listener:(UniResultListener) listener;
+-(void) getAccessCode:(double)timeout listener:(UniResultListener _Nonnull) listener;
 
--(void) mobileAuth:(double)timeout listener:(UniResultListener) listener;
+-(void) mobileAuth:(double)timeout listener:(UniResultListener _Nonnull) listener;
 
 -(void) printConsoleEnable:(BOOL)enable;
 
--(NSString*) getSdkVersion;
+-(NSString*_Nonnull) getSdkVersion;
 
 @end

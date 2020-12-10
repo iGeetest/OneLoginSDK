@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
    "processID" : "967ceb230b3fdfb4d74ebcb470c5830c",
    "appID" : "b41a959b5cac4dd1277183e074630945",
    "pre_token_time" : "1012",
-   "token" : "CU__0__b41a959b5cac4dd1277183e074630945__2.3.4__1__f632d01ab7c64efda96580c3274de971__NOTCUCC",
+   "token" : "CU__0__b41a959b5cac4dd1277183e074630945__2.3.5__1__f632d01ab7c64efda96580c3274de971__NOTCUCC",
    "number" : "186****6173",
    "preGetTokenSuccessedTime" : 1604890895.807291,
    "errorCode" : "0",
