@@ -28,6 +28,14 @@
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"本机号码校验";
     
+    // 配置开启缓存手机号功能(默认开启)
+    [GOPManager setCachePhoneEnabled:YES];
+    
+    // 获取缓存在本地的手机号
+    NSString *phone = [GOPManager getCachedPhone];
+    if (phone.length > 0) {
+        self.phoneNumberTF.text = phone;
+    }
     self.phoneNumberTF.delegate = self;
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didViewTapped:)];

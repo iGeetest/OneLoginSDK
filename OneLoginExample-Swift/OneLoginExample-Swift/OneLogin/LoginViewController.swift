@@ -226,6 +226,10 @@ class LoginViewController: BaseViewController {
             // -------------- Autolayout -------------------
             if OLAuthVCAutoLayout {
                 viewModel.autolayoutBlock = { [weak self] (authView: UIView, authContentView: UIView, authBackgroundImageView: UIView, authNavigationView: UIView, authNavigationContainerView: UIView, authBackButton: UIView, authNavigationTitleView: UIView, authLogoView: UIView, authPhoneView: UIView, authSwitchButton: UIView, authLoginButton: UIView, authSloganView: UIView, authAgreementView: UIView, authCheckbox: UIView, authProtocolView: UIView, authClosePopupButton: UIView) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    
                     // content
                     authContentView.mas_makeConstraints { (make: MASConstraintMaker?) in
                         make?.edges.equalTo()(authView)
@@ -239,7 +243,7 @@ class LoginViewController: BaseViewController {
                     // navigation
                     authNavigationView.mas_makeConstraints { (make: MASConstraintMaker?) in
                         make?.left.top().right().equalTo()(authContentView)
-                        make?.height.mas_equalTo()(64)
+                        make?.height.mas_equalTo()(64 + (strongSelf.isIPhoneXScreen() ? 34 : 0))
                     }
                     
                     authNavigationContainerView.mas_makeConstraints { (make: MASConstraintMaker?) in
@@ -248,25 +252,24 @@ class LoginViewController: BaseViewController {
 
                     authBackButton.mas_makeConstraints { (make: MASConstraintMaker?) in
                         make?.left.equalTo()(authNavigationContainerView)?.offset()(20)
-                        make?.centerY.equalTo()(authNavigationContainerView)?.offset()(10)
+                        make?.centerY.equalTo()(authNavigationContainerView)?.offset()(strongSelf.isIPhoneXScreen() ? 20 : 10)
                         make?.size.mas_equalTo()(CGSize.init(width: 20, height: 20))
                     }
 
                     authNavigationTitleView.mas_makeConstraints { (make: MASConstraintMaker?) in
                         make?.centerX.equalTo()(authNavigationContainerView)
-                        make?.centerY.equalTo()(authNavigationContainerView)?.offset()(10)
+                        make?.centerY.equalTo()(authNavigationContainerView)?.offset()(strongSelf.isIPhoneXScreen() ? 20 : 10)
                         make?.size.mas_equalTo()(CGSize.init(width: 100, height: 40))
                     }
 
                     // 导航栏右侧控制视图
-                    let strongSelf = self
                     let rightBarButton = UIButton.init(type: UIButton.ButtonType.custom)
                     rightBarButton.setTitle("完成", for: UIControl.State.normal)
-                    rightBarButton.addTarget(strongSelf, action: #selector(strongSelf?.doneAction), for: UIControl.Event.touchUpInside)
+                    rightBarButton.addTarget(strongSelf, action: #selector(strongSelf.doneAction), for: UIControl.Event.touchUpInside)
                     authNavigationContainerView.addSubview(rightBarButton)
                     rightBarButton.mas_makeConstraints { (make: MASConstraintMaker?) in
                         make?.right.equalTo()(authNavigationContainerView)?.offset()(-10)
-                        make?.centerY.equalTo()(authNavigationContainerView)?.offset()(10)
+                        make?.centerY.equalTo()(authNavigationContainerView)?.offset()(strongSelf.isIPhoneXScreen() ? 20 : 10)
                         make?.size.mas_equalTo()(CGSize.init(width: 60, height: 40))
                     }
 
@@ -330,7 +333,7 @@ class LoginViewController: BaseViewController {
                     customBtn.setTitle("我是自定义UI", for: UIControl.State.normal)
                     customBtn.backgroundColor = UIColor.red
                     customBtn.layer.cornerRadius = 2.0
-                    customBtn.addTarget(strongSelf, action: #selector(strongSelf?.dismissAuthVC), for: UIControl.Event.touchUpInside)
+                    customBtn.addTarget(strongSelf, action: #selector(strongSelf.dismissAuthVC), for: UIControl.Event.touchUpInside)
                     authContentView.addSubview(customBtn)
                     customBtn.mas_makeConstraints { (make: MASConstraintMaker?) in
                         make?.left.equalTo()(authContentView)?.offset()(20)

@@ -37,4 +37,13 @@ class BaseViewController: UIViewController {
     func ol_screenWidth() -> CGFloat {
         return min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
     }
+    
+    func isIPhoneXScreen() -> Bool {
+        if #available(iOS 11.0, *) {
+            if let window = UIApplication.shared.delegate?.window, let bottom = window?.safeAreaInsets.bottom {
+                return bottom > 0.0
+            }
+        }
+        return false
+    }
 }

@@ -34,6 +34,14 @@ class OnePassViewController: BaseViewController, GOPManagerDelegate, UITextField
         // Do any additional setup after loading the view.
         self.navigationItem.title = "本机号码校验"
         
+        // 配置开启缓存手机号功能(默认开启)
+        GOPManager.setCachePhoneEnabled(true)
+        
+        // 获取缓存在本地的手机号
+        if let phone = GOPManager.getCachedPhone(), phone.count > 0 {
+            self.phoneNumberTF.text = phone
+        }
+        
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(didViewTapped))
         self.view.addGestureRecognizer(tapGesture)
     }

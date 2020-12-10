@@ -95,6 +95,20 @@ typedef void(^GOPFailure)(NSError *error);
 
 + (void)setAsyncSocketEnabled:(BOOL)enabled;
 
+/**
+ * @abstract 设置是否允许缓存手机号，若允许缓存，则将校验过的手机号加密之后缓存到沙盒，缓存中仅存最近一次校验过的手机号，默认允许缓存
+ *
+ * @param enabled YES，允许缓存 NO，禁止并清空缓存
+ */
++ (void)setCachePhoneEnabled:(BOOL)enabled;
+
+/**
+ @abstract 获取缓存的手机号
+ 
+ @return 手机号
+ */
++ (NSString * _Nullable)getCachedPhone;
+
 @end
 
 @protocol GOPManagerDelegate <NSObject>

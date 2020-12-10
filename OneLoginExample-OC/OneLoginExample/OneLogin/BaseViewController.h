@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (CGFloat)ol_screenWidth;
 - (CGFloat)ol_screenHeight;
 
+- (BOOL)isIPhoneXScreen;
+
 @end
 
 NS_ASSUME_NONNULL_END

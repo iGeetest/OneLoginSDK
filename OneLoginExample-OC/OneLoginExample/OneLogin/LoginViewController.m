@@ -292,7 +292,7 @@
         // navigation
         [authNavigationView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.equalTo(authContentView);
-            make.height.mas_equalTo(64);
+            make.height.mas_equalTo(64 + ([self isIPhoneXScreen] ? 34 : 0));
         }];
         
         [authNavigationContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -301,13 +301,13 @@
         
         [authBackButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(authNavigationContainerView).offset(20);
-            make.centerY.equalTo(authNavigationContainerView).offset(10);
+            make.centerY.equalTo(authNavigationContainerView).offset([self isIPhoneXScreen] ? 20 : 10);
             make.size.mas_equalTo(CGSizeMake(20, 20));
         }];
         
         [authNavigationTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(authNavigationContainerView);
-            make.centerY.equalTo(authNavigationContainerView).offset(10);
+            make.centerY.equalTo(authNavigationContainerView).offset([self isIPhoneXScreen] ? 20 : 10);
             make.size.mas_equalTo(CGSizeMake(100, 40));
         }];
         
@@ -317,7 +317,7 @@
         [authNavigationContainerView addSubview:rightBarButton];
         [rightBarButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(authNavigationContainerView).offset(-10);
-            make.centerY.equalTo(authNavigationContainerView).offset(10);
+            make.centerY.equalTo(authNavigationContainerView).offset([self isIPhoneXScreen] ? 20 : 10);
             make.size.mas_equalTo(CGSizeMake(60, 40));
         }];
         

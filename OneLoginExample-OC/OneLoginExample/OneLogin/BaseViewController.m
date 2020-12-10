@@ -50,4 +50,13 @@
     return NO;
 }
 
+- (BOOL)isIPhoneXScreen {
+    if (@available(iOS 11.0, *)) {
+        CGFloat safeAreaInsetBottom = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom;
+        return safeAreaInsetBottom > 0.0;
+    }
+    
+    return NO;
+}
+
 @end
