@@ -69,7 +69,7 @@ static NSString * const OLAuthcodeKey          = @"authcode";
 static NSString * const OLExpireTimeKey        = @"expire_time";
 static NSString * const OLPreGetTokenSuccessedTimeKey = @"preGetTokenSuccessedTime";
 
-static NSString * const OLSDKVersion           = @"2.3.5";
+static NSString * const OLSDKVersion           = @"2.3.5.1";
 
 static NSString * const OLFirstRegister        = @"f_r_o";
 

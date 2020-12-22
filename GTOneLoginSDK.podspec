@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'GTOneLoginSDK'
-  s.version = '2.3.5' 
+  s.version = '2.3.5.1' 
   s.summary = '极验一键登录SDK'
   s.homepage = 'https://www.geetest.com'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'CUCC' do |dc|
-    dc.vendored_frameworks = 'SDK/KsyzVerify.framework', 'SDK/OAuth.framework'
+    # dc.vendored_frameworks = 'SDK/KsyzVerify.framework', 'SDK/OAuth.framework'
   end
 
 end

@@ -19,8 +19,6 @@
 		E94C0575251305D9005AE547 /* OneLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94C056E251305D9005AE547 /* OneLoginSDK.framework */; };
 		E94C0576251305D9005AE547 /* TYRZUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94C056F251305D9005AE547 /* TYRZUISDK.framework */; };
 		E94C0577251305D9005AE547 /* account_login_sdk_noui_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94C0570251305D9005AE547 /* account_login_sdk_noui_core.framework */; };
-		E94C0578251305D9005AE547 /* KsyzVerify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94C0571251305D9005AE547 /* KsyzVerify.framework */; };
-		E94C0579251305D9005AE547 /* OAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94C0572251305D9005AE547 /* OAuth.framework */; };
 		E94C057A251305D9005AE547 /* EAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94C0573251305D9005AE547 /* EAccountApiSDK.framework */; };
 		E94C057B251305D9005AE547 /* OneLoginResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E94C0574251305D9005AE547 /* OneLoginResource.bundle */; };
 		E94C057D251306AF005AE547 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94C057C251306AF005AE547 /* LoginViewController.swift */; };
@@ -56,8 +54,6 @@
 		E94C056E251305D9005AE547 /* OneLoginSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneLoginSDK.framework; sourceTree = "<group>"; };
 		E94C056F251305D9005AE547 /* TYRZUISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZUISDK.framework; sourceTree = "<group>"; };
 		E94C0570251305D9005AE547 /* account_login_sdk_noui_core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = account_login_sdk_noui_core.framework; sourceTree = "<group>"; };
-		E94C0571251305D9005AE547 /* KsyzVerify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KsyzVerify.framework; sourceTree = "<group>"; };
-		E94C0572251305D9005AE547 /* OAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OAuth.framework; sourceTree = "<group>"; };
 		E94C0573251305D9005AE547 /* EAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EAccountApiSDK.framework; sourceTree = "<group>"; };
 		E94C0574251305D9005AE547 /* OneLoginResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OneLoginResource.bundle; sourceTree = "<group>"; };
 		E94C057C251306AF005AE547 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -106,8 +102,6 @@
 				E94C0575251305D9005AE547 /* OneLoginSDK.framework in Frameworks */,
 				E94C057A251305D9005AE547 /* EAccountApiSDK.framework in Frameworks */,
 				E94C0577251305D9005AE547 /* account_login_sdk_noui_core.framework in Frameworks */,
-				E94C0579251305D9005AE547 /* OAuth.framework in Frameworks */,
-				E94C0578251305D9005AE547 /* KsyzVerify.framework in Frameworks */,
 				E94C056C251305C2005AE547 /* libz.1.2.8.tbd in Frameworks */,
 				E94C056A251305BA005AE547 /* libc++.1.tbd in Frameworks */,
 			);
@@ -187,8 +181,6 @@
 				E94C056E251305D9005AE547 /* OneLoginSDK.framework */,
 				E94C056F251305D9005AE547 /* TYRZUISDK.framework */,
 				E94C0570251305D9005AE547 /* account_login_sdk_noui_core.framework */,
-				E94C0571251305D9005AE547 /* KsyzVerify.framework */,
-				E94C0572251305D9005AE547 /* OAuth.framework */,
 				E94C0573251305D9005AE547 /* EAccountApiSDK.framework */,
 				E94C0574251305D9005AE547 /* OneLoginResource.bundle */,
 			);
