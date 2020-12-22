@@ -24,8 +24,8 @@ Pod::Spec.new do |s|
     dm.resources = 'SDK/OneLoginResource.bundle', 'README.md'
   end
 
-  s.subspec 'CUCC' do |dc|
+  # s.subspec 'CUCC' do |dc|
     # dc.vendored_frameworks = 'SDK/KsyzVerify.framework', 'SDK/OAuth.framework'
-  end
+  # end
 
 end
