@@ -10,12 +10,13 @@ order: 0
 
 |版本|更新内容|更新日期|下载地址|
 | --------- |------------------------------------------------------------|--------- | -------- |
-| **2.3.5** | 1、更新联通 sdk 到最新版本；<br>2、提供 onepass 体验优化方法；<br>3、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-12-10 | [点击下载](https://docs.geetest.com/downloads/onelogin&onepass-ios.zip)
+| **2.3.5.2** | 1、更新联通sdk优化对5G网络的支持；<br>2、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2021-01-14 | [点击下载](https://docs.geetest.com/downloads/onelogin&onepass-ios.zip)
 
 # 更新日志
 
 版本|更新内容|更新日期
 -----|-----|-----
+**2.3.5** | 1、更新联通 sdk 到最新版本；<br>2、提供 onepass 体验优化方法；<br>3、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-12-10
 **2.3.4** | 1、优化网络环境判断方法；<br>2、优化授权页面UI支持方式；<br>3、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-11-24
 **2.3.3** | 1、优化本机号码校验功能；<br>2、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-11-05
 **2.3.2** | 1、更新移动 SDK 到 5.8.2.2 版本，移动 SDK 更新内容为：<br>a、修复 iOS 12.0 系列系统下，双卡用户出现的偶发崩溃问题；<br>2、其他功能优化；<br><font color="#ff0000">Tips：</br>1.8.0（不含）以下版本升级到该版本，服务端接口必须一同调整，否则会导致电信取号失败</br>2.3.0 及以下版本升级到该版本，请注意移动 SDK 的名称由 `TYRZSDK.framework` 改为了 `TYRZUISDK.framework` </font>| 2020-10-14
