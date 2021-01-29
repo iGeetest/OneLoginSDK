@@ -108,6 +108,8 @@ typedef void(^GOPFailure)(NSError *error);
  @return 手机号
  */
 + (NSString * _Nullable)getCachedPhone;
++ (void)getCachedPhoneWithCompletionHandler:(void(^)(NSString *phone))completionHandler;
++ (void)getCachedPhonesWithCompletionHandler:(void(^)(NSMutableArray<NSString *> *phones))completionHandler;
 
 @end
 

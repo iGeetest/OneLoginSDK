@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "LoginViewController.h"
-#import "OnePassViewController.h"
+#import "GOPAuthViewController.h"
 
 @interface ViewController ()
 
@@ -38,11 +38,10 @@
 }
 
 - (IBAction)onepassAction:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    OnePassViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"OnePassViewController"];
-    if (controller) {
-        [self.navigationController pushViewController:controller animated:YES];
-    }
+    GOPAuthViewModel *model = [GOPAuthViewModel new];
+    GOPAuthViewController *authViewController = [[GOPAuthViewController alloc] init];
+    authViewController.authViewModel = model;
+    [self.navigationController pushViewController:authViewController animated:YES];
 }
 
 @end

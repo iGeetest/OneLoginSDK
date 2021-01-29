@@ -24,24 +24,30 @@
 		7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A3F71CF2241D9A4007EA470 /* LaunchScreen.storyboard */; };
 		7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */; };
 		7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595F2242290600230BE0 /* libc++.1.tbd */; };
-		E913F79B24EA9589005D7C3A /* TYRZUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E913F79A24EA9589005D7C3A /* TYRZUISDK.framework */; };
 		E932E71123418D9A00A06ED9 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E932E71023418D9A00A06ED9 /* index.html */; };
 		E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */; };
 		E94C05592512FD03005AE547 /* GT3Captcha.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E94C05572512FD03005AE547 /* GT3Captcha.bundle */; };
 		E94C055A2512FD03005AE547 /* GT3Captcha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94C05582512FD03005AE547 /* GT3Captcha.framework */; };
-		E94C05BD25130DEB005AE547 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C05B525130DEB005AE547 /* ResultViewController.m */; };
 		E94C05BE25130DEB005AE547 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C05B625130DEB005AE547 /* LoginViewController.m */; };
 		E94C05BF25130DEB005AE547 /* CustomProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C05BB25130DEB005AE547 /* CustomProtocolViewController.m */; };
-		E94C05C025130DEB005AE547 /* OnePassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C05BC25130DEB005AE547 /* OnePassViewController.m */; };
 		E94D7BF123866DEE00980D5A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BEE23866DEE00980D5A /* MBProgressHUD.m */; };
 		E94D7BF223866DEE00980D5A /* GTProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BF023866DEE00980D5A /* GTProgressHUD.m */; };
 		E94D7BFB23866E1000980D5A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BF623866E1000980D5A /* ViewController.m */; };
 		E94D7BFC23866E1000980D5A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BF723866E1000980D5A /* AppDelegate.m */; };
 		E94D7C0023866E5800980D5A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BFE23866E5800980D5A /* main.m */; };
 		E962EC2C233B04D100EEC3AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E962EC2B233B04D100EEC3AE /* Assets.xcassets */; };
-		E9C7962423B4C1CC00032AB1 /* account_login_sdk_noui_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C7962323B4C1CC00032AB1 /* account_login_sdk_noui_core.framework */; };
+		E992F76D25BE67D60040AD0C /* GOPUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = E992F75B25BE67D50040AD0C /* GOPUtil.m */; };
+		E992F76E25BE67D60040AD0C /* GOPAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E992F75E25BE67D50040AD0C /* GOPAuthViewController.m */; };
+		E992F76F25BE67D60040AD0C /* GOPAuthViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E992F76025BE67D50040AD0C /* GOPAuthViewModel.m */; };
+		E992F77125BE67D60040AD0C /* GOPPhoneTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E992F76725BE67D50040AD0C /* GOPPhoneTableCell.m */; };
+		E992F77225BE67D60040AD0C /* GOPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E992F76825BE67D50040AD0C /* GOPButton.m */; };
+		E992F77625BE680F0040AD0C /* UIScreen+GOP.m in Sources */ = {isa = PBXBuildFile; fileRef = E992F77525BE680F0040AD0C /* UIScreen+GOP.m */; };
+		E992F77925BE6D420040AD0C /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E992F77825BE6D420040AD0C /* ResultViewController.m */; };
+		E992F77E25BE6E9E0040AD0C /* UIView+GOPAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E992F77C25BE6E9E0040AD0C /* UIView+GOPAutoLayout.m */; };
+		E992F78325BE72BA0040AD0C /* account_login_sdk_noui_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E992F78025BE72BA0040AD0C /* account_login_sdk_noui_core.framework */; };
+		E992F78425BE72BB0040AD0C /* EAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E992F78125BE72BA0040AD0C /* EAccountApiSDK.framework */; };
+		E992F78525BE72BB0040AD0C /* TYRZUISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E992F78225BE72BA0040AD0C /* TYRZUISDK.framework */; };
 		E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */; };
-		E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E7784C2302CAFE002D91D1 /* EAccountApiSDK.framework */; };
 		E9E778532302CAFE002D91D1 /* OneLoginResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E9E7784D2302CAFE002D91D1 /* OneLoginResource.bundle */; };
 		E9F06ABA25133D000017EB76 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F06AB725133D000017EB76 /* BaseViewController.m */; };
 		E9F06ABB25133D000017EB76 /* BaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F06AB925133D000017EB76 /* BaseNavigationViewController.m */; };
@@ -82,19 +88,14 @@
 		7A3F71D02241D9A4007EA470 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
 		7AF5595F2242290600230BE0 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
-		E913F79A24EA9589005D7C3A /* TYRZUISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZUISDK.framework; sourceTree = "<group>"; };
 		E932E71023418D9A00A06ED9 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E94C05572512FD03005AE547 /* GT3Captcha.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GT3Captcha.bundle; sourceTree = "<group>"; };
 		E94C05582512FD03005AE547 /* GT3Captcha.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT3Captcha.framework; sourceTree = "<group>"; };
-		E94C05B525130DEB005AE547 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 		E94C05B625130DEB005AE547 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		E94C05B725130DEB005AE547 /* OnePassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePassViewController.h; sourceTree = "<group>"; };
 		E94C05B825130DEB005AE547 /* CustomProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProtocolViewController.h; sourceTree = "<group>"; };
 		E94C05B925130DEB005AE547 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		E94C05BA25130DEB005AE547 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
 		E94C05BB25130DEB005AE547 /* CustomProtocolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomProtocolViewController.m; sourceTree = "<group>"; };
-		E94C05BC25130DEB005AE547 /* OnePassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePassViewController.m; sourceTree = "<group>"; };
 		E94D7BEC23866DEE00980D5A /* GTProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTProgressHUD.h; sourceTree = "<group>"; };
 		E94D7BEE23866DEE00980D5A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		E94D7BEF23866DEE00980D5A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -106,9 +107,26 @@
 		E94D7BFE23866E5800980D5A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E94D7BFF23866E5800980D5A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E962EC2B233B04D100EEC3AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E9C7962323B4C1CC00032AB1 /* account_login_sdk_noui_core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = account_login_sdk_noui_core.framework; sourceTree = "<group>"; };
+		E992F75825BE67D50040AD0C /* GOPUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOPUtil.h; sourceTree = "<group>"; };
+		E992F75B25BE67D50040AD0C /* GOPUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOPUtil.m; sourceTree = "<group>"; };
+		E992F75D25BE67D50040AD0C /* GOPAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOPAuthViewController.h; sourceTree = "<group>"; };
+		E992F75E25BE67D50040AD0C /* GOPAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOPAuthViewController.m; sourceTree = "<group>"; };
+		E992F76025BE67D50040AD0C /* GOPAuthViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOPAuthViewModel.m; sourceTree = "<group>"; };
+		E992F76225BE67D50040AD0C /* GOPAuthViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOPAuthViewModel.h; sourceTree = "<group>"; };
+		E992F76525BE67D50040AD0C /* GOPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOPButton.h; sourceTree = "<group>"; };
+		E992F76725BE67D50040AD0C /* GOPPhoneTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOPPhoneTableCell.m; sourceTree = "<group>"; };
+		E992F76825BE67D50040AD0C /* GOPButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GOPButton.m; sourceTree = "<group>"; };
+		E992F76B25BE67D50040AD0C /* GOPPhoneTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GOPPhoneTableCell.h; sourceTree = "<group>"; };
+		E992F77425BE680F0040AD0C /* UIScreen+GOP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+GOP.h"; sourceTree = "<group>"; };
+		E992F77525BE680F0040AD0C /* UIScreen+GOP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+GOP.m"; sourceTree = "<group>"; };
+		E992F77725BE6D420040AD0C /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		E992F77825BE6D420040AD0C /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
+		E992F77B25BE6E9E0040AD0C /* UIView+GOPAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GOPAutoLayout.h"; sourceTree = "<group>"; };
+		E992F77C25BE6E9E0040AD0C /* UIView+GOPAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GOPAutoLayout.m"; sourceTree = "<group>"; };
+		E992F78025BE72BA0040AD0C /* account_login_sdk_noui_core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = account_login_sdk_noui_core.framework; sourceTree = "<group>"; };
+		E992F78125BE72BA0040AD0C /* EAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EAccountApiSDK.framework; sourceTree = "<group>"; };
+		E992F78225BE72BA0040AD0C /* TYRZUISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TYRZUISDK.framework; sourceTree = "<group>"; };
 		E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OneLoginSDK.framework; sourceTree = "<group>"; };
-		E9E7784C2302CAFE002D91D1 /* EAccountApiSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EAccountApiSDK.framework; sourceTree = "<group>"; };
 		E9E7784D2302CAFE002D91D1 /* OneLoginResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = OneLoginResource.bundle; sourceTree = "<group>"; };
 		E9F06AB625133D000017EB76 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E9F06AB725133D000017EB76 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -122,12 +140,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC98C5C2449B7CC00CE4312 /* MediaPlayer.framework in Frameworks */,
+				E992F78525BE72BB0040AD0C /* TYRZUISDK.framework in Frameworks */,
 				E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */,
+				E992F78425BE72BB0040AD0C /* EAccountApiSDK.framework in Frameworks */,
 				7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */,
-				E913F79B24EA9589005D7C3A /* TYRZUISDK.framework in Frameworks */,
-				E9E778522302CAFE002D91D1 /* EAccountApiSDK.framework in Frameworks */,
 				E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */,
-				E9C7962423B4C1CC00032AB1 /* account_login_sdk_noui_core.framework in Frameworks */,
+				E992F78325BE72BA0040AD0C /* account_login_sdk_noui_core.framework in Frameworks */,
 				E94C055A2512FD03005AE547 /* GT3Captcha.framework in Frameworks */,
 				7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */,
 			);
@@ -171,8 +189,12 @@
 		1C50699723E81A73006C0213 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E992F77425BE680F0040AD0C /* UIScreen+GOP.h */,
+				E992F77525BE680F0040AD0C /* UIScreen+GOP.m */,
 				1C50699923E81A74006C0213 /* UIView+GTM.h */,
 				1C50699823E81A74006C0213 /* UIView+GTM.m */,
+				E992F77B25BE6E9E0040AD0C /* UIView+GOPAutoLayout.h */,
+				E992F77C25BE6E9E0040AD0C /* UIView+GOPAutoLayout.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -198,6 +220,7 @@
 		7A3F71C32241D9A2007EA470 /* OneLoginExample */ = {
 			isa = PBXGroup;
 			children = (
+				E992F75625BE67D50040AD0C /* OnePass */,
 				E94C05B425130DEB005AE547 /* OneLogin */,
 				E94D7BF323866E1000980D5A /* Main */,
 				1C50699723E81A73006C0213 /* Category */,
@@ -244,10 +267,6 @@
 				E94C05B625130DEB005AE547 /* LoginViewController.m */,
 				E94C05B825130DEB005AE547 /* CustomProtocolViewController.h */,
 				E94C05BB25130DEB005AE547 /* CustomProtocolViewController.m */,
-				E94C05B725130DEB005AE547 /* OnePassViewController.h */,
-				E94C05BC25130DEB005AE547 /* OnePassViewController.m */,
-				E94C05BA25130DEB005AE547 /* ResultViewController.h */,
-				E94C05B525130DEB005AE547 /* ResultViewController.m */,
 			);
 			path = OneLogin;
 			sourceTree = "<group>";
@@ -291,6 +310,57 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		E992F75625BE67D50040AD0C /* OnePass */ = {
+			isa = PBXGroup;
+			children = (
+				E992F75C25BE67D50040AD0C /* Controller */,
+				E992F75F25BE67D50040AD0C /* Model */,
+				E992F75725BE67D50040AD0C /* Util */,
+				E992F76325BE67D50040AD0C /* View */,
+			);
+			path = OnePass;
+			sourceTree = "<group>";
+		};
+		E992F75725BE67D50040AD0C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E992F75825BE67D50040AD0C /* GOPUtil.h */,
+				E992F75B25BE67D50040AD0C /* GOPUtil.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		E992F75C25BE67D50040AD0C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E992F75D25BE67D50040AD0C /* GOPAuthViewController.h */,
+				E992F75E25BE67D50040AD0C /* GOPAuthViewController.m */,
+				E992F77725BE6D420040AD0C /* ResultViewController.h */,
+				E992F77825BE6D420040AD0C /* ResultViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E992F75F25BE67D50040AD0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E992F76225BE67D50040AD0C /* GOPAuthViewModel.h */,
+				E992F76025BE67D50040AD0C /* GOPAuthViewModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E992F76325BE67D50040AD0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E992F76525BE67D50040AD0C /* GOPButton.h */,
+				E992F76825BE67D50040AD0C /* GOPButton.m */,
+				E992F76B25BE67D50040AD0C /* GOPPhoneTableCell.h */,
+				E992F76725BE67D50040AD0C /* GOPPhoneTableCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E996EC23233B1A7000F93FB3 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,10 +373,10 @@
 		E9E778472302CAFE002D91D1 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				E913F79A24EA9589005D7C3A /* TYRZUISDK.framework */,
-				E9C7962323B4C1CC00032AB1 /* account_login_sdk_noui_core.framework */,
+				E992F78025BE72BA0040AD0C /* account_login_sdk_noui_core.framework */,
+				E992F78125BE72BA0040AD0C /* EAccountApiSDK.framework */,
+				E992F78225BE72BA0040AD0C /* TYRZUISDK.framework */,
 				E9E7784A2302CAFE002D91D1 /* OneLoginSDK.framework */,
-				E9E7784C2302CAFE002D91D1 /* EAccountApiSDK.framework */,
 				E9E7784D2302CAFE002D91D1 /* OneLoginResource.bundle */,
 			);
 			name = SDK;
@@ -388,24 +458,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94C05C025130DEB005AE547 /* OnePassViewController.m in Sources */,
-				E94C05BD25130DEB005AE547 /* ResultViewController.m in Sources */,
 				1C50698A23E80E6D006C0213 /* NSArray+MASAdditions.m in Sources */,
 				E94C05BF25130DEB005AE547 /* CustomProtocolViewController.m in Sources */,
 				E94D7BF123866DEE00980D5A /* MBProgressHUD.m in Sources */,
+				E992F77625BE680F0040AD0C /* UIScreen+GOP.m in Sources */,
 				1C50698B23E80E6D006C0213 /* View+MASAdditions.m in Sources */,
 				1C50698523E80E6D006C0213 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				E94C05BE25130DEB005AE547 /* LoginViewController.m in Sources */,
+				E992F76D25BE67D60040AD0C /* GOPUtil.m in Sources */,
+				E992F77925BE6D420040AD0C /* ResultViewController.m in Sources */,
+				E992F76F25BE67D60040AD0C /* GOPAuthViewModel.m in Sources */,
+				E992F76E25BE67D60040AD0C /* GOPAuthViewController.m in Sources */,
 				1C50698723E80E6D006C0213 /* MASCompositeConstraint.m in Sources */,
 				E94D7BFC23866E1000980D5A /* AppDelegate.m in Sources */,
 				1C50699A23E81A74006C0213 /* UIView+GTM.m in Sources */,
 				1C50698623E80E6D006C0213 /* ViewController+MASAdditions.m in Sources */,
+				E992F77225BE67D60040AD0C /* GOPButton.m in Sources */,
 				1C50698E23E80E6D006C0213 /* MASViewAttribute.m in Sources */,
 				1C50698D23E80E6D006C0213 /* MASViewConstraint.m in Sources */,
 				E94D7BF223866DEE00980D5A /* GTProgressHUD.m in Sources */,
 				1C50698823E80E6D006C0213 /* MASConstraintMaker.m in Sources */,
 				1C50698923E80E6D006C0213 /* MASLayoutConstraint.m in Sources */,
 				E94D7C0023866E5800980D5A /* main.m in Sources */,
+				E992F77125BE67D60040AD0C /* GOPPhoneTableCell.m in Sources */,
+				E992F77E25BE6E9E0040AD0C /* UIView+GOPAutoLayout.m in Sources */,
 				E9F06ABB25133D000017EB76 /* BaseNavigationViewController.m in Sources */,
 				E94D7BFB23866E1000980D5A /* ViewController.m in Sources */,
 				1C50698C23E80E6D006C0213 /* MASConstraint.m in Sources */,
