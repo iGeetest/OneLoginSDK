@@ -2,18 +2,52 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSAppTransportSecurity</key>
+    <key>NSAppTransportSecurity</key>
     <dict>
         <key>NSExceptionDomains</key>
         <dict>
+            <key>wap.cmpassport.com</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>enrichgw.10010.com</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
             <key>id6.me</key>
             <dict>
-                <key>NSAllowsArbitraryLoadsInWebContent</key>
-                <true/>
                 <key>NSExceptionAllowsInsecureHTTPLoads</key>
                 <true/>
             </dict>
             <key>mdn.open.wo.cn</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>opencloud.wostore.cn</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>wostore.cn</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>zzx9.cn</key>
+            <dict>
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+            <key>www.geetest.com</key>
             <dict>
                 <key>NSAllowsArbitraryLoadsInWebContent</key>
                 <true/>
@@ -22,20 +56,6 @@
             </dict>
             <key>onepass.geetest.com</key>
             <dict>
-                <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-            </dict>
-            <key>wap.cmpassport.com</key>
-            <dict>
-                <key>NSAllowsArbitraryLoadsInWebContent</key>
-                <true/>
-                <key>NSExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-            </dict>
-            <key>www.geetest.com</key>
-            <dict>
-                <key>NSAllowsArbitraryLoadsInWebContent</key>
-                <true/>
                 <key>NSExceptionAllowsInsecureHTTPLoads</key>
                 <true/>
             </dict>

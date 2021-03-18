@@ -69,7 +69,7 @@ static NSString * const OLAuthcodeKey          = @"authcode";
 static NSString * const OLExpireTimeKey        = @"expire_time";
 static NSString * const OLPreGetTokenSuccessedTimeKey = @"preGetTokenSuccessedTime";
 
-static NSString * const OLSDKVersion           = @"2.3.7";
+static NSString * const OLSDKVersion           = @"2.3.8";
 
 static NSString * const OLFirstRegister        = @"f_r_o";
 
@@ -115,6 +115,7 @@ static NSString * const OLPrivatizationKey     = @"Privatization";
 static NSString * const OnePassURLPrefix       = @"https://onepass.geetest.com/v2.0/";
 static NSString * const OnePassURLClientReport = @"clientreport";
 static NSString * const OnePassURLPreGetway    = @"pre_gateway";
+static NSString * const OnePassURLPreReport    = @"pre_report";
 
 static NSString * const OPErrorData            = @"error_data";
 static NSString * const OPErrorFailingURL      = @"GOPFailingURL";
