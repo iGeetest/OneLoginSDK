@@ -71,6 +71,10 @@ static NSString * const OLErrorCode_20409 = @"-20409";  // 移动 SDK EAccountAp
 static NSString * const OLErrorCode_20410 = @"-20410";  // 未获取到 key window
 static NSString * const OLErrorDesc_20410 = @"Key window is nil.";
 
+// ****************** -206.. 其他模块的错误封装 ******************/
+static NSString * const OLErrorCode_20600 = @"-20600";  // 验证模块校验失败
+static NSString * const OLErrorDesc_20600 = @"Captcha fail.";
+
 // ****************** -2041. iOS专用，rsa加密失败 ******************/
 static NSString * const OLRsaErrorDomain  = @"com.geetest.rsaencrypterror";
 static NSString * const OLRsaErrorMsg     = @"Rsa encrypt failed.";

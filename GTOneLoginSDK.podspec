@@ -8,11 +8,11 @@
 
 Pod::Spec.new do |s|
   s.name = 'GTOneLoginSDK'
-  s.version = '2.3.8.2' 
+  s.version = '2.4.0' 
   s.summary = '极验一键登录SDK'
   s.homepage = 'https://www.geetest.com'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
-  s.author = { 'Geetest' => 'liulian@geetest.com' }
+  s.author = { 'Geetest' => 'lixiaojie@geetest.com' }
   s.source = { :git => 'https://github.com/iGeetest/OneLoginSDK.git', :tag => s.version.to_s, :submodules => true } 
   s.ios.deployment_target = '8.0'
 

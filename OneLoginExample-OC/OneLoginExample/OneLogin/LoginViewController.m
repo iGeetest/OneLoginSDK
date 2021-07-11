@@ -10,7 +10,7 @@
 #import "CustomProtocolViewController.h"
 #import "Masonry.h"
 
-@interface LoginViewController () <GT3CaptchaManagerDelegate, GT3CaptchaManagerViewDelegate>
+@interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *normalLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *popupLoginButton;
@@ -18,8 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *landscapeLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *captchaLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *captchaInSDKLoginButton;
-
-@property (nonatomic, strong) GT3CaptchaManager *gt3CaptchaManager;
 
 @end
 
@@ -69,15 +67,6 @@
 }
 
 #pragma mark - Getter
-
-- (GT3CaptchaManager *)gt3CaptchaManager {
-    if (!_gt3CaptchaManager) {
-        _gt3CaptchaManager = [[GT3CaptchaManager alloc] initWithAPI1:GTCaptchaAPI1 API2:GTCaptchaAPI2 timeout:10.f];
-        _gt3CaptchaManager.viewDelegate = self;
-        _gt3CaptchaManager.delegate = self;
-    }
-    return _gt3CaptchaManager;
-}
 
 #pragma mark - Action
 
@@ -598,13 +587,6 @@
             [GTProgressHUD hideAllHUD];
         }
     };
-    
-    // 结合行为验证
-    viewModel.customAuthActionBlock = ^BOOL{
-        [wself.gt3CaptchaManager registerCaptcha:nil];
-        [wself.gt3CaptchaManager startGTCaptchaWithAnimated:YES];
-        return YES;
-    };
         
     [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
@@ -728,49 +710,6 @@
         
         [OneLoginPro dismissAuthViewController:nil];
     });
-}
-
-// MARK: GT3CaptchaManagerViewDelegate
-
-- (void)gtCaptchaWillShowGTView:(GT3CaptchaManager *)manager {
-    NSLog(@"gtCaptchaWillShowGTView");
-}
-
-// MARK: GT3CaptchaManagerDelegate
-
-- (void)gtCaptcha:(GT3CaptchaManager *)manager errorHandler:(GT3Error *)error {
-    NSLog(@"gtCaptcha errorHandler: %@", error);
-}
-
-- (void)gtCaptcha:(GT3CaptchaManager *)manager willSendRequestAPI1:(NSURLRequest *)originalRequest withReplacedHandler:(void (^)(NSURLRequest *))replacedHandler {
-    NSMutableURLRequest *mRequest = [originalRequest mutableCopy];
-    NSString *originURL = originalRequest.URL.absoluteString;
-    NSRange tRange = [originURL rangeOfString:@"?t="];
-    NSString *newURL = originURL.copy;
-    if (NSNotFound != tRange.location) {
-        if (newURL.length >= tRange.location + tRange.length + 13) {
-            newURL = [newURL stringByReplacingCharactersInRange:NSMakeRange(tRange.location + tRange.length, 13) withString:[NSString stringWithFormat:@"%.0f", 1000 * [[[NSDate alloc] init] timeIntervalSince1970]]];
-        }
-    } else {
-        newURL = [NSString stringWithFormat:@"%@?t=%.0f", originURL, 1000 * [[[NSDate alloc] init] timeIntervalSince1970]];
-    }
-    
-    mRequest.URL = [NSURL URLWithString:newURL];
-    NSLog(@"gtCaptcha willSendRequestAPI1 newURL: %@", newURL);
-    
-    replacedHandler(mRequest);
-}
-
-- (void)gtCaptcha:(GT3CaptchaManager *)manager didReceiveSecondaryCaptchaData:(NSData *)data response:(NSURLResponse *)response error:(GT3Error *)error decisionHandler:(void (^)(GT3SecondaryCaptchaPolicy))decisionHandler {
-    if (!error) {
-        // 处理验证结果
-        NSLog(@"\ndata: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        decisionHandler(GT3SecondaryCaptchaPolicyAllow);
-        [OneLoginPro startRequestToken];
-    } else {
-        // 二次验证发生错误
-        decisionHandler(GT3SecondaryCaptchaPolicyForbidden);
-    }
 }
 
 @end

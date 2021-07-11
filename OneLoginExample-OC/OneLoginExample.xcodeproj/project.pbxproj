@@ -26,8 +26,6 @@
 		7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF5595F2242290600230BE0 /* libc++.1.tbd */; };
 		E932E71123418D9A00A06ED9 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E932E71023418D9A00A06ED9 /* index.html */; };
 		E93F576E230BE5EF009C54A2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */; };
-		E94C05592512FD03005AE547 /* GT3Captcha.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E94C05572512FD03005AE547 /* GT3Captcha.bundle */; };
-		E94C055A2512FD03005AE547 /* GT3Captcha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94C05582512FD03005AE547 /* GT3Captcha.framework */; };
 		E94C05BE25130DEB005AE547 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C05B625130DEB005AE547 /* LoginViewController.m */; };
 		E94C05BF25130DEB005AE547 /* CustomProtocolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E94C05BB25130DEB005AE547 /* CustomProtocolViewController.m */; };
 		E94D7BF123866DEE00980D5A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E94D7BEE23866DEE00980D5A /* MBProgressHUD.m */; };
@@ -90,8 +88,6 @@
 		7AF5595F2242290600230BE0 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		E932E71023418D9A00A06ED9 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		E94C05572512FD03005AE547 /* GT3Captcha.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GT3Captcha.bundle; sourceTree = "<group>"; };
-		E94C05582512FD03005AE547 /* GT3Captcha.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GT3Captcha.framework; sourceTree = "<group>"; };
 		E94C05B625130DEB005AE547 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E94C05B825130DEB005AE547 /* CustomProtocolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomProtocolViewController.h; sourceTree = "<group>"; };
 		E94C05B925130DEB005AE547 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -146,7 +142,6 @@
 				7AF559602242290600230BE0 /* libc++.1.tbd in Frameworks */,
 				E9E778502302CAFE002D91D1 /* OneLoginSDK.framework in Frameworks */,
 				E992F78325BE72BA0040AD0C /* account_login_sdk_noui_core.framework in Frameworks */,
-				E94C055A2512FD03005AE547 /* GT3Captcha.framework in Frameworks */,
 				7AF5595E224228FB00230BE0 /* libz.1.2.8.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,22 +233,12 @@
 		7A3F71DA2241D9D3007EA470 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E94C05562512FD03005AE547 /* GT3Captcha */,
 				1CC98C5B2449B7CC00CE4312 /* MediaPlayer.framework */,
 				E93F576D230BE5EF009C54A2 /* CoreTelephony.framework */,
 				7AF5595F2242290600230BE0 /* libc++.1.tbd */,
 				7AF5595D224228FB00230BE0 /* libz.1.2.8.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E94C05562512FD03005AE547 /* GT3Captcha */ = {
-			isa = PBXGroup;
-			children = (
-				E94C05572512FD03005AE547 /* GT3Captcha.bundle */,
-				E94C05582512FD03005AE547 /* GT3Captcha.framework */,
-			);
-			path = GT3Captcha;
 			sourceTree = "<group>";
 		};
 		E94C05B425130DEB005AE547 /* OneLogin */ = {
@@ -444,7 +429,6 @@
 				1CC98C86244EF5C500CE4312 /* auth_vc_bg.mp4 in Resources */,
 				E9E778532302CAFE002D91D1 /* OneLoginResource.bundle in Resources */,
 				E932E71123418D9A00A06ED9 /* index.html in Resources */,
-				E94C05592512FD03005AE547 /* GT3Captcha.bundle in Resources */,
 				7A3F71D12241D9A4007EA470 /* LaunchScreen.storyboard in Resources */,
 				7A3F71CC2241D9A2007EA470 /* Main.storyboard in Resources */,
 				E962EC2C233B04D100EEC3AE /* Assets.xcassets in Resources */,

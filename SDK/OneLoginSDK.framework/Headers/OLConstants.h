@@ -63,13 +63,16 @@ static NSString * const OLOperatorErrorCodeKey = @"operator_error_code";
 static NSString * const OLNIKey                = @"n_i";
 static NSString * const OLMobileBridgeTokenKey = @"mobile_bridge_token";
 
+static NSString * const OLCaptchaIDKey         = @"captcha_id";
+static NSString * const OLCaptchaStatusKey     = @"captcha_status";
+
 static NSString * const OLGWAuthKey            = @"gwAuth";
 static NSString * const OLAuthcodeKey          = @"authcode";
 
 static NSString * const OLExpireTimeKey        = @"expire_time";
 static NSString * const OLPreGetTokenSuccessedTimeKey = @"preGetTokenSuccessedTime";
 
-static NSString * const OLSDKVersion           = @"2.3.8.2";
+static NSString * const OLSDKVersion           = @"2.4.0";
 
 static NSString * const OLFirstRegister        = @"f_r_o";
 

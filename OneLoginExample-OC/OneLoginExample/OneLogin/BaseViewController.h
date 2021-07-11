@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <OneLoginSDK/OneLoginSDK.h>
-#import <GT3Captcha/GT3Captcha.h>
 #import "GTProgressHUD.h"
 
 // OneLogin
