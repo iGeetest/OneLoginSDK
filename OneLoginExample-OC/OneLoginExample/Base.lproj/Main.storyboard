@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XWX-11-Qe1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XWX-11-Qe1">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VI-f6-ANQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VI-f6-ANQ">
                                 <rect key="frame" x="87.5" y="223.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -49,7 +49,7 @@
                                     <action selector="nLoginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t8m-eh-ZdX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP1-Yw-k6A">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EP1-Yw-k6A">
                                 <rect key="frame" x="87.5" y="308.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -94,7 +94,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysA-n3-Lgv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysA-n3-Lgv">
                                 <rect key="frame" x="87.5" y="343.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -108,7 +108,7 @@
                                     <action selector="landscapeLogin:" destination="wax-Dj-HDH" eventType="touchUpInside" id="TAt-Ki-KPa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-zt-V4F">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxS-zt-V4F">
                                 <rect key="frame" x="87.5" y="283.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -122,7 +122,7 @@
                                     <action selector="floatWindowLogin:" destination="wax-Dj-HDH" eventType="touchUpInside" id="dlG-wk-irx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttZ-VO-SPo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttZ-VO-SPo">
                                 <rect key="frame" x="87.5" y="223.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -136,7 +136,7 @@
                                     <action selector="popupLoginAction:" destination="wax-Dj-HDH" eventType="touchUpInside" id="pRx-2e-D4C"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9O-oC-3ze">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9O-oC-3ze">
                                 <rect key="frame" x="87.5" y="163.5" width="200" height="40"/>
                                 <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -150,54 +150,20 @@
                                     <action selector="normalLoginAction:" destination="wax-Dj-HDH" eventType="touchUpInside" id="TSb-YD-ukS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77e-Cj-DjR">
-                                <rect key="frame" x="87.5" y="403.5" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="lMh-hm-7oo"/>
-                                    <constraint firstAttribute="height" constant="40" id="p7s-Ax-hyY"/>
-                                </constraints>
-                                <state key="normal" title="应用内结合行为验证">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="captchaLoginAction:" destination="wax-Dj-HDH" eventType="touchUpInside" id="9Wo-j2-BQR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AcR-7g-32f">
-                                <rect key="frame" x="87.5" y="463.5" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.54901960780000003" green="0.3411764706" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="1ph-8r-8aW"/>
-                                    <constraint firstAttribute="height" constant="40" id="cKg-1P-MvV"/>
-                                </constraints>
-                                <state key="normal" title="SDK内结合行为验证">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="captchaInSDKLoginButton:" destination="wax-Dj-HDH" eventType="touchUpInside" id="zLr-zn-wAt"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="AxS-zt-V4F" firstAttribute="top" secondItem="ttZ-VO-SPo" secondAttribute="bottom" constant="20" id="Ei5-T0-9fx"/>
                             <constraint firstItem="K9O-oC-3ze" firstAttribute="centerX" secondItem="ttZ-VO-SPo" secondAttribute="centerX" id="Heb-7r-nVd"/>
                             <constraint firstItem="AxS-zt-V4F" firstAttribute="centerY" secondItem="9cs-E8-cMb" secondAttribute="centerY" constant="-30" id="Sc6-Tt-ouA"/>
-                            <constraint firstItem="AcR-7g-32f" firstAttribute="centerX" secondItem="77e-Cj-DjR" secondAttribute="centerX" id="UMC-Y9-M2X"/>
                             <constraint firstItem="ysA-n3-Lgv" firstAttribute="centerY" secondItem="9cs-E8-cMb" secondAttribute="centerY" constant="30" id="Ucg-1Z-SvC"/>
-                            <constraint firstItem="77e-Cj-DjR" firstAttribute="centerX" secondItem="ysA-n3-Lgv" secondAttribute="centerX" id="WPx-CZ-B1X"/>
                             <constraint firstItem="ttZ-VO-SPo" firstAttribute="centerX" secondItem="AxS-zt-V4F" secondAttribute="centerX" id="ZDo-jv-Ajd"/>
-                            <constraint firstItem="AcR-7g-32f" firstAttribute="top" secondItem="77e-Cj-DjR" secondAttribute="bottom" constant="20" id="e7J-Rd-jaY"/>
                             <constraint firstItem="AxS-zt-V4F" firstAttribute="centerX" secondItem="9cs-E8-cMb" secondAttribute="centerX" id="i5m-Vw-KRx"/>
                             <constraint firstItem="ttZ-VO-SPo" firstAttribute="top" secondItem="K9O-oC-3ze" secondAttribute="bottom" constant="20" id="ncd-Hr-Nnb"/>
                             <constraint firstItem="ysA-n3-Lgv" firstAttribute="centerX" secondItem="9cs-E8-cMb" secondAttribute="centerX" id="qvo-Nq-V1l"/>
-                            <constraint firstItem="77e-Cj-DjR" firstAttribute="top" secondItem="ysA-n3-Lgv" secondAttribute="bottom" constant="20" id="sxc-34-0P9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="captchaInSDKLoginButton" destination="AcR-7g-32f" id="vsj-a1-n7Q"/>
-                        <outlet property="captchaLoginButton" destination="77e-Cj-DjR" id="GGW-CP-qFs"/>
                         <outlet property="floatWindowLoginButton" destination="AxS-zt-V4F" id="x71-fg-A6k"/>
                         <outlet property="landscapeLoginButton" destination="ysA-n3-Lgv" id="3B1-1Z-L89"/>
                         <outlet property="normalLoginButton" destination="K9O-oC-3ze" id="dWA-eK-umT"/>
@@ -220,7 +186,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrH-dT-vwB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RrH-dT-vwB">
                                 <rect key="frame" x="32" y="411.5" width="311" height="45"/>
                                 <color key="backgroundColor" red="0.47058823529999999" green="0.37254901959999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

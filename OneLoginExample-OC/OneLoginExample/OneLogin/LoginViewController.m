@@ -16,8 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *popupLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *floatWindowLoginButton;
 @property (weak, nonatomic) IBOutlet UIButton *landscapeLoginButton;
-@property (weak, nonatomic) IBOutlet UIButton *captchaLoginButton;
-@property (weak, nonatomic) IBOutlet UIButton *captchaInSDKLoginButton;
 
 @end
 
@@ -49,11 +47,7 @@
     self.floatWindowLoginButton.layer.cornerRadius = 5;
     self.landscapeLoginButton.layer.masksToBounds = YES;
     self.landscapeLoginButton.layer.cornerRadius = 5;
-    self.captchaLoginButton.layer.masksToBounds = YES;
-    self.captchaLoginButton.layer.cornerRadius = 5;
-    self.captchaInSDKLoginButton.layer.masksToBounds = YES;
-    self.captchaInSDKLoginButton.layer.cornerRadius = 5;
-    
+ 
     [self initOneLogin];
 }
 
@@ -554,80 +548,6 @@
     };
     
     [OneLoginPro requestTokenWithViewController:self.navigationController viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
-        NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
-        [wself finishRequestingToken:result];
-        sender.enabled = YES;
-    }];
-}
-
-/**
- * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
- */
-- (IBAction)captchaLoginAction:(UIButton *)sender {
-    // 防抖，避免重复点击
-    sender.enabled = NO;
-    
-    // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可
-    OLAuthViewModel *viewModel = [OLAuthViewModel new];
-    
-    __weak typeof(self) wself = self;
-    
-    // 在SDK内部预取号未成功时，建议加载进度条
-    if (![OneLoginPro isPreGetTokenResultValidate]) {
-        [GTProgressHUD showLoadingHUDWithMessage:nil];
-    }
-    
-    // --------------授权页面生命周期回调 -------------------
-    viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
-        NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
-        if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
-            sender.enabled = YES;
-        } else if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
-            // 授权页面出现时，关掉进度条
-            [GTProgressHUD hideAllHUD];
-        }
-    };
-        
-    [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
-        NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
-        [wself finishRequestingToken:result];
-        sender.enabled = YES;
-    }];
-}
-
-/**
- * 一键登录 SDK 提供两种方式接入极验的 [行为验证](https://docs.geetest.com/sensebot/start/) 能力，当且仅当您在接入极验一键登录的同时需要结合行为验证时，您才需要搭建您自己的服务来处理行为验证的 api1 和 api2 请求，若您不需要接入行为验证功能，请忽略该方法
- */
-- (IBAction)captchaInSDKLoginButton:(UIButton *)sender {
-    // 防抖，避免重复点击
-    sender.enabled = NO;
-    
-    // 若不需要自定义UI，可不设置任何参数，使用SDK默认配置即可
-    OLAuthViewModel *viewModel = [OLAuthViewModel new];
-    
-    __weak typeof(self) wself = self;
-    
-    // 在SDK内部预取号未成功时，建议加载进度条
-    if (![OneLoginPro isPreGetTokenResultValidate]) {
-        [GTProgressHUD showLoadingHUDWithMessage:nil];
-    }
-    
-    // --------------授权页面生命周期回调 -------------------
-    viewModel.viewLifeCycleBlock = ^(NSString *viewLifeCycle, BOOL animated) {
-        NSLog(@"viewLifeCycle: %@, animated: %@", viewLifeCycle, animated ? @"YES" : @"NO");
-        if ([viewLifeCycle isEqualToString:@"viewDidDisappear:"]) {
-            sender.enabled = YES;
-        } else if ([viewLifeCycle isEqualToString:@"viewDidLoad"]) {
-            // 授权页面出现时，关掉进度条
-            [GTProgressHUD hideAllHUD];
-        }
-    };
-    
-    // OneLoginSDK 内部集成行为验证，只需提供 api1、api2，无需其他操作
-    viewModel.captchaAPI1 = GTCaptchaAPI1;
-    viewModel.captchaAPI2 = GTCaptchaAPI2;
-    
-    [OneLoginPro requestTokenWithViewController:self viewModel:viewModel completion:^(NSDictionary * _Nullable result) {
         NSLog(@"OneLoginPro requestTokenWithViewController result: %@", result);
         [wself finishRequestingToken:result];
         sender.enabled = YES;
